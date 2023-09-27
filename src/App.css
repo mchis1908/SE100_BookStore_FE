@@ -1,0 +1,87 @@
+
+a {
+    text-decoration: none!important;
+    color: inherit!important;
+}
+  
+label {
+    font-family: Poppins;
+    font-size: 14px;
+}
+  
+.cursor_pointer {
+    cursor: pointer;
+}
+  
+.disabled-item {
+    backdrop-filter: blur(16px);
+    pointer-events: none;
+    opacity: 0.4;
+}
+  
+.zoomout-icon:hover {
+    transform: scale(1.2);
+}
+
+/* pulse animation */
+.pulse:hover {
+    animation: pulse-animation 1s infinite;
+}
+
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+    }
+}
+/* pulse animation */
+
+
+::-webkit-scrollbar {
+width: 8px;
+display: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+box-shadow: inset 0 0 5px grey;
+border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #24BE85;
+border-radius: 10px;
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+#app {
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+text-align: center;
+height: 100vh;
+}
+
+p {
+margin-bottom: 0px !important;
+font-family: "Poppins", sans-serif;
+font-style: normal;
+font: 400px;
+}
+
+input{
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font: 400px;
+    border-radius:8px;
+    border: 2px solid #000;
+    height: 36px;
+}
+
+input:focus{
+    outline: 2px solid #0A91AB;
+    border: 2px solid transparent; 
+}
