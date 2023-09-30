@@ -16,16 +16,9 @@
                 <label>Enter your password</label>
             </div>
             <div class="forget">
-                <label for="remember">
-                <input type="checkbox" id="remember">
-                <p>Remember me</p>
-                </label>
-                <a href="#">Forgot password?</a>
+            <router-link style="font-size:14px" to="/">Forgot password?</router-link>
             </div>
-            <button type="submit">Log In</button>
-            <div class="register">
-                <p>Don't have an account? <a href="#">Register</a></p>
-            </div>
+            <button @click="handleLogin">Log In</button>
             </form>
         </div>
     </div>
