@@ -19,7 +19,7 @@
 
 .wrapper {
   width: 400px;
-  border-radius: 8px;
+  border-radius: 16px;
   padding: 30px;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -30,6 +30,22 @@
 form {
   display: flex;
   flex-direction: column;
+  height: 450px;
+  justify-content: flex-end;
+}
+
+#logo {
+  width: 150px;
+  object-fit: contain;
+  position: absolute;
+  top: -80px;
+  left: 125px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+}
+
+#logo-img {
+  width: 150px;
 }
 
 h2 {
@@ -109,7 +125,7 @@ button {
   border: none;
   padding: 12px 20px;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 8px;
   font-size: 16px;
   border: 2px solid transparent;
   transition: 0.3s ease;
