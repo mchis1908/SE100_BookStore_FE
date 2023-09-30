@@ -3,7 +3,7 @@
 <script lang="ts" src="./dashboard.ts"></script>
 
 <template>
-    <div>
+    <div class="background-feature">
         abc
     </div>
 </template>

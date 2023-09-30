@@ -111,3 +111,8 @@ input:focus{
     border-radius: 32px;
     font-weight: 600;
 }
+
+.background-feature{
+    min-height: 100vh;
+    background-color: #F4F2F2;
+}
