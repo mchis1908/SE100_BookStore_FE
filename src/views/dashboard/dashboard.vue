@@ -127,7 +127,7 @@
                     </div>
                     
                     <div class="col text-start d-flex flex-column" style="gap:8px">
-                        <p class="areaContent-title">Loyal Customers</p>
+                        <p class="areaContent-title">Best Selling Books</p>
                         <div class="areaContent-bg" style="height:300px">
 
                         </div>
@@ -137,7 +137,7 @@
                 <!-- ---------recent invoice & book pre-order------- -->
                 <div class="d-flex flex-row" style="gap:32px">
                     <div class="col-4 text-start d-flex flex-column" style="gap:8px">
-                        <p class="areaContent-title">Best Selling Books</p>
+                        <p class="areaContent-title">Loyal Customers</p>
                         <div class="areaContent-bg" style="height:300px">
 
                         </div>
