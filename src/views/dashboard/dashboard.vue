@@ -9,12 +9,11 @@
             <MenuDashBoard class="col-2"/>
             <div class="col-10 d-flex flex-column" style="padding:24px; gap:24px;overflow-y: scroll; overflow-x: hidden; z-index:1">
                 <div class="d-flex flex-column align-items-start" style="gap:8px">
-                    <p class="areaContent-title">Most Popular</p>
+                    <p class="areaContent-title">New Events</p>
                     <Splide class="splideSkill" :options="options">
-                        <SplideSlide data-splide-interval="1000" class="col-3" v-for="(item,index) in 6" :key="index">
+                        <SplideSlide data-splide-interval="2000" class="col-12" v-for="(item,index) in 6" :key="index">
                             <div class="book-mostSale">
-                                <img src="@/assets/dashboard/dacnhatam-book.webp" style="width:100%; height: 250px; object-fit:cover; border-radius: 16px;">
-                                <p>No.{{ index+1 }}</p>
+                                <img src="@/assets/dashboard/event-momo.webp" style="width:100%; height: 250px; object-fit:cover; border-radius: 16px;">
                             </div>
                         </SplideSlide>
                     </Splide>
@@ -138,7 +137,7 @@
                 <!-- ---------recent invoice & book pre-order------- -->
                 <div class="d-flex flex-row" style="gap:32px">
                     <div class="col-4 text-start d-flex flex-column" style="gap:8px">
-                        <p class="areaContent-title">Pre-order Books</p>
+                        <p class="areaContent-title">Best Selling Books</p>
                         <div class="areaContent-bg" style="height:300px">
 
                         </div>
