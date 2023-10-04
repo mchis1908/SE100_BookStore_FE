@@ -3,7 +3,7 @@
 <script lang="ts" src="./menu-dashboard.ts"></script>
 
 <template>
-    <div class="d-flex flex-column justify-content-between" style="padding:24px; background-color: #f2f6fc; border-right: solid 1px #E5E6E6;">
+    <div class="d-flex flex-column justify-content-between" style="padding:24px; background-color: #f2f6fc; border-right: solid 1px #E5E6E6;height: calc( 100vh - 66px)">
         <div class="d-flex flex-column align-items-start" style="gap:8px; margin-top: 8px;">
             <p class="big-title">Admin tools</p>
             <div :class="[ pageName==='/dashboard' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/dashboard')">

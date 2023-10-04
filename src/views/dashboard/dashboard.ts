@@ -8,5 +8,19 @@ import Header from '@/components/header/header.vue'
   },
 })
 export default class DashBoard extends Vue {
+  public options:any={
+    autoWidth: true,
+    gap: "1rem",
+    perMove: 1,
+    type    : 'loop',
+    autoplay: true,
+    interval: 2000,
+    perPage : 3,
+    // arrows: false,
+    pagination: false,
+  }
 
+  public mounted(){
+    
+  }
 }
