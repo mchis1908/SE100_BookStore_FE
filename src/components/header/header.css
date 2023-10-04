@@ -1,8 +1,3 @@
-.big-title{
-  padding:8px 12px;
-  font-weight: 600;
-}
-
 .menu-item{
   display: flex;
   justify-content: start;
@@ -12,11 +7,6 @@
   cursor: pointer;
   width:100%;
   border-radius:16px;
-}
-
-.menu-item-active{
-  color:#fff;
-  background-color:#0052cc;
 }
 
 .menu-item:hover .menu-item-icon{
@@ -29,8 +19,4 @@
 
 .menu-item:hover{
   background-color:#0052cc;
-}
-
-.logout .menu-item:hover{
-  background-color: #DD3B4B !important;
 }

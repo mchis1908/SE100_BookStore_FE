@@ -6,9 +6,15 @@ import { Options, Vue } from "vue-class-component";
   },
 })
 export default class Login extends Vue {
+  public pageName:any='/dashboard'
 
-  public async handleLogin(){
-
-    this.$router.push('/dashboard')
+  created() {
+    this.pageName = this.$route.path;
   }
+
+  public handleChangeTab(tab:any){
+    this.$router.replace(tab)
+    // window.location.href=tab;
+  }
+
 }

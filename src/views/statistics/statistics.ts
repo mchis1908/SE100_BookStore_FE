@@ -7,6 +7,6 @@ import Header from '@/components/header/header.vue'
     Header
   },
 })
-export default class DashBoard extends Vue {
+export default class Statistics extends Vue {
 
 }

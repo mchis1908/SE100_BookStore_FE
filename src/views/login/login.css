@@ -30,7 +30,7 @@
 form {
   display: flex;
   flex-direction: column;
-  height: 450px;
+  height: 400px;
   justify-content: flex-end;
 }
 
