@@ -13,8 +13,8 @@ export default class Login extends Vue {
   }
 
   public handleChangeTab(tab:any){
+    if(tab='/') this.$store.commit("setUserData", null);
     this.$router.replace(tab)
-    // window.location.href=tab;
   }
 
 }

@@ -8,6 +8,9 @@ import Expenses from '@/views/expenses/expenses.vue'
 import Invoices from '@/views/invoices/invoices.vue'
 import Reports from '@/views/reports/reports.vue'
 
+import store from "@/store";
+import { MutationTypes } from "@/store/mutation-types";
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -17,37 +20,58 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: DashBoard
+    component: DashBoard,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/statistics',
     name: 'statistics',
-    component: Statistics
+    component: Statistics,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/user-management',
     name: 'users-management',
-    component: UserManagement
+    component: UserManagement,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/events',
     name: 'events',
-    component: Events
+    component: Events,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/expenses',
     name: 'expenses',
-    component: Expenses
+    component: Expenses,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/invoices',
     name: 'invoices',
-    component: Invoices
+    component: Invoices,
+    meta: {
+      requiresAuth: true,
+    },
   },
   {
     path: '/reports',
     name: 'reports',
-    component: Reports
+    component: Reports,
+    meta: {
+      requiresAuth: true,
+    },
   },
 ]
 
@@ -60,6 +84,18 @@ router.beforeEach((to, from, next) => {
   window.scrollTo(0, 0);
   next();
   return;
+});
+
+router.beforeEach(async (to, from, next) => {
+  let userData:any = store.state.userData;
+  console.log(userData);
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (!userData) {
+      next({ path: "/" });
+      return;
+    }
+  }
+  next();
 });
 
 export default router

@@ -27,7 +27,7 @@
   -webkit-backdrop-filter: blur(9px);
 }
 
-form {
+.login-container {
   display: flex;
   flex-direction: column;
   height: 400px;

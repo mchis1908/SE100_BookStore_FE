@@ -14,8 +14,7 @@ export default class DashBoard extends Vue {
     perMove: 1,
     type    : 'loop',
     autoplay: true,
-    interval: 2000,
-    perPage : 3,
+    perPage : 1,
     // arrows: false,
     pagination: false,
   }

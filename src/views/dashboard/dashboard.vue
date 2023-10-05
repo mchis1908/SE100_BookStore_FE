@@ -11,14 +11,14 @@
                 <div class="d-flex flex-column align-items-start" style="gap:8px">
                     <p class="areaContent-title">New Events</p>
                     <Splide class="splideSkill" :options="options">
-                        <SplideSlide data-splide-interval="2000" class="col-12" v-for="(item,index) in 6" :key="index">
+                        <SplideSlide data-splide-interval="2000" class="col-12" v-for="(item,index) in 3" :key="index">
                             <div class="book-mostSale">
                                 <img src="@/assets/dashboard/event-momo.webp" style="width:100%; height: 250px; object-fit:cover; border-radius: 16px;">
                             </div>
                         </SplideSlide>
                     </Splide>
                 </div>
-                    <!-- ---------overview--- -->
+                <!-- ---------overview--- -->   
                 <div class="d-flex flex-column align-items-start" style="gap:8px">
                     <p class="areaContent-title">Over Views</p>
                     <div class="d-flex flex-row" style="gap:32px; width:100%">

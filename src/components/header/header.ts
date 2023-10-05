@@ -7,9 +7,11 @@ import { Options, Vue } from "vue-class-component";
 })
 export default class Login extends Vue {
   public pageTitle:any=''
-
+  public userData:any=null;
   created() {
     this.pageTitle = this.getPageIdFromRoute(this.$route.path);
+    this.userData = this.$store.state.userData;
+    console.log(this.userData);
   }
   
   private getPageIdFromRoute(routePath: string) {

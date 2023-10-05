@@ -9,6 +9,7 @@
   "dependencies": {
     "@splidejs/vue-splide": "^0.6.12",
     "@vueuse/motion": "^2.0.0",
+    "axios": "^1.5.1",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
     "bootstrap-vue": "^2.23.1",
