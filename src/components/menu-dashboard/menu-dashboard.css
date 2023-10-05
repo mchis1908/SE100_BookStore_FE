@@ -16,7 +16,7 @@
 
 .menu-item-active{
   color:#fff;
-  background-color:#0052cc;
+  background-color:#065471;
 }
 
 .menu-item:hover .menu-item-icon{
@@ -28,7 +28,7 @@
 }
 
 .menu-item:hover{
-  background-color:#0052cc;
+  background-color:#065471;
 }
 
 .logout .menu-item:hover{

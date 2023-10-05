@@ -19,7 +19,6 @@ export default class Login extends Vue {
     );
     if (res.status===200) {
       localStorage.setItem("sessionTokens", JSON.stringify(res.data.accessToken));
-      this.$store.commit("setUserData", res.data);
       await this.$router.push("/dashboard");
     }else{
       this.invalidAccount = res.data.message;

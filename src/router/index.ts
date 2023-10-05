@@ -10,7 +10,23 @@ import Reports from '@/views/reports/reports.vue'
 
 import store from "@/store";
 import { MutationTypes } from "@/store/mutation-types";
-
+const getUserData = async () => {
+  const sessionTokens = JSON.parse(localStorage.getItem("sessionTokens")!);
+  if (!sessionTokens) return;
+  const subject_id = sessionTokens;
+  const payload = {
+    subject_id,
+  };
+  const res = await store.dispatch(
+    MutationTypes.GET_CURRENT_USER,
+    payload
+  );
+  if (!res) return;
+  if (res.status === 200) {
+    store.commit("setUserData", res.data);
+    return
+  }
+};
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -87,13 +103,18 @@ router.beforeEach((to, from, next) => {
 });
 
 router.beforeEach(async (to, from, next) => {
-  let userData:any = store.state.userData;
-  console.log(userData);
   if (to.matched.some((record) => record.meta.requiresAuth)) {
+    let userData:any = await getUserData();
+    userData = store.state.userData;
     if (!userData) {
       next({ path: "/" });
       return;
     }
+    userData = store.state.userData;
+    if (!userData) {
+      await getUserData();
+    }
+    userData = store.state.userData;
   }
   next();
 });

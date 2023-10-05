@@ -23,21 +23,9 @@ $http.interceptors.request.use(
   async (axiosConfig: any) => {
     const sessionTokens = JSON.parse(localStorage.getItem("sessionTokens")!);
     if (sessionTokens) {
-      const idTokenExp = sessionTokens["IdToken"]["payload"]["exp"];
-      const currentTime = new Date().valueOf();
-      // Check if token is expired, refresh token
-      if (currentTime / 1000 > idTokenExp) {
-        // CognitoService.clearStorage();
-        window.location.href = "/";
-        return;
-      }
       axiosConfig.headers["authorization"] =
-        "Bearer " + sessionTokens["IdToken"]["jwtToken"];
+        "Bearer " + sessionTokens;
     } else {
-      // const authToken = localStorage.getItem('authToken');
-      // if (authToken) {
-      //   axiosConfig.headers['authorization'] = 'Bearer ' + authToken;
-      // }
       return;
     }
 

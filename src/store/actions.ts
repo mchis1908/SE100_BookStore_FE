@@ -41,6 +41,19 @@ const actions = {
     }
   },
 
+  [MutationTypes.GET_CURRENT_USER]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce("/user", payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
+
   
 };
 

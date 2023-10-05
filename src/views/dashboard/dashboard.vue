@@ -32,11 +32,11 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <i class="bi bi-person-circle" style="font-size:32px"></i>
+                                    <i class="bi-person-circle" style="font-size:32px"></i>
                                 </div>
                             </div>
                             <div class="d-flex flex-row justify-content-start align-items-center" style="gap:8px;color:green">
-                                <i class="bi bi-arrow-up" ></i>
+                                <i class="bi-arrow-up" ></i>
                                 <p>
                                     3.23%
                                     <span style="color:#BABCC2">
@@ -55,11 +55,11 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <i class="bi bi-person-circle" style="font-size:32px"></i>
+                                    <i class="bi-person-circle" style="font-size:32px"></i>
                                 </div>
                             </div>
                             <div class="d-flex flex-row justify-content-start align-items-center" style="gap:8px;color:green">
-                                <i class="bi bi-arrow-up" ></i>
+                                <i class="bi-arrow-up" ></i>
                                 <p>
                                     3.23%
                                     <span style="color:#BABCC2">
@@ -78,11 +78,11 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <i class="bi bi-person-circle" style="font-size:32px"></i>
+                                    <i class="bi-person-circle" style="font-size:32px"></i>
                                 </div>
                             </div>
                             <div class="d-flex flex-row justify-content-start align-items-center" style="gap:8px;color:green">
-                                <i class="bi bi-arrow-up" ></i>
+                                <i class="bi-arrow-up" ></i>
                                 <p>
                                     3.23%
                                     <span style="color:#BABCC2">
@@ -101,11 +101,11 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <i class="bi bi-person-circle" style="font-size:32px"></i>
+                                    <i class="bi-person-circle" style="font-size:32px"></i>
                                 </div>
                             </div>
                             <div class="d-flex flex-row justify-content-start align-items-center" style="gap:8px;color:green">
-                                <i class="bi bi-arrow-up" ></i>
+                                <i class="bi-arrow-up" ></i>
                                 <p>
                                     3.23%
                                     <span style="color:#BABCC2">
@@ -121,32 +121,132 @@
                 <div class="d-flex flex-row" style="gap:32px">
                     <div class="col-8 text-start d-flex flex-column" style="gap:8px">
                         <p class="areaContent-title">Revenue Chart</p>
-                        <div class="areaContent-bg" style="height:300px">
-
+                        <div class="areaContent-bg">
+                            <div class="d-flex justify-content-end" style="width:100%">
+                                <div class="d-flex flex-row see-detail">
+                                    <p >See Detail</p>
+                                    <i class="bi-arrow-right"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="col text-start d-flex flex-column" style="gap:8px">
                         <p class="areaContent-title">Best Selling Books</p>
-                        <div class="areaContent-bg" style="height:300px">
-
+                        <div class="areaContent-bg">
+                            <div class="areaContent-bg">
+                                <div class="d-flex flex-row" style="gap:8px">
+                                    <p class="col-4 text-title-1">
+                                        No
+                                    </p>
+                                    <p class="col-4 text-title-1">
+                                        Book's Name
+                                    </p>
+                                    <p class="col-4 text-title-1">
+                                        Quantity
+                                    </p>
+                                </div>
+                                <div class="d-flex flex-row" style="gap:8px" v-for="(item,index) in 10" :key="index">
+                                    <p class="col-4 text-center">
+                                        {{ index + 1 }}
+                                    </p>
+                                    <p class="col-4 text-center">
+                                        Đắc nhân tâm
+                                    </p>
+                                    <p class="col-4 text-center">
+                                        {{  30 + index }}
+                                    </p>
+                                </div>
+                                <div class="d-flex justify-content-end" style="width:100%">
+                                    <div class="d-flex flex-row see-detail">
+                                        <p >See Detail</p>
+                                        <i class="bi-arrow-right"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- ---------recent invoice & book pre-order------- -->
-                <div class="d-flex flex-row" style="gap:32px">
+                <div class="d-flex flex-row" style="gap:32px;">
                     <div class="col-4 text-start d-flex flex-column" style="gap:8px">
                         <p class="areaContent-title">Loyal Customers</p>
-                        <div class="areaContent-bg" style="height:300px">
-
+                        <div class="areaContent-bg">
+                            <div class="d-flex flex-row" style="gap:8px">
+                                <p class="col-4 text-title-1">
+                                    Rank
+                                </p>
+                                <p class="col-4 text-title-1">
+                                    Name
+                                </p>
+                                <p class="col-4 text-title-1">
+                                    Point
+                                </p>
+                            </div>
+                            <div class="d-flex flex-row" style="gap:8px" v-for="(item,index) in 10" :key="index">
+                                <p class="col-4 text-center">
+                                    {{ index + 1 }}
+                                </p>
+                                <p class="col-4 text-center">
+                                    Huỳnh Minh Chí
+                                </p>
+                                <p class="col-4 text-center">
+                                    {{  30 + index }}
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-end" style="width:100%">
+                                <div class="d-flex flex-row see-detail">
+                                    <p >See Detail</p>
+                                    <i class="bi-arrow-right"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="col text-start d-flex flex-column" style="gap:8px">
+                    <div class="col text-start d-flex flex-column" style="gap:8px;">
                         <p class="areaContent-title">Recent Invoices</p>
-                        <div class="areaContent-bg" style="height:300px">
-
+                        <div class="areaContent-bg">
+                            <div class="d-flex flex-row" style="gap:8px">
+                                <p class="col text-title-1">
+                                    No
+                                </p>
+                                <p class="col text-title-1">
+                                    Date Created
+                                </p>
+                                <p class="col text-title-1">
+                                    Customer
+                                </p>
+                                <p class="col text-title-1">
+                                    Amount
+                                </p>
+                                <p class="col text-title-1">
+                                    Cashier
+                                </p>
+                            </div>
+                            <div class="d-flex flex-row" style="gap:8px" v-for="(item,index) in 10" :key="index">
+                                <p class="col text-center">
+                                    {{ index + 1 }}
+                                </p>
+                                <p class="col text-center">
+                                    1/{{ index+1 }}/2023
+                                </p>
+                                <p class="col text-center">
+                                    Huỳnh Minh Chí
+                                </p>
+                                <p class="col text-center">
+                                    {{30 * index+1}}.000
+                                </p>
+                                <p class="col text-center">
+                                    Huỳnh Minh Chí
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-end" style="width:100%">
+                                <div class="d-flex flex-row see-detail">
+                                    <p >See Detail</p>
+                                    <i class="bi-arrow-right"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

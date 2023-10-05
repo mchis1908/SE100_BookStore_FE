@@ -18,8 +18,12 @@
 
 .areaContent-bg{
     background-color: #fff;
-    padding: 8px;
+    padding: 8px 16px;
     border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
 }
 
 .areaContent-title{
@@ -27,4 +31,20 @@
     font-weight:600; 
     color:#065471;
     
+}
+
+.text-title-1{
+    font-size:14px;
+    font-weight:600;
+    text-align: center;
+}
+
+.see-detail{
+    gap:8px; 
+    cursor: pointer; 
+    color: #ADADAD;
+    font-weight: 500;
+}
+.see-detail:hover{
+    color: #065471;
 }

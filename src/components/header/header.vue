@@ -9,13 +9,13 @@
         </div>
         <p style="font-size:24px; font-weight:600; color:#065471">{{ pageTitle }}</p>
         <div class="d-flex flex-row align-items-center" style="gap:8px; height: 100%;">
-            <i class="bi bi-person-circle d-flex align-items-center" style="font-size: 30px;"></i>
+            <i class="bi-person-circle d-flex align-items-center" style="font-size: 30px;"></i>
             <p style="color: #000;
                 text-align: right;
                 font-size: 14px;
                 font-style: normal;
             ">
-                {{ userData.data.name }}
+                {{ userData?.data?.name }}
             </p>
         </div>
     </div>

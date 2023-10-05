@@ -13,7 +13,7 @@ export default class Login extends Vue {
   }
 
   public handleChangeTab(tab:any){
-    if(tab='/') this.$store.commit("setUserData", null);
+    if(tab === '/') localStorage.removeItem('sessionTokens');
     this.$router.replace(tab)
   }
 
