@@ -7,7 +7,7 @@
         <Header/>
         <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
             <MenuDashBoard class="col-2"/>
-            <div class="col-10 d-flex flex-column" style="padding:24px; gap:24px;overflow-y: scroll; overflow-x: hidden; z-index:1">
+            <div class="col-10 d-flex flex-column" style="padding:24px; gap:24px;overflow-y: scroll; overflow-x: hidden; z-index:1" v-motion-slide-left>
                 <div class="d-flex flex-column align-items-start" style="gap:8px">
                     <p class="areaContent-title">New Events</p>
                     <Splide class="splideSkill" :options="options">
@@ -136,24 +136,24 @@
                         <div class="areaContent-bg">
                             <div class="areaContent-bg">
                                 <div class="d-flex flex-row" style="gap:8px">
-                                    <p class="col-4 text-title-1">
+                                    <p class="col-1 text-title-1">
                                         No
                                     </p>
-                                    <p class="col-4 text-title-1">
+                                    <p class="col text-title-1">
                                         Book's Name
                                     </p>
-                                    <p class="col-4 text-title-1">
+                                    <p class="col-2 text-title-1">
                                         Quantity
                                     </p>
                                 </div>
                                 <div class="d-flex flex-row" style="gap:8px" v-for="(item,index) in 10" :key="index">
-                                    <p class="col-4 text-center">
+                                    <p class="col-1 text-center">
                                         {{ index + 1 }}
                                     </p>
-                                    <p class="col-4 text-center">
+                                    <p class="col text-center">
                                         Đắc nhân tâm
                                     </p>
-                                    <p class="col-4 text-center">
+                                    <p class="col-2 text-center">
                                         {{  30 + index }}
                                     </p>
                                 </div>
@@ -174,24 +174,24 @@
                         <p class="areaContent-title">Loyal Customers</p>
                         <div class="areaContent-bg">
                             <div class="d-flex flex-row" style="gap:8px">
-                                <p class="col-4 text-title-1">
+                                <p class="col-1 text-title-1">
                                     Rank
                                 </p>
-                                <p class="col-4 text-title-1">
+                                <p class="col text-title-1">
                                     Name
                                 </p>
-                                <p class="col-4 text-title-1">
+                                <p class="col-2 text-title-1">
                                     Point
                                 </p>
                             </div>
                             <div class="d-flex flex-row" style="gap:8px" v-for="(item,index) in 10" :key="index">
-                                <p class="col-4 text-center">
+                                <p class="col-1 text-center">
                                     {{ index + 1 }}
                                 </p>
-                                <p class="col-4 text-center">
+                                <p class="col text-center">
                                     Huỳnh Minh Chí
                                 </p>
-                                <p class="col-4 text-center">
+                                <p class="col-2 text-center">
                                     {{  30 + index }}
                                 </p>
                             </div>
@@ -208,7 +208,7 @@
                         <p class="areaContent-title">Recent Invoices</p>
                         <div class="areaContent-bg">
                             <div class="d-flex flex-row" style="gap:8px">
-                                <p class="col text-title-1">
+                                <p class="col-1 text-title-1">
                                     No
                                 </p>
                                 <p class="col text-title-1">
@@ -225,7 +225,7 @@
                                 </p>
                             </div>
                             <div class="d-flex flex-row" style="gap:8px" v-for="(item,index) in 10" :key="index">
-                                <p class="col text-center">
+                                <p class="col-1 text-center">
                                     {{ index + 1 }}
                                 </p>
                                 <p class="col text-center">

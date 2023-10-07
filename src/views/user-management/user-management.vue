@@ -7,7 +7,7 @@
         <Header/>
         <div class="d-flex flex-row" style="min-height: calc( 100vh - 66px)">
             <MenuDashBoard class="col-2"/>
-            <div class="col-10 d-flex flex-column" style="padding:24px; overflow-y: scroll; overflow-x: hidden; z-index:1">
+            <div class="col-10 d-flex flex-column" style="padding:24px; overflow-y: scroll; overflow-x: hidden; z-index:1" v-motion-slide-left>
                 <ul class="nav nav-pills mb-1" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" >Customer</button>
@@ -19,7 +19,7 @@
                         <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Manager</button>
                     </li>
                 </ul>
-                <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px; min-height: calc( 100vh - 158px);">
+                <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px; height: 580px;">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" style="padding: 12px 24px; gap:12px; min-height: 100%;">
                         <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%">
                             <div class="col-1"></div>
