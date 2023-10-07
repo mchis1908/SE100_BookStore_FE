@@ -97,9 +97,10 @@ input:focus{
     font-style: normal;
     padding:8px 12px;
     color:#fff;
-    border-radius: 32px;
+    border-radius: 16px;
     border: none;
     font-weight: 600;
+    transition: all 0.3s ease-in-out;
 }
 
 .button-solid:hover{
@@ -108,8 +109,46 @@ input:focus{
     font-style: normal;
     color:#275b79;
     outline: 8px solid rgba(100, 168, 213, 0.16);
-    border-radius: 32px;
     font-weight: 600;
+}
+
+.button-danger{
+    padding:8px 16px !important;
+    background-color: #bb2d3a;
+    font-style: normal;
+    padding:8px 12px;
+    color:#fff;
+    border-radius: 16px;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+.button-danger:hover{
+    padding:8px 16px !important;
+    background-color: #fff;
+    font-style: normal;
+    color:#bb2d3a;
+    outline: 8px solid rgba(187, 45, 58, .16);
+    font-weight: 600;
+}
+
+.button-outline {
+    padding: 8px 16px !important;
+    background-color: #fff;
+    font-style: normal;
+    color: #5c6369;
+    outline: 1px solid #5c6369;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    border-radius: 16px;
+}
+
+.button-outline:hover {
+    padding: 8px 16px !important;
+    background-color: #5c6369;
+    color: #fff;
 }
 
 .background-feature{

@@ -142,3 +142,13 @@ button:hover {
   margin-top: 30px;
   color: #fff;
 }
+
+.loading-container {
+  width: 100%;
+  height: 50px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}

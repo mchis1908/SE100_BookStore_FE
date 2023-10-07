@@ -24,7 +24,12 @@
                 <div class="forget">
                     <router-link style="font-size:14px" to="/">Forgot password?</router-link>
                 </div>
-                <button @click="handleLogin">Log In</button>
+                <button v-if="!isLoading" @click="handleLogin">
+                    Login
+                </button>
+                <div v-else class="loading-container">
+                    <Loading/>
+                </div>
             </div>
         </div>
     </div>

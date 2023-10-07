@@ -3,6 +3,7 @@
 <script lang="ts" src="./dashboard.ts"></script>
 
 <template>
+    <Modal id="seeDetailsModal" title="Modal See Details" content="Details of books" actionButtonTitle="Save" :isDangerAction="false" @handleClickActionButton="handleClick"/>
     <div class="background-feature d-flex flex-column">
         <Header/>
         <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
@@ -123,7 +124,7 @@
                         <p class="areaContent-title">Revenue Chart</p>
                         <div class="areaContent-bg">
                             <div class="d-flex justify-content-end" style="width:100%">
-                                <div class="d-flex flex-row see-detail">
+                                <div class="d-flex flex-row see-detail" data-bs-toggle="modal" data-bs-target="#seeDetailsModal">
                                     <p >See Detail</p>
                                     <i class="bi-arrow-right"></i>
                                 </div>
