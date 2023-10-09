@@ -1,0 +1,61 @@
+<style scope src="./modal-customer-detail.css"></style>
+<script lang="ts" src="./modal-customer-detail.ts"></script>
+
+<template>
+    <div class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="min-width:850px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100" id="ModalLabel">"Name Customer"'s Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="d-flex flex-row" style="gap:32px; margin:16px">
+                    <div class="col d-flex flex-column" style="gap:16px">
+                        <div class="input-field">
+                            <p class="text-start">Name:</p>
+                            <input style="height:30px" type="text" placeholder="Enter customer's name"/>
+                        </div>
+                        <div class="input-field">
+                            <p class="text-start">Email:</p>
+                            <input style="height:30px" type="text" placeholder="Enter customer's email"/>
+                        </div>
+                        <div class="input-field">
+                            <p class="text-start">Address:</p>
+                            <input style="height:30px" type="text" placeholder="Enter customer's address"/>
+                        </div>
+                        <div class="input-field">
+                            <p class="text-start">Phone:</p>
+                            <input style="height:30px" type="text" placeholder="Enter customer's phone number"/>
+                        </div>
+                        <div class="input-field">
+                            <p class="text-start">Birthday:</p>
+                            <input style="height:30px" type="date" />
+                        </div>
+                        <div class="input-field">
+                            <p class="text-start">Last Paid:</p>
+                            <input style="height:30px" type="date" />
+                        </div>
+                    </div>
+                    <div class="col d-flex flex-column" style="gap:16px">
+                        <div class="input-field">
+                            <p class="text-start">Created:</p>
+                            <input style="height:30px" type="date" disabled/>
+                        </div>
+                        <div class="input-field">
+                            <p class="text-start">Rank:</p>
+                            <input style="height:30px" type="text" disabled/>
+                        </div>
+                        <div class="input-field">
+                            <p class="text-start">Point:</p>
+                            <input style="height:30px" type="text" disabled/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="button-outline" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="button-solid" @click="handleClickActionButton">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

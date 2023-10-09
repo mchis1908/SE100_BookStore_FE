@@ -3,6 +3,8 @@
 <script lang="ts" src="./user-management.ts"></script>
 
 <template>
+    <ModalAddCustomer id="addCustomer" @handleClickActionButton="handleClick"/>
+    <ModalCustomerDetail id="detailCustomer" :idCustomer="id" @handleClickActionButton="handleUpdate"/>
     <div class="background-feature d-flex flex-column">
         <Header/>
         <div class="d-flex flex-row" style="min-height: calc( 100vh - 66px)">
@@ -24,10 +26,10 @@
                         <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%">
                             <div class="col-1"></div>
                             <div class="col-6 d-flex flex-row" style="gap:16px">
-                                <div class="d-flex justify-content-center align-items-center" style="font-size:16px; color: #065471">Search:</div>
-                                <input class="search-input"/>
+                                <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
+                                <input class="search-input" placeholder="Enter your's input"/>
                             </div>
-                            <div class="col d-flex justify-content-center align-items-center" style="max-width:200px; cursor:pointer; border-radius:10px; height: 36px; padding: 16px; background-color: #065471; gap:8px; color: #fff">
+                            <div class="col btn-add" data-bs-toggle="modal" data-bs-target="#addCustomer">
                                 <i class="bi-person-fill-add" style="font-size:22px"></i>
                                 <p>Add new customer</p>
                             </div>
@@ -50,7 +52,7 @@
                                     Last Transaction
                                 </div>
                             </div>
-                            <div class="d-flex flex-row" v-for="(item, index) in 13" :key="index">
+                            <div class="person-item" v-for="(item, index) in 9" :key="index" data-bs-toggle="modal" data-bs-target="#detailCustomer">
                                 <p class="col">
                                     Huỳnh Minh Chí
                                 </p>
@@ -78,12 +80,12 @@
                         <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%">
                             <div class="col-1"></div>
                             <div class="col-6 d-flex flex-row" style="gap:16px">
-                                <div class="d-flex justify-content-center align-items-center" style="font-size:16px; color: #065471">Search:</div>
-                                <input class="search-input"/>
+                                <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
+                                <input class="search-input" placeholder="Enter your's input"/>
                             </div>
-                            <div class="col d-flex justify-content-center align-items-center" style="max-width:200px; cursor:pointer; border-radius:10px; height: 36px; padding: 16px; background-color: #065471; gap:8px; color: #fff">
+                            <div class="col btn-add">
                                 <i class="bi-person-fill-add" style="font-size:22px"></i>
-                                <p>Add new customer</p>
+                                <p>Add new employee</p>
                             </div>
                         </div>
                         <div class="d-flex flex-column" style="gap:12px; margin-top: 24px;">
@@ -104,7 +106,7 @@
                                     Last Transaction
                                 </div>
                             </div>
-                            <div class="d-flex flex-row" v-for="(item, index) in 13" :key="index">
+                            <div class="person-item" v-for="(item, index) in 9" :key="index">
                                 <p class="col">
                                     Huỳnh Minh Chí
                                 </p>
@@ -132,12 +134,12 @@
                         <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%">
                             <div class="col-1"></div>
                             <div class="col-6 d-flex flex-row" style="gap:16px">
-                                <div class="d-flex justify-content-center align-items-center" style="font-size:16px; color: #065471">Search:</div>
-                                <input class="search-input"/>
+                                <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
+                                <input class="search-input" placeholder="Enter your's input"/>
                             </div>
-                            <div class="col d-flex justify-content-center align-items-center" style="max-width:200px; cursor:pointer; border-radius:10px; height: 36px; padding: 16px; background-color: #065471; gap:8px; color: #fff">
+                            <div class="col btn-add">
                                 <i class="bi-person-fill-add" style="font-size:22px"></i>
-                                <p>Add new customer</p>
+                                <p>Add new manager</p>
                             </div>
                         </div>
                         <div class="d-flex flex-column" style="gap:12px; margin-top: 24px;">
@@ -155,7 +157,7 @@
                                     Last Transaction
                                 </div>
                             </div>
-                            <div class="d-flex flex-row" v-for="(item, index) in 13" :key="index">
+                            <div class="person-item" v-for="(item, index) in 9" :key="index">
                                 <p class="col">
                                     Huỳnh Minh Chí
                                 </p>

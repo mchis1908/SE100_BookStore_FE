@@ -15,7 +15,7 @@ export default class Login extends Vue {
 
   public async handleLogin(){
     this.isLoading = true;
-    const payload = { email: this.username, password: this.password };
+    const payload = { emailOrphoneNumber: this.username, password: this.password };
     const res = await this.$store.dispatch(
       MutationTypes.LOGIN_USER_REQUEST,
       payload

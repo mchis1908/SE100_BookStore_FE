@@ -19,9 +19,12 @@ export default class Login extends Vue {
       '/dashboard': 'Dashboard',
       '/statistics': 'Statistics',
       '/user-management': 'User Management',
+      '/book-management': 'Book Management',
       '/events': 'Events & Voucher',
       '/expenses': 'Expenses',
       '/invoices': 'Invoices',
+      '/salary': 'Employee Salary',
+      '/revenue': 'Aggregate revenue',
       '/reports': 'Reports',
     };
     return routeMappings[routePath] || '';

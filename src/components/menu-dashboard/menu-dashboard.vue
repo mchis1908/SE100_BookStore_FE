@@ -3,24 +3,28 @@
 <script lang="ts" src="./menu-dashboard.ts"></script>
 
 <template>
-    <div class="d-flex flex-column justify-content-between" style="padding:24px; background-color: #f2f6fc; border-right: solid 1px #E5E6E6;height: calc( 100vh - 66px)">
-        <div class="d-flex flex-column align-items-start" style="gap:8px; margin-top: 8px;">
+    <div class="d-flex flex-column justify-content-between" style="padding:24px; background-color: #f2f6fc; border-right: solid 1px #E5E6E6; min-height: calc( 100vh - 66px);">
+        <div class="d-flex flex-column align-items-start" style="gap:4px; margin-top: 8px;">
             <p class="big-title">Admin tools</p>
             <div :class="[ pageName==='/dashboard' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/dashboard')">
                 <i class="bi-grid-fill menu-item-icon"></i>
                 <p class="text-start menu-item-title">Dashboard</p>
             </div>
-            <div :class="[ pageName==='/statistics' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/statistics')">
-                <i class="bi-bar-chart-fill menu-item-icon"></i>
-                <p class="text-start menu-item-title">Statistics</p>
-            </div>
             <div :class="[ pageName==='/user-management' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/user-management')">
                 <i class="bi-people-fill menu-item-icon"></i>
                 <p class="text-start menu-item-title">Users Management</p>
             </div>
+            <div :class="[ pageName==='/book-management' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/book-management')">
+                <i class="bi-people-fill menu-item-icon"></i>
+                <p class="text-start menu-item-title">Book Management</p>
+            </div>
             <div :class="[ pageName==='/events' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/events')">
                 <i class="bi-ticket-perforated-fill menu-item-icon"></i>
                 <p class="text-start menu-item-title">Events & Vouchers</p>
+            </div>
+            <div :class="[ pageName==='/statistics' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/statistics')">
+                <i class="bi-bar-chart-fill menu-item-icon"></i>
+                <p class="text-start menu-item-title">Statistics</p>
             </div>
             <hr style="width:100%; border: 0.5px solid #E5E6E6; opacity: 1;"/>
             <p class="big-title">Finance Management</p>
@@ -31,6 +35,14 @@
             <div :class="[ pageName==='/invoices' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/invoices')">
                 <i class="bi-bar-chart-fill menu-item-icon"></i>
                 <p class="text-start menu-item-title">Invoices</p>
+            </div>
+            <div :class="[ pageName==='/salary' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/salary')">
+                <i class="bi-bar-chart-fill menu-item-icon"></i>
+                <p class="text-start menu-item-title">Employee Salary</p>
+            </div>
+            <div :class="[ pageName==='/revenue' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/revenue')">
+                <i class="bi-bar-chart-fill menu-item-icon"></i>
+                <p class="text-start menu-item-title">Revenue</p>
             </div>
             <div :class="[ pageName==='/reports' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/reports')">
                 <i class="bi-clipboard2-data-fill menu-item-icon"></i>

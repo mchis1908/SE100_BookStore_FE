@@ -12,7 +12,7 @@
                 <h2>Login</h2>
                     <div class="input-field">
                     <input v-model="username" type="text" required>
-                    <label>Enter your email</label>
+                    <label>Enter your email or phone number</label>
                 </div>
                 <div class="input-field">
                     <input v-model="password" type="password" required>

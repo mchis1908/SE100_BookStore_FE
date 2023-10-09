@@ -3,9 +3,12 @@ import Login from '../views/login/login.vue'
 import DashBoard from '../views/dashboard/dashboard.vue'
 import Statistics from '../views/statistics/statistics.vue'
 import UserManagement from '@/views/user-management/user-management.vue'
+import BookManagement from '@/views/book-management/book-management.vue'
 import Events from '@/views/events/events.vue'
 import Expenses from '@/views/expenses/expenses.vue'
 import Invoices from '@/views/invoices/invoices.vue'
+import Salary from '@/views/salary/salary.vue'
+import Revenue from '@/views/revenue/revenue.vue'
 import Reports from '@/views/reports/reports.vue'
 
 import store from "@/store";
@@ -51,8 +54,16 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/user-management',
-    name: 'users-management',
+    name: 'user-management',
     component: UserManagement,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/book-management',
+    name: 'book-management',
+    component: BookManagement,
     meta: {
       requiresAuth: true,
     },
@@ -77,6 +88,22 @@ const routes: Array<RouteRecordRaw> = [
     path: '/invoices',
     name: 'invoices',
     component: Invoices,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/salary',
+    name: 'salary',
+    component: Salary,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/revenue',
+    name: 'revenue',
+    component: Revenue,
     meta: {
       requiresAuth: true,
     },

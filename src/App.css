@@ -85,6 +85,7 @@ input{
     border-radius:8px;
     border: none;
     padding:8px 16px;
+    outline: 2px solid #000;
 }
 
 input:focus{
@@ -154,4 +155,13 @@ input:focus{
 .background-feature{
     min-height: 100vh;
     background-color: #f2f6fc;
+}
+
+.input-field{
+    display: grid;
+    gap:16px;
+    justify-content: start;
+    align-items: center;
+
+    grid-template-columns: 70px 1fr;
 }
