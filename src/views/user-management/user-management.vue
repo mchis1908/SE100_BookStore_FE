@@ -3,7 +3,7 @@
 <script lang="ts" src="./user-management.ts"></script>
 
 <template>
-    <ModalAddCustomer id="addCustomer" @handleClickActionButton="handleClick"/>
+    <ModalAddCustomer id="addCustomer"/>
     <ModalCustomerDetail id="detailCustomer" :idCustomer="id" @handleClickActionButton="handleUpdate"/>
     <div class="background-feature d-flex flex-column">
         <Header/>

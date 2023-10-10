@@ -13,29 +13,53 @@
                     <div class="col d-flex flex-column" style="gap:16px">
                         <div class="input-field">
                             <p class="text-start">Name:</p>
-                            <input style="height:30px" type="text" placeholder="Enter customer's name"/>
+                            <div class="d-flex flex-column" style="gap:4px">
+                                <input v-model="userInput.name" style="height:30px" type="text" placeholder="Enter customer's name"/>
+                                <div v-if="invalidMessage.name" class="text-start">
+                                    <p class="text-error">{{ invalidMessage.name }}</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="input-field">
                             <p class="text-start">Email:</p>
-                            <input style="height:30px" type="text" placeholder="Enter customer's email"/>
+                            <div class="d-flex flex-column" style="gap:4px">
+                                <input v-model="userInput.email" style="height:30px" type="text" placeholder="Enter customer's email"/>
+                                <div v-if="invalidMessage.email" class="text-start">
+                                    <p class="text-error">{{ invalidMessage.email }}</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="input-field">
                             <p class="text-start">Address:</p>
-                            <input style="height:30px" type="text" placeholder="Enter customer's address"/>
+                            <div class="d-flex flex-column" style="gap:4px">
+                                <input v-model="userInput.address" style="height:30px" type="text" placeholder="Enter customer's address"/>
+                            </div>
                         </div>
                     </div>
                     <div class="col d-flex flex-column" style="gap:16px">
                         <div class="input-field">
                             <p class="text-start">Password:</p>
-                            <input style="height:30px" type="password" placeholder="Enter customer's password"/>
+                            <div class="d-flex flex-column" style="gap:4px">
+                                <input v-model="userInput.password" style="height:30px" type="password" placeholder="Enter customer's password"/>
+                                <div v-if="invalidMessage.password" class="text-start">
+                                    <p class="text-error">{{ invalidMessage.password }}</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="input-field">
                             <p class="text-start">Phone:</p>
-                            <input style="height:30px" type="text" placeholder="Enter customer's phone number"/>
+                            <div class="d-flex flex-column" style="gap:4px">
+                                <input v-model="userInput.phone" style="height:30px" type="text" placeholder="Enter customer's phone number"/>
+                                <div v-if="invalidMessage.phone" class="text-start">
+                                    <p class="text-error">{{ invalidMessage.phone }}</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="input-field">
                             <p class="text-start">Birthday:</p>
-                            <input style="height:30px" type="date" />
+                            <div class="d-flex flex-column" style="gap:4px">
+                                <input v-model="userInput.birthday" style="height:30px" type="date" />
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -161,7 +161,12 @@ input:focus{
     display: grid;
     gap:16px;
     justify-content: start;
-    align-items: center;
+    align-items: start;
 
     grid-template-columns: 70px 1fr;
+}
+
+.text-error {
+    font-size: 14px;
+    color: #ff513c;
 }

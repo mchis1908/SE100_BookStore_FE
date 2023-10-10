@@ -54,6 +54,45 @@ const actions = {
     }
   },
 
+  [MutationTypes.CREATE_CUSTOMER]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce("/manage/customer/create", payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
+
+  [MutationTypes.CREATE_EMPLOYEE]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce("/manage/employee/create", payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
+
+  [MutationTypes.CREATE_ADMIN]: async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce("/auth/signup", payload);
+    if (response) {
+      return response;
+    } else {
+      return null;
+    }
+  },
+
   
 };
 
