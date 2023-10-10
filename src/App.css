@@ -85,11 +85,12 @@ input{
     border-radius:8px;
     border: none;
     padding:8px 16px;
-    outline: 2px solid #000;
+    outline: 1px solid #000;
+    font-size: 14px !important;
 }
 
 input:focus{
-    outline: 2px solid #0A91AB;
+    outline: 1px solid #0A91AB;
 }
 
 .button-solid{
@@ -169,4 +170,10 @@ input:focus{
 .text-error {
     font-size: 14px;
     color: #ff513c;
+}
+
+.button-disabled{
+    opacity: 0.5;
+    cursor: none;
+    pointer-events: none;
 }

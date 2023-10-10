@@ -10,11 +10,9 @@ import Header from '@/components/header/header.vue'
 export default class UserManagement extends Vue {
 
   public async handleClick(){
-    console.log("abc");
   }
 
   public async handleUpdate(){
-    console.log("abc");
   }
   
 }

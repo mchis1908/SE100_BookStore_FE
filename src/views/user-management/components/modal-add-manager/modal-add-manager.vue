@@ -1,5 +1,5 @@
-<style scope src="./modal-add-customer.css"></style>
-<script lang="ts" src="./modal-add-customer.ts"></script>
+<style scope src="./modal-add-manager.css"></style>
+<script lang="ts" src="./modal-add-manager.ts"></script>
 
 <template>
     <div class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">

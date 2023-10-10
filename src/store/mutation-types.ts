@@ -4,5 +4,8 @@ export class MutationTypes {
   public static CREATE_CUSTOMER = 'CREATE_CUSTOMER';
   public static CREATE_EMPLOYEE = 'CREATE_EMPLOYEE';
   public static CREATE_ADMIN = 'CREATE_ADMIN';
+  public static GET_CUSTOMER = 'GET_CUSTOMER';
+  public static UPDATE_CUSTOMER = 'UPDATE_CUSTOMER';
+  public static GET_EMPLOYEE = 'GET_EMPLOYEE';
   
 }

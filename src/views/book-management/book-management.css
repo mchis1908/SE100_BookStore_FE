@@ -5,7 +5,7 @@
 
 .search-input:focus{
     border: none;
-    outline: 2px solid #065471;
+    outline: 1px solid #065471;
 }
 
 .nav-link{

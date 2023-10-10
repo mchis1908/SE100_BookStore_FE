@@ -4,7 +4,11 @@
 
 <template>
     <ModalAddCustomer id="addCustomer"/>
-    <ModalCustomerDetail id="detailCustomer" :idCustomer="id" @handleClickActionButton="handleUpdate"/>
+    <ModalAddEmployee id="addEmployee"/>
+    <ModalAddManager id="addManager"/>
+    <ModalCustomerDetail id="detailCustomer" :idCustomer="detail?.customerId"/>
+    <ModalEmployeeDetail id="detailEmployee" :idCustomer="detail?.employeeId"/>
+    <ModalManagerDetail id="detailManager" :idCustomer="detail?.managerId"/>
     <div class="background-feature d-flex flex-column">
         <Header/>
         <div class="d-flex flex-row" style="min-height: calc( 100vh - 66px)">
@@ -21,7 +25,7 @@
                         <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Manager</button>
                     </li>
                 </ul>
-                <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px; height: 580px;">
+                <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px; height: 580px; position: relative;">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" style="padding: 12px 24px; gap:12px; min-height: 100%;">
                         <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%">
                             <div class="col-1"></div>
@@ -34,7 +38,7 @@
                                 <p>Add new customer</p>
                             </div>
                         </div>
-                        <div class="d-flex flex-column" style="gap:12px; margin-top: 24px;">
+                        <div class="d-flex flex-column" style="gap:12px; margin-top: 24px;" v-motion-slide-left>
                             <div class="d-flex flex-row">
                                 <div class="col text-title-1">
                                     Name
@@ -52,26 +56,26 @@
                                     Last Transaction
                                 </div>
                             </div>
-                            <div class="person-item" v-for="(item, index) in 9" :key="index" data-bs-toggle="modal" data-bs-target="#detailCustomer">
+                            <div class="person-item" v-for="(item, index) in list?.customer" :key="index" data-bs-toggle="modal" data-bs-target="#detailCustomer" @click="handleDetailCustomer(item)">
                                 <p class="col">
-                                    Huỳnh Minh Chí
+                                    {{ item?.name }}
                                 </p>
                                 <p class="col">
-                                    {{ index }}
+                                    {{ item?.phoneNumber }}
                                 </p>
                                 <p class="col">
-                                    {{ index }}
+                                    {{ item?.user?.membershipCard?.rank }}
                                 </p>
                                 <p class="col">
-                                    01/01/2023
+                                    {{ item?.user?.membershipCard?.point }}
                                 </p>
                                 <p class="col">
-                                    01/01/2023
+                                    {{ item?.user?.membershipCard?.lastTransaction.slice(0,10) }}
                                 </p>
                             </div>
                         </div>
-                        <div class="d-flex flex-row justify-content-center align-items-center" style="margin-top: 8px; width: 100%; gap:8px">
-                            <div class="page-number" v-for="(item,index) in 6" :key="index">
+                        <div class="count-page">
+                            <div :class="[currentPage?.customer===index+1 ? 'current-page-number': '','page-number']" v-for="(item,index) in totalPage?.customer" :key="index" @click="handleNextPage(index)">
                                 <p>{{ index+1 }}</p>
                             </div>
                         </div>
@@ -83,7 +87,7 @@
                                 <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
                                 <input class="search-input" placeholder="Enter your's input"/>
                             </div>
-                            <div class="col btn-add">
+                            <div class="col btn-add" data-bs-toggle="modal" data-bs-target="#addEmployee">
                                 <i class="bi-person-fill-add" style="font-size:22px"></i>
                                 <p>Add new employee</p>
                             </div>
@@ -106,7 +110,7 @@
                                     Last Transaction
                                 </div>
                             </div>
-                            <div class="person-item" v-for="(item, index) in 9" :key="index">
+                            <div class="person-item" v-for="(item, index) in 9" :key="index" data-bs-toggle="modal" data-bs-target="#detailEmployee" @click="handleDetailEmployee(item)">
                                 <p class="col">
                                     Huỳnh Minh Chí
                                 </p>
@@ -124,7 +128,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="d-flex flex-row justify-content-center align-items-center" style="margin-top: 8px; width: 100%; gap:8px">
+                        <div class="count-page">
                             <div class="page-number" v-for="(item,index) in 6" :key="index">
                                 <p>{{ index+1 }}</p>
                             </div>
@@ -137,7 +141,7 @@
                                 <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
                                 <input class="search-input" placeholder="Enter your's input"/>
                             </div>
-                            <div class="col btn-add">
+                            <div class="col btn-add" data-bs-toggle="modal" data-bs-target="#addManager">
                                 <i class="bi-person-fill-add" style="font-size:22px"></i>
                                 <p>Add new manager</p>
                             </div>
@@ -157,7 +161,7 @@
                                     Last Transaction
                                 </div>
                             </div>
-                            <div class="person-item" v-for="(item, index) in 9" :key="index">
+                            <div class="person-item" v-for="(item, index) in 9" :key="index" data-bs-toggle="modal" data-bs-target="#detailManager" @click="handleDetailManager(item)">
                                 <p class="col">
                                     Huỳnh Minh Chí
                                 </p>
@@ -172,7 +176,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="d-flex flex-row justify-content-center align-items-center" style="margin-top: 8px; width: 100%; gap:8px">
+                        <div class="count-page">
                             <div class="page-number" v-for="(item,index) in 6" :key="index">
                                 <p>{{ index+1 }}</p>
                             </div>
