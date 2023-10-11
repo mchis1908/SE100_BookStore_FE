@@ -1,0 +1,49 @@
+.modal-dialog {
+    min-width: max-content;
+}
+
+.modal-content {
+    border-radius: 16px;
+}
+
+.modal-header {
+    border: none;
+}
+
+.modal-body {
+    padding-top: 0;
+    margin-top: 1rem;
+}
+
+.file-input {
+    outline: 2px dashed #92b0b3;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.table thead tr {
+    position: sticky;
+    top: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.input-quantity {
+    width: 70px;
+    font-size: 15px;
+    border: none;
+    outline: 1px solid #92b0b3;
+    text-align: start;
+    padding: 5px 10px;
+}

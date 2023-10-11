@@ -48,7 +48,7 @@
     background-color: #065471; 
     gap:8px; 
     color: #fff;
-
+    border: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,4 +66,16 @@
     background-color: #065471;
     color: #fff;
     border-radius: 8px;
+}
+
+.button-add-book-container button {
+    float: right;
+    line-height: 100%;
+    margin-bottom: 30px;
+}
+
+.btn-add:hover {
+    outline: 1px solid #065471;
+    background-color: #fff;
+    color: #065471 !important;
 }

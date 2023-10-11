@@ -1,0 +1,40 @@
+.modal-content {
+    border-radius: 16px;
+}
+
+.modal-header {
+    border: none;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.button-container button {
+    outline: 1px solid #065471;
+    background-color: #fff;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+    text-align: start;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    transition: all 0.3s ease-in-out;
+}
+
+.button-container button p, .button-container button i {
+    line-height: 100%;
+}
+
+.button-container button:focus {
+    outline: none;
+    background-color: #065471;
+    color: #fff;
+}
