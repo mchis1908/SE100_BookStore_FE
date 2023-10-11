@@ -1,6 +1,6 @@
 
-<style scoped src="./revenue.css"></style>
-<script lang="ts" src="./revenue.ts"></script>
+<style scoped src="./customer-invoices.css"></style>
+<script lang="ts" src="./customer-invoices.ts"></script>
 
 <template>
     <div class="background-feature d-flex flex-column">

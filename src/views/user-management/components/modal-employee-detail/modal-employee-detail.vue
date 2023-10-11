@@ -13,41 +13,41 @@
                     <div class="col d-flex flex-column" style="gap:16px">
                         <div class="input-field">
                             <p class="text-start">Name:</p>
-                            <input style="height:30px" v-model="userInput.name" type="text" placeholder="Enter customer's name"/>
+                            <input class="input" style="height:30px" v-model="userInput.name" type="text" placeholder="Enter customer's name"/>
                         </div>
                         <div class="input-field">
                             <p class="text-start">Email:</p>
-                            <input style="height:30px" v-model="userInput.email" type="text" placeholder="Enter customer's email"/>
+                            <input class="input" style="height:30px" v-model="userInput.email" type="text" placeholder="Enter customer's email"/>
                         </div>
                         <div class="input-field">
                             <p class="text-start">Address:</p>
-                            <input style="height:30px" v-model="userInput.address" type="text" placeholder="Enter customer's address"/>
+                            <input class="input" style="height:30px" v-model="userInput.address" type="text" placeholder="Enter customer's address"/>
                         </div>
                         <div class="input-field">
                             <p class="text-start">Phone:</p>
-                            <input style="height:30px" v-model="userInput.phoneNumber" type="text" placeholder="Enter customer's phone number"/>
+                            <input class="input" style="height:30px" v-model="userInput.phoneNumber" type="text" placeholder="Enter customer's phone number"/>
                         </div>
                         <div class="input-field">
                             <p class="text-start">Birthday:</p>
-                            <input style="height:30px" v-model="userInput.birthdate" type="date"/>
+                            <input class="input" style="height:30px" v-model="userInput.birthdate" type="date"/>
                         </div>
                     </div>
                     <div class="col d-flex flex-column" style="gap:16px">
                         <div class="input-field">
                             <p class="text-start">Created:</p>
-                            <input style="height:30px" type="date" :value='customer?.createdAt?.slice(0,10)' disabled/>
+                            <input class="input" style="height:30px" type="date" :value='customer?.createdAt?.slice(0,10)' disabled/>
                         </div>
                         <div class="input-field">
                             <p class="text-start">Last Paid:</p>
-                            <input style="height:30px" type="date" :value='customer?.user?.membershipCard?.lastTransaction?.slice(0,10)' disabled/>
+                            <input class="input" style="height:30px" type="date" :value='customer?.user?.membershipCard?.lastTransaction?.slice(0,10)' disabled/>
                         </div>
                         <div class="input-field">
                             <p class="text-start">Rank:</p>
-                            <input style="height:30px; text-transform: capitalize" type="text" :value='customer?.user?.membershipCard?.rank' disabled/>
+                            <input class="input" style="height:30px; text-transform: capitalize" type="text" :value='customer?.user?.membershipCard?.rank' disabled/>
                         </div>
                         <div class="input-field">
                             <p class="text-start">Point:</p>
-                            <input style="height:30px" type="text" :value='customer?.user?.membershipCard?.point' disabled/>
+                            <input class="input" style="height:30px" type="text" :value='customer?.user?.membershipCard?.point' disabled/>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,14 @@
 
 <template>
     <div class="login">
+        <div  class="menu-login">
+            <router-link to="/">
+                <div class="menu-login-item">
+                    Home
+                </div>
+            </router-link>
+        </div>
+        
         <div class="wrapper">
             <div class="login-container">
                 <div id="logo">

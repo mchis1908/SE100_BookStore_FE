@@ -12,17 +12,6 @@ import Modal from "@/components/modal/modal.vue";
   },
 })
 export default class DashBoard extends Vue {
-  public options:any={
-    autoWidth: true,
-    gap: "1rem",
-    perMove: 1,
-    type    : 'loop',
-    autoplay: true,
-    perPage : 1,
-    // arrows: false,
-    pagination: false,
-  }
-
   public mounted(){
     
   }

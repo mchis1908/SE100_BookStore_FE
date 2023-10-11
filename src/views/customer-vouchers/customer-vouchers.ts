@@ -7,6 +7,6 @@ import Header from '@/components/header/header.vue'
     Header
   },
 })
-export default class Expenses extends Vue {
-  public color:any=[ 'background: #EA5A92', 'background: #19C5A6', 'background: #5097F8', 'background: #FD8238', 'background: #D289E2', 'background: #80BEE4']
+export default class Invoices extends Vue {
+
 }

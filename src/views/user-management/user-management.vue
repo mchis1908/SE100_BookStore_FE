@@ -11,7 +11,7 @@
     <ModalManagerDetail id="detailManager" :idCustomer="detail?.managerId"/>
     <div class="background-feature d-flex flex-column">
         <Header/>
-        <div class="d-flex flex-row" style="min-height: calc( 100vh - 66px)">
+        <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
             <MenuDashBoard class="col-2"/>
             <div class="col-10 d-flex flex-column" style="padding:24px; overflow-y: scroll; overflow-x: hidden; z-index:1" v-motion-slide-left>
                 <ul class="nav nav-pills mb-1" id="pills-tab" role="tablist">
@@ -26,12 +26,12 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px; height: 580px; position: relative;">
-                    <div class="tab-pane fade show active" id="pills-customer" role="tabpanel" aria-labelledby="pills-customer-tab" style="padding: 12px 24px; gap:12px; min-height: 100%;">
+                    <div class="tab-pane fade show active" id="pills-customer" role="tabpanel" aria-labelledby="pills-customer-tab" style="padding: 16px; gap:12px; min-height: 100%;">
                         <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%">
                             <div class="col-1"></div>
                             <div class="col-6 d-flex flex-row" style="gap:16px">
                                 <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
-                                <input class="search-input" placeholder="Enter your's input"/>
+                                <input class="search-input input" placeholder="Enter your input"/>
                             </div>
                             <div class="col btn-add" data-bs-toggle="modal" data-bs-target="#addCustomer">
                                 <i class="bi-person-fill-add" style="font-size:22px"></i>
@@ -80,12 +80,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-employee" role="tabpanel" aria-labelledby="pills-employee-tab" style="padding: 12px 24px;gap:12px">
+                    <div class="tab-pane fade" id="pills-employee" role="tabpanel" aria-labelledby="pills-employee-tab" style="padding: 16px;gap:12px">
                         <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%">
                             <div class="col-1"></div>
                             <div class="col-6 d-flex flex-row" style="gap:16px">
                                 <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
-                                <input class="search-input" placeholder="Enter your's input"/>
+                                <input class="search-input input" placeholder="Enter your input"/>
                             </div>
                             <div class="col btn-add" data-bs-toggle="modal" data-bs-target="#addEmployee">
                                 <i class="bi-person-fill-add" style="font-size:22px"></i>
@@ -134,12 +134,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-manager" role="tabpanel" aria-labelledby="pills-manager-tab" style="padding: 12px 24px; gap:12px">
+                    <div class="tab-pane fade" id="pills-manager" role="tabpanel" aria-labelledby="pills-manager-tab" style="padding: 16px; gap:12px">
                         <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%">
                             <div class="col-1"></div>
                             <div class="col-6 d-flex flex-row" style="gap:16px">
                                 <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
-                                <input class="search-input" placeholder="Enter your's input"/>
+                                <input class="search-input input" placeholder="Enter your input"/>
                             </div>
                             <div class="col btn-add" data-bs-toggle="modal" data-bs-target="#addManager">
                                 <i class="bi-person-fill-add" style="font-size:22px"></i>

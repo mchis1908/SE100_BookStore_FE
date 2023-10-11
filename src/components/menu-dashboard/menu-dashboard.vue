@@ -3,8 +3,8 @@
 <script lang="ts" src="./menu-dashboard.ts"></script>
 
 <template>
-    <div class="d-flex flex-column justify-content-between" style="padding:24px; background-color: #f2f6fc; border-right: solid 1px #E5E6E6; min-height: calc( 100vh - 66px);">
-        <div class="d-flex flex-column align-items-start" style="gap:4px; margin-top: 8px;">
+    <div class="d-flex flex-column justify-content-between" style="padding:24px; background-color: #f2f6fc; border-right: solid 1px #E5E6E6; height: calc( 100vh - 66px);">
+        <div v-if="userData?.data.role==='admin'" class="d-flex flex-column align-items-start" style="gap:4px; margin-top: 8px;">
             <p class="big-title">Admin tools</p>
             <div :class="[ pageName==='/dashboard' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/dashboard')">
                 <i class="bi-grid-fill menu-item-icon"></i>
@@ -49,8 +49,23 @@
                 <p class="text-start menu-item-title">Reports</p>
             </div>
         </div>
+        <div v-else-if="userData?.data?.role==='customer'" class="d-flex flex-column align-items-start" style="gap:4px; margin-top: 8px;">
+            <p class="big-title">Customer views</p>
+            <div :class="[ pageName==='/customer-books' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/customer-books')">
+                <i class="bi-grid-fill menu-item-icon"></i>
+                <p class="text-start menu-item-title">Books</p>
+            </div>
+            <div :class="[ pageName==='/customer-invoices' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/customer-invoices')">
+                <i class="bi-receipt menu-item-icon"></i>
+                <p class="text-start menu-item-title">Invoices</p>
+            </div>
+            <div :class="[ pageName==='/customer-vouchers' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/customer-vouchers')">
+                <i class="bi-ticket-perforated-fill menu-item-icon"></i>
+                <p class="text-start menu-item-title">Vouchers</p>
+            </div>
+        </div>
         <div class="logout d-flex flex-column" style="gap:16px">
-            <div class="menu-item" @click="handleChangeTab('/')">
+            <div class="menu-item" @click="handleChangeTab('/login')">
                 <i class="bi-box-arrow-left menu-item-icon"></i>
                 <p class="text-start menu-item-title">Log out</p>
             </div>

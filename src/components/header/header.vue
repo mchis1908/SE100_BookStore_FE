@@ -8,7 +8,7 @@
             <img src="@/assets/menu-dashboard/png/logo.png" style="height:50px; object-fit:contain"/>
         </div>
         <p style="font-size:24px; font-weight:600; color:#065471">{{ pageTitle }}</p>
-        <div class="d-flex flex-row align-items-center" style="gap:8px; height: 100%;">
+        <div v-if="userData?.data?.name"  class="d-flex flex-row align-items-center" style="gap:8px; height: 100%;">
             <i class="bi-person-circle d-flex align-items-center" style="font-size: 30px;"></i>
             <p style="color: #000;
                 text-align: right;
@@ -18,5 +18,8 @@
                 {{ userData?.data?.name }}
             </p>
         </div>
+        <router-link to="/login" v-else> 
+            <button class="button-solid">Sign In</button>
+         </router-link>
     </div>
 </template>
