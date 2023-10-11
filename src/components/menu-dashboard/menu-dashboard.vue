@@ -15,7 +15,7 @@
                 <p class="text-start menu-item-title">Users Management</p>
             </div>
             <div :class="[ pageName==='/book-management' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/book-management')">
-                <i class="bi-people-fill menu-item-icon"></i>
+                <i class="bi-book-half menu-item-icon"></i>
                 <p class="text-start menu-item-title">Book Management</p>
             </div>
             <div :class="[ pageName==='/events' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/events')">
@@ -33,11 +33,11 @@
                 <p class="text-start menu-item-title">Expenses</p>
             </div>
             <div :class="[ pageName==='/invoices' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/invoices')">
-                <i class="bi-bar-chart-fill menu-item-icon"></i>
+                <i class="bi-receipt menu-item-icon"></i>
                 <p class="text-start menu-item-title">Invoices</p>
             </div>
             <div :class="[ pageName==='/salary' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/salary')">
-                <i class="bi-bar-chart-fill menu-item-icon"></i>
+                <i class="bi-cash-coin menu-item-icon"></i>
                 <p class="text-start menu-item-title">Employee Salary</p>
             </div>
             <div :class="[ pageName==='/revenue' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/revenue')">

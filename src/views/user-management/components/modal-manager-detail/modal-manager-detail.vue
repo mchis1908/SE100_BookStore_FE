@@ -1,12 +1,12 @@
-<style scope src="./modal-customer-detail.css"></style>
-<script lang="ts" src="./modal-customer-detail.ts"></script>
+<style scope src="./modal-manager-detail.css"></style>
+<script lang="ts" src="./modal-manager-detail.ts"></script>
 
 <template>
     <div class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="min-width:850px">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title w-100" id="ModalLabel">Customer Information</h5>
+                    <h5 class="modal-title w-100" id="ModalLabel">Manager Information</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="d-flex flex-row" style="gap:32px; margin:16px">

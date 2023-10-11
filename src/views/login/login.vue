@@ -10,11 +10,11 @@
                     <img id="logo-img" src="@/assets/login/png/Logo.png" alt="logo">
                 </div>
                 <h2>Login</h2>
-                    <div class="input-field">
+                    <div class="input-field-login">
                     <input v-model="username" type="text" required>
                     <label>Enter your email or phone number</label>
                 </div>
-                <div class="input-field">
+                <div class="input-field-login">
                     <input v-model="password" type="password" required>
                     <label>Enter your password</label>
                 </div>

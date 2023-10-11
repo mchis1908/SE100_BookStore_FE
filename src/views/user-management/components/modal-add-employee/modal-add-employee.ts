@@ -10,20 +10,23 @@ import {
     },
 })
 
-export default class ModalAddCustomer extends Vue {
+export default class ModalAddEmployee extends Vue {
     public userInput:any={
         name: "",
         email: "",
         address: "",
         password: "",
         phoneNumber: "",
-        birthday: "",
+        birthdate: "",
+        salary: "",
+        salaryScale: "",
     }
     public invalidMessage:any={
         name: "",
         email: "",
         password: "",
         phoneNumber: "",
+        salary: "",
     }
     public validInput:any=false;
     public async mounted(){
@@ -38,14 +41,17 @@ export default class ModalAddCustomer extends Vue {
             address: this.userInput.address,
             password: this.userInput.password,
             phoneNumber: this.userInput.phoneNumber,
-            birthdate: this.userInput.birthday,
+            birthdate: this.userInput.birthdate,
+            salary: this.userInput.salary,
+            salaryScale: this.userInput.salaryScale,
+            salaryCoefficient: this.userInput.salaryScale,
         };
         const res = await this.$store.dispatch(
-          MutationTypes.CREATE_CUSTOMER,
+          MutationTypes.CREATE_EMPLOYEE,
           payload
         );
         if(res.status ===200){
-            toast.success('Successfully created');
+            toast.success('successfully created');
             window.location.reload();
         }
     }
@@ -55,7 +61,7 @@ export default class ModalAddCustomer extends Vue {
 
         this.invalidMessage.name = "";
         if (!this.userInput.name) {
-            this.invalidMessage.name = "Please enter customer's name";
+            this.invalidMessage.name = "Please enter employee's name";
             return
         }
 
@@ -68,7 +74,7 @@ export default class ModalAddCustomer extends Vue {
         this.invalidMessage.password = "";
 
         if (!this.userInput.password) {
-            this.invalidMessage.password = "Please enter customer's password";
+            this.invalidMessage.password = "Please enter employee's password";
             return
         }else
         if (this.userInput.password.length < 6) {
@@ -78,7 +84,7 @@ export default class ModalAddCustomer extends Vue {
 
         this.invalidMessage.phoneNumber = "";
         if (!this.userInput.phoneNumber) {
-            this.invalidMessage.phoneNumber = "Please enter customer's phone number";
+            this.invalidMessage.phoneNumber = "Please enter employee's phone number";
             return
         }
 

@@ -12,7 +12,7 @@ import { toast } from "vue3-toastify";
     }
 })
 
-export default class Modal extends Vue {
+export default class ModalDetailManager extends Vue {
     public userInput:any={
         name: "",
         email: "",
@@ -34,7 +34,7 @@ export default class Modal extends Vue {
 
     public handleSubscribe() {
     this.unsubscribe = this.$store.subscribe(async (mutation: any, state: any) => {
-            if (mutation.type === 'setCustomer') {
+            if (mutation.type === 'setManager') {
                 this.customer = mutation.payload
                 this.getData();
             }
