@@ -137,6 +137,20 @@ const actions = {
     }
   },
 
+  [MutationTypes.GET_ALL_BOOKS] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce("/book");
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  }
+
 };
 
 export default actions;

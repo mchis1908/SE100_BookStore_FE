@@ -1,5 +1,4 @@
 <style scoped src="./modal-import-files.css"></style>
-
 <script lang="ts" src="./modal-import-files.ts"></script>
 
 <template>
@@ -19,15 +18,11 @@
                         <thead>
                             <tr>
                                 <th scope="col" v-for="(item, index) in fileData[0]" :key="index">{{item}}</th>
-                                <th>Quantity</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
                             <tr v-for="(item, indexRow) in fileData.slice(1)" :key="indexRow">
-                                <td v-for="(cell, index) in item" :key="index">{{cell}}</td>
-                                <td>
-                                    <input @change="handleQuantityChange(indexRow)" type="number" class="input-quantity"/>
-                                </td>
+                                <td class="cell-info" v-for="(cell, index) in item" :key="index">{{cell}}</td>
                             </tr>
                         </tbody>
                     </table>

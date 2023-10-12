@@ -14,9 +14,9 @@
                     <div class="button-container">
                         <button class="button-import" @click="handleImportFiles" data-bs-dismiss="modal">
                             <p>Import files</p> 
-                            <i class="bi bi-arrow-right"></i>
+                            <i class="bi bi-arrow-bar-up"></i>
                         </button>
-                        <button class="button-manual">
+                        <button class="button-manual" @click="handleAddManually" data-bs-dismiss="modal">
                             <p>Add manually</p> 
                             <i class="bi bi-arrow-right"></i>
                         </button>
@@ -27,4 +27,5 @@
     </div>
 
     <ModalImportFiles ref="import-files-component" id="modalImportFiles"/>
+    <ModalAddManually ref="add-manually-component" id="modalAddManually"/>
 </template>

@@ -7,5 +7,5 @@ export class MutationTypes {
   public static GET_CUSTOMER = 'GET_CUSTOMER';
   public static UPDATE_CUSTOMER = 'UPDATE_CUSTOMER';
   public static GET_EMPLOYEE = 'GET_EMPLOYEE';
-  
+  public static GET_ALL_BOOKS = 'GET_ALL_BOOKS';
 }
