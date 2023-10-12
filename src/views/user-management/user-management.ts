@@ -5,8 +5,6 @@ import ModalAddCustomer from "./components/modal-add-customer/modal-add-customer
 import ModalCustomerDetail from "./components/modal-customer-detail/modal-customer-detail.vue";
 import ModalAddEmployee from "./components/modal-add-employee/modal-add-employee.vue";
 import ModalEmployeeDetail from "./components/modal-employee-detail/modal-employee-detail.vue";
-import ModalAddManager from "./components/modal-add-manager/modal-add-manager.vue";
-import ModalManagerDetail from "./components/modal-manager-detail/modal-manager-detail.vue";
 import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
 @Options({
@@ -16,9 +14,7 @@ import { toast } from "vue3-toastify";
     ModalAddCustomer,
     ModalCustomerDetail,
     ModalAddEmployee,
-    ModalAddManager,
     ModalEmployeeDetail,
-    ModalManagerDetail
   },
 })
 export default class UserManagement extends Vue {

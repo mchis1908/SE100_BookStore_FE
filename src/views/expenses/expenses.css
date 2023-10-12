@@ -88,3 +88,17 @@
 
     width: calc( 25% - 12px )
 }
+
+.btn-add{
+    cursor:pointer; 
+    border-radius:10px; 
+    height: 30px; 
+    padding: 16px; 
+    background-color: #065471; 
+    gap:8px; 
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

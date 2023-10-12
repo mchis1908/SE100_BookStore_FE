@@ -39,15 +39,15 @@
                         </div>
                         <div class="input-field">
                             <p class="text-start">Last Paid:</p>
-                            <input class="input" style="height:30px" type="date" :value='customer?.user?.membershipCard?.lastTransaction?.slice(0,10)' disabled/>
+                            <input class="input" style="height:30px" type="date" :value='customer?.user?.updatedAt?.slice(0,10)' disabled/>
                         </div>
                         <div class="input-field">
                             <p class="text-start">Rank:</p>
-                            <input class="input" style="height:30px; text-transform: capitalize" type="text" :value='customer?.user?.membershipCard?.rank' disabled/>
+                            <input class="input" style="height:30px; text-transform: capitalize" type="text" :value='customer?.user?.rank' disabled/>
                         </div>
                         <div class="input-field">
                             <p class="text-start">Point:</p>
-                            <input class="input" style="height:30px" type="text" :value='customer?.user?.membershipCard?.point' disabled/>
+                            <input class="input" style="height:30px" type="text" :value='customer?.user?.point' disabled/>
                         </div>
                     </div>
                 </div>

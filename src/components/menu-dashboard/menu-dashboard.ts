@@ -15,7 +15,11 @@ export default class Login extends Vue {
   }
 
   public handleChangeTab(tab:any){
-    if(tab === '/login') localStorage.removeItem('sessionTokens');
+    if(tab === '/login') 
+    {
+      localStorage.removeItem('sessionTokens');
+      this.$store.commit("setUserData", null);
+    }
     this.$router.replace(tab)
   }
 
