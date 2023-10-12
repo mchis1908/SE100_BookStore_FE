@@ -10,6 +10,10 @@ import Invoices from '@/views/invoices/invoices.vue'
 import Salary from '@/views/salary/salary.vue'
 import Revenue from '@/views/revenue/revenue.vue'
 import Reports from '@/views/reports/reports.vue'
+import CustomerBooks from '@/views/customer-books/customer-books.vue'
+import CustomerInvoices from '@/views/customer-invoices/customer-invoices.vue'
+import CustomerVouchers from '@/views/customer-vouchers/customer-vouchers.vue'
+import Home from '@/views/home/home.vue'
 
 import store from "@/store";
 import { MutationTypes } from "@/store/mutation-types";
@@ -33,6 +37,11 @@ const getUserData = async () => {
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
+    name: 'home',
+    component: Home
+  },
+  {
+    path: '/login',
     name: 'login',
     component: Login
   },
@@ -116,6 +125,30 @@ const routes: Array<RouteRecordRaw> = [
       requiresAuth: true,
     },
   },
+  {
+    path: '/customer-books',
+    name: 'customer-books',
+    component: CustomerBooks,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/customer-invoices',
+    name: 'customer-invoices',
+    component: CustomerInvoices,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/customer-vouchers',
+    name: 'customer-vouchers',
+    component: CustomerVouchers,
+    meta: {
+      requiresAuth: true,
+    },
+  },
 ]
 
 const router = createRouter({
@@ -142,6 +175,23 @@ router.beforeEach(async (to, from, next) => {
       await getUserData();
     }
     userData = store.state.userData;
+
+    if (userData?.data?.role==='customer') {
+      if (['/', '/home', '/dashboard'].includes(to.path)) {
+        next({ path: "/customer-books" });
+        return;
+      } 
+    }else if (userData?.data?.role==='admin') {
+      if (['/', '/home', '/customer-books', '/customer-invoices','/customer-vouchers'].includes(to.path)) {
+        next({ path: "/dashboard" });
+        return;
+      } 
+    } else if (userData?.data?.role==='staff'){
+      if (['/', '/home', '/customer-books', '/customer-invoices','/customer-vouchers'].includes(to.path)) {
+        next({ path: "/dashboard" });
+        return;
+      } 
+    }
   }
   next();
 });

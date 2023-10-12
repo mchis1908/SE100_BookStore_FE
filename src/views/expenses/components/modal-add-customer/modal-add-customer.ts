@@ -10,7 +10,7 @@ import {
     },
 })
 
-export default class ModalAddManager extends Vue {
+export default class ModalAddCustomer extends Vue {
     public userInput:any={
         name: "",
         email: "",

@@ -79,7 +79,7 @@ p {
     font-size: 14px;
 }
 
-input{
+.input{
     font-style: normal;
     font: 400px;
     border-radius:8px;
@@ -89,7 +89,7 @@ input{
     font-size: 14px !important;
 }
 
-input:focus{
+.input:focus{
     outline: 1px solid #0A91AB;
 }
 
@@ -176,4 +176,8 @@ input:focus{
     opacity: 0.5;
     cursor: none;
     pointer-events: none;
+}
+
+.select{
+
 }

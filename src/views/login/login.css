@@ -1,13 +1,4 @@
-.login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  width: 100%;
-  padding: 0 10px;
-}
-
-.login::before {
+.login{
   content: "";
   position: absolute;
   width: 100%;
@@ -15,8 +6,21 @@
   background: url("@/assets/login/png/background.jpg"), #000;
   background-position: center;
   background-size: cover;
-}
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:20%
+}
+.menu-login{
+  width:100%;
+  top:100%;
+  backdrop-filter: blur(9px);
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .wrapper {
   width: 400px;
   border-radius: 16px;
@@ -151,4 +155,16 @@ button:hover {
   justify-content: center;
   align-items: center;
   border-radius: 8px;
+}
+
+.menu-login-item{
+  font-size: 20px;
+  color: #fff;
+  font-weight: 600;
+  cursor:pointer;
+}
+
+.menu-login-item:hover{
+  color: rgb(255, 255, 255, 0.5);
+
 }

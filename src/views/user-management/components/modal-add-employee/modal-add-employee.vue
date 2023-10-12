@@ -14,7 +14,7 @@
                         <div class="input-field">
                             <p class="text-start" style="height:30px; font-weight:600">Name:</p>
                             <div class="d-flex flex-column" style="gap:4px">
-                                <input v-model="userInput.name" style="height:30px" type="text" placeholder="Enter employee's name"/>
+                                <input class="input" v-model="userInput.name" style="height:30px" type="text" placeholder="Enter employee's name"/>
                                 <div v-if="invalidMessage.name" class="text-start">
                                     <p class="text-error">{{ invalidMessage.name }}</p>
                                 </div>
@@ -23,7 +23,7 @@
                         <div class="input-field">
                             <p class="text-start" style="height:30px; font-weight:600">Email:</p>
                             <div class="d-flex flex-column" style="gap:4px">
-                                <input v-model="userInput.email" style="height:30px" type="text" placeholder="Enter employee's email"/>
+                                <input class="input" v-model="userInput.email" style="height:30px" type="text" placeholder="Enter employee's email"/>
                                 <div v-if="invalidMessage.email" class="text-start">
                                     <p class="text-error">{{ invalidMessage.email }}</p>
                                 </div>
@@ -32,13 +32,13 @@
                         <div class="input-field">
                             <p class="text-start" style="height:30px; font-weight:600">Address:</p>
                             <div class="d-flex flex-column" style="gap:4px">
-                                <input v-model="userInput.address" style="height:30px" type="text" placeholder="Enter employee's address"/>
+                                <input class="input" v-model="userInput.address" style="height:30px" type="text" placeholder="Enter employee's address"/>
                             </div>
                         </div>
                         <div class="input-field">
                             <p class="text-start" style="height:30px; font-weight:600">Scale:</p>
                             <div class="d-flex flex-column" style="gap:4px">
-                                <input v-model="userInput.salaryScale" style="height:30px" type="text" placeholder="Enter employee's scale"/>
+                                <input class="input" v-model="userInput.salaryScale" style="height:30px" type="text" placeholder="Enter employee's scale"/>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                         <div class="input-field">
                             <p class="text-start" style="height:30px; font-weight:600">Password:</p>
                             <div class="d-flex flex-column" style="gap:4px">
-                                <input v-model="userInput.password" style="height:30px" type="password" placeholder="Enter employee's password"/>
+                                <input class="input" v-model="userInput.password" style="height:30px" type="password" placeholder="Enter employee's password"/>
                                 <div v-if="invalidMessage.password" class="text-start">
                                     <p class="text-error">{{ invalidMessage.password }}</p>
                                 </div>
@@ -55,7 +55,7 @@
                         <div class="input-field">
                             <p class="text-start" style="height:30px; font-weight:600">Phone:</p>
                             <div class="d-flex flex-column" style="gap:4px">
-                                <input v-model="userInput.phoneNumber" style="height:30px" type="text" placeholder="Enter employee's phone number"/>
+                                <input class="input" v-model="userInput.phoneNumber" style="height:30px" type="text" placeholder="Enter employee's phone number"/>
                                 <div v-if="invalidMessage.phoneNumber" class="text-start">
                                     <p class="text-error">{{ invalidMessage.phoneNumber }}</p>
                                 </div>
@@ -64,13 +64,13 @@
                         <div class="input-field">
                             <p class="text-start" style="height:30px; font-weight:600">Birthday:</p>
                             <div class="d-flex flex-column" style="gap:4px">
-                                <input v-model="userInput.birthdate" style="height:30px" type="date" />
+                                <input class="input" v-model="userInput.birthdate" style="height:30px" type="date" />
                             </div>
                         </div>
                         <div class="input-field">
                             <p class="text-start" style="height:30px; font-weight:600">Salary:</p>
                             <div class="d-flex flex-column" style="gap:4px">
-                                <input v-model="userInput.salary" style="height:30px" type="text" placeholder="Enter employee's salary"/>
+                                <input class="input" v-model="userInput.salary" style="height:30px" type="text" placeholder="Enter employee's salary"/>
                                 <div v-if="invalidMessage.salary" class="text-start">
                                     <p class="text-error">{{ invalidMessage.salary }}</p>
                                 </div>

@@ -25,6 +25,10 @@ export default class Login extends Vue {
       '/salary': 'Employee Salary',
       '/revenue': 'Aggregate revenue',
       '/reports': 'Reports',
+      '/customer-books': 'Books',
+      '/customer-invoices': 'Invoice',
+      '/customer-vouchers': 'Vouchers',
+      '/': '',
     };
     return routeMappings[routePath] || '';
   }
