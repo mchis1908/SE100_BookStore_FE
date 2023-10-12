@@ -85,12 +85,34 @@ p {
     border-radius:8px;
     border: none;
     padding:8px 16px;
-    outline: 1px solid #000;
+    outline: 1px solid #EBEBEB;
     font-size: 14px !important;
 }
 
 .input:focus{
     outline: 1px solid #0A91AB;
+}
+
+.button-solid-small{
+    padding:8px 16px !important;
+    background-color: #275b79;
+    font-style: normal;
+    padding:8px 12px;
+    color:#fff;
+    border-radius: 16px;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.button-solid-small:hover{
+    padding:8px 16px !important;
+    background-color: #fff;
+    font-style: normal;
+    color:#275b79;
+    outline: 8px solid rgba(100, 168, 213, 0.16);
+    font-weight: 600;
 }
 
 .button-solid{

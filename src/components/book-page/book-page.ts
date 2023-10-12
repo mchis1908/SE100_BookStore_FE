@@ -12,6 +12,14 @@ export default class BookPage extends Vue {
   public selectedSort: any = 0;
   public showModalSortList: any = false
   
+  public mounted(){
+    document.addEventListener('click', this.handleClickOutside);
+  }
+
+  public unmounted() {
+    document.removeEventListener('click', this.handleClickOutside);
+  }
+  
   public beforeMount(){
     this.sortList = [
       "Honorific",
