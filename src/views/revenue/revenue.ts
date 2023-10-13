@@ -7,6 +7,30 @@ import Header from '@/components/header/header.vue'
     Header
   },
 })
-export default class Revenue extends Vue {
+export default class Invoices extends Vue {
+  public sortList: any = []
+  public selectedSort: any = 0;
+  public showModalSortList: any = false
+  public mounted(){
+    document.addEventListener('click', this.handleClickOutside);
+  }
 
+  public unmounted() {
+    document.removeEventListener('click', this.handleClickOutside);
+  }
+
+  public beforeMount(){
+    this.sortList = [
+      "All",
+      "Last 7 days",
+      "Last 30 days",
+      "Last 365 days"
+    ];
+  }
+  
+  public handleClickOutside = (event: any) => {
+    if (this.showModalSortList && !event.target.closest('.filter')) {
+      this.showModalSortList = false;
+    }
+  };
 }

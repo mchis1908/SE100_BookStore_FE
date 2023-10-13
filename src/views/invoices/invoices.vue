@@ -27,11 +27,6 @@
                             <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Filter:</div>
                             <input class="search-input input" type="date" placeholder="Enter your input" style="width:150px"/>
                         </div>
-                        <!-- <div class="button-solid-small d-flex flex-row justify-content-start align-items-center" style="gap:8px; height:30px;">
-                            <i class="bi-arrow-clockwise"></i>
-                            <p>All </p>
-                        </div> -->
-                        
                     </div>
                     <div class="d-flex flex-column" style="gap:12px" v-motion-slide-left>
                         <div class="d-flex flex-row">

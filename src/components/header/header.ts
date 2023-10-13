@@ -23,7 +23,7 @@ export default class Login extends Vue {
       '/expenses': 'Expenses',
       '/invoices': 'Invoices',
       '/salary': 'Employee Salary',
-      '/revenue': 'Aggregate revenue',
+      '/revenue': 'Revenue',
       '/reports': 'Reports',
       '/customer-books': 'Books',
       '/customer-invoices': 'Invoice',
