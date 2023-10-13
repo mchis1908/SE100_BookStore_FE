@@ -40,7 +40,7 @@
 }
 
 .btn-add{
-    max-width:200px; 
+    width: max-content;
     cursor:pointer; 
     border-radius:10px; 
     height: 36px; 
@@ -53,6 +53,7 @@
     justify-content: center;
     align-items: center;
 }
+
 
 .person-item{
     display: flex;

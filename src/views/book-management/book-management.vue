@@ -52,7 +52,11 @@
                             </tbody>
                           </table>
                     </div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" style="padding: 12px 24px;gap:12px">Categories</div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" style="padding: 12px 24px;gap:12px">
+                      <div class="w-100 button-add-book-container">
+                        <button class="btn-add" @click="handleAddNewBook"><i class="bi bi-plus-lg"></i> Add new category</button>
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
