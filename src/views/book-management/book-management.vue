@@ -4,6 +4,7 @@
 
 <template>
     <ModalAddBooks id="modalAddBooks" ref="add-new-books-component"/>
+    <ModalDetailsBook ref="details-book-component" :bookItem="bookItem"/>
     <div class="background-feature d-flex flex-column">
         <Header/>
         <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
@@ -23,37 +24,39 @@
                             <button class="btn-add" @click="handleAddNewBook"><i class="bi bi-plus-lg"></i> Add new books</button>
                         </div>
 
-                        <table class="table">
+                        <table class="table table-striped table-hover">
                             <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                              <tr class="text-start">
+                                <th scope="col">No</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Categories</th>
+                                <th scope="col">Author</th>
+                                <th scope="col">Publish Year</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
+                            <tbody class="table-group-divider">
+                              <tr class="book-row text-start" v-for="(item, index) in allBooks" :key="index" @click="handleClickBookRow(index)">
+                                <th scope="row">{{ index + 1 }}</th>
+                                <td>{{ item["name"] }}</td>
+                                <td v-if="item['categories'].length > 0" v-for="(category, indexCategory) in item['categories']" :key="index">
+                                  <p>{{ category }}</p>
+                                </td>
+                                <td v-else></td>
+                                <td>{{ item["author"] }}</td>
+                                <td>{{ item["publishingYear"] }}</td>
+                                <td>{{ item["quantity"] }}</td>
+                                <td>{{ item["importPrice"] }}</td>
                               </tr>
                             </tbody>
                           </table>
                     </div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" style="padding: 12px 24px;gap:12px">Categories</div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" style="padding: 12px 24px;gap:12px">
+                      <div class="w-100 button-add-book-container">
+                        <button class="btn-add" @click="handleAddNewBook"><i class="bi bi-plus-lg"></i> Add new category</button>
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,12 @@
+.salary-total {
+    border-radius: 8px;
+    border: none;
+    outline: 1px solid #065471;
+    padding: 0px 10px;
+    width: 100px;
+}
+
+.filter-select {
+    margin-left: 1rem;
+    cursor: pointer;
+}

@@ -18,11 +18,19 @@ export default class ModalImportFiles extends Vue {
     }
 
     public handleImportFile() {
-        console.log("fileData", this.fileData)
-    }
+        const arrayOfObjects = this.fileData.map((item: any) => {
+            return {
+                name: item[0],
+                year: item[1],
+                author: item[2],
+                description: item[3]
+            }
+        })
 
-    public handleQuantityChange(indexRow: any) {
-        // this.fileData[indexRow + 1].push(this.quantity)
-        console.log("indexRow", this.quantity)
+        const bookList = {
+            books: arrayOfObjects,
+            supplier: this.$store.state.userData.data._id
+        }
+        console.log("fileData", bookList)
     }
 }
