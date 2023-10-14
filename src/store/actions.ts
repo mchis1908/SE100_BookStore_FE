@@ -205,7 +205,33 @@ const actions = {
     }
   },
 
-  
+  [MutationTypes.GET_TOP_10_CUSTOMER] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce("/manage/customer/top-10");
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  // [MutationTypes.GET_TOP_10_BOOK] : async (
+  //   { commit }: { commit: any },
+  //   payload: any
+  // ) => {
+  //   payload = turnOnDevMode(payload);
+  //   const response = await sendGetOnce("/manage/customer/top-10", payload);
+
+  //   if (response) {
+  //     return response
+  //   } else {
+  //     return null
+  //   }
+  // },
 
 };
 

@@ -14,6 +14,11 @@ import LineChart from './line-chart/line-chart.vue'
   },
 })
 export default class DashBoard extends Vue {
+  public list:any={
+    customers:null,
+    books:null,
+    invoices:null,
+  }
   public isChartReady: any = false
   public userData :any = null
   public chartData :any = []
@@ -67,8 +72,18 @@ export default class DashBoard extends Vue {
     }
   }
 
-  public getTop10Customer(){
-
+  public async getTop10Customer(){
+    const payload = { 
+      page: 1,
+      limit: 10,
+    };
+    const res = await this.$store.dispatch(
+      MutationTypes.GET_TOP_10_CUSTOMER,
+      payload
+    );
+    if(res.status ===200){
+      this.list.customers= res.data.data
+    }
   }
   
   public mounted(){

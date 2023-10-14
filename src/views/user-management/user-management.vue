@@ -33,7 +33,7 @@
                                 <p>Add new customer</p>
                             </div>
                         </div>
-                        <div class="d-flex flex-column" style="gap:12px; margin-top: 24px;" v-motion-slide-left>
+                        <div class="d-flex flex-column" style="gap:10px; margin-top: 24px;" v-motion-slide-left>
                             <div class="d-flex flex-row">
                                 <div class="col title-1">
                                     Name
@@ -94,7 +94,7 @@
                                 <i class="bi-gear-fill" style="font-size:22px"></i>
                             </div>
                         </div>
-                        <div class="d-flex flex-column" style="gap:12px; margin-top: 24px;">
+                        <div class="d-flex flex-column" style="gap:10px; margin-top: 24px;">
                             <div class="d-flex flex-row">
                                 <div class="col title-1">
                                     Name

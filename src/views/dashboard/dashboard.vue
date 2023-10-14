@@ -172,7 +172,7 @@
                         <div class="areaContent-bg">
                             <div class="d-flex flex-row" style="gap:8px">
                                 <p class="col-1 text-title-1">
-                                    Rank
+                                    No
                                 </p>
                                 <p class="col text-title-1">
                                     Name
@@ -181,15 +181,15 @@
                                     Point
                                 </p>
                             </div>
-                            <div class="d-flex flex-row" style="gap:8px" v-for="(item,index) in 10" :key="index">
+                            <div class="d-flex flex-row" style="gap:8px" v-for="(item,index) in list?.customers" :key="index">
                                 <p class="col-1 text-center">
                                     {{ index + 1 }}
                                 </p>
                                 <p class="col text-center">
-                                    Huỳnh Minh Chí
+                                    {{item?.name}}
                                 </p>
                                 <p class="col-2 text-center">
-                                    {{  30 + index }}
+                                    {{item?.user?.point}}
                                 </p>
                             </div>
                             <div class="d-flex justify-content-end" style="width:100%">

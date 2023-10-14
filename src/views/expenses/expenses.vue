@@ -3,7 +3,8 @@
 <script lang="ts" src="./expenses.ts"></script>
 
 <template>
-    <ModalAddCustomer id="addSpend"/>
+    <ModalAddExpense id="addSpend"/>
+    <ModalDetailExpense id="detailSpend"/>
     <div class="background-feature d-flex flex-column">
         <Header/>
         <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
@@ -34,7 +35,7 @@
                             </div>
                         </div>
                         <div class="d-flex flex-row" style="flex-wrap: wrap; width:100%; gap:16px; margin:16px 0;  height: 510px; overflow:auto">
-                            <div class="problem-item" v-for="(item,index) in 20" :key="index">
+                            <div class="problem-item" v-for="(item,index) in 20" :key="index" data-bs-toggle="modal" data-bs-target="#detailSpend" @click="handleDetailExpense(item)" >
                                 <div class="d-flex flex-column">
                                     <p class="text-title-1">Reason</p>
                                     <div class="d-flex flex-row" style="gap: 8px">
@@ -71,23 +72,54 @@
                                 <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
                                 <input class="search-input input" placeholder="Enter your input"/>
                             </div>
-                            <div class="filter" style="width:150px" @click="showModalSortList = !showModalSortList">
-                                <p style="font-weight: 500; font-size: 16px; line-height: 100%; width: 100%">{{ sortList[selectedSort] }}</p>
+                            <div class="filter" @click="showModalSortList = !showModalSortList">
+                                <p style="font-weight: 500; font-size: 16px; line-height: 100%; width: 100%">Time:&nbsp;{{ sortList[selectedSortList] }}</p>
                                 <img src="@/assets/home/arrowDown.svg" :style="showModalSortList ? 'transform: rotate(180deg)' : ''">
                                 <Transition name="slide-fade">
                                     <div v-if="showModalSortList" class="modal-sort">
-                                        <div class="sort-item" v-for="(item, index) in sortList" :key="index" @click="selectedSort = index" :style="selectedSort === index ? 'font-weight: 500; color: #065471' : ''">{{ item }}</div>
+                                        <div class="sort-item" v-for="(item, index) in sortList" :key="index" @click="selectedSortList = index" :style="selectedSortList === index ? 'font-weight: 500; color: #065471' : ''">{{ item }}</div>
                                     </div>
                                 </Transition>
                             </div>
-                            <div class="d-flex flex-row justify-content-start" style="gap:16px; width:220px">
-                                <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Filter:</div>
-                                <input class="search-input input" type="date" placeholder="Enter your input" style="width:150px"/>
+                            <div class="filter" @click="showModalSortStatus = !showModalSortStatus">
+                                <p style="font-weight: 500; font-size: 16px; line-height: 100%; width: 100%">Status:&nbsp;{{ sortStatus[selectedSortStatus] }}</p>
+                                <img src="@/assets/home/arrowDown.svg" :style="showModalSortStatus ? 'transform: rotate(180deg)' : ''">
+                                <Transition name="slide-fade">
+                                    <div v-if="showModalSortStatus" class="modal-sort">
+                                        <div class="sort-item" v-for="(item, index) in sortStatus" :key="index" @click="selectedSortStatus = index" :style="selectedSortStatus === index ? 'font-weight: 500; color: #065471' : ''">{{ item }}</div>
+                                    </div>
+                                </Transition>
                             </div>
                         </div>
-                        <div class="count-page">
-                            <div class="page-number" v-for="(item,index) in 6" :key="index">
-                                <p>{{ index+1 }}</p>
+                        <div class="d-flex flex-row" style="flex-wrap: wrap; width:100%; gap:16px; margin:16px 0;  height: 510px; overflow:auto">
+                            <div class="problem-item" v-for="(item,index) in 20" :key="index" data-bs-toggle="modal" data-bs-target="#detailSpend" @click="handleDetailExpense(item)" >
+                                <div class="d-flex flex-column">
+                                    <p class="text-title-1">Reason</p>
+                                    <div class="d-flex flex-row" style="gap: 8px">
+                                        <div style="width:4px; border-radius:4px; height:100%" :style="color[(index % 6)]"></div>
+                                        <div class="d-flex flex-column">
+                                            <div class="d-flex flex-row align-items-center" style="gap:8px">
+                                                <i class="bi-pencil-fill"></i>
+                                                <p>Description</p>
+                                            </div>
+                                            <div class="d-flex flex-row align-items-center" style="gap:8px">
+                                                <i class="bi-alarm"></i>
+                                                <p>Date report</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr style="margin:0"/>
+                                <div class="d-flex flex-row" style="gap:16px">
+                                    <div class="col d-flex flex-column">
+                                        <p class="text-title-1">Reporter</p>
+                                        <p>Reporter</p>
+                                    </div>
+                                    <div class="col d-flex flex-column">
+                                        <p class="text-title-1">Status</p>
+                                        <p>Confirm</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

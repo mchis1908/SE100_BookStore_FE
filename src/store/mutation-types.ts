@@ -12,4 +12,6 @@ export class MutationTypes {
   public static UPDATE_EMPLOYEE = 'UPDATE_EMPLOYEE';
   public static DELETE_SCALE = 'DELETE_SCALE';
   public static ADD_SCALE = 'ADD_SCALE';
+  public static GET_TOP_10_CUSTOMER = 'GET_TOP_10_CUSTOMER';
+  public static GET_TOP_10_BOOK = 'GET_TOP_10_BOOK';
 }

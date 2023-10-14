@@ -7,6 +7,7 @@ export default createStore({
     customerId:null,
     employeeId:null,
     managerId:null,
+    expenseId:null,
   },
   getters: {
   },
@@ -22,6 +23,9 @@ export default createStore({
     },
     setManager(state, payload) {
       state.managerId = payload;
+    },
+    setExpense(state, payload) {
+      state.expenseId = payload;
     },
   },
   actions: actions,

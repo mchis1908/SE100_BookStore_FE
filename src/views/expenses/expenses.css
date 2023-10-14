@@ -86,7 +86,8 @@
     padding:16px;
     background-color: rgb(173, 173, 173, 0.1);
 
-    width: calc( 25% - 12px )
+    width: calc( 25% - 12px );
+    cursor: pointer;
 }
 
 .btn-add{
@@ -117,6 +118,8 @@
     cursor: pointer;
     text-align: center;
     justify-content: space-between;
+
+    min-width: 200px;
 }
   
 .modal-sort {
