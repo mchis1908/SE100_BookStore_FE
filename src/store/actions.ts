@@ -127,8 +127,6 @@ const actions = {
     const customer_id = payload.customer_id
     let newPayload = { ...payload };
     delete newPayload.customer_id;
-    console.log(newPayload);
-    console.log(customer_id);
     const response = await sendPutOnce(`/manage/customer/edit-info/${customer_id}`, newPayload);
     if (response) {
       return response;
@@ -149,7 +147,65 @@ const actions = {
     } else {
       return null
     }
-  }
+  },
+
+  [MutationTypes.GET_ALL_SALARY_SCALE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce("/manage/salary-scale");
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.UPDATE_EMPLOYEE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const employee_id = payload.employee_id
+    let newPayload = { ...payload };
+    delete newPayload.employee_id;
+    const response = await sendPutOnce(`/manage/employee/${employee_id}`, newPayload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.DELETE_SCALE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendDeleteOnce(`/manage/salary-scale/${payload._id}`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.ADD_SCALE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/manage/salary-scale`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  
 
 };
 

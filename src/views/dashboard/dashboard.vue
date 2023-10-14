@@ -110,26 +110,21 @@
                 </div>
                     <!-- ---------statics & customer------- -->
                 <div class="d-flex flex-row" style="gap:32px">
-                    <div class="col-8 line-chart-container">
-                        <div class="line-header-container">
-                            <p style="font-weight: 500; font-size: 16px; line-height: 100%">The Number Of Books Sold</p>
-                            <div class="filter" @click="showModalSort.lineChart = !showModalSort.lineChart">
-                                <img src="@/assets/filter/calendar.svg"/>
-                                <p style="font-weight: 500; font-size: 16px; line-height: 100%; width: 100%">{{ sortList.lineChart[selectedSort.lineChart] }}</p>
-                                <img src="@/assets/home/arrowDown.svg" :style="showModalSort.lineChart ? 'transform: rotate(180deg)' : ''">
-                                <Transition name="slide-fade">
-                                    <div v-if="showModalSort.lineChart" class="modal-sort">
-                                        <div class="sort-item" v-for="(item, index) in sortList.lineChart" :key="index" @click="handleFilter('lineChart', index)" :style="selectedSort.lineChart === index ? 'font-weight: 500; color: #169C8A' : ''">{{ item }}</div>
-                                    </div>
-                                </Transition>
-                            </div>
+                    <div class="col-8 line-chart-container" style="gap:8px">
+                        <div class="d-flex flex-row align-items-center justify-content-between">
+                            <p class="areaContent-title">The Number Of Books Sold Last 7 days</p>
                         </div>
                         <div class="line-chart" style="height:100%">
-                            <div>
+                            <div class="d-flex flex-column" style="gap:8px">
                                 <LineChart v-if="isChartReady && selectedSort?.lineChart === 0" :data="chart?.lineChart?.data7Days" :sortIndex="selectedSort?.lineChart"/>
-                                <LineChart v-if="isChartReady && selectedSort?.lineChart === 1" :data="chart?.lineChart?.data30Days" :sortIndex="selectedSort?.lineChart"/>
-                                <LineChart v-if="isChartReady && selectedSort?.lineChart === 2" :data="chart?.lineChart?.data12Months" :sortIndex="selectedSort?.lineChart"/>
+                                <div class="d-flex justify-content-end" style="width:100%">
+                                    <div class="d-flex flex-row see-detail">
+                                        <p >See Detail</p>
+                                        <i class="bi-arrow-right"></i>
+                                    </div>
+                                </div>
                             </div>
+                            
                         </div>
                     </div>
                     

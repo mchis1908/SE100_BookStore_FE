@@ -8,29 +8,10 @@ import Header from '@/components/header/header.vue'
   },
 })
 export default class Invoices extends Vue {
-  public sortList: any = []
-  public selectedSort: any = 0;
-  public showModalSortList: any = false
-  public mounted(){
-    document.addEventListener('click', this.handleClickOutside);
-  }
-
-  public unmounted() {
-    document.removeEventListener('click', this.handleClickOutside);
-  }
-
-  public beforeMount(){
-    this.sortList = [
-      "All",
-      "Last 7 days",
-      "Last 30 days",
-      "Last 365 days"
-    ];
-  }
-  
-  public handleClickOutside = (event: any) => {
-    if (this.showModalSortList && !event.target.closest('.filter')) {
-      this.showModalSortList = false;
-    }
-  };
+  public revenue:any=[
+    { title: 'Book Sales', cost: 100000},
+    { title: 'Employee Salary', cost: 100000},
+    { title: 'Money For Problem & Spend', cost: 100000},
+    { title: 'Revenue Total', cost: 100000},
+  ]
 }

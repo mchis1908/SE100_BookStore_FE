@@ -13,6 +13,11 @@ import Reports from '@/views/reports/reports.vue'
 import CustomerBooks from '@/views/customer-books/customer-books.vue'
 import CustomerInvoices from '@/views/customer-invoices/customer-invoices.vue'
 import CustomerVouchers from '@/views/customer-vouchers/customer-vouchers.vue'
+import Customers from '@/views/customers/customers.vue'
+import Refunds from '@/views/refunds/refunds.vue'
+import PreOrder from '@/views/pre-order/pre-order.vue'
+import SellingBooks from '@/views/selling-books/selling-books.vue'
+import ReportProblem from '@/views/report-problems/report-problems.vue'
 import Home from '@/views/home/home.vue'
 
 import store from "@/store";
@@ -142,9 +147,41 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: '/customer-vouchers',
-    name: 'customer-vouchers',
-    component: CustomerVouchers,
+    path: '/customers',
+    name: 'customers',
+    component: Customers,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/selling-books',
+    name: 'selling-books',
+    component: SellingBooks,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/refunds',
+    name: 'refunds',
+    component: Refunds,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/report-problems',
+    name: 'report-problems',
+    component: ReportProblem,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: '/pre-order',
+    name: 'pre-order',
+    component: PreOrder,
     meta: {
       requiresAuth: true,
     },
@@ -177,18 +214,18 @@ router.beforeEach(async (to, from, next) => {
     userData = store.state.userData;
 
     if (userData?.data?.role==='customer') {
-      if (['/', '/home', '/dashboard'].includes(to.path)) {
+      if (['/', '/home', '/dashboard','/user-management','/book-management','/events','/statistics','/expenses','/invoices','/salary','/revenue','/reports','customers','/selling-books','/refunds','/report-problems','/pre-order'].includes(to.path)) {
         next({ path: "/customer-books" });
         return;
       } 
     }else if (userData?.data?.role==='admin') {
-      if (['/', '/home', '/customer-books', '/customer-invoices','/customer-vouchers'].includes(to.path)) {
+      if (['/', '/home', '/customer-books', '/customer-invoices','/customer-vouchers', 'customers','/selling-books','/refunds','/report-problems','/pre-order'].includes(to.path)) {
         next({ path: "/dashboard" });
         return;
       } 
-    } else if (userData?.data?.role==='staff'){
-      if (['/', '/home', '/customer-books', '/customer-invoices','/customer-vouchers'].includes(to.path)) {
-        next({ path: "/dashboard" });
+    } else if (userData?.data?.role==='employee'){
+      if (['/', '/dashboard', '/home', '/customer-books', '/customer-invoices','/customer-vouchers','/', '/home', '/dashboard','/user-management','/events','/statistics','/expenses','/invoices','/salary','/revenue','/reports'].includes(to.path)) {
+        next({ path: "/selling-books" });
         return;
       } 
     }

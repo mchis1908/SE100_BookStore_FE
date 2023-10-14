@@ -24,6 +24,7 @@
     justify-content: center;
     background: var(--neutral-09-day, #FFF);
     overflow-x: scroll;
+    border-radius: 0 0 16px 16px;
 }
 
 .bar-chart {
@@ -34,6 +35,7 @@
     justify-content: center;
     background: var(--neutral-09-day, #FFF);
     overflow-x: scroll;
+    border-radius: 0 0 16px 16px;
 }
 
 .line-chart::-webkit-scrollbar{

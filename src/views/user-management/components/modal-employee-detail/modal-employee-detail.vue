@@ -12,42 +12,44 @@
                 <div class="d-flex flex-row" style="gap:32px; margin:16px">
                     <div class="col d-flex flex-column" style="gap:16px">
                         <div class="input-field">
-                            <p class="text-start">Name:</p>
-                            <input class="input" style="height:30px" v-model="userInput.name" type="text" placeholder="Enter customer's name"/>
+                            <p class="text-start" style="height:30px; font-weight:600">Name:</p>
+                            <input class="input" style="height:30px" v-model="userInput.name" type="text" placeholder="Enter employee's name"/>
                         </div>
                         <div class="input-field">
-                            <p class="text-start">Email:</p>
-                            <input class="input" style="height:30px" v-model="userInput.email" type="text" placeholder="Enter customer's email"/>
+                            <p class="text-start" style="height:30px; font-weight:600">Email:</p>
+                            <input class="input" style="height:30px" v-model="userInput.email" type="text" placeholder="Enter employee's email"/>
                         </div>
                         <div class="input-field">
-                            <p class="text-start">Address:</p>
-                            <input class="input" style="height:30px" v-model="userInput.address" type="text" placeholder="Enter customer's address"/>
+                            <p class="text-start" style="height:30px; font-weight:600">Address:</p>
+                            <input class="input" style="height:30px" v-model="userInput.address" type="text" placeholder="Enter employee's address"/>
                         </div>
                         <div class="input-field">
-                            <p class="text-start">Phone:</p>
-                            <input class="input" style="height:30px" v-model="userInput.phoneNumber" type="text" placeholder="Enter customer's phone number"/>
+                            <p class="text-start" style="height:30px; font-weight:600">Phone:</p>
+                            <input class="input" style="height:30px" v-model="userInput.phoneNumber" type="text" placeholder="Enter employee's phone number"/>
                         </div>
                         <div class="input-field">
-                            <p class="text-start">Birthday:</p>
+                            <p class="text-start" style="height:30px; font-weight:600">Birthday:</p>
                             <input class="input" style="height:30px" v-model="userInput.birthdate" type="date"/>
                         </div>
                     </div>
                     <div class="col d-flex flex-column" style="gap:16px">
                         <div class="input-field">
-                            <p class="text-start">Created:</p>
-                            <input class="input" style="height:30px" type="date" :value='customer?.createdAt?.slice(0,10)' disabled/>
+                            <p class="text-start" style="height:30px; font-weight:600">Salary:</p>
+                            <input class="input" style="height:30px" type="text" v-model='userInput.salary'/>
                         </div>
                         <div class="input-field">
-                            <p class="text-start">Last Paid:</p>
-                            <input class="input" style="height:30px" type="date" :value='customer?.user?.updatedAt?.slice(0,10)' disabled/>
+                            <p class="text-start" style="height:30px; font-weight:600">Scale:</p>
+                            <select v-model="userInput.salaryScale" class="input d-flex align-items-center" style="padding:0 8px; height:30px">
+                                <option style="height:30px" v-for="(item, index) in scaleArr" :key="index" :value="item">{{item.index}}</option>
+                            </select>
                         </div>
                         <div class="input-field">
-                            <p class="text-start">Rank:</p>
-                            <input class="input" style="height:30px; text-transform: capitalize" type="text" :value='customer?.user?.rank' disabled/>
+                            <p class="text-start" style="height:30px; font-weight:600">Seniority:</p>
+                            <input class="input" style="height:30px; text-transform: capitalize" type="text" :value='employee?.user?.seniority' disabled/>
                         </div>
                         <div class="input-field">
-                            <p class="text-start">Point:</p>
-                            <input class="input" style="height:30px" type="text" :value='customer?.user?.point' disabled/>
+                            <p class="text-start" style="height:30px; font-weight:600">Start Day:</p>
+                            <input class="input" style="height:30px" type="date" :value='employee?.user?.startDateOfWork?.slice(0,10)' disabled/>
                         </div>
                     </div>
                 </div>

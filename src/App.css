@@ -125,6 +125,7 @@ p {
     border: none;
     font-weight: 600;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .button-solid:hover{
@@ -146,6 +147,7 @@ p {
     border: none;
     font-weight: 600;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .button-danger:hover{
@@ -167,6 +169,7 @@ p {
     font-weight: 600;
     transition: all 0.3s ease-in-out;
     border-radius: 16px;
+    cursor: pointer;
 }
 
 .button-outline:hover {
@@ -200,6 +203,6 @@ p {
     pointer-events: none;
 }
 
-.select{
-
+i{
+    line-height: 0;
 }

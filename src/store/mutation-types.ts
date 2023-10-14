@@ -8,4 +8,8 @@ export class MutationTypes {
   public static UPDATE_CUSTOMER = 'UPDATE_CUSTOMER';
   public static GET_EMPLOYEE = 'GET_EMPLOYEE';
   public static GET_ALL_BOOKS = 'GET_ALL_BOOKS';
+  public static GET_ALL_SALARY_SCALE = 'GET_ALL_SALARY_SCALE';
+  public static UPDATE_EMPLOYEE = 'UPDATE_EMPLOYEE';
+  public static DELETE_SCALE = 'DELETE_SCALE';
+  public static ADD_SCALE = 'ADD_SCALE';
 }

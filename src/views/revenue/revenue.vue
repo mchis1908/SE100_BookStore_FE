@@ -20,43 +20,23 @@
                         </div>
                     </div>
                     <p style="font-size:32px; font-weight:600; color: rgb(6, 84, 113); margin-top:20px">August 2023 Revenue Report</p>
-                    <div class="d-flex flex-column" style="gap:12px; padding: 0 36px; width:80%" v-motion-slide-left>
-                        <div class="d-flex flex-row align-items-center" style="gap:12px; border: 1px solid #ADADAD">
-                            <div class="col revenue-item">
-                                <p class="text-title-1 text-start">
-                                    &nbsp;
-                                </p>
-                                <p class="text-title-1 text-start">
-                                    Book Sales
-                                </p>
-                                <p class="text-title-1 text-start">
-                                    Employee Salary
-                                </p>
-                                <p class="text-title-1 text-start">
-                                    Money For Problem & Spend 
-                                </p>
-                                <p class="text-title-1 text-start">
-                                    Revenue Total
-                                </p>
-                            </div>
-                            <div class="col-3 revenue-item" v-for="(item, index) in 2" :key="index">
-                                <p class="text-title-1 text-center">
-                                    Value
-                                </p>
-                                <p class="text-end">
-                                    100.000.000
-                                </p>
-                                <p class="text-end">
-                                    100.000.000
-                                </p>
-                                <p class="text-end">
-                                    100.000.000
-                                </p>
-                                <p class="text-title-1 text-end">
-                                    100.000.000
-                                </p>
-                            </div>
-                        </div>
+                    <div class="d-flex flex-column" style="gap:12px; padding: 0 36px; width:90%" v-motion-slide-left>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr class="text-start">
+                                    <th scope="col">&nbsp;</th>
+                                    <th scope="col">Scale</th>
+                                    <th scope="col">Coefficient</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <tr class="book-row text-start" v-for="(item, index) in revenue" :key="index">
+                                    <th scope="row">{{ item?.title }}</th>
+                                    <td>{{ item?.cost }}</td>
+                                    <td>{{ item?.cost }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

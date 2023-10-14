@@ -4,6 +4,7 @@
 
 <template>
     <ModalAddCustomer id="addCustomer"/>
+    <ModalSetting id="setting"/>
     <ModalAddEmployee id="addEmployee"/>
     <ModalCustomerDetail id="detailCustomer" :idCustomer="detail?.customerId"/>
     <ModalEmployeeDetail id="detailEmployee" :idCustomer="detail?.employeeId"/>
@@ -23,35 +24,39 @@
                 <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px; height: 580px; position: relative;">
                     <div class="tab-pane fade show active" id="pills-customer" role="tabpanel" aria-labelledby="pills-customer-tab" style="padding: 16px; gap:12px; min-height: 100%;">
                         <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%">
-                            <div class="col-1"></div>
-                            <div class="col-6 d-flex flex-row" style="gap:16px">
+                            <div class="col-7 d-flex flex-row" style="gap:16px">
                                 <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
-                                <input class="search-input input" placeholder="Enter your input"/>
+                                <input class="search-input input" placeholder="Enter your input" v-model="searchQuery.customer"/>
                             </div>
-                            <div class="col btn-add" data-bs-toggle="modal" data-bs-target="#addCustomer">
+                            <div class="col-2 btn-add" data-bs-toggle="modal" data-bs-target="#addCustomer">
                                 <i class="bi-person-fill-add" style="font-size:22px"></i>
                                 <p>Add new customer</p>
                             </div>
                         </div>
                         <div class="d-flex flex-column" style="gap:12px; margin-top: 24px;" v-motion-slide-left>
                             <div class="d-flex flex-row">
-                                <div class="col text-title-1">
+                                <div class="col title-1">
                                     Name
+                                    <span><i class="bi-sort-down-alt" :class="selectSort['customer']['name'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'name')"></i></span>
                                 </div>
-                                <div class="col text-title-1">
+                                <div class="col title-1">
                                     Phone Number
+                                    <span><i class="bi-sort-down-alt" :class="selectSort['customer']['phoneNumber'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'phoneNumber')"></i></span>
                                 </div>
-                                <div class="col text-title-1">
+                                <div class="col title-1">
                                     Rank
+                                    <span><i class="bi-sort-down-alt" :class="selectSort['customer']['rank'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'rank')"></i></span>
                                 </div>
-                                <div class="col text-title-1">
+                                <div class="col title-1">
                                     Point
+                                    <span><i class="bi-sort-down-alt" :class="selectSort['customer']['point'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'point')"></i></span>
                                 </div>
-                                <div class="col text-title-1">
+                                <div class="col title-1">
                                     Last Transaction
+                                    <span><i class="bi-sort-down-alt" :class="selectSort['customer']['lastTransaction'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'lastTransaction')"></i></span>
                                 </div>
                             </div>
-                            <div class="person-item" v-for="(item, index) in list?.customer" :key="index" data-bs-toggle="modal" data-bs-target="#detailCustomer" @click="handleDetailCustomer(item)">
+                            <div class="person-item" v-for="(item, index) in list?.customer" :key="index" data-bs-toggle="modal" data-bs-target="#detailCustomer" @click="handleDetailCustomer(item)" v-motion-slide-left>
                                 <p class="col">
                                     {{ item?.name }}
                                 </p>
@@ -77,54 +82,61 @@
                     </div>
                     <div class="tab-pane fade" id="pills-employee" role="tabpanel" aria-labelledby="pills-employee-tab" style="padding: 16px;gap:12px">
                         <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%">
-                            <div class="col-1"></div>
-                            <div class="col-6 d-flex flex-row" style="gap:16px">
+                            <div class="col-7 d-flex flex-row" style="gap:16px">
                                 <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
-                                <input class="search-input input" placeholder="Enter your input"/>
+                                <input class="search-input input" placeholder="Enter your input" v-model="searchQuery.employee"/>
                             </div>
-                            <div class="col btn-add" data-bs-toggle="modal" data-bs-target="#addEmployee">
+                            <div class="col-2 btn-add" data-bs-toggle="modal" data-bs-target="#addEmployee">
                                 <i class="bi-person-fill-add" style="font-size:22px"></i>
                                 <p>Add new employee</p>
+                            </div>
+                            <div class="btn-add" data-bs-toggle="modal" data-bs-target="#setting">
+                                <i class="bi-gear-fill" style="font-size:22px"></i>
                             </div>
                         </div>
                         <div class="d-flex flex-column" style="gap:12px; margin-top: 24px;">
                             <div class="d-flex flex-row">
-                                <div class="col text-title-1">
+                                <div class="col title-1">
                                     Name
+                                    <span><i class="bi-sort-down-alt" :class="selectSort['employee']['name'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'name')"></i></span>
                                 </div>
-                                <div class="col text-title-1">
+                                <div class="col title-1">
                                     Phone Number
+                                    <span><i class="bi-sort-down-alt" :class="selectSort['employee']['phoneNumber'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'phoneNumber')"></i></span>
                                 </div>
-                                <div class="col text-title-1">
-                                    Rank
+                                <div class="col title-1">
+                                    Email
+                                    <span><i class="bi-sort-down-alt" :class="selectSort['employee']['email'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'email')"></i></span>
                                 </div>
-                                <div class="col text-title-1">
-                                    Point
+                                <div class="col title-1">
+                                    Seniority
+                                    <span><i class="bi-sort-down-alt" :class="selectSort['employee']['seniority'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'seniority')"></i></span>
                                 </div>
-                                <div class="col text-title-1">
-                                    Last Transaction
+                                <div class="col title-1">
+                                    Start Day
+                                    <span><i class="bi-sort-down-alt" :class="selectSort['employee']['startDay'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'startDay')"></i></span>
                                 </div>
                             </div>
-                            <div class="person-item" v-for="(item, index) in 9" :key="index" data-bs-toggle="modal" data-bs-target="#detailEmployee" @click="handleDetailEmployee(item)">
+                            <div class="person-item" v-for="(item, index) in list?.employee" :key="index" data-bs-toggle="modal" data-bs-target="#detailEmployee" @click="handleDetailEmployee(item)"  v-motion-slide-left>
                                 <p class="col">
-                                    Huỳnh Minh Chí
+                                    {{ item?.name }}
                                 </p>
                                 <p class="col">
-                                    {{ index }}
+                                    {{ item?.phoneNumber }}
                                 </p>
                                 <p class="col">
-                                    {{ index }}
+                                    {{ item?.email }}
                                 </p>
                                 <p class="col">
-                                    01/01/2023
+                                    {{ item?.user?.seniority }}
                                 </p>
                                 <p class="col">
-                                    01/01/2023
+                                    {{ item?.user?.startDateOfWork?.slice(0,10) }}
                                 </p>
                             </div>
                         </div>
                         <div class="count-page">
-                            <div class="page-number" v-for="(item,index) in 6" :key="index">
+                            <div :class="[currentPage?.employee===index+1 ? 'current-page-number': '','page-number']" v-for="(item,index) in totalPage?.employee" :key="index" @click="handleNextPage(index)">
                                 <p>{{ index+1 }}</p>
                             </div>
                         </div>

@@ -11,6 +11,7 @@ import {
 })
 
 export default class ModalAddEmployee extends Vue {
+    public scaleArr:any=null;
     public userInput:any={
         name: "",
         email: "",
@@ -19,7 +20,7 @@ export default class ModalAddEmployee extends Vue {
         phoneNumber: "",
         birthdate: "",
         salary: "",
-        salaryScale: "",
+        salaryScale: null,
     }
     public invalidMessage:any={
         name: "",
@@ -27,14 +28,31 @@ export default class ModalAddEmployee extends Vue {
         password: "",
         phoneNumber: "",
         salary: "",
+        salaryScale: "",
     }
     public validInput:any=false;
-    public async mounted(){
 
+    public async beforeMount(){
+        this.getSalaryScale();
+    }
+
+    public async mounted(){
+        
+    }
+
+    public async getSalaryScale(){
+        const payload = {};
+        const res = await this.$store.dispatch(
+            MutationTypes.GET_ALL_SALARY_SCALE,
+            payload
+        );
+        if(res.status ===200){
+            this.scaleArr= res.data.data
+        }
     }
 
     public async handleClickActionButton() {
-        await this.handleValidInput();
+        if (!this.handleValidInput()) return;
         const payload = { 
             name: this.userInput.name,
             email: this.userInput.email,
@@ -43,8 +61,7 @@ export default class ModalAddEmployee extends Vue {
             phoneNumber: this.userInput.phoneNumber,
             birthdate: this.userInput.birthdate,
             salary: this.userInput.salary,
-            salaryScale: this.userInput.salaryScale,
-            salaryCoefficient: this.userInput.salaryScale,
+            salaryScale: this.userInput.salaryScale._id,
         };
         const res = await this.$store.dispatch(
           MutationTypes.CREATE_EMPLOYEE,
@@ -88,6 +105,20 @@ export default class ModalAddEmployee extends Vue {
             return
         }
 
+        this.invalidMessage.salary = "";
+        if (!this.userInput.salary) {
+            this.invalidMessage.salary = "Please enter employee's salary";
+            return
+        }
+
+        this.invalidMessage.salaryScale = "";
+        if (!this.userInput.salaryScale) {
+            this.invalidMessage.salaryScale = "Please select employee's salary scale";
+            return
+        }
+
         this.validInput = true;
+
+        return this.validInput
     }
 }

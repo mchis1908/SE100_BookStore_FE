@@ -53,12 +53,12 @@
 
 .line-chart {
     display: flex;
-    padding: 24px;
+    padding: 24px 24px 0 24px;
     flex-direction: column;
     align-items: start;
     justify-content: center;
     gap: 36px;
-    border-radius: 0 0 16px 16px;
+    border-radius: 16px;
     background: var(--neutral-09-day, #FFF);
     overflow-x: scroll;
 }
@@ -72,10 +72,10 @@
     overflow-x: scroll;
 }
 
-.line-chart::-webkit-scrollbar{
+/* .line-chart::-webkit-scrollbar{
     display: block;
     height: 5px;
-}
+} */
 
 .line-header-container {
     display: flex;

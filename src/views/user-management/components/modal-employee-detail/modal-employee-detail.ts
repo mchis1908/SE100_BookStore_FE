@@ -13,15 +13,18 @@ import { toast } from "vue3-toastify";
 })
 
 export default class ModalEmployeeDetail extends Vue {
+    public scaleArr:any=null;
     public userInput:any={
         name: "",
         email: "",
         address: "",
         phone: "",
         birthdate: "",
+        salary: "",
+        salaryScale: null,
     }
     public isChanged:any=false;
-    public customer:any=null;
+    public employee:any=null;
     public unsubscribe!: any;
 
     public async mounted() {
@@ -35,51 +38,72 @@ export default class ModalEmployeeDetail extends Vue {
     public handleSubscribe() {
     this.unsubscribe = this.$store.subscribe(async (mutation: any, state: any) => {
             if (mutation.type === 'setEmployee') {
-                this.customer = mutation.payload
+                this.employee = mutation.payload
+                console.log(this.employee)
                 this.getData();
             }
         })
     }
 
     public getData(){
+        this.getSalaryScale();
         this.userInput={
-            name: this.customer?.name,
-            email: this.customer?.email,
-            address: this.customer?.address,
-            phoneNumber: this.customer?.phoneNumber,
-            birthdate: this.customer?.birthdate?.slice(0,10) ?? null,
+            name: this.employee?.name,
+            email: this.employee?.email,
+            address: this.employee?.address,
+            phoneNumber: this.employee?.phoneNumber,
+            birthdate: this.employee?.birthdate?.slice(0,10) ?? null,
+            salary: this.employee?.user?.salary,
+            salaryScale: this.employee?.user?.salaryScale,
         }
-        console.log('abc',this.userInput)
+    }
+
+    public async getSalaryScale(){
+        const payload = {};
+        const res = await this.$store.dispatch(
+            MutationTypes.GET_ALL_SALARY_SCALE,
+            payload
+        );
+        if(res.status ===200){
+            this.scaleArr= res.data.data
+        }
     }
 
     public handleHasChanged(){
         this.isChanged = false;
         if(
             (
-                this.userInput.name!== this.customer?.name ||
-                this.userInput.email!== this.customer?.email ||
-                this.userInput.address!== this.customer?.address ||
-                this.userInput.phoneNumber!== this.customer?.phoneNumber ||
-                this.userInput.birthdate!== (this.customer?.birthdate?.slice(0,10)?? null)
+                this.userInput.name!== this.employee?.name ||
+                this.userInput.email!== this.employee?.email ||
+                this.userInput.address!== this.employee?.address ||
+                this.userInput.phoneNumber!== this.employee?.phoneNumber ||
+                this.userInput.birthdate!== (this.employee?.birthdate?.slice(0,10)?? null) ||
+                this.userInput.salary!== (this.employee?.user?.salary) ||
+                this.userInput.salaryScale!== (this.employee?.user?.salaryScale)
             ) &&
             ( this.userInput.name!== '' &&
                 this.userInput.email!== '' &&
-                this.userInput.phoneNumber!== ''
+                this.userInput.phoneNumber!== '' &&
+                this.userInput.salaryScale!== null &&
+                this.userInput.salary!== ''
             )
         )
         this.isChanged = true;
     }
+    
     public async handleUpdate() {
         const payload = {
-            customer_id: this.customer.user._id,
+            employee_id: this.employee.user._id,
             name: this.userInput.name,
             email: this.userInput.email,
             address: this.userInput.address,
             phoneNumber: this.userInput.phoneNumber,
             birthdate: this.userInput.birthdate,
+            salary: this.userInput.salary,
+            salaryScale: this.userInput.salaryScale._id,
         };
         const res = await this.$store.dispatch(
-          MutationTypes.UPDATE_CUSTOMER,
+          MutationTypes.UPDATE_EMPLOYEE,
           payload
         );
         if(res.status ===200){

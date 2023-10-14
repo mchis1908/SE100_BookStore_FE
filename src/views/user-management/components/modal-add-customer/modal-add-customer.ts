@@ -12,12 +12,12 @@ import {
 
 export default class ModalAddCustomer extends Vue {
     public userInput:any={
-        name: "",
-        email: "",
-        address: "",
-        password: "",
-        phoneNumber: "",
-        birthday: "",
+        name: null,
+        email: null,
+        address: null,
+        password: null,
+        phoneNumber: null,
+        birthday: null,
     }
     public invalidMessage:any={
         name: "",
@@ -31,7 +31,7 @@ export default class ModalAddCustomer extends Vue {
     }
 
     public async handleClickActionButton() {
-        await this.handleValidInput();
+        if (!this.handleValidInput()) return;
         const payload = { 
             name: this.userInput.name,
             email: this.userInput.email,
@@ -83,5 +83,6 @@ export default class ModalAddCustomer extends Vue {
         }
 
         this.validInput = true;
+        return this.validInput
     }
 }

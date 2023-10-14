@@ -16,7 +16,7 @@
             </div>
             <div :class="[ pageName==='/book-management' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/book-management')">
                 <i class="bi-book-half menu-item-icon"></i>
-                <p class="text-start menu-item-title">Book Management</p>
+                <p class="text-start menu-item-title">Books Management</p>
             </div>
             <div :class="[ pageName==='/events' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/events')">
                 <i class="bi-ticket-perforated-fill menu-item-icon"></i>
@@ -47,6 +47,36 @@
             <div :class="[ pageName==='/reports' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/reports')">
                 <i class="bi-clipboard2-data-fill menu-item-icon"></i>
                 <p class="text-start menu-item-title">Reports</p>
+            </div>
+        </div>
+        <div v-else-if="userData?.data?.role==='employee'" class="d-flex flex-column align-items-start" style="gap:4px; margin-top: 8px;">
+            <p class="big-title">Finance tools</p>
+            <div :class="[ pageName==='/selling-books' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/selling-books')">
+                <i class="bi bi-stripe menu-item-icon"></i>
+                <p class="text-start menu-item-title">Selling Books</p>
+            </div>
+            
+            <div :class="[ pageName==='/refunds' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/refunds')">
+                <i class="bi-bootstrap-reboot menu-item-icon"></i>
+                <p class="text-start menu-item-title">Refunds</p>
+            </div>
+            <hr style="width:100%; border: 0.5px solid #E5E6E6; opacity: 1;"/>
+            <p class="big-title">Employee tools</p>
+            <div :class="[ pageName==='/book-management' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/book-management')">
+                <i class="bi-book-half menu-item-icon"></i>
+                <p class="text-start menu-item-title">Books Management</p>
+            </div>
+            <div :class="[ pageName==='/customers' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/customers')">
+                <i class="bi-person-badge-fill menu-item-icon"></i>
+                <p class="text-start menu-item-title">Customers</p>
+            </div>
+            <div :class="[ pageName==='/report-problems' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/report-problems')">
+                <i class="bi-flag-fill menu-item-icon"></i>
+                <p class="text-start menu-item-title">Report Problem</p>
+            </div>
+            <div :class="[ pageName==='/pre-order' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/pre-order')">
+                <i class="bi-cart-plus-fill menu-item-icon"></i>
+                <p class="text-start menu-item-title">Pre-order</p>
             </div>
         </div>
         <div v-else-if="userData?.data?.role==='customer'" class="d-flex flex-column align-items-start" style="gap:4px; margin-top: 8px;">

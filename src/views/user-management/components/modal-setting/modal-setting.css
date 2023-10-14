@@ -1,0 +1,28 @@
+.modal-header, .modal-footer {
+    border: none;
+}
+
+.modal-footer {
+    gap: 10px;
+}
+
+.modal-content {
+    border-radius: 16px;
+}
+
+.delete-item{
+    display: none;
+    cursor: pointer;
+}
+
+.book-row:hover .delete-item{
+    display: block;
+}
+
+.add-scale {
+    border-radius: 8px;
+    border: none;
+    outline: 1px solid #065471;
+    padding: 0px 10px;
+    width: 100px;
+}

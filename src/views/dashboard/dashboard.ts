@@ -15,68 +15,26 @@ import LineChart from './line-chart/line-chart.vue'
 })
 export default class DashBoard extends Vue {
   public isChartReady: any = false
-  public showModalSort: any = {
-    lineChart: false,
-    barChart: false,
-    doughnutChart: false,
-  }
   public userData :any = null
   public chartData :any = []
-  public sortList: any = {
-    lineChart:[],
-    barChart:[],
-    doughnutChart:[],
-  }
   public selectedSort: any = {
     lineChart: 0,
-    barChart: 0,
-    doughnutChart: 0,
   };
+
   public chart:any={
     lineChart:{
       data7Days:{},
-      data30Days:{},
-      data12Months:{}
-    },
-    barChart:{
-      data7Days:{},
-      data30Days:{},
-      data12Months:{}
-    },
-    doughnutChart:{
-      data7Days:{},
-      data30Days:{},
-      data12Months:{}
     },
   }
 
   public beforeMount(){
-    this.userData = this.$store.state.userData
     this.getData();
-    this.handleFilter('', '');
   }
 
   public async getData(){
-    this.sortList = {
-      lineChart:[
-        "Last 7 days",
-        "Last 30 days",
-        "Last 12 months"
-      ],
-      barChart:[
-        "Last 7 days",
-        "Last 30 days",
-        "Last 12 months"
-      ],
-      doughnutChart:[
-        "Last 7 days",
-        "Last 30 days",
-        "Last 12 months"
-      ],
-    }
+    this.userData = this.$store.state.userData
     await this.getDataLineChart();
-    // await this.getDataBarChart();
-    // await this.getDataDoughnutChart();
+    await this.getTop10Customer();
     this.isChartReady = true;
   }
 
@@ -107,39 +65,12 @@ export default class DashBoard extends Vue {
       label: ['1', '2', '3', '4', '5', '6', '7'],
       data: [1,2,3,4,5,5,3],
     }
-    this.chart.lineChart.data30Days = {
-      label: ['1', '2', '3', '4', '5', '6', '7'],
-      data: [1,2,3,4,5,5,3],
-    }
-    this.chart.lineChart.data12Months = {
-      label: ['1', '2', '3', '4', '5', '6', '7'],
-      data: [1,2,3,4,5,5,3],
-    }
-    console.log(this.chart.lineChart);
-    console.log(this.chart?.lineChart?.data7Days)
+  }
+
+  public getTop10Customer(){
+
   }
   
-  public unmounted() {
-    document.removeEventListener('click', this.handleClickOutside);
-  }
-
   public mounted(){
-    document.addEventListener('click', this.handleClickOutside);
-  }
-
-  public handleClickOutside = (event: any) => {
-    if (this.showModalSort.lineChart && !event.target.closest('.filter')) {
-      this.showModalSort.lineChart = false;
-    }else if (this.showModalSort.barChart && !event.target.closest('.filter')) {
-      this.showModalSort.barChart = false;
-    }else if (this.showModalSort.doughnutChart && !event.target.closest('.filter')) {
-      this.showModalSort.doughnutChart = false;
-    }
-  };
-
-  public async handleFilter(item:any, index:any){
-    if(item==='lineChart') this.selectedSort.lineChart=index;
-    else if(item==='barChart') this.selectedSort.barChart=index;
-    else if(item==='doughnutChart') this.selectedSort.doughnutChart=index;
   }
 }

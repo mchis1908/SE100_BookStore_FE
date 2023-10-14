@@ -38,8 +38,15 @@
                         <div class="input-field">
                             <p class="text-start" style="height:30px; font-weight:600">Scale:</p>
                             <div class="d-flex flex-column" style="gap:4px">
-                                <input class="input" v-model="userInput.salaryScale" style="height:30px" type="text" placeholder="Enter employee's scale"/>
+                                <select v-model="userInput.salaryScale" class="input d-flex align-items-center" style="padding:0 8px; height:30px">
+                                    <option :value="null" disabled selected>Select scale</option>
+                                    <option style="height:30px" v-for="(item, index) in scaleArr" :key="index" :value="item">{{item.index}}</option>
+                                </select>
+                                <div v-if="invalidMessage.salaryScale" class="text-start">
+                                    <p class="text-error">{{ invalidMessage.salaryScale }}</p>
+                                </div>
                             </div>
+                            
                         </div>
                     </div>
                     <div class="col d-flex flex-column" style="gap:16px">
