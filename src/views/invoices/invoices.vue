@@ -9,19 +9,10 @@
             <MenuDashBoard class="col-2"/>
             <div class="col-10 d-flex flex-column" style="padding:24px; overflow-y: scroll; overflow-x: hidden; z-index:1;" v-motion-slide-left>
                 <div class="d-flex flex-column" style="gap:12px; background: #fff; width:100%; padding:16px; height:100%; position: relative; border-radius:16px">
-                    <div class="d-flex flex-row justify-content-start align-items-center" style="width:100%; gap:16px">
-                        <div class="col d-flex flex-row" style="gap:16px">
+                    <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%; gap:16px">
+                        <div class="col-6 d-flex flex-row" style="gap:16px">
                             <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
                             <input class="search-input input" placeholder="Enter your input"/>
-                        </div>
-                        <div class="filter" style="width:150px" @click="showModalSortList = !showModalSortList">
-                            <p style="font-weight: 500; font-size: 16px; line-height: 100%; width: 100%">{{ sortList[selectedSort] }}</p>
-                            <img src="@/assets/home/arrowDown.svg" :style="showModalSortList ? 'transform: rotate(180deg)' : ''">
-                            <Transition name="slide-fade">
-                                <div v-if="showModalSortList" class="modal-sort">
-                                    <div class="sort-item" v-for="(item, index) in sortList" :key="index" @click="selectedSort = index" :style="selectedSort === index ? 'font-weight: 500; color: #065471' : ''">{{ item }}</div>
-                                </div>
-                            </Transition>
                         </div>
                         <div class="d-flex flex-row justify-content-start" style="gap:16px; width:220px">
                             <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Filter:</div>

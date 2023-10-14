@@ -118,13 +118,14 @@
                             <div class="d-flex flex-column" style="gap:8px">
                                 <LineChart v-if="isChartReady && selectedSort?.lineChart === 0" :data="chart?.lineChart?.data7Days" :sortIndex="selectedSort?.lineChart"/>
                                 <div class="d-flex justify-content-end" style="width:100%">
-                                    <div class="d-flex flex-row see-detail">
-                                        <p >See Detail</p>
-                                        <i class="bi-arrow-right"></i>
-                                    </div>
+                                    <router-link to="/statistics">
+                                        <div class="d-flex flex-row see-detail">
+                                            <p >See Detail</p>
+                                            <i class="bi-arrow-right"></i>
+                                        </div>
+                                    </router-link> 
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                     
@@ -155,10 +156,12 @@
                                     </p>
                                 </div>
                                 <div class="d-flex justify-content-end" style="width:100%">
-                                    <div class="d-flex flex-row see-detail">
-                                        <p >See Detail</p>
-                                        <i class="bi-arrow-right"></i>
-                                    </div>
+                                    <router-link to="/book-management">
+                                        <div class="d-flex flex-row see-detail">
+                                            <p >See Detail</p>
+                                            <i class="bi-arrow-right"></i>
+                                        </div>
+                                    </router-link> 
                                 </div>
                             </div>
                         </div>
@@ -193,10 +196,12 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-end" style="width:100%">
-                                <div class="d-flex flex-row see-detail">
-                                    <p >See Detail</p>
-                                    <i class="bi-arrow-right"></i>
-                                </div>
+                                <router-link to="/user-management">
+                                    <div class="d-flex flex-row see-detail">
+                                        <p >See Detail</p>
+                                        <i class="bi-arrow-right"></i>
+                                    </div>
+                                </router-link> 
                             </div>
                         </div>
                     </div>
@@ -239,10 +244,12 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-end" style="width:100%">
-                                <div class="d-flex flex-row see-detail">
-                                    <p >See Detail</p>
-                                    <i class="bi-arrow-right"></i>
-                                </div>
+                                <router-link to="/invoices">
+                                    <div class="d-flex flex-row see-detail">
+                                        <p >See Detail</p>
+                                        <i class="bi-arrow-right"></i>
+                                    </div>
+                                </router-link> 
                             </div>
                         </div>
                     </div>
