@@ -22,59 +22,70 @@
                         </div>
                     </div>
                     <div class="row mb-3">
+                        <label for="inputAuthor" class="col-sm-2 col-form-label">Name</label>
+                        <div class="col-sm-10">
+                            <input v-model="copiedBook.name" type="text" class="form-control" id="inputAuthor"/>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <label for="inputAuthor" class="col-sm-2 col-form-label">Author</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAuthor" :value="bookItem.author"/>
+                            <input v-model="copiedBook.author" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-sm-2 col-form-label">Barcode</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAuthor" :value="bookItem.barcode"/>
+                            <input v-model="copiedBook.barcode" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-sm-2 col-form-label">Categories</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAuthor" :value="bookItem.categories"/>
+                            <input v-model="copiedBook.categories" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-sm-2 col-form-label">Import Price</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAuthor" :value="bookItem.importPrice"/>
+                            <input v-model="copiedBook.importPrice" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-sm-2 col-form-label">Publisher</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAuthor" :value="bookItem.publisher"/>
+                            <input v-model="copiedBook.publisher" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-sm-2 col-form-label">Publishing Year</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAuthor" :value="bookItem.publishingYear"/>
+                            <input v-model="copiedBook.publishingYear" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-sm-2 col-form-label">Quantity</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAuthor" :value="bookItem.quantity"/>
+                            <input v-model="copiedBook.quantity" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-sm-2 col-form-label">Sales Price</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAuthor" :value="bookItem.salesPrice"/>
+                            <input v-model="copiedBook.salesPrice" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-sm-2 col-form-label">Translator</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputAuthor" :value="bookItem.translator"/>
+                            <input v-model="copiedBook.translator" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button @click="handleUpdateBook" type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>

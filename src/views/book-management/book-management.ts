@@ -19,7 +19,6 @@ export default class UserManagement extends Vue {
 
   async beforeMount() {
     await this.fetchBooks()
-    console.log("ac", this.allBooks)
   }
 
   public handleAddNewBook() {

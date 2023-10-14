@@ -7,17 +7,10 @@
     border: none;
 }
 
-input[type='email'] {
-    padding: 0 20px;
-    height: 35px;
-    outline: 1px solid #065471;
-    border: none;
-}
-
 .custom-select {
     width: 100%;
     height: 35px;
-    outline: 1px solid #065471;
+    outline: 1px solid #ced4da;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -59,4 +52,10 @@ input[type='email'] {
 .category-modal p:hover {
     background-color: #065471;
     color: #fff;
+}
+
+.text-fill-all {
+    color: #f86a6a;
+    font-size: 15px;
+    display: none;
 }
