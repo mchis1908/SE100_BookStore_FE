@@ -149,6 +149,48 @@ const actions = {
     }
   },
 
+  [MutationTypes.GET_ALL_VOUCHERS] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce("/manage/voucher");
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.UPDATE_A_BOOK] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPutOnce(`/manage/book/${payload.bookId}`, payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.CREATE_A_BOOK] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/manage/book/create`, payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
   [MutationTypes.GET_ALL_SALARY_SCALE] : async (
     { commit }: { commit: any },
     payload: any
