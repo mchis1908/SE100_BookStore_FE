@@ -17,4 +17,5 @@ export class MutationTypes {
   public static ADD_SCALE = 'ADD_SCALE';
   public static GET_TOP_10_CUSTOMER = 'GET_TOP_10_CUSTOMER';
   public static GET_TOP_10_BOOK = 'GET_TOP_10_BOOK';
+  public static CREATE_A_VOUCHER = 'CREATE_A_VOUCHER';
 }

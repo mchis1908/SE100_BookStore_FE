@@ -261,6 +261,20 @@ const actions = {
     }
   },
 
+  [MutationTypes.CREATE_A_VOUCHER] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce("/manage/voucher/create", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
   // [MutationTypes.GET_TOP_10_BOOK] : async (
   //   { commit }: { commit: any },
   //   payload: any

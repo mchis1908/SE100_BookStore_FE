@@ -1,4 +1,3 @@
-
 <style scoped src="./events.css"></style>
 <script lang="ts" src="./events.ts"></script>
 
@@ -21,10 +20,13 @@
                         Events
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" style="padding: 12px 24px; gap:12px;">
-                        <div class="d-flex flex-row justify-content-center align-items-center" style="width:100%">
+                        <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%">
                             <div class="d-flex" style="gap:16px; width: 40%">
                                 <label for="search-input" class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</label>
                                 <input name="search-input" class="search-input input" placeholder="Enter your input"/>
+                            </div>
+                            <div class="button-add-book-container">
+                                <button class="btn-add" @click="handleAddNewVoucher"><i class="bi bi-plus-lg"></i> Add new voucher</button>
                             </div>
                         </div>
                         <div class="d-flex flex-wrap justify-content-center w-100 mt-5" style="gap: 3%">
@@ -35,4 +37,6 @@
             </div>
         </div>
     </div>
+
+    <ModalAddVoucher ref="add-new-voucher-component"/>
 </template>

@@ -1,0 +1,8 @@
+.modal-content {
+    border-radius: 16px;
+    min-height: 500px;
+}
+
+.modal-header {
+    border: none;
+}
