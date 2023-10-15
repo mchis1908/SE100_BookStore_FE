@@ -31,7 +31,7 @@ export default class Login extends Vue {
       '/report-problems': 'Report Problem',
       '/pre-order': 'Pre-Order',
       '/customer-books': 'Books',
-      '/customer-invoices': 'Invoice',
+      '/customer-invoices': 'Invoices',
       '/customer-vouchers': 'Vouchers',
       '/': '',
     };

@@ -147,6 +147,14 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
+    path: '/customer-vouchers',
+    name: 'customer-vouchers',
+    component: CustomerVouchers,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
     path: '/customers',
     name: 'customers',
     component: Customers,
