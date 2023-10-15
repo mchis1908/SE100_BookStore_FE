@@ -20,6 +20,7 @@ export default class ModalAddCustomer extends Vue {
         subject: null,
         cost: null,
         description: null,
+        images: null
     }
     public invalidMessage:any={
         subject: "",
@@ -30,14 +31,12 @@ export default class ModalAddCustomer extends Vue {
     }
 
     public async handleClickActionButton() {
-        await this.handleValidInput();
+        if (!this.handleValidInput()) return;
         const payload = { 
-            name: this.userInput.name,
-            email: this.userInput.email,
-            address: this.userInput.address,
-            password: this.userInput.password,
-            phoneNumber: this.userInput.phoneNumber,
-            birthdate: this.userInput.birthday,
+            subject: this.userInput.subject,
+            cost: this.userInput.cost,
+            description: this.userInput.description,
+            images: this.userInput.images,
         };
         const res = await this.$store.dispatch(
           MutationTypes.CREATE_CUSTOMER,
@@ -58,6 +57,7 @@ export default class ModalAddCustomer extends Vue {
             return
         }
         this.validInput = true;
+        return this.validInput
     }
 
     public async onFileSelected(event: Event){

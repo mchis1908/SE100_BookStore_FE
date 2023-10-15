@@ -35,23 +35,19 @@
                         <div class="input-field">
                             <p class="text-start" style="height:30px; font-weight:600">Date Report:</p>
                             <div class="d-flex flex-column" style="gap:4px">
-                                <input class="input" v-model="userInput.dateReport" style="height:30px" type="text" disabled/>
+                                <input class="input" :value="expenses?.createdAt?.slice(0,10)" style="height:30px" type="text" disabled/>
                             </div>
                         </div>
                         <div class="input-field">
                             <p class="text-start" style="height:30px; font-weight:600">Reporter:</p>
                             <div class="d-flex flex-column" style="gap:4px">
-                                <input class="input" v-model="userInput.reporter" style="height:30px" type="text" disabled/>
+                                <input class="input" :value="expenses?.reporter?.name" style="height:30px" type="text" disabled/>
                             </div>
                         </div>
                         <div class="input-field">
                             <p class="report-items-title" >Image</p>
                             <div class="report-items-image" style="margin-top: 8px;">
-                                <img class="imgReport" v-for="(item, index) in fileInput1" :key="index" :src="item"/>
-                                <label class="custom-file-upload card-image">
-                                    <input type="file" multiple accept=".png, .jpg, .jpeg" @change="onFileSelected"/>
-                                    <i class="bi bi-plus d-flex justify-content-center" style="font-size:24px"></i>
-                                </label>
+                                <img class="imgReport" v-for="(item, index) in expenses?.images" :key="index" :src="item"/>
                             </div>
                         </div>
                     </div>

@@ -13,33 +13,52 @@ import { toast } from "vue3-toastify";
 })
 
 export default class ModalAddCustomer extends Vue {
-    public fileInput:any=[];
-    public fileInput1:any=[];
     public payload = new FormData();
     public userInput:any={
         subject: null,
         cost: null,
         description: null,
-        dateReport: null,
-        reporter: null,
     }
+    public expenses:any=null
     public invalidMessage:any={
         subject: "",
     }
     public validInput:any=false;
-    public async mounted(){
+    public unsubscribe!: any;
 
+    public async mounted() {
+        this.handleSubscribe()
+    }
+
+    public unmounted() {
+        this.unsubscribe()
+    }
+
+    public handleSubscribe() {
+        this.unsubscribe = this.$store.subscribe(async (mutation: any, state: any) => {
+            if (mutation.type === 'setExpense') {
+                console.log(mutation.payload);
+                this.expenses= mutation.payload;
+                this.getData();
+            }
+        })
+    }
+
+    public getData(){
+        this.userInput={
+            subject: this.expenses.subject,
+            cost: this.expenses.cost,
+            description: this.expenses.description,
+        }
     }
 
     public async handleClickActionButton() {
-        await this.handleValidInput();
+        if (!this.handleValidInput()) return;
         const payload = { 
-            name: this.userInput.name,
-            email: this.userInput.email,
-            address: this.userInput.address,
-            password: this.userInput.password,
-            phoneNumber: this.userInput.phoneNumber,
-            birthdate: this.userInput.birthday,
+            subject: this.userInput.subject,
+            cost: this.userInput.cost,
+            description: this.userInput.description,
+            images: this.userInput.images,
         };
         const res = await this.$store.dispatch(
           MutationTypes.CREATE_CUSTOMER,
@@ -59,47 +78,13 @@ export default class ModalAddCustomer extends Vue {
             this.invalidMessage.subject = "Please enter subject";
             return
         }
-        this.validInput = true;
-    }
-
-    public async onFileSelected(event: Event){
-        const selectedFiles = (event.target as HTMLInputElement).files;
-    
-        if (selectedFiles) {
-          for (let i = 0; i < selectedFiles.length; i++) {
-            const file = selectedFiles[i];
-    
-            if (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg') {
-              const fileURL = URL.createObjectURL(file);
-              this.fileInput.push(file);
-              const reader = new FileReader();
-              reader.onload = () => {
-                this.fileInput1.push(reader.result);
-              };
-              reader.readAsDataURL(file);
-              this.payload.append('images', this.fileInput[i]);
-            }else toast.error("Invalid file");
-          
-          }
+        if (this.userInput.subject == this.expenses.subject && this.userInput.cost == this.expenses.cost
+            && this.userInput.description == this.expenses.description
+        ) {
+            return
         }
-    }
-
-    public async handleReport(){
-        // this.payload.append('user_id', this.userId);
-        // this.payload.append('category', this.category);
-        // this.payload.append('detail', this.detail);
-        // const res = await this.$store.dispatch(MutationTypes.CREATE_REPORT_APP, this.payload)
-        // if(res.status ===201){
-        //     this.fileInput=[];
-        //     this.fileInput1=[];
-        //     this.detail='';
-        //     this.category='';
-        //     this.payload= new FormData();
-        //     this.closePopup();
-        //     toast.success(res.data.message)
-        // }else
-        // {
-        //     toast.error(res.data.message)
-        // }
+        
+        this.validInput = true;
+        return this.validInput
     }
 }

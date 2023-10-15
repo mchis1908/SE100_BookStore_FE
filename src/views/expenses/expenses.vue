@@ -31,23 +31,23 @@
                             </div>
                             <div class="col d-flex flex-row justify-content-end" style="gap:12px">
                                 <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Filter:</div>
-                                <input class="search-input input" type="date" placeholder="Enter your input" style="width:150px"/>
+                                <input class="search-input input" type="date" placeholder="Enter your input" style="width:150px" v-model="filter.expenses.date"/>
                             </div>
                         </div>
-                        <div class="d-flex flex-row" style="flex-wrap: wrap; width:100%; gap:16px; margin:16px 0;  height: 510px; overflow:auto">
-                            <div class="problem-item" v-for="(item,index) in 20" :key="index" data-bs-toggle="modal" data-bs-target="#detailSpend" @click="handleDetailExpense(item)" >
-                                <div class="d-flex flex-column">
-                                    <p class="text-title-1">Reason</p>
+                        <div class="d-flex flex-row" style="flex-wrap: wrap; width:100%; gap:16px; margin:16px 0;  height: 500px; overflow:auto">
+                            <div class="problem-item" v-for="(item,index) in expenses" :key="index" data-bs-toggle="modal" data-bs-target="#detailSpend" @click="handleDetailExpense(item)" v-motion-slide-left>
+                                <div class="d-flex flex-column" style="gap:8px">
+                                    <p class="text-title-1">{{item?.subject?? 'Subject'}}</p>
                                     <div class="d-flex flex-row" style="gap: 8px">
                                         <div style="width:4px; border-radius:4px; height:100%" :style="color[(index % 6)]"></div>
-                                        <div class="d-flex flex-column">
+                                        <div class="d-flex flex-column" style="gap:8px">
                                             <div class="d-flex flex-row align-items-center" style="gap:8px">
                                                 <i class="bi-pencil-fill"></i>
-                                                <p>Description</p>
+                                                <p>{{item?.description?.charAt(0).toUpperCase() + item.description.slice(1)}}</p>
                                             </div>
                                             <div class="d-flex flex-row align-items-center" style="gap:8px">
                                                 <i class="bi-alarm"></i>
-                                                <p>Date report</p>
+                                                <p>{{item?.createdAt?.slice(0,10)}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -56,11 +56,11 @@
                                 <div class="d-flex flex-row" style="gap:16px">
                                     <div class="col d-flex flex-column">
                                         <p class="text-title-1">Reporter</p>
-                                        <p>Reporter</p>
+                                        <p>{{item?.reporter?.name}}</p>
                                     </div>
                                     <div class="col d-flex flex-column">
                                         <p class="text-title-1">Status</p>
-                                        <p>Confirm</p>
+                                        <p :style="item.status==='PENDING'? 'color: #F3BB1B': (item.status==='RESOLVED'? 'color: #3DC13C':'color: #F13637')">{{item?.status?.charAt(0).toUpperCase() + item.status.slice(1).toLowerCase()}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -82,29 +82,29 @@
                                 </Transition>
                             </div>
                             <div class="filter" @click="showModalSortStatus = !showModalSortStatus">
-                                <p style="font-weight: 500; font-size: 16px; line-height: 100%; width: 100%">Status:&nbsp;{{ sortStatus[selectedSortStatus] }}</p>
+                                <p style="font-weight: 500; font-size: 16px; line-height: 100%; width: 100%">Status:&nbsp;{{ sortStatus[filter?.history?.status] }}</p>
                                 <img src="@/assets/home/arrowDown.svg" :style="showModalSortStatus ? 'transform: rotate(180deg)' : ''">
                                 <Transition name="slide-fade">
                                     <div v-if="showModalSortStatus" class="modal-sort">
-                                        <div class="sort-item" v-for="(item, index) in sortStatus" :key="index" @click="selectedSortStatus = index" :style="selectedSortStatus === index ? 'font-weight: 500; color: #065471' : ''">{{ item }}</div>
+                                        <div class="sort-item" v-for="(item, index) in sortStatus" :key="index" @click="filter.history.status= index" :style="filter?.history?.status === index ? 'font-weight: 500; color: #065471' : ''">{{ item }}</div>
                                     </div>
                                 </Transition>
                             </div>
                         </div>
                         <div class="d-flex flex-row" style="flex-wrap: wrap; width:100%; gap:16px; margin:16px 0;  height: 510px; overflow:auto">
-                            <div class="problem-item" v-for="(item,index) in 20" :key="index" data-bs-toggle="modal" data-bs-target="#detailSpend" @click="handleDetailExpense(item)" >
-                                <div class="d-flex flex-column">
-                                    <p class="text-title-1">Reason</p>
+                            <div class="problem-item" v-for="(item,index) in history" :key="index"  data-bs-toggle="modal" data-bs-target="#detailSpend" @click="handleDetailExpense(item)" v-motion-slide-left>
+                                <div class="d-flex flex-column" style="gap:8px">
+                                    <p class="text-title-1">{{item?.subject?? 'Subject'}}</p>
                                     <div class="d-flex flex-row" style="gap: 8px">
                                         <div style="width:4px; border-radius:4px; height:100%" :style="color[(index % 6)]"></div>
-                                        <div class="d-flex flex-column">
+                                        <div class="d-flex flex-column" style="gap:8px">
                                             <div class="d-flex flex-row align-items-center" style="gap:8px">
                                                 <i class="bi-pencil-fill"></i>
-                                                <p>Description</p>
+                                                <p>{{item?.description?.charAt(0).toUpperCase() + item.description.slice(1)}}</p>
                                             </div>
                                             <div class="d-flex flex-row align-items-center" style="gap:8px">
                                                 <i class="bi-alarm"></i>
-                                                <p>Date report</p>
+                                                <p>{{item?.createdAt?.slice(0,10)}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -113,11 +113,11 @@
                                 <div class="d-flex flex-row" style="gap:16px">
                                     <div class="col d-flex flex-column">
                                         <p class="text-title-1">Reporter</p>
-                                        <p>Reporter</p>
+                                        <p>{{item?.reporter?.name}}</p>
                                     </div>
                                     <div class="col d-flex flex-column">
                                         <p class="text-title-1">Status</p>
-                                        <p>Confirm</p>
+                                        <p :style="item.status==='PENDING'? 'color: #F3BB1B': (item.status==='RESOLVED'? 'color: #3DC13C':'color: #F13637')">{{item?.status?.charAt(0).toUpperCase() + item.status.slice(1).toLowerCase()}}</p>
                                     </div>
                                 </div>
                             </div>

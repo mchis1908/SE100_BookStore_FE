@@ -49,7 +49,6 @@ export default class Modal extends Vue {
             phoneNumber: this.customer?.phoneNumber,
             birthdate: this.customer?.birthdate?.slice(0,10) ?? null,
         }
-        console.log('abc',this.userInput)
     }
 
     public handleHasChanged(){

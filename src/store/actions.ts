@@ -275,6 +275,47 @@ const actions = {
   //   }
   // },
 
+  [MutationTypes.GET_ALL_INVOICES] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce("/invoice", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.GET_DETAIL_INVOICE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/invoice/${payload.id}`);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.GET_EXPENSES] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/manage/expense`,payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
 };
 
 export default actions;

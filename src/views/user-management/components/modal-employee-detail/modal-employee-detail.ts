@@ -39,7 +39,6 @@ export default class ModalEmployeeDetail extends Vue {
     this.unsubscribe = this.$store.subscribe(async (mutation: any, state: any) => {
             if (mutation.type === 'setEmployee') {
                 this.employee = mutation.payload
-                console.log(this.employee)
                 this.getData();
             }
         })

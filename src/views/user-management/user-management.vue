@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="count-page">
-                            <div :class="[currentPage?.customer===index+1 ? 'current-page-number': '','page-number']" v-for="(item,index) in totalPage?.customer" :key="index" @click="handleNextPage(index)">
+                            <div :class="[currentPage?.customer===index+1 ? 'current-page-number': '','page-number']" v-for="(item,index) in totalPage?.customer" :key="index" @click="handleNextPage('customer',index)">
                                 <p>{{ index+1 }}</p>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                             </div>
                         </div>
                         <div class="count-page">
-                            <div :class="[currentPage?.employee===index+1 ? 'current-page-number': '','page-number']" v-for="(item,index) in totalPage?.employee" :key="index" @click="handleNextPage(index)">
+                            <div :class="[currentPage?.employee===index+1 ? 'current-page-number': '','page-number']" v-for="(item,index) in totalPage?.employee" :key="index" @click="handleNextPage('employee',index)">
                                 <p>{{ index+1 }}</p>
                             </div>
                         </div>

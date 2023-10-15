@@ -4,10 +4,11 @@ import actions from "./actions";
 export default createStore({
   state: {
     userData:null,
-    customerId:null,
-    employeeId:null,
-    managerId:null,
-    expenseId:null,
+    customer:null,
+    employee:null,
+    manager:null,
+    expense:null,
+    invoice:null,
   },
   getters: {
   },
@@ -16,16 +17,19 @@ export default createStore({
       state.userData = payload;
     },
     setCustomer(state, payload) {
-      state.customerId = payload;
+      state.customer = payload;
     },
     setEmployee(state, payload) {
-      state.employeeId = payload;
+      state.employee = payload;
     },
     setManager(state, payload) {
-      state.managerId = payload;
+      state.manager = payload;
     },
     setExpense(state, payload) {
-      state.expenseId = payload;
+      state.expense = payload;
+    },
+    setInvoice(state, payload) {
+      state.invoice = payload;
     },
   },
   actions: actions,

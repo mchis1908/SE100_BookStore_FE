@@ -72,7 +72,6 @@ export default class UserManagement extends Vue {
 
   public async getData(){
     let sort_by = Object.keys(this.selectSort['customer']).filter(key => this.selectSort['customer'][key] === true).join(',');
-    console.log('a',sort_by);
     let payload = { 
       page: this.currentPage.customer,
       limit: 9,
@@ -105,8 +104,8 @@ export default class UserManagement extends Vue {
     }
   }
 
-  public handleNextPage(index:any){
-    this.currentPage.customer= index+1;
+  public handleNextPage(item:any,index:any){
+    this.currentPage[item]= index+1;
     this.getData()
   }
 

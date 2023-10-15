@@ -88,6 +88,7 @@
 
     width: calc( 25% - 12px );
     cursor: pointer;
+    height: 170px;
 }
 
 .btn-add{

@@ -42,7 +42,6 @@ export default {
     }
   },
   data() {
-    console.log('abc',this.data, this.sortIndex);
     return {
       sortValue: this.sort,
       chartData: {

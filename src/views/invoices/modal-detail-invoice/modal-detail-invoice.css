@@ -1,0 +1,17 @@
+.modal-header, .modal-footer {
+    border: none;
+}
+
+.modal-footer {
+    gap: 10px;
+}
+
+.modal-content {
+    border-radius: 16px;
+}
+
+.text-title-1{
+    font-size:14px;
+    font-weight:600;
+    text-align: center;
+}
