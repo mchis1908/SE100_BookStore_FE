@@ -24,4 +24,6 @@ export class MutationTypes {
   public static GET_ALL_INVOICES = 'GET_ALL_INVOICES';
   public static GET_DETAIL_INVOICE = 'GET_DETAIL_INVOICE';
   public static GET_EXPENSES = 'GET_EXPENSES';
+  public static UPLOAD_MULTIPLE_IMAGES = 'UPLOAD_MULTIPLE_IMAGES';
+  public static ADD_EXPENSE = 'ADD_EXPENSE';
 }

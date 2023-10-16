@@ -15,7 +15,7 @@ import { toast } from "vue3-toastify";
 export default class ModalAddCustomer extends Vue {
     public fileInput:any=[];
     public fileInput1:any=[];
-    public payload = new FormData();
+    public imagesNotUpload = new FormData();
     public userInput:any={
         subject: null,
         cost: null,
@@ -24,6 +24,7 @@ export default class ModalAddCustomer extends Vue {
     }
     public invalidMessage:any={
         subject: "",
+        description: "",
     }
     public validInput:any=false;
     public async mounted(){
@@ -32,20 +33,27 @@ export default class ModalAddCustomer extends Vue {
 
     public async handleClickActionButton() {
         if (!this.handleValidInput()) return;
-        const payload = { 
-            subject: this.userInput.subject,
-            cost: this.userInput.cost,
-            description: this.userInput.description,
-            images: this.userInput.images,
-        };
-        const res = await this.$store.dispatch(
-          MutationTypes.CREATE_CUSTOMER,
-          payload
+        let res = await this.$store.dispatch(
+            MutationTypes.CREATE_CUSTOMER,
+            this.imagesNotUpload
         );
-        if(res.status ===200){
-            toast.success('Successfully created');
-            window.location.reload();
+        if(res.status===200){
+            const payload = { 
+                subject: this.userInput.subject,
+                cost: this.userInput.cost,
+                description: this.userInput.description,
+                images: this.userInput.images,
+            };
+            res = await this.$store.dispatch(
+              MutationTypes.CREATE_CUSTOMER,
+              payload
+            );
+            if(res.status ===200){
+                toast.success('Successfully created');
+                window.location.reload();
+            }
         }
+        
     }
 
     public handleValidInput(){
@@ -75,29 +83,9 @@ export default class ModalAddCustomer extends Vue {
                 this.fileInput1.push(reader.result);
               };
               reader.readAsDataURL(file);
-              this.payload.append('images', this.fileInput[i]);
+              this.imagesNotUpload.append('images', this.fileInput[i]);
             }else toast.error("Invalid file");
-          
           }
         }
-    }
-
-    public async handleReport(){
-        // this.payload.append('user_id', this.userId);
-        // this.payload.append('category', this.category);
-        // this.payload.append('detail', this.detail);
-        // const res = await this.$store.dispatch(MutationTypes.CREATE_REPORT_APP, this.payload)
-        // if(res.status ===201){
-        //     this.fileInput=[];
-        //     this.fileInput1=[];
-        //     this.detail='';
-        //     this.category='';
-        //     this.payload= new FormData();
-        //     this.closePopup();
-        //     toast.success(res.data.message)
-        // }else
-        // {
-        //     toast.error(res.data.message)
-        // }
     }
 }

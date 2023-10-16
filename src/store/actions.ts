@@ -33,7 +33,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendPostNoToken("/auth/signin", payload);
+    const response = await sendPostNoToken("/api/auth/signin", payload);
     if (response) {
       return response;
     } else {
@@ -46,7 +46,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/user", payload);
+    const response = await sendGetOnce("/api/user", payload);
     if (response) {
       return response;
     } else {
@@ -59,7 +59,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendPostOnce("/manage/customer/create", payload);
+    const response = await sendPostOnce("/api/manage/customer/create", payload);
     if (response) {
       return response;
     } else {
@@ -72,7 +72,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendPostOnce("/manage/employee/create", payload);
+    const response = await sendPostOnce("/api/manage/employee/create", payload);
     if (response) {
       return response;
     } else {
@@ -85,7 +85,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendPostOnce("/auth/signup", payload);
+    const response = await sendPostOnce("/api/auth/signup", payload);
     if (response) {
       return response;
     } else {
@@ -98,7 +98,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/manage/customer", payload);
+    const response = await sendGetOnce("/api/manage/customer", payload);
     if (response) {
       return response;
     } else {
@@ -111,7 +111,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/manage/employee", payload);
+    const response = await sendGetOnce("/api/manage/employee", payload);
     if (response) {
       return response;
     } else {
@@ -127,7 +127,7 @@ const actions = {
     const customer_id = payload.customer_id
     let newPayload = { ...payload };
     delete newPayload.customer_id;
-    const response = await sendPutOnce(`/manage/customer/edit-info/${customer_id}`, newPayload);
+    const response = await sendPutOnce(`/api/manage/customer/edit-info/${customer_id}`, newPayload);
     if (response) {
       return response;
     } else {
@@ -140,7 +140,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/book", payload);
+    const response = await sendGetOnce("/api/book", payload);
 
     if (response) {
       return response
@@ -154,7 +154,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/manage/voucher", payload);
+    const response = await sendGetOnce("/api/manage/voucher", payload);
 
     if (response) {
       return response
@@ -168,7 +168,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendPutOnce(`/manage/book/${payload.bookId}`, payload);
+    const response = await sendPutOnce(`/api/manage/book/${payload.bookId}`, payload);
 
     if (response) {
       return response
@@ -182,7 +182,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendPostOnce(`/manage/book/create`, payload);
+    const response = await sendPostOnce(`/api/manage/book/create`, payload);
 
     if (response) {
       return response
@@ -196,7 +196,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/manage/salary-scale");
+    const response = await sendGetOnce("/api/manage/salary-scale");
 
     if (response) {
       return response
@@ -213,7 +213,7 @@ const actions = {
     const employee_id = payload.employee_id
     let newPayload = { ...payload };
     delete newPayload.employee_id;
-    const response = await sendPutOnce(`/manage/employee/${employee_id}`, newPayload);
+    const response = await sendPutOnce(`/api/manage/employee/${employee_id}`, newPayload);
     if (response) {
       return response
     } else {
@@ -226,7 +226,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendDeleteOnce(`/manage/salary-scale/${payload._id}`, payload);
+    const response = await sendDeleteOnce(`/api/manage/salary-scale/${payload._id}`, payload);
     if (response) {
       return response
     } else {
@@ -239,7 +239,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendPostOnce(`/manage/salary-scale`, payload);
+    const response = await sendPostOnce(`/api/manage/salary-scale`, payload);
     if (response) {
       return response
     } else {
@@ -252,7 +252,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/manage/customer/top-10");
+    const response = await sendGetOnce("/api/manage/customer/top-10");
 
     if (response) {
       return response
@@ -266,7 +266,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendPostOnce("/manage/voucher/create", payload);
+    const response = await sendPostOnce("/api/manage/voucher/create", payload);
 
     if (response) {
       return response
@@ -280,7 +280,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/manage/book/category", payload);
+    const response = await sendGetOnce("/api/manage/book/category", payload);
 
     if (response) {
       return response
@@ -294,7 +294,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendDeleteOnce(`/manage/book/${payload.bookId}`, payload);
+    const response = await sendDeleteOnce(`/api/manage/book/${payload.bookId}`, payload);
 
     if (response) {
       return response
@@ -308,7 +308,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendPostOnce(`/manage/book/import`, payload);
+    const response = await sendPostOnce(`/api/manage/book/import`, payload);
 
     if (response) {
       return response
@@ -322,7 +322,7 @@ const actions = {
   //   payload: any
   // ) => {
   //   payload = turnOnDevMode(payload);
-  //   const response = await sendGetOnce("/manage/customer/top-10", payload);
+  //   const response = await sendGetOnce("/api/manage/customer/top-10", payload);
 
   //   if (response) {
   //     return response
@@ -336,7 +336,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/invoice", payload);
+    const response = await sendGetOnce("/api/invoice", payload);
 
     if (response) {
       return response
@@ -350,7 +350,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce(`/invoice/${payload.id}`);
+    const response = await sendGetOnce(`/api/invoice/${payload.id}`);
 
     if (response) {
       return response
@@ -364,7 +364,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce(`/manage/expense`,payload);
+    const response = await sendGetOnce(`/api/manage/expense`,payload);
 
     if (response) {
       return response
@@ -372,6 +372,34 @@ const actions = {
       return null
     }
   },
+
+  [MutationTypes.UPLOAD_MULTIPLE_IMAGES] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/image-server/upload/multiple`,payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.GET_EXPENSES] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/manage/expense`,payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+  
 };
 
 export default actions;
