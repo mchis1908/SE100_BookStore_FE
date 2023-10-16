@@ -30,6 +30,9 @@
                             <p class="text-start" style="height:30px; font-weight:600">Description:</p>
                             <div class="d-flex flex-column" style="gap:4px;">
                                 <textarea class="input" v-model="userInput.description" type="text"></textarea>
+                                <div v-if="invalidMessage.description" class="text-start">
+                                    <p class="text-error">{{ invalidMessage.description }}</p>
+                                </div>
                             </div>
                         </div>
                         <div class="input-field">

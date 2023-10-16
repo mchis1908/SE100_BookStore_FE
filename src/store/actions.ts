@@ -386,12 +386,12 @@ const actions = {
     }
   },
 
-  [MutationTypes.GET_EXPENSES] : async (
+  [MutationTypes.ADD_EXPENSE] : async (
     { commit }: { commit: any },
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce(`/api/manage/expense`,payload);
+    const response = await sendPostOnce(`/api/manage/expense/create`,payload);
 
     if (response) {
       return response

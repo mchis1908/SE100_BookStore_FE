@@ -20,7 +20,6 @@ export default class ModalAddCustomer extends Vue {
         subject: null,
         cost: null,
         description: null,
-        images: null
     }
     public invalidMessage:any={
         subject: "",
@@ -34,7 +33,7 @@ export default class ModalAddCustomer extends Vue {
     public async handleClickActionButton() {
         if (!this.handleValidInput()) return;
         let res = await this.$store.dispatch(
-            MutationTypes.CREATE_CUSTOMER,
+            MutationTypes.UPLOAD_MULTIPLE_IMAGES,
             this.imagesNotUpload
         );
         if(res.status===200){
@@ -42,13 +41,13 @@ export default class ModalAddCustomer extends Vue {
                 subject: this.userInput.subject,
                 cost: this.userInput.cost,
                 description: this.userInput.description,
-                images: this.userInput.images,
+                images: res.data.images,
             };
             res = await this.$store.dispatch(
-              MutationTypes.CREATE_CUSTOMER,
+              MutationTypes.ADD_EXPENSE,
               payload
             );
-            if(res.status ===200){
+            if(res.status ===201){
                 toast.success('Successfully created');
                 window.location.reload();
             }
@@ -62,6 +61,11 @@ export default class ModalAddCustomer extends Vue {
         this.invalidMessage.subject = "";
         if (!this.userInput.subject) {
             this.invalidMessage.subject = "Please enter subject";
+            return
+        }
+        this.invalidMessage.description = "";
+        if (!this.userInput.description) {
+            this.invalidMessage.description = "Please enter description";
             return
         }
         this.validInput = true;
