@@ -2,7 +2,7 @@
 <script lang="ts" src="./modal.ts"></script>
 
 <template>
-    <div class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div ref="formatted-modal" class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">

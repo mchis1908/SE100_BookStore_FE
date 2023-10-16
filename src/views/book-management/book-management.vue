@@ -4,7 +4,9 @@
 
 <template>
 <ModalAddBooks id="modalAddBooks" ref="add-new-books-component" />
+<ModalAddCategory ref="modal-add-category-component"/>
 <ModalDetailsBook ref="details-book-component" :bookItem="bookItem" />
+
 <div class="background-feature d-flex flex-column">
     <Header />
     <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
@@ -20,7 +22,11 @@
             </ul>
             <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px; height: 580px;">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" style="padding: 12px 24px; gap:12px; min-height: 100%;">
-                    <div class="w-100 button-add-book-container">
+                    <div class="w-100 d-flex justify-content-between align-items-center mb-5">
+                        <div class="col-5 d-flex flex-row" style="gap:16px">
+                            <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
+                            <input v-model="searchQuery" class="search-input input" placeholder="Enter your input"/>
+                        </div>
                         <button class="btn-add" @click="handleAddNewBook"><i class="bi bi-plus-lg"></i> Add new books</button>
                     </div>
 
@@ -40,8 +46,8 @@
                             <tr class="book-row text-start" v-for="(item, index) in allBooks" :key="index" @click="handleClickBookRow(index)">
                                 <th scope="row">{{ index + 1 }}</th>
                                 <td>{{ item["name"] }}</td>
-                                <td v-if="item['categories'].length > 0" v-for="(category, indexCategory) in item['categories']" :key="index">
-                                    <p>{{ category }}</p>
+                                <td v-if="item['categories'].length > 0" :key="index">
+                                    <p v-for="(category, indexCategory) in item['categories']">{{ category.name }}</p>
                                 </td>
                                 <td v-else></td>
                                 <td>{{ item["author"] }}</td>
@@ -53,9 +59,32 @@
                     </table>
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" style="padding: 12px 24px;gap:12px">
-                    <div class="w-100 button-add-book-container">
-                        <button class="btn-add" @click="handleAddNewBook"><i class="bi bi-plus-lg"></i> Add new category</button>
+                    <div class="w-100 d-flex justify-content-between align-items-center">
+                        <div class="col-5 d-flex flex-row" style="gap:16px">
+                            <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
+                            <input v-model="searchQueryCategory" class="search-input input" placeholder="Enter your input"/>
+                        </div>
+                        <button class="btn-add" @click="handleAddNewCategory"><i class="bi bi-plus-lg"></i> Add new category</button>
                     </div>
+
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr class="text-start">
+                                <th scope="col">No</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Floor Index</th>
+                                <th scope="col">Floor</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr class="book-row text-start" v-for="(item, index) in allCategories" :key="index">
+                                <th scope="row">{{ index + 1 }}</th>
+                                <td>{{ item["name"] }}</td>
+                                <td>{{ item["row"]["index"] }}</td>
+                                <td>{{ item["row"]["floor"] }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import { Vue, Options } from "vue-class-component";
+import { Modal } from 'bootstrap'
 
 @Options({
     props: {
@@ -9,7 +10,7 @@ import { Vue, Options } from "vue-class-component";
     }
 })
 
-export default class Modal extends Vue {
+export default class FormattedModal extends Vue {
     public title!: string;
     public content!: string;
     public actionButtonTitle!: string;
@@ -17,5 +18,10 @@ export default class Modal extends Vue {
 
     public handleClickActionButton() {
         this.$emit("handleClickActionButton");
+    }
+
+    public async openModal() {
+        const myModal = new Modal(this.$refs["formatted-modal"] as any)
+        myModal.show()
     }
 }

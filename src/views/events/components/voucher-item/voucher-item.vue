@@ -15,7 +15,7 @@
                 </div>
                 <div class="vertical"></div>
                 <div class="content">
-                    <h2>BOOK HEAVEN</h2>
+                    <h2>{{ voucher.name }}</h2>
                     <h1>{{ voucher.discountValue }}% <span>Coupon</span></h1>
                     <p>Valid till {{ formatDate(voucher.expirationDate) }}</p>
                 </div>

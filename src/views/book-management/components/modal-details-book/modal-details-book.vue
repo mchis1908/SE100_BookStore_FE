@@ -3,6 +3,8 @@
 <script lang="ts" src="./modal-details-book.ts"></script>
 
 <template>
+    <FormattedModal ref="modal-delete-book-component" title="Delete this book" content="Do you want to delete this book?" actionButtonTitle="Delete" :isDangerAction="true" @handleClickActionButton="handleDeleteBook"/>
+
     <div class="modal fade" ref="details-book-modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
@@ -40,9 +42,17 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="inputAuthor" class="col-sm-2 col-form-label">Categories</label>
-                        <div class="col-sm-10">
-                            <input v-model="copiedBook.categories" type="text" class="form-control" id="inputAuthor"/>
+                        <label for="selectCategories" class="form-label col-sm-2">Categories</label>
+                        <div class="custom-select col-sm-10" @click="toggleModalCategories" required>
+                            <p>Select categories</p>
+                            <i class="bi bi-chevron-down"></i>
+
+                            <div v-if="isShowModalCategories" class="category-modal" v-motion-slide-top @click.stop>
+                                <div v-for="(item, index) in allCategories" :key="index" class="category-item-container">
+                                    <label :for="`category-${index}`">{{item.name}}</label>
+                                    <input v-model="seletectedCategory" :checked="handleCheckCategory(item._id)" type="checkbox" :id="`category-${index}`" :value="item._id"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -84,8 +94,11 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button @click="handleUpdateBook" type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" @click="handleOpenModalDeleteBook">Delete</button>
+                    <div class="save-container">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button @click="handleUpdateBook" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
                 </div>
             </div>
         </div>

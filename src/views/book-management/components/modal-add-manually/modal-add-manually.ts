@@ -4,15 +4,22 @@ import { Vue } from 'vue-class-component'
 import { toast } from 'vue3-toastify'
 
 export default class ModalAddManually extends Vue {
+    public allCategories: any = []
     public isShowModalCategories: any = false
     public book: any = {}
+    public bookCategories: any = []
+    public seletectedCategory: any = []
+
+    beforeMount(): void {
+        this.fetchCategories()
+    }
 
     public async openModal() {
         const myModal = new Modal(this.$refs["add-book-manually-modal"] as any)
         myModal.show()
     }
 
-    public toggleModalCategories() {
+    public toggleModalCategories(event: any) {
         this.isShowModalCategories = !this.isShowModalCategories
     }
 
@@ -35,8 +42,7 @@ export default class ModalAddManually extends Vue {
 
     public async handleCreateBook() {
         if (this.checkValidForm()) {
-            this.book["categories"] = []
-            console.log("book", this.book)
+            this.book["categories"] = this.seletectedCategory
             let res =  await this.$store.dispatch(MutationTypes.CREATE_A_BOOK, this.book)
             if (res.status === 201) {
                 toast.success(res.data.message)
@@ -45,5 +51,11 @@ export default class ModalAddManually extends Vue {
                 toast.error(res.data.message)
             }
         }
+    }
+
+    public async fetchCategories() {
+        let res = await this.$store.dispatch(MutationTypes.GET_ALL_CATEGORIES)
+    
+        this.allCategories = res.data.data
     }
 }

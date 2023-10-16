@@ -21,10 +21,11 @@
                             <p>Select categories</p>
                             <i class="bi bi-chevron-down"></i>
 
-                            <div v-if="isShowModalCategories" class="category-modal" v-motion-slide-top>
-                                <p>Classic</p>
-                                <p>Psychological</p>
-                                <p>Historical</p>
+                            <div v-if="isShowModalCategories" class="category-modal" v-motion-slide-top @click.stop>
+                                <div v-for="(item, index) in allCategories" :key="index" class="category-item-container">
+                                    <label :for="`category-${index}`">{{item.name}}</label>
+                                    <input v-model="seletectedCategory" type="checkbox" :id="`category-${index}`" :value="item._id"/>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -62,7 +63,7 @@
                     </div>
                     <div class="mb-2">
                         <label for="bookImportDateInput" class="form-label">Import Date</label>
-                        <input v-model="book.importDate" type="text" class="form-control" id="bookImportDateInput">
+                        <input v-model="book.importDate" type="date" class="form-control" id="bookImportDateInput">
                     </div>
                 </div>
 
