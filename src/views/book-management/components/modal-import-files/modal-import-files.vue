@@ -3,7 +3,7 @@
 
 <template>
     <div class="modal fade" ref="import-files-modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" :style="fileData.length > 0 ? 'max-width: 100vw' : 'max-width: 600px'">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title w-100" id="ModalLabel">Add new books</h5>
@@ -11,7 +11,7 @@
                 </div>
                 <div class="modal-body text-start">
                     <div class="modal-body text-start">
-                        <input @change="handleChangeFile" type="file" class="file-input w-100" />
+                        <input @change="handleChangeFile" type="file" class="file-input w-100 d-block" />
                     </div>
     
                     <table v-if="fileData.length > 0" class="table table-striped table-hover">

@@ -140,7 +140,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/book");
+    const response = await sendGetOnce("/book", payload);
 
     if (response) {
       return response
@@ -154,7 +154,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/manage/voucher");
+    const response = await sendGetOnce("/manage/voucher", payload);
 
     if (response) {
       return response
@@ -267,6 +267,48 @@ const actions = {
   ) => {
     payload = turnOnDevMode(payload);
     const response = await sendPostOnce("/manage/voucher/create", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.GET_ALL_CATEGORIES] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce("/manage/book/category", payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.DELETE_A_BOOK] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendDeleteOnce(`/manage/book/${payload.bookId}`, payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.CREATE_LIST_BOOKS] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/manage/book/import`, payload);
 
     if (response) {
       return response

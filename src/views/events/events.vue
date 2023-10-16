@@ -15,7 +15,7 @@
                         <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Vouchers</button>
                     </li>
                 </ul>
-                <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px; height: 580px;">
+                <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px;">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" style="padding: 12px 24px; gap:12px; min-height: 100%;">
                         Events
                     </div>
@@ -25,12 +25,23 @@
                                 <label for="search-input" class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</label>
                                 <input name="search-input" class="search-input input" placeholder="Enter your input"/>
                             </div>
+                            <div class="d-flex" style="gap:16px;">
+                                <label for="filter-level" class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471; width: 70%; height: 30px">Filter by level:</label>
+                                <select v-model="searchLevel" id="filter-level" class="form-select" aria-label="Default select example">
+                                    <option selected value=''>All</option>
+                                    <option :value="1">Level 1</option>
+                                    <option :value="2">Level 2</option>
+                                    <option :value="3">Level 3</option>
+                                    <option :value="4">Level 4</option>
+                                </select>
+                                </div>
                             <div class="button-add-book-container">
                                 <button class="btn-add" @click="handleAddNewVoucher"><i class="bi bi-plus-lg"></i> Add new voucher</button>
                             </div>
                         </div>
                         <div class="d-flex flex-wrap justify-content-center w-100 mt-5" style="gap: 3%">
-                            <VoucherItem v-for="(item, index) in vouchers" :key="index" :voucher="vouchers[index]"/>
+                            <Loading v-if="isFilteringVoucher"/>
+                            <VoucherItem v-else v-for="(item, index) in vouchers" :key="index" :voucher="vouchers[index]"/>
                         </div>
                     </div>
                 </div>

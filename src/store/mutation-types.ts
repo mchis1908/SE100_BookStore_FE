@@ -18,4 +18,7 @@ export class MutationTypes {
   public static GET_TOP_10_CUSTOMER = 'GET_TOP_10_CUSTOMER';
   public static GET_TOP_10_BOOK = 'GET_TOP_10_BOOK';
   public static CREATE_A_VOUCHER = 'CREATE_A_VOUCHER';
+  public static GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
+  public static DELETE_A_BOOK = 'DELETE_A_BOOK';
+  public static CREATE_LIST_BOOKS = 'CREATE_LIST_BOOKS';
 }

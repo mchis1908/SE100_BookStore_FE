@@ -1,5 +1,5 @@
 .modal-dialog {
-    min-width: max-content;
+    overflow-x: scroll;
 }
 
 .modal-content {
@@ -26,6 +26,7 @@
     padding: 10px 20px;
     margin-bottom: 20px;
     margin-top: 20px;
+    border-radius: 8px;
 }
 
 .table thead tr {
@@ -53,5 +54,5 @@ input[type=number] {
 }
 
 .cell-info {
-    max-width: 600px;
+    max-width: 250px;
 }

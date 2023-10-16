@@ -84,3 +84,7 @@
 .book-row {
     cursor: pointer;
 }
+
+.button-delete:hover {
+    color: #DD3B4B;
+}
