@@ -51,7 +51,7 @@
                 <hr style="margin: 0; width:100%; border: 0.5px solid #E5E6E6; opacity: 1;"/>
                 <div class="d-flex flex-row" style="gap:16px">
                     <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:14px">Voucher:</div>
-                    <input class="search-input input" placeholder="Enter customer information"/>
+                    <input class="search-input input" placeholder="Enter voucher"/>
                 </div>
                 <hr style="margin: 0; width:100%; border: 0.5px solid #E5E6E6; opacity: 1;"/>
                 <p class="text-start" style="font-weight:600; font-size:14px">Order Detail:</p>
@@ -62,7 +62,7 @@
                     <p class="col-3 text-end" style="font-weight:600">Cost</p>
                 </div>
                 <div class="d-flex flex-column text-start" style="gap:8px; max-height:260px; overflow:auto">
-                    <div class="d-flex flex-row justify-content-center" v-for="(item,index) in bookInCart" :key="index" style="padding:4px; gap:4px">
+                    <div class="d-flex flex-row justify-content-center" v-for="(item,index) in bookInCart" :key="index" style="padding:4px; gap:4px" v-motion-slide-left>
                         <p class="col-1 text-center">{{index+1}}</p>
                         <p class="col text-center" style="max-width:124px; overflow:hidden; white-space: nowrap; text-overflow: ellipsis;">{{item?.name}}</p>
                         <input class="col-3 text-center add-scale" v-model="quantity[index]" />
