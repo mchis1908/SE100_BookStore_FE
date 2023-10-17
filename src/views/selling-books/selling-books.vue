@@ -40,23 +40,23 @@
                 </div>
                 <hr style="margin: 0; width:100%; border: 0.5px solid #E5E6E6; opacity: 1;"/>
                 <div class="d-flex flex-row" style="gap:16px">
-                    <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px">Customer:</div>
+                    <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:14px">Customer:</div>
                     <input class="search-input input" placeholder="Enter customer information"/>
                 </div>
                 <hr style="margin: 0; width:100%; border: 0.5px solid #E5E6E6; opacity: 1;"/>
                 <div class="d-flex flex-row" style="gap:16px">
-                    <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px">Voucher:</div>
+                    <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:14px">Voucher:</div>
                     <input class="search-input input" placeholder="Enter customer information"/>
                 </div>
                 <hr style="margin: 0; width:100%; border: 0.5px solid #E5E6E6; opacity: 1;"/>
-                <p class="text-start text-title-1" style="font-size:16px; color:#065471">Detail order</p>
-                <div class="d-flex flex-column text-start" style="gap:8px; max-height:280px; overflow:auto">
-                    <div class="d-flex flex-row justify-content-center">
-                        <p class="col-2 text-center">No</p>
-                        <p class="col text-center">Book</p>
-                        <p class="col-2 text-end">Quantity</p>
-                        <p class="col-3 text-end">Cost</p>
-                    </div>
+                <p class="text-start" style="font-weight:600; font-size:14px">Order Detail:</p>
+                <div class="d-flex flex-row justify-content-center">
+                    <p class="col-2 text-center" style="font-weight:600">No</p>
+                    <p class="col text-center" style="font-weight:600">Book</p>
+                    <p class="col-2 text-end" style="font-weight:600">Quantity</p>
+                    <p class="col-3 text-end" style="font-weight:600">Cost</p>
+                </div>
+                <div class="d-flex flex-column text-start" style="gap:8px; max-height:260px; overflow:auto">
                     <div class="d-flex flex-row justify-content-center" v-for="(item,index) in 50" :key="index">
                         <p class="col-2 text-center">{{index+1}}</p>
                         <p class="col text-center">Book{{index *2}}</p>
@@ -64,7 +64,7 @@
                         <p class="col-3 text-end">{{index *2}}</p>
                     </div>
                 </div>
-                <div class="d-flex flex-column" style="gap:8px; position:absolute; bottom:20px; width:calc(100% - 32px)">
+                <div class="d-flex flex-column" style="gap:8px; position:absolute; bottom:10px; width:calc(100% - 32px)">
                     <hr style="margin: 0; width:100%; border: 0.5px solid #E5E6E6; opacity: 1;"/>
                     <div class="d-flex flex-row justify-content-between" style="gap:16px">
                         <p style="font-weight:600; font-size:14px">Subtotal:</p>
