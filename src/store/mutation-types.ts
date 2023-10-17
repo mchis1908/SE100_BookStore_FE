@@ -22,6 +22,7 @@ export class MutationTypes {
   public static DELETE_A_BOOK = 'DELETE_A_BOOK';
   public static CREATE_LIST_BOOKS = 'CREATE_LIST_BOOKS';
   public static GET_ALL_INVOICES = 'GET_ALL_INVOICES';
+  public static GET_INVOICES_BY_ID = 'GET_INVOICES_BY_ID';
   public static GET_DETAIL_INVOICE = 'GET_DETAIL_INVOICE';
   public static GET_EXPENSES = 'GET_EXPENSES';
   public static UPLOAD_MULTIPLE_IMAGES = 'UPLOAD_MULTIPLE_IMAGES';
