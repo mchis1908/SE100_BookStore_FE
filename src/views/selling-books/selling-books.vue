@@ -10,25 +10,29 @@
             <div class="col d-flex flex-column" style="padding:24px; gap:24px;overflow-y: scroll; overflow-x: hidden; z-index:1" v-motion-slide-left>
                 <div class="d-flex flex-row" style="gap:16px">
                     <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
-                    <input class="search-input input" placeholder="Enter barcode or name of book"/>
+                    <input class="search-input input" placeholder="Enter barcode or name of book" v-model="searchQuery"/>
                 </div>
                 <div class="book-container">
-                    <div class="book-item" v-for="(item, index) in 18" :key="index">
-                        <img src="@/assets/home/dacnhatam-book.webp" style="height:120px; object-fit:contain"/>
-                        <div class="d-flex flex-column justify-content-center align-items-center" style="gap:8px; height:100%">
+                    <div class="book-item" v-for="(item, index) in books" :key="index">
+                        <img v-if="item?.image" :src="item?.image" style="height:120px; object-fit:contain;z-index:0"/>
+                        <img v-else src="@/assets/book-page/book-default.png" style="height:120px; object-fit:contain;z-index:0"/>
+                        <div class="d-flex flex-column justify-content-center align-items-center" style="gap:8px; height:100%; z-index:0">
                             <div class="book-item-text">
-                                <p>Name:</p>
-                                <p>Nguyen Duy Linhiiii</p>
+                                <p style="font-weight:600">Name:</p>
+                                <p>{{item?.name}}</p>
                             </div>
                             <div class="book-item-text">
-                                <p>Author:</p>
-                                <p>Nguyen Duy Linh</p>
+                                <p style="font-weight:600">Author:</p>
+                                <p>{{item?.author}}</p>
                             </div>
                             <div class="book-item-text">
-                                <p class="">Price:</p>
-                                <p class="">100.000</p>
-                                <p class="text-bolder">VND</p>
+                                <p style="font-weight:600">Price:</p>
+                                <p>{{item?.salesPrice}}</p>
+                                <p style="font-weight:500">Vnđ</p>
                             </div>
+                        </div>
+                        <div class="add-to-cart" @click="handleAddBook(item)">
+                            <i class="bi-cart-plus" style="font-size:40px; color:#fff"></i>
                         </div>
                     </div>
                 </div>
@@ -57,10 +61,10 @@
                     <p class="col-3 text-end" style="font-weight:600">Cost</p>
                 </div>
                 <div class="d-flex flex-column text-start" style="gap:8px; max-height:260px; overflow:auto">
-                    <div class="d-flex flex-row justify-content-center" v-for="(item,index) in 50" :key="index">
+                    <div class="d-flex flex-row justify-content-center" v-for="(item,index) in 50" :key="index" style="padding:4px">
                         <p class="col-2 text-center">{{index+1}}</p>
                         <p class="col text-center">Book{{index *2}}</p>
-                        <p class="col-2 text-end">{{index *2}}</p>
+                        <input class="col-2 text-end add-scale" type="number" v-model="quantity[index]" />
                         <p class="col-3 text-end">{{index *2}}</p>
                     </div>
                 </div>
