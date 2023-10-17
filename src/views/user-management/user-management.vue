@@ -67,7 +67,7 @@
                                     {{ item?.user?.rank }}
                                 </p>
                                 <p class="col">
-                                    {{ item?.user?.point }}
+                                    {{ Math.round(item?.user?.point).toFixed(0) }}
                                 </p>
                                 <p class="col">
                                     {{ item?.user?.updatedAt?.slice(0,10) }}

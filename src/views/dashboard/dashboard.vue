@@ -192,7 +192,7 @@
                                     {{item?.name}}
                                 </p>
                                 <p class="col-2 text-center">
-                                    {{item?.user?.point}}
+                                    {{ Math.round(item?.user?.point).toFixed(0) }}
                                 </p>
                             </div>
                             <div class="d-flex justify-content-end" style="width:100%">

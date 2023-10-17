@@ -47,7 +47,7 @@
                         </div>
                         <div class="input-field">
                             <p class="text-start">Point:</p>
-                            <input class="input" style="height:30px" type="text" :value='customer?.user?.point' disabled/>
+                            <input class="input" style="height:30px" type="text" :value="Math.round(customer?.user?.point).toFixed(0)" disabled/>
                         </div>
                     </div>
                 </div>
