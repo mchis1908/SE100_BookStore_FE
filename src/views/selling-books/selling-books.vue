@@ -12,6 +12,7 @@
                     <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
                     <input class="search-input input" placeholder="Enter barcode or name of book" v-model="searchQuery"/>
                 </div>
+                <!-- <Barcode/> -->
                 <div class="book-container">
                     <div class="book-item" v-for="(item, index) in books" :key="index">
                         <img v-if="item?.image" :src="item?.image" style="height:120px; object-fit:contain;z-index:0"/>
@@ -31,7 +32,7 @@
                                 <p style="font-weight:500">Vnđ</p>
                             </div>
                         </div>
-                        <div class="add-to-cart" @click="handleAddBook(item)">
+                        <div class="add-to-cart" @click="handleAddBookByClick(item)">
                             <i class="bi-cart-plus" style="font-size:40px; color:#fff"></i>
                         </div>
                     </div>
@@ -54,18 +55,18 @@
                 </div>
                 <hr style="margin: 0; width:100%; border: 0.5px solid #E5E6E6; opacity: 1;"/>
                 <p class="text-start" style="font-weight:600; font-size:14px">Order Detail:</p>
-                <div class="d-flex flex-row justify-content-center">
-                    <p class="col-2 text-center" style="font-weight:600">No</p>
+                <div class="d-flex flex-row justify-content-center" style="padding:4px; gap:4px">
+                    <p class="col-1 text-center" style="font-weight:600">No</p>
                     <p class="col text-center" style="font-weight:600">Book</p>
-                    <p class="col-2 text-end" style="font-weight:600">Quantity</p>
+                    <p class="col-3 text-center" style="font-weight:600">Quantity</p>
                     <p class="col-3 text-end" style="font-weight:600">Cost</p>
                 </div>
                 <div class="d-flex flex-column text-start" style="gap:8px; max-height:260px; overflow:auto">
-                    <div class="d-flex flex-row justify-content-center" v-for="(item,index) in 50" :key="index" style="padding:4px">
-                        <p class="col-2 text-center">{{index+1}}</p>
-                        <p class="col text-center">Book{{index *2}}</p>
-                        <input class="col-2 text-end add-scale" type="number" v-model="quantity[index]" />
-                        <p class="col-3 text-end">{{index *2}}</p>
+                    <div class="d-flex flex-row justify-content-center" v-for="(item,index) in bookInCart" :key="index" style="padding:4px; gap:4px">
+                        <p class="col-1 text-center">{{index+1}}</p>
+                        <p class="col text-center" style="max-width:124px; overflow:hidden; white-space: nowrap; text-overflow: ellipsis;">{{item?.name}}</p>
+                        <input class="col-3 text-center add-scale" v-model="quantity[index]" />
+                        <p class="col-3 text-end">{{item?.salesPrice}}</p>
                     </div>
                 </div>
                 <div class="d-flex flex-column" style="gap:8px; position:absolute; bottom:10px; width:calc(100% - 32px)">

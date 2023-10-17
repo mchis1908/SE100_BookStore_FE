@@ -20,7 +20,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import { MotionPlugin } from "@vueuse/motion";
 import "../node_modules/vue3-emoji-picker/dist/style.css";
-
+import VueBarcode from '@chenfengyuan/vue-barcode';
+createApp(App).component(VueBarcode.name, VueBarcode);
 createApp(App)
   .use(store)
   .use(router)

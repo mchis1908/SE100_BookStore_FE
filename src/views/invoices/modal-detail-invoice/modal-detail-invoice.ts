@@ -42,6 +42,5 @@ export default class ModalDetailInvoice extends Vue {
         if(res.status ===200){
             this.invoiceDetail= res.data.data
         }
-    console.log('abc',this.invoiceDetail)
 }
 }

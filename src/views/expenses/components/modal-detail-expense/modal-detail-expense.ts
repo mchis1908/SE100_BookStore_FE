@@ -37,7 +37,6 @@ export default class ModalAddCustomer extends Vue {
     public handleSubscribe() {
         this.unsubscribe = this.$store.subscribe(async (mutation: any, state: any) => {
             if (mutation.type === 'setExpense') {
-                console.log(mutation.payload);
                 this.expenses= mutation.payload;
                 this.getData();
             }

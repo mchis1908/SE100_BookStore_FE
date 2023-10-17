@@ -41,7 +41,6 @@ export default class DashBoard extends Vue {
     await this.getDataLineChart();
     await this.getTop10Customer();
     await this.getLast10Invoices();
-    console.log(this.list.customers)
     this.isChartReady = true;
   }
 
