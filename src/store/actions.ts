@@ -399,6 +399,22 @@ const actions = {
       return null
     }
   },
+
+  [MutationTypes.UPDATE_STATUS_EXPENSE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const expenses_id = payload.expenses_id
+    let newPayload = { ...payload };
+    delete newPayload.expenses_id;
+    const response = await sendPutOnce(`/api/manage/expense/update-status/${expenses_id}`, newPayload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
   
 };
 

@@ -87,4 +87,19 @@ export default class ModalAddCustomer extends Vue {
         this.validInput = true;
         return this.validInput
     }
+
+    public async handleChangeStatus(status:any){
+        const payload = { 
+            expenses_id: this.expenses._id,
+            status: status,
+        };
+        const res = await this.$store.dispatch(
+          MutationTypes.UPDATE_STATUS_EXPENSE,
+          payload
+        );
+        if(res.status ===200){
+            toast.success('Successfully updated');
+            window.location.reload();
+        }
+    }
 }

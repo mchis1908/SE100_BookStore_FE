@@ -1,0 +1,36 @@
+  
+.book-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-gap: 24px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+  
+.book-item{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 16px;
+}
+  
+.book-item-text{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    text-align: start;
+    width:100%;
+}
+  
+.text-bolder{
+    font-weight: 600;
+    font-size:14px;
+}
+
+.search-input{
+    height: 40px; 
+    width: 100%; 
+}

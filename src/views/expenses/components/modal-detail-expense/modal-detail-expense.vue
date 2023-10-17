@@ -51,10 +51,15 @@
                             </div>
                         </div>
                     </div>
+                    <p v-if="expenses?.status==='PENDING'" class="text-start text-success">*If you decline or confirm this problem/expense, you can see this problem/expense in history.</p>
                 </div>
-                <div class="modal-footer">
+                <div v-if="expenses?.status!=='PENDING'" class="modal-footer">
                     <button type="button" class="button-outline" data-bs-dismiss="modal">Close</button>
-                    <button type="button" :class="[validInput? '':'button-disabled','button-solid']" @click="handleClickActionButton">Save</button>
+                    <button type="button" :class="[validInput && expenses?.status!=='PENDING' ? '':'button-disabled','button-solid']" @click="handleClickActionButton">Save</button>
+                </div>
+                <div v-else class="modal-footer">
+                    <button type="button" class="button-danger" @click="handleChangeStatus('REJECTED')">Decline</button>
+                    <button type="button" :class="[!invalidMessage.subject && !invalidMessage.description ? '':'button-disabled','button-solid']" @click="handleChangeStatus('RESOLVED')">Confirm</button>
                 </div>
             </div>
         </div>

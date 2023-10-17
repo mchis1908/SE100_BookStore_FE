@@ -114,10 +114,10 @@
                         <div class="d-flex flex-row align-items-center justify-content-between">
                             <p class="areaContent-title">The Number Of Books Sold Last 7 days</p>
                         </div>
-                        <div class="line-chart" style="height:100%">
-                            <div class="d-flex flex-column" style="gap:8px">
+                        <div class="line-chart" style="height:100%; position: relative;">
+                            <div class="d-flex flex-column" style="gap:8px; ">
                                 <LineChart v-if="isChartReady && selectedSort?.lineChart === 0" :data="chart?.lineChart?.data7Days" :sortIndex="selectedSort?.lineChart"/>
-                                <div class="d-flex justify-content-end" style="width:100%">
+                                <div class="d-flex justify-content-end" style="width:100; position: absolute; bottom:10px; right:10px">
                                     <router-link to="/statistics">
                                         <div class="d-flex flex-row see-detail">
                                             <p >See Detail</p>
@@ -131,7 +131,6 @@
                     
                     <div class="col text-start d-flex flex-column" style="gap:8px">
                         <p class="areaContent-title">Best Selling Books</p>
-                        <div class="areaContent-bg">
                             <div class="areaContent-bg">
                                 <div class="d-flex flex-row" style="gap:8px">
                                     <p class="col-1 text-title-1">
@@ -155,7 +154,7 @@
                                         {{  30 + index }}
                                     </p>
                                 </div>
-                                <div class="d-flex justify-content-end" style="width:100%">
+                                <div class="d-flex justify-content-end" style="width:100; position: absolute; bottom:10px; right:10px">
                                     <router-link to="/book-management">
                                         <div class="d-flex flex-row see-detail">
                                             <p >See Detail</p>
@@ -166,96 +165,94 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- ---------recent invoice & book pre-order------- -->
-                <div class="d-flex flex-row" style="gap:32px;">
-                    <div class="col-4 text-start d-flex flex-column" style="gap:8px">
-                        <p class="areaContent-title">Loyal Customers</p>
-                        <div class="areaContent-bg">
-                            <div class="d-flex flex-row" style="gap:8px">
-                                <p class="col-1 text-title-1">
-                                    No
-                                </p>
-                                <p class="col text-title-1">
-                                    Name
-                                </p>
-                                <p class="col-2 text-title-1">
-                                    Point
-                                </p>
-                            </div>
-                            <div class="d-flex flex-row" style="gap:8px" v-for="(item,index) in list?.customers" :key="index">
-                                <p class="col-1 text-center">
-                                    {{ index + 1 }}
-                                </p>
-                                <p class="col text-center">
-                                    {{item?.name}}
-                                </p>
-                                <p class="col-2 text-center">
-                                    {{ Math.round(item?.user?.point).toFixed(0) }}
-                                </p>
-                            </div>
-                            <div class="d-flex justify-content-end" style="width:100%">
-                                <router-link to="/user-management">
-                                    <div class="d-flex flex-row see-detail">
-                                        <p >See Detail</p>
-                                        <i class="bi-arrow-right"></i>
-                                    </div>
-                                </router-link> 
+                    <!-- ---------recent invoice & book pre-order------- -->
+                    <div class="d-flex flex-row" style="gap:32px;">
+                        <div class="col-4 text-start d-flex flex-column" style="gap:8px">
+                            <p class="areaContent-title">Loyal Customers</p>
+                            <div class="areaContent-bg">
+                                <div class="d-flex flex-row" style="gap:8px">
+                                    <p class="col-1 text-title-1">
+                                        No
+                                    </p>
+                                    <p class="col text-title-1">
+                                        Name
+                                    </p>
+                                    <p class="col-2 text-title-1">
+                                        Point
+                                    </p>
+                                </div>
+                                <div class="d-flex flex-row" style="gap:8px" v-for="(item,index) in list?.customers" :key="index">
+                                    <p class="col-1 text-center">
+                                        {{ index + 1 }}
+                                    </p>
+                                    <p class="col text-center">
+                                        {{item?.name}}
+                                    </p>
+                                    <p class="col-2 text-center">
+                                        {{ Math.round(item?.user?.point).toFixed(0) }}
+                                    </p>
+                                </div>
+                                <div class="d-flex justify-content-end" style="width:100; position: absolute; bottom:10px; right:10px">
+                                    <router-link to="/user-management">
+                                        <div class="d-flex flex-row see-detail">
+                                            <p >See Detail</p>
+                                            <i class="bi-arrow-right"></i>
+                                        </div>
+                                    </router-link> 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="col text-start d-flex flex-column" style="gap:8px;">
-                        <p class="areaContent-title">Recent Invoices</p>
-                        <div class="areaContent-bg">
-                            <div class="d-flex flex-row" style="gap:8px">
-                                <p class="col-1 text-title-1">
-                                    No
-                                </p>
-                                <p class="col text-title-1">
-                                    Date Created
-                                </p>
-                                <p class="col text-title-1">
-                                    Customer
-                                </p>
-                                <p class="col text-title-1">
-                                    Amount
-                                </p>
-                                <p class="col text-title-1">
-                                    Cashier
-                                </p>
-                            </div>
-                            <div class="d-flex flex-row" style="gap:8px" v-for="(item,index) in 10" :key="index">
-                                <p class="col-1 text-center">
-                                    {{ index + 1 }}
-                                </p>
-                                <p class="col text-center">
-                                    1/{{ index+1 }}/2023
-                                </p>
-                                <p class="col text-center">
-                                    Huỳnh Minh Chí
-                                </p>
-                                <p class="col text-center">
-                                    {{30 * index+1}}.000
-                                </p>
-                                <p class="col text-center">
-                                    Huỳnh Minh Chí
-                                </p>
-                            </div>
-                            <div class="d-flex justify-content-end" style="width:100%">
-                                <router-link to="/invoices">
-                                    <div class="d-flex flex-row see-detail">
-                                        <p >See Detail</p>
-                                        <i class="bi-arrow-right"></i>
-                                    </div>
-                                </router-link> 
+                        
+                        <div class="col text-start d-flex flex-column" style="gap:8px;">
+                            <p class="areaContent-title">Recent Invoices</p>
+                            <div class="areaContent-bg">
+                                <div class="d-flex flex-row" style="gap:8px">
+                                    <p class="col-1 text-title-1">
+                                        No
+                                    </p>
+                                    <p class="col text-title-1">
+                                        Date Created
+                                    </p>
+                                    <p class="col text-title-1">
+                                        Customer
+                                    </p>
+                                    <p class="col text-title-1">
+                                        Amount
+                                    </p>
+                                    <p class="col text-title-1">
+                                        Cashier
+                                    </p>
+                                </div>
+                                <div class="d-flex flex-row" style="gap:8px" v-for="(item,index) in list?.invoices" :key="index">
+                                    <p class="col-1 text-center">
+                                        {{ index + 1 }}
+                                    </p>
+                                    <p class="col text-center">
+                                        {{item?.createdAt?.slice(0,10)}}
+                                    </p>
+                                    <p class="col text-center">
+                                        {{item?.customer?.name}}
+                                    </p>
+                                    <p class="col text-center">
+                                        {{item?.total}}
+                                    </p>
+                                    <p class="col text-center">
+                                        {{item?.employee?.name}}
+                                    </p>
+                                </div>
+                                <div class="d-flex justify-content-end" style="width:100; position: absolute; bottom:10px; right:10px">
+                                    <router-link to="/invoices">
+                                        <div class="d-flex flex-row see-detail">
+                                            <p >See Detail</p>
+                                            <i class="bi-arrow-right"></i>
+                                        </div>
+                                    </router-link> 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-                
-        </div>
     </div>
 </template>

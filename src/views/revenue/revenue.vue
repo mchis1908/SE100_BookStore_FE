@@ -25,8 +25,8 @@
                             <thead>
                                 <tr class="text-start">
                                     <th scope="col">&nbsp;</th>
-                                    <th scope="col">Scale</th>
-                                    <th scope="col">Coefficient</th>
+                                    <th scope="col">Value</th>
+                                    <th scope="col">Value</th>
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">

@@ -46,6 +46,7 @@
                             </div>
                         </div>
                     </div>
+                    <p class="text-start text-warning">*If admin role, the expense/problem will be resolved if you create</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="button-outline" data-bs-dismiss="modal">Close</button>

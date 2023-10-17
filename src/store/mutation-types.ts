@@ -26,4 +26,5 @@ export class MutationTypes {
   public static GET_EXPENSES = 'GET_EXPENSES';
   public static UPLOAD_MULTIPLE_IMAGES = 'UPLOAD_MULTIPLE_IMAGES';
   public static ADD_EXPENSE = 'ADD_EXPENSE';
+  public static UPDATE_STATUS_EXPENSE = 'UPDATE_STATUS_EXPENSE';
 }

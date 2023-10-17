@@ -40,6 +40,8 @@ export default class DashBoard extends Vue {
     this.userData = this.$store.state.userData
     await this.getDataLineChart();
     await this.getTop10Customer();
+    await this.getLast10Invoices();
+    console.log(this.list.customers)
     this.isChartReady = true;
   }
 
@@ -83,6 +85,20 @@ export default class DashBoard extends Vue {
     );
     if(res.status ===200){
       this.list.customers= res.data.data
+    }
+  }
+
+  public async getLast10Invoices(){
+    const payload = { 
+      page: 1,
+      limit: 10,
+    };
+    const res = await this.$store.dispatch(
+      MutationTypes.GET_ALL_INVOICES,
+      payload
+    );
+    if(res.status ===200){
+      this.list.invoices= res.data.data
     }
   }
   

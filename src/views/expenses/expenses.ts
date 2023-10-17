@@ -96,7 +96,7 @@ export default class Expenses extends Vue {
     payload = { 
       date: this?.filter.history?.date,
       lastNDays: this.filter?.history?.lastNDays,
-      status: (!this.filter?.history?.status ? '' : this.sortStatus[this.filter?.history?.status]?.toUpperCase())
+      status: (!this.filter?.history?.status ? 'RESOLVED,REJECTED' : this.sortStatus[this.filter?.history?.status]?.toUpperCase())
     };
     res = await this.$store.dispatch(
       MutationTypes.GET_EXPENSES,

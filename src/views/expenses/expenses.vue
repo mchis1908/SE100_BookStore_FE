@@ -91,7 +91,7 @@
                                 </Transition>
                             </div>
                         </div>
-                        <div class="d-flex flex-row" style="flex-wrap: wrap; width:100%; gap:16px; margin:16px 0;  height: 510px; overflow:auto">
+                        <div class="d-flex flex-row" style="flex-wrap: wrap; width:100%; gap:16px; margin:16px 0;  max-height: 510px; overflow:auto">
                             <div class="problem-item" v-for="(item,index) in history" :key="index"  data-bs-toggle="modal" data-bs-target="#detailSpend" @click="handleDetailExpense(item)" v-motion-slide-left>
                                 <div class="d-flex flex-column" style="gap:8px">
                                     <p class="text-title-1">{{item?.subject?? 'Subject'}}</p>
@@ -100,7 +100,7 @@
                                         <div class="d-flex flex-column" style="gap:8px">
                                             <div class="d-flex flex-row align-items-center" style="gap:8px">
                                                 <i class="bi-pencil-fill"></i>
-                                                <p>{{item?.description?.charAt(0).toUpperCase() + item.description.slice(1)}}</p>
+                                                <p>{{item?.description?.charAt(0).toUpperCase() + item.description?.slice(1)}}</p>
                                             </div>
                                             <div class="d-flex flex-row align-items-center" style="gap:8px">
                                                 <i class="bi-alarm"></i>
@@ -117,7 +117,7 @@
                                     </div>
                                     <div class="col d-flex flex-column">
                                         <p class="text-title-1">Status</p>
-                                        <p :style="item.status==='PENDING'? 'color: #F3BB1B': (item.status==='RESOLVED'? 'color: #3DC13C':'color: #F13637')">{{item?.status?.charAt(0).toUpperCase() + item.status.slice(1).toLowerCase()}}</p>
+                                        <p :style="item.status==='PENDING'? 'color: #F3BB1B': (item.status==='RESOLVED'? 'color: #3DC13C':'color: #F13637')">{{item?.status?.charAt(0).toUpperCase() + item.status?.slice(1).toLowerCase()}}</p>
                                     </div>
                                 </div>
                             </div>

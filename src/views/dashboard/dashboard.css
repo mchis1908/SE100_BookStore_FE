@@ -19,7 +19,9 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    height: 100%;
+    height: 360px;
+
+    position: relative;
 }
 
 .areaContent-title{
@@ -40,6 +42,7 @@
     cursor: pointer; 
     color: #ADADAD;
     font-weight: 500;
+    align-items:center
 }
 .see-detail:hover{
     color: #065471;

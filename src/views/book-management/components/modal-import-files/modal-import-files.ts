@@ -39,16 +39,16 @@ export default class ModalImportFiles extends Vue {
         }
         console.log("fileData", bookList)
 
-        // let res = await this.$store.dispatch('CREATE_LIST_BOOKS', {
-        //     books: arrayOfObjects.slice(1),
-        // })
+        let res = await this.$store.dispatch('CREATE_LIST_BOOKS', {
+            books: arrayOfObjects.slice(1),
+        })
 
-        // console.log("res", res)
+        console.log("res", res)
 
-        // if(res.status === 200) {
-        //     toast.success(res.data.message)
-        // } else {
-        //     toast.error(res.data.message)
-        // }
+        if(res.status === 200) {
+            toast.success(res.data.message)
+        } else {
+            toast.error(res.data.message)
+        }
     }
 }
