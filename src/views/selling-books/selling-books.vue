@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3 d-flex flex-column" style="border-left: solid 1px #E5E6E6; padding:24px; gap:12px; position:relative">
+            <div class="col-3 d-flex flex-column" style="border-left: solid 1px #E5E6E6; padding:12px; gap:12px; position:relative">
                 <div class="d-flex flex-row justify-content-between align-items-center">
                     <p class="text-start text-title-1" style="font-size:16px; color:#065471">Detail Invoice</p>
                     <p class="text-end" style="color:#ADADAD">2023-10-15</p>
@@ -55,17 +55,17 @@
                 </div>
                 <hr style="margin: 0; width:100%; border: 0.5px solid #E5E6E6; opacity: 1;"/>
                 <p class="text-start" style="font-weight:600; font-size:14px">Order Detail:</p>
-                <div class="d-flex flex-row justify-content-center" style="padding:4px; gap:4px">
+                <div class="d-flex flex-row justify-content-between" style="padding:4px; gap:4px">
                     <p class="col-1 text-center" style="font-weight:600">No</p>
-                    <p class="col text-center" style="font-weight:600">Book</p>
-                    <p class="col-3 text-center" style="font-weight:600">Quantity</p>
+                    <p class="col text-center" style="font-weight:600; max-width:124px; overflow:hidden; white-space: nowrap; text-overflow: ellipsis;">Book</p>
+                    <p class="col text-center" style="font-weight:600; max-width:80px">Quantity</p>
                     <p class="col-3 text-end" style="font-weight:600">Cost</p>
                 </div>
-                <div class="d-flex flex-column text-start" style="gap:8px; max-height:260px; overflow:auto">
-                    <div class="d-flex flex-row justify-content-center" v-for="(item,index) in bookInCart" :key="index" style="padding:4px; gap:4px" v-motion-slide-left>
+                <div class="d-flex flex-column" style="gap:8px; max-height:260px; overflow:auto">
+                    <div class="d-flex flex-row justify-content-between" v-for="(item,index) in bookInCart" :key="index" style="padding:4px; gap:4px" v-motion-slide-left>
                         <p class="col-1 text-center">{{index+1}}</p>
                         <p class="col text-center" style="max-width:124px; overflow:hidden; white-space: nowrap; text-overflow: ellipsis;">{{item?.name}}</p>
-                        <input class="col-3 text-center add-scale" v-model="quantity[index]" />
+                        <input class="col text-center add-scale" style="max-width:80px" v-model="quantity[index]" />
                         <p class="col-3 text-end">{{item?.salesPrice}}</p>
                     </div>
                 </div>
