@@ -46,8 +46,8 @@
                             <tr class="book-row text-start" v-for="(item, index) in allBooks" :key="index" @click="handleClickBookRow(index)">
                                 <th scope="row">{{ index + 1 }}</th>
                                 <td>{{ item["name"] }}</td>
-                                <td v-if="item['categories'].length > 0" :key="index">
-                                    <p v-for="(category, indexCategory) in item['categories']">{{ category.name }}</p>
+                                <td v-if="item['categories'].length > 0">
+                                    <p v-for="(category, indexCategory) in item['categories']" :key="indexCategory">{{ item["categories"][indexCategory].name }}</p>
                                 </td>
                                 <td v-else></td>
                                 <td>{{ item["author"] }}</td>
@@ -57,6 +57,12 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="pagination-container">
+                        <div class="pagination-item" v-for="(item, index) in totalPages" :key="index" @click="currentPage = index + 1" :style="index + 1 === currentPage ? 'background-color: #065471; outline: none; color: #fff' : ''">
+                            {{ index + 1  }}
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" style="padding: 12px 24px;gap:12px">
                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -85,6 +91,13 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="pagination-container">
+                        <div class="pagination-item" v-for="(item, index) in totalPageCategories" :key="index" @click="currentPageCategories = index + 1" :style="index + 1 === currentPage ? 'background-color: #065471; outline: none; color: #fff' : ''">
+                            {{ index + 1  }}
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
