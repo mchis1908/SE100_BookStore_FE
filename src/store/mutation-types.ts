@@ -9,6 +9,7 @@ export class MutationTypes {
   public static GET_EMPLOYEE = 'GET_EMPLOYEE';
   public static GET_ALL_BOOKS = 'GET_ALL_BOOKS';
   public static GET_ALL_VOUCHERS = 'GET_ALL_VOUCHERS';
+  public static GET_CUSTOMER_VOUCHERS = 'GET_CUSTOMER_VOUCHERS';
   public static UPDATE_A_BOOK = 'UPDATE_A_BOOK';
   public static CREATE_A_BOOK = 'CREATE_A_BOOK';
   public static GET_ALL_SALARY_SCALE = 'GET_ALL_SALARY_SCALE';

@@ -2,12 +2,14 @@
 <style scoped src="./customer-invoices.css"></style>
 <script lang="ts" src="./customer-invoices.ts"></script>
 
+
 <template>
+    <ModalDetailInvoice id="detailInvoice"/>
     <div class="background-feature d-flex flex-column">
         <Header/>
         <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
             <MenuDashBoard class="col-2"/>
-            <div class="col-10 d-flex flex-column" style="padding:24px; gap:24px;overflow-y: scroll; overflow-x: hidden; z-index:1" v-motion-slide-left>
+            <div class="col-10 d-flex flex-column" style="padding:24px; overflow-y: scroll; overflow-x: hidden; z-index:1;" v-motion-slide-left>
                 <div class="d-flex flex-column" style="gap:12px; background: #fff; width:100%; padding:16px; height:100%; position: relative; border-radius:16px">
                     <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%; gap:16px">
                         <div class="col-6 d-flex flex-row" style="gap:16px">
@@ -28,7 +30,7 @@
                                 Customer
                             </div> -->
                             <div class="col text-title-1">
-                                Cashier  
+                                Cashier
                             </div>
                             <div class="col text-title-1">
                                 Cost

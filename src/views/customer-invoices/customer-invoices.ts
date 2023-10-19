@@ -2,7 +2,7 @@ import { Options, Vue } from "vue-class-component";
 import MenuDashBoard from '@/components/menu-dashboard/menu-dashboard.vue'
 import Header from '@/components/header/header.vue'
 import { MutationTypes } from "@/store/mutation-types";
-import ModalDetailInvoice from "../invoices/modal-detail-invoice/modal-detail-invoice";
+import ModalDetailInvoice from "@/views/invoices/modal-detail-invoice/modal-detail-invoice.vue";
 
 @Options({
   components: {
@@ -50,6 +50,10 @@ export default class Invoices extends Vue {
 
     let payload = { 
       id:this.userData?.data._id,
+      page: this.currentPage,
+      limit: 9,
+      date: this.date?.slice(0,10),
+      search_q: this.searchQuery,
     };
     console.log({payload});
 
@@ -59,8 +63,6 @@ export default class Invoices extends Vue {
     );
     if(res.status ===200){
       this.invoices= res.data.data
-    console.log(this.invoices);
-
       this.totalPage= res.data.totalPages
     }
   }
