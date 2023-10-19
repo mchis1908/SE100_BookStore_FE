@@ -39,6 +39,26 @@
 .book-item:hover .add-to-cart{
     right:0;
 }
+
+.bookInCart-item{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    /* height: 243px; */
+    cursor: pointer;
+}
+
+.delete-item{
+    display: none;
+    cursor: pointer;
+}
+
+.book-in-cart:hover .delete-item{
+    display: block;
+}
   
 .book-item-text{
     display: flex;
@@ -62,4 +82,18 @@
     border-radius: 8px;
     border: none;
     outline: 1px solid #065471;
+}
+
+.suggest{
+    gap:8px;
+    position:absolute; 
+    z-index:2; 
+    border-radius: 12px; 
+    background: var(--neutral-white, #FFF); 
+    box-shadow: 4px 8px 32px 0px rgba(0, 0, 0, 0.08);
+    top:100%;
+    left:136px;
+    max-height: 180px;
+    overflow: auto;
+    width: calc( 100% - 136px );
 }

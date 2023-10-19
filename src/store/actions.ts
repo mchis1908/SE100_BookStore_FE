@@ -415,6 +415,19 @@ const actions = {
       return null
     }
   },
+
+  [MutationTypes.CREATE_INVOICE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/api/manage/order/create-order`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
   
 };
 

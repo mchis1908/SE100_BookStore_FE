@@ -32,7 +32,6 @@
                 <div class="book-item-text">
                     <p class="">Price:</p>
                     <p class="">100.000</p>
-                    <p class="text-bolder">VND</p>
                 </div>
             </div>
         </div>
