@@ -84,7 +84,7 @@ export default class SellingBooks extends Vue {
   public async handleAddBookByBarcode(){
     await this.getBooks()
     // if(this.searchQuery.length<13) return;
-    if(this.books.length===1) this.bookInCart.push(this.books[0]);
+    // if(this.books.length===1) this.bookInCart.push(this.books[0]);
   }
 
   public checkQuantity(item:any, quantity:any){
