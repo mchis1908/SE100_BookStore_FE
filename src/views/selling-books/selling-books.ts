@@ -25,6 +25,19 @@ import { toast } from "vue3-toastify";
     },
     quantity: {
       handler: function (val: any, oldVal: any) {
+        val.some((item:any, index:any) =>{
+          if(this.bookInCart[index]?.quantity < item) 
+          {
+            this.quantity[index] = this.bookInCart[index]?.quantity
+            toast.error(`This book only has ${this.bookInCart[index]?.quantity} left`)
+          }
+        })
+        this.handleSubtotal()
+      },
+      deep: true,
+    },
+    selectVoucher: {
+      handler: function (val: any, oldVal: any) {
         this.handleSubtotal()
       },
       deep: true,
@@ -47,6 +60,8 @@ export default class SellingBooks extends Vue {
   public selectCustomer:any=null;
   public selectVoucher:any=null;
   public subtotal:any=null;
+  public voucherDiscount:any=null;
+  public total:any=null;
   public suggest: any = [];
   public searchQuery:any=null
 
@@ -75,7 +90,15 @@ export default class SellingBooks extends Vue {
         this.quantity[i]= this.quantity[i]+1;
         return
       }
-      else if(this.bookInCart[i]?._id === item?._id && !this.checkQuantity(item, this.quantity[i])) return
+      else if(this.bookInCart[i]?._id === item?._id && !this.checkQuantity(item, this.quantity[i])) 
+      {
+        toast.error(`This book only has ${item?.quantity} left`);
+        return
+      }
+    }
+    if(item?.quantity ===0) {
+      toast.error("This book is sold out");
+      return
     }
     this.bookInCart.push(item)
     this.quantity.push(1);
@@ -84,7 +107,12 @@ export default class SellingBooks extends Vue {
   public async handleAddBookByBarcode(){
     await this.getBooks()
     // if(this.searchQuery.length<13) return;
-    // if(this.books.length===1) this.bookInCart.push(this.books[0]);
+    if(!Array.from(this.searchQuery).some((char:any) => {
+      return /[0-9]/.test(char)})) return
+    if(this.books.length===1) {
+      this.handleAddBookByClick(this.books[0])
+      this.searchQuery=""
+    }
   }
 
   public checkQuantity(item:any, quantity:any){
@@ -98,6 +126,8 @@ export default class SellingBooks extends Vue {
       this.cost[index] = costValue;
     });
     this.subtotal = this.cost.reduce((acc:any, item:any) => acc + item, 0);
+    this.voucherDiscount = (this.selectVoucher?.discountValue ?? 0) * this.subtotal;
+    this.total = this.subtotal- ((this.selectVoucher?.discountValue ?? 0) * this.subtotal);
   }
 
   public async handleDeleteBook(index:any){
@@ -126,12 +156,14 @@ export default class SellingBooks extends Vue {
     this.selectCustomer= item;
     this.customerInput = ''
     this.getVoucher();
-    console.log(this.selectCustomer);
   }
 
   public handleRemoveCustomer() {
     this.selectCustomer= null;
     this.customerInput = ''
+    this.selectVoucher=null;
+    this.getVoucher();
+    this.handleSubtotal();
   }
 
   public async getVoucher(){

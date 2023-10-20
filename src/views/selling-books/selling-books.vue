@@ -111,11 +111,11 @@
                     </div>
                     <div class="d-flex flex-row justify-content-between" style="gap:16px">
                         <p style="font-weight:600; font-size:14px">Voucher discount:</p>
-                        <p style="font-weight:600; font-size:14px">{{selectVoucher?.discountValue * subtotal || 0}}</p>
+                        <p style="font-weight:600; font-size:14px">{{voucherDiscount}}</p>
                     </div>
                     <div class="d-flex flex-row justify-content-between" style="gap:16px">
                         <p style="font-weight:600; font-size:14px">Total:</p>
-                        <p style="font-weight:600; font-size:14px">{{subtotal- (selectVoucher?.discountValue * subtotal) || 0}}</p>
+                        <p style="font-weight:600; font-size:14px">{{total}}</p>
                     </div>
                     <button class="button-solid" @click="handlePay">Pay</button>
                 </div>
