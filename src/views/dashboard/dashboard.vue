@@ -11,7 +11,7 @@
             <div class="col-10 d-flex flex-column" style="padding:24px; gap:24px;overflow-y: scroll; overflow-x: hidden; z-index:1" v-motion-slide-left>
                 <!-- ---------overview--- -->   
                 <div class="d-flex flex-column align-items-start" style="gap:8px">
-                    <p class="areaContent-title">Over Views</p>
+                    <p class="areaContent-title">Overviews</p>
                     <div class="d-flex flex-row" style="gap:32px; width:100%">
                         <div class="block-overview col d-flex flex-column">
                             <div class="d-flex flex-row justify-content-between">
