@@ -164,6 +164,7 @@ export default class SellingBooks extends Vue {
     const res = await this.$store.dispatch(MutationTypes.CREATE_INVOICE, payload);
     if (res.status===201) {
       toast.success("Successfully created invoice");
+      window.location.reload();
     }
   }
 }
