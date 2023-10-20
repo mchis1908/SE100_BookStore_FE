@@ -19,7 +19,7 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px; height: 580px; position: relative;">
-                    <div class="tab-pane fade show active" id="pills-problems" role="tabpanel" aria-labelledby="pills-problems-tab" style="padding: 16px; gap:12px; min-height: 100%;">
+                    <div class="tab-pane fade show active" id="pills-problems" role="tabpanel" aria-labelledby="pills-problems-tab" style="padding: 16px; gap:12px;">
                         <div class="d-flex flex-row justify-content-between align-items-center" style="width:100%; gap:32px">
                             <div class="col-7 d-flex flex-row" style="gap:12px">
                                 <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
@@ -34,7 +34,7 @@
                                 <input class="search-input input" type="date" placeholder="Enter your input" style="width:150px" v-model="filter.expenses.date"/>
                             </div>
                         </div>
-                        <div class="d-flex flex-row" style="flex-wrap: wrap; width:100%; gap:16px; margin:16px 0;  height: 500px; overflow:auto">
+                        <div class="d-flex flex-row" style="flex-wrap: wrap; width:100%; gap:16px; margin:16px 0; max-height: 510px; overflow:auto">
                             <div class="problem-item" v-for="(item,index) in expenses" :key="index" data-bs-toggle="modal" data-bs-target="#detailSpend" @click="handleDetailExpense(item)" v-motion-slide-left>
                                 <div class="d-flex flex-column" style="gap:8px">
                                     <p class="text-title-1">{{item?.subject?? 'Subject'}}</p>
