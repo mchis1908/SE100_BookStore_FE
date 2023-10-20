@@ -31,7 +31,7 @@
                     </div>
                     <div class="mb-2">
                         <label for="bookImagesInput" class="form-label">Images</label>
-                        <input type="file" class="form-control" id="bookImagesInput" multiple>
+                        <input @change="handleChooseImage" type="file" class="form-control" id="bookImagesInput" multiple>
                     </div>
                     <div class="mb-2">
                         <label for="bookAuthorInput" class="form-label">Author</label>

@@ -59,7 +59,33 @@
             aria-labelledby="pills-home-tab"
             style="padding: 12px 24px; gap: 12px; min-height: 100%"
           >
-            Events
+          <div
+          class="d-flex flex-row justify-content-between align-items-center"
+          style="width: 100%"
+        >
+          <div class="d-flex" style="gap: 16px; width: 40%">
+            <label
+              for="search-input"
+              class="d-flex justify-content-center align-items-center"
+              style="font-weight: 600; font-size: 16px; color: #065471"
+              >Search:</label
+            >
+            <input
+              name="search-input"
+              class="search-input input"
+              placeholder="Enter your input"
+            />
+          </div>
+          <div class="button-add-book-container">
+            <button class="btn-add" @click="handleAddNewEvent">
+              <i class="bi bi-plus-lg"></i> Add new event
+            </button>
+          </div>
+        </div>
+            <div class="d-flex flex-wrap mt-3" style="gap: 20px;">
+              <Loading v-if="isLoading"/>
+              <EventItem v-else v-for="(item, index) in events" :key="index" :eventData="item"/>
+            </div>
           </div>
           <div
             class="tab-pane fade"
@@ -121,7 +147,7 @@
               class="d-flex flex-wrap justify-content-center w-100 mt-5"
               style="gap: 3%"
             >
-              <Loading v-if="isFilteringVoucher" />
+              <Loading v-if="isLoading" />
               <VoucherItem
                 v-else
                 v-for="(item, index) in vouchers"
@@ -136,4 +162,5 @@
   </div>
 
   <ModalAddVoucher ref="add-new-voucher-component" />
+  <ModalAddEvent ref="add-new-event-component" />
 </template>

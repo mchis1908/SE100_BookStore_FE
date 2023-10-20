@@ -20,7 +20,7 @@
                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Categories</button>
                 </li>
             </ul>
-            <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px; height: 580px;">
+            <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px;">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" style="padding: 12px 24px; gap:12px; min-height: 100%;">
                     <div class="w-100 d-flex justify-content-between align-items-center mb-5">
                         <div class="col-5 d-flex flex-row" style="gap:16px">
