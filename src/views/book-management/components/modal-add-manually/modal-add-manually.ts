@@ -9,6 +9,7 @@ export default class ModalAddManually extends Vue {
     public book: any = {}
     public bookCategories: any = []
     public seletectedCategory: any = []
+    public bookImage: any = new FormData()
 
     beforeMount(): void {
         this.fetchCategories()
@@ -43,13 +44,28 @@ export default class ModalAddManually extends Vue {
     public async handleCreateBook() {
         if (this.checkValidForm()) {
             this.book["categories"] = this.seletectedCategory
-            let res =  await this.$store.dispatch(MutationTypes.CREATE_A_BOOK, this.book)
-            if (res.status === 201) {
-                toast.success(res.data.message)
-                window.location.reload()
-            } else {
-                toast.error(res.data.message)
+
+            if (this.bookImage.get("image")) {
+                this.$store.dispatch(MutationTypes.UPLOAD_IMAGE, this.bookImage)
+                .then(async (resImage: any) => {
+                    if (resImage.status === 200) {
+                        this.book["image"] = await resImage.data.image
+                        let res = await this.$store.dispatch(MutationTypes.CREATE_A_BOOK, this.book)
+                        // if (res.status === 201) {
+                        //     toast.success(res.data.message)
+                        //     window.location.reload()
+                        // } else {
+                        //     toast.error(res.data.message)
+                        // }
+
+
+                        console.log("res",res)
+                    }
+                })
             }
+            
+
+            console.log(this.book)
         }
     }
 
@@ -57,5 +73,11 @@ export default class ModalAddManually extends Vue {
         let res = await this.$store.dispatch(MutationTypes.GET_ALL_CATEGORIES)
     
         this.allCategories = res.data.data
+    }
+
+    public handleChooseImage(event: any) {
+        let selectedImage = event.target.files[0]
+
+        this.bookImage.append("image", selectedImage)
     }
 }

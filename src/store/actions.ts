@@ -416,6 +416,32 @@ const actions = {
     }
   },
 
+  [MutationTypes.GET_UPCOMING_EVENTS] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/manage/bookstore/event/upcoming`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.UPLOAD_IMAGE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/image-server/upload`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
   [MutationTypes.CREATE_INVOICE] : async (
     { commit }: { commit: any },
     payload: any
