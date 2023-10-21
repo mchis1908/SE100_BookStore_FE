@@ -47,7 +47,7 @@
                         </div>
                         <div class="bar-chart" style="height:100%">
                             <div>
-                                <BarChart v-if="isChartReady && selectedSort?.lineChart === 0" :data="chart?.lineChart?.data7Days" :sortIndex="selectedSort?.lineChart"/>
+                                <BarChart v-if="isChartReady && selectedSort?.barChart === 0" :data="chart?.barChart?.data7Days" :sortIndex="selectedSort?.barChart"/>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,9 @@
                         </div>
                         <div class="doughnut-chart" style="height:100%">
                             <div>
-                                <DoughnutChart v-if="isChartReady && selectedSort?.lineChart === 0" :data="chart?.lineChart?.data7Days" :sortIndex="selectedSort?.lineChart"/>
+                                <DoughnutChart v-if="isChartReady && selectedSort?.doughnutChart === 0" :data="chart?.doughnutChart?.data7Days" :sortIndex="selectedSort?.doughnutChart"/>
+                                <DoughnutChart v-if="isChartReady && selectedSort?.doughnutChart === 1" :data="chart?.doughnutChart?.data30Days" :sortIndex="selectedSort?.doughnutChart"/>
+                                <DoughnutChart v-if="isChartReady && selectedSort?.doughnutChart === 2" :data="chart?.doughnutChart?.data12Months" :sortIndex="selectedSort?.doughnutChart"/>
                             </div>
                         </div>
                     </div>

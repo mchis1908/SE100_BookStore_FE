@@ -172,7 +172,8 @@ export default class SellingBooks extends Vue {
     {
       const res = await this.$store.dispatch(MutationTypes.GET_ALL_VOUCHERS, {
         level: this.selectCustomer?.user?.level,
-        customer_id: this.selectCustomer?._id
+        customer_id: this.selectCustomer?._id,
+        canGetLowerLevel: true,
       });
       if (res.status===200) {
         this.vouchers = await res.data.data;
@@ -186,10 +187,12 @@ export default class SellingBooks extends Vue {
       const invoiceDetailValue = {"book": item?._id, "quantity": this.quantity[index]};
       detailBooks[index] = invoiceDetailValue;
     });
+    let voucher:any=[]
+    if(this.selectVoucher?._id) voucher.push(this.selectVoucher?._id)
     const payload={
-      vouchers: [this.selectVoucher?._id],
+      vouchers: voucher,
       customer: this.selectCustomer?._id,
-      total: this.subtotal- (this.selectVoucher?.discountValue * this.subtotal),
+      total: this.total,
       note: "",
       invoiceDetails: detailBooks
     }

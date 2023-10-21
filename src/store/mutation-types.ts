@@ -30,4 +30,7 @@ export class MutationTypes {
   public static GET_UPCOMING_EVENTS = 'GET_UPCOMING_EVENTS';
   public static UPLOAD_IMAGE = 'UPLOAD_IMAGE';
   public static CREATE_INVOICE = 'CREATE_INVOICE';
+  public static GET_DATA_SOLD_BOOKS = 'GET_DATA_SOLD_BOOKS';
+  public static GET_DATA_REVENUE = 'GET_DATA_REVENUE';
+  public static GET_TOP10_SELLING_BOOKS = 'GET_TOP10_SELLING_BOOKS';
 }
