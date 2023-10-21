@@ -46,7 +46,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/api/user", payload);
+    const response = await sendGetOnce("/api/user");
     if (response) {
       return response;
     } else {

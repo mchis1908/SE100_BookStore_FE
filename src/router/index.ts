@@ -23,15 +23,8 @@ import Home from '@/views/home/home.vue'
 import store from "@/store";
 import { MutationTypes } from "@/store/mutation-types";
 const getUserData = async () => {
-  const sessionTokens = JSON.parse(localStorage.getItem("sessionTokens")!);
-  if (!sessionTokens) return;
-  const subject_id = sessionTokens;
-  const payload = {
-    subject_id,
-  };
   const res = await store.dispatch(
-    MutationTypes.GET_CURRENT_USER,
-    payload
+    MutationTypes.GET_CURRENT_USER,{}
   );
   if (!res) return;
   if (res.status === 200) {
@@ -222,20 +215,35 @@ router.beforeEach(async (to, from, next) => {
     userData = store.state.userData;
 
     if (userData?.data?.role==='customer') {
-      if (['/', '/home', '/dashboard','/user-management','/book-management','/events','/statistics','/expenses','/invoices','/salary','/revenue','/reports','customers','/selling-books','/refunds','/report-problems','/pre-order'].includes(to.path)) {
+      if (['/dashboard','/user-management','/book-management','/events','/statistics','/expenses','/invoices','/salary','/revenue','/reports','customers','/selling-books','/refunds','/report-problems','/pre-order'].includes(to.path)) {
         next({ path: "/customer-books" });
         return;
       } 
     }else if (userData?.data?.role==='admin') {
-      if (['/', '/home', '/customer-books', '/customer-invoices','/customer-vouchers', 'customers','/selling-books','/refunds','/report-problems','/pre-order'].includes(to.path)) {
+      if (['/customer-books', '/customer-invoices','/customer-vouchers', 'customers','/selling-books','/refunds','/report-problems','/pre-order'].includes(to.path)) {
         next({ path: "/dashboard" });
         return;
       } 
     } else if (userData?.data?.role==='employee'){
-      if (['/', '/dashboard', '/home', '/customer-books', '/customer-invoices','/customer-vouchers','/', '/home', '/dashboard','/user-management','/events','/statistics','/expenses','/invoices','/salary','/revenue','/reports'].includes(to.path)) {
+      if (['/dashboard', '/customer-books', '/customer-invoices','/customer-vouchers','/user-management','/events','/statistics','/expenses','/invoices','/salary','/revenue','/reports'].includes(to.path)) {
         next({ path: "/selling-books" });
         return;
       } 
+    }
+  } else{
+    await getUserData();
+    let userData:any = store.state.userData;
+    if(to.path==='/login'|| to.path==='/'){
+      if (userData?.data?.role==='customer') {
+        next({ path: "/customer-books" });
+        return;
+      }else if (userData?.data?.role==='admin') {
+        next({ path: "/dashboard" });
+        return;
+      } else if (userData?.data?.role==='employee'){
+        next({ path: "/selling-books" });
+        return;
+      }
     }
   }
   next();
