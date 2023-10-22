@@ -206,3 +206,32 @@ p {
 i{
     line-height: 0;
 }
+
+.tooltip {
+    padding: 0;
+  }
+  
+  .tooltip-inner {
+    font-family: Poppins;
+    color: #fff;
+    background-color: #065471 !important;
+    filter: drop-shadow(4px 8px 32px rgba(0, 0, 0, 0.08)) !important;
+    border-radius: 8px !important;
+    padding: 10px !important;
+  }
+  
+  .bs-tooltip-start .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^=left] .tooltip-arrow::before {
+    border-left-color: #065471 !important;
+  }
+  
+  .bs-tooltip-start .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow::before {
+    border-bottom-color: #065471 !important;
+  }
+  
+  .bs-tooltip-start .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before {
+    border-top-color: #065471 !important;
+  }
+  
+  .bs-tooltip-start .tooltip-arrow::before, .bs-tooltip-auto[data-popper-placement^=right] .tooltip-arrow::before {
+    border-right-color: #065471 !important;
+  }
