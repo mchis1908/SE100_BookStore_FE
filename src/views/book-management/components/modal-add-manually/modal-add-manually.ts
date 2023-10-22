@@ -51,12 +51,12 @@ export default class ModalAddManually extends Vue {
                     if (resImage.status === 200) {
                         this.book["image"] = await resImage.data.image
                         let res = await this.$store.dispatch(MutationTypes.CREATE_A_BOOK, this.book)
-                        // if (res.status === 201) {
-                        //     toast.success(res.data.message)
-                        //     window.location.reload()
-                        // } else {
-                        //     toast.error(res.data.message)
-                        // }
+                        if (res.status === 201) {
+                            toast.success(res.data.message)
+                            window.location.reload()
+                        } else {
+                            toast.error(res.data.message)
+                        }
 
 
                         console.log("res",res)

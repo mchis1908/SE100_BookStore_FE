@@ -87,6 +87,7 @@ export default class ModalDetailsBook extends Vue {
 
     public toggleModalCategories(event: any) {
         this.isShowModalCategories = !this.isShowModalCategories
+        console.log("abc")
     }
 
     public async fetchCategories() {

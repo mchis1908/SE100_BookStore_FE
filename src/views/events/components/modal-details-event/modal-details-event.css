@@ -1,0 +1,59 @@
+.modal-content {
+    min-width: 600px;
+    border-radius: 16px;
+}
+
+.modal-header {
+    border: none;
+}
+
+.book-item {
+    outline: 1px solid #065471;
+    padding: 5px 10px;
+    margin-bottom: 2rem;
+    border-radius: 16px;
+    gap: 5px;
+}
+
+
+.book-input {
+    position: relative;
+}
+
+.book-search-container {
+    position: absolute;
+    width: 100%;
+    padding: 5px 10px;
+    margin-top: 10px;
+    background-color: #fff;
+    border-radius: 8px !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px 0;
+    overflow-y: scroll;
+    top: 100%;
+    z-index: 2;
+}
+
+.book-list-item {
+    transition: all 0.3s ease-in-out;
+    padding: 5px 10px;
+}
+
+.book-list-item:last-child {
+    margin-bottom: 0 !important;
+}
+
+.book-list-item:hover {
+    background-color: #065471;
+    color: #fff;
+}
+
+.selected-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 16px;
+    outline: 1px solid #065471;
+    padding: 5px;
+}

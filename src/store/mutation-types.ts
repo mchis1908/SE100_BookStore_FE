@@ -28,6 +28,10 @@ export class MutationTypes {
   public static ADD_EXPENSE = 'ADD_EXPENSE';
   public static UPDATE_STATUS_EXPENSE = 'UPDATE_STATUS_EXPENSE';
   public static GET_UPCOMING_EVENTS = 'GET_UPCOMING_EVENTS';
+  public static GET_CURRENT_EVENTS = 'GET_CURRENT_EVENTS';
   public static UPLOAD_IMAGE = 'UPLOAD_IMAGE';
   public static CREATE_INVOICE = 'CREATE_INVOICE';
+  public static GET_DETAILS_EVENT = 'GET_DETAILS_EVENT';
+  public static CREATE_EVENT = 'CREATE_EVENT';
+  public static UPDATE_EVENT = 'UPDATE_EVENT';
 }
