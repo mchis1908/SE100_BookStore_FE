@@ -163,20 +163,6 @@ const actions = {
     }
   },
 
-  [MutationTypes.GET_CUSTOMER_VOUCHERS] : async (
-    { commit }: { commit: any },
-    payload: any
-  ) => {
-    payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/api/customer/voucher", payload);
-
-    if (response) {
-      return response
-    } else {
-      return null
-    }
-  },
-
   [MutationTypes.UPDATE_A_BOOK] : async (
     { commit }: { commit: any },
     payload: any

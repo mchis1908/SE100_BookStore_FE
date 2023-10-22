@@ -26,9 +26,6 @@
                             <div class="col text-title-1">
                                 Invoice ID
                             </div>
-                            <!-- <div class="col text-title-1">
-                                Customer
-                            </div> -->
                             <div class="col text-title-1">
                                 Cashier
                             </div>
@@ -43,9 +40,6 @@
                             <p class="col">
                                 {{ item?._id }}
                             </p>
-                            <!-- <p class="col">
-                                {{ item?.customer?.name }}
-                            </p> -->
                             <p class="col">
                                 {{ item?.employee?.name }}
                             </p>

@@ -40,11 +40,6 @@ export default class Invoices extends Vue {
   }
   public userData:any=null;
 
-  // created() {
-  //   this.userData = this.$store.state.userData;
-  //   console.log(this.userData?.data._id);
-  // }
-
   public async getData(){
     this.userData = this.$store.state.userData;
 
@@ -55,7 +50,6 @@ export default class Invoices extends Vue {
       date: this.date?.slice(0,10),
       search_q: this.searchQuery,
     };
-    console.log({payload});
 
     let res = await this.$store.dispatch(
       MutationTypes.GET_INVOICES_BY_ID,

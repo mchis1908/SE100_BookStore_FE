@@ -23,12 +23,8 @@ import { MutationTypes } from "@/store/mutation-types";
 })
 export default class Events extends Vue {
   public vouchers: any = [];
-  public searchLevel: any = ''
-  public isFilteringVoucher: boolean = false;
+  public currentPage:any=1;
   public async beforeMount() {
-    this.userData = this.$store.state.userData;
-    this.searchLevel = this.userData?.data.level;
-    console.log("searchLevel in beforeMount:", this.searchLevel);
     this.fetchData()
   }
 
@@ -36,14 +32,18 @@ export default class Events extends Vue {
 
 
   public async fetchData() {
-    console.log("searchLevel in fetchData:", this.searchLevel);
-    this.isFilteringVoucher = true;
-    const response = await this.$store.dispatch(MutationTypes.GET_CUSTOMER_VOUCHERS, {
-      level: this.searchLevel,
-    });
+    this.userData = this.$store.state.userData;
+
+    let payload = { 
+      customer_id:this.userData?.data._id,
+      page: this.currentPage,
+      limit: 10,
+      canGetLowerLevel:true,
+      level: this.userData?.data.user.level,
+    };
+    const response = await this.$store.dispatch(MutationTypes.GET_ALL_VOUCHERS, payload);
     if (response) {
       this.vouchers = await response.data.data;
-      this.isFilteringVoucher = false;
     }
   }
 }
