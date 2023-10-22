@@ -2,12 +2,14 @@ import { Vue, Options } from 'vue-class-component'
 
 @Options({
     props: {
-        eventData: Object
+        eventData: Object,
+        isUpcoming: Boolean
     }, 
 })
 
 export default class EventItem extends Vue {
     public eventData!: any
+    public isUpcoming!: boolean
 
     public formatDate(dateString: string) {
         const date: any = new Date(dateString);

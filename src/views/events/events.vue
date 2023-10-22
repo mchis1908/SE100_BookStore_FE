@@ -71,20 +71,22 @@
               >Search:</label
             >
             <input
+              v-model="searchEvent"
               name="search-input"
               class="search-input input"
               placeholder="Enter your input"
             />
           </div>
+
           <div class="button-add-book-container">
             <button class="btn-add" @click="handleAddNewEvent">
               <i class="bi bi-plus-lg"></i> Add new event
             </button>
           </div>
         </div>
-            <div class="d-flex flex-wrap mt-3" style="gap: 20px;">
+            <div class="d-flex flex-wrap mt-4" style="gap: 30px;">
               <Loading v-if="isLoading"/>
-              <EventItem v-else v-for="(item, index) in events" :key="index" :eventData="item"/>
+              <EventItem @click="handleDetailsEvent(item._id)" v-else v-for="(item, index) in events" :key="index" :eventData="item" :isUpcoming="(index === 0 && currentEvent) ? false : true"/>
             </div>
           </div>
           <div
@@ -163,4 +165,5 @@
 
   <ModalAddVoucher ref="add-new-voucher-component" />
   <ModalAddEvent ref="add-new-event-component" />
+  <ModalDetailsEvent ref="details-event-component" :item="selectedEvent"/>
 </template>

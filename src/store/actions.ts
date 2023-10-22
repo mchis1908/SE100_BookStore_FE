@@ -507,6 +507,58 @@ const actions = {
     }
   },
 
+  [MutationTypes.GET_DETAILS_EVENT] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/manage/bookstore/event/${payload.eventId}`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.CREATE_EVENT] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/api/manage/bookstore/event`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.GET_CURRENT_EVENTS] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/manage/bookstore/event/current`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.UPDATE_EVENT] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPutOnce(`/api/manage/bookstore/event/${payload._id}`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+  
   [MutationTypes.GET_SALARY] : async (
     { commit }: { commit: any },
     payload: any
@@ -545,7 +597,6 @@ const actions = {
       return null
     }
   },
-  
 };
 
 export default actions;
