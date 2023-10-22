@@ -34,4 +34,7 @@ export class MutationTypes {
   public static GET_DATA_SOLD_BOOKS = 'GET_DATA_SOLD_BOOKS';
   public static GET_DATA_REVENUE = 'GET_DATA_REVENUE';
   public static GET_TOP10_SELLING_BOOKS = 'GET_TOP10_SELLING_BOOKS';
+  public static GET_REVENUE_SELLING_BOOKS = 'GET_REVENUE_SELLING_BOOKS';
+  public static GET_SALARY = 'GET_SALARY';
+  public static GET_REVENUE_EXPENSES = 'GET_REVENUE_EXPENSES';
 }

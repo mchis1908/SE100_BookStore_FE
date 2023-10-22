@@ -506,6 +506,45 @@ const actions = {
       return null
     }
   },
+
+  [MutationTypes.GET_SALARY] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/manage/aggregate/salary`,payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+  
+  [MutationTypes.GET_REVENUE_EXPENSES] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/manage/aggregate/expense`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+  
+  [MutationTypes.GET_REVENUE_SELLING_BOOKS] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/manage/aggregate/selling`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
   
 };
 
