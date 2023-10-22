@@ -26,14 +26,19 @@
                                 <tr class="text-start">
                                     <th scope="col">&nbsp;</th>
                                     <th scope="col">Value</th>
-                                    <th scope="col">Value</th>
+                                    <th scope="col">Status</th>
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
                                 <tr class="book-row text-start" v-for="(item, index) in revenue" :key="index">
                                     <th scope="row">{{ item?.title }}</th>
                                     <td>{{ item?.cost }}</td>
-                                    <td>{{ item?.cost }}</td>
+                                    <td class="d-flex flex-row align-items-center" style="gap:4px">
+                                        <div style="color:#169C8A">30%</div>
+                                        <!-- <img v-if="_item?.status" :src="require(`@/assets/chat-insight/positive/${(_item?.status)}Arrow.svg`)"/> -->
+                                        <img :src="require(`@/assets/revenue/upArrow.svg`)"/>
+                                        <p style="color:#BABCC2">Since last month</p>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

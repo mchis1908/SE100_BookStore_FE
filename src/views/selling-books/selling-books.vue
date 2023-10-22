@@ -26,10 +26,19 @@
                                 <p style="font-weight:600">Author:</p>
                                 <p>{{item?.author}}</p>
                             </div>
-                            <div class="book-item-text">
-                                <p style="font-weight:600">Price:</p>
-                                <p>{{item?.salesPrice}}</p>
+                            <div class="d-flex flex-row justify-content-between" style="width:100%">
+                                <div :class="[item?.discountValue>0? 'book-item-text-line':'', 'book-item-text']">
+                                    <p>Price:</p>
+                                    <p>{{item?.salesPrice}}</p>
+                                </div>
+                                <div v-if="item?.discountValue>0" class="book-item-text-sale book-item-text justify-content-end">
+                                    <p>Price:</p>
+                                    <p>{{item?.salesPrice * (1- item?.discountValue)}}</p>
+                                </div>
                             </div>
+                        </div>
+                        <div v-if="item?.discountValue>0" class="sale-container">
+                            <p>{{item?.discountValue * 100 }}% OFF</p>
                         </div>
                         <div class="add-to-cart" @click="handleAddBookByClick(item)">
                             <i class="bi-cart-plus" style="font-size:40px; color:#fff"></i>

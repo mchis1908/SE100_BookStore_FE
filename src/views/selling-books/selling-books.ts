@@ -70,7 +70,8 @@ export default class SellingBooks extends Vue {
   }
 
   public async getBooks(){
-    const payload = { 
+    const payload = {
+      limit:1000,
       search_q: this.searchQuery
     };
     const res = await this.$store.dispatch(

@@ -140,7 +140,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/api/book", payload);
+    const response = await sendGetNoToken("/api/book", payload);
 
     if (response) {
       return response
@@ -280,7 +280,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/api/manage/book/category", payload);
+    const response = await sendGetNoToken("/api/manage/book/category", payload);
 
     if (response) {
       return response
@@ -421,7 +421,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce(`/api/manage/bookstore/event/upcoming`, payload);
+    const response = await sendGetNoToken(`/api/manage/bookstore/event/upcoming`, payload);
     if (response) {
       return response
     } else {

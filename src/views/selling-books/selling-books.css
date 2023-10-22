@@ -19,6 +19,24 @@
     overflow: hidden;
     height: 243px;
     cursor: pointer;
+    position: relative;
+    overflow:hidden;
+}
+  
+.book-item-text{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    text-align: start;
+    width:100%;
+}
+
+.book-item-text-sale{
+    color:red
+}
+
+.book-item-text-line{
+    text-decoration: line-through;
 }
 
 .add-to-cart{
@@ -96,4 +114,19 @@
     max-height: 180px;
     overflow: auto;
     width: calc( 100% - 136px );
+}
+
+.sale-container {
+    width: 40px;
+    height: 100px;
+    background-color: #065471;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top:-30px;
+    right:0;
+    transform: rotate(-45deg);
+    color:#FFF
 }
