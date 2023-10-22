@@ -5,16 +5,19 @@ import LineChart from './components/line-chart/line-chart.vue'
 import BarChart from './components/bar-chart/bar-chart.vue'
 import DoughnutChart from './components/doughnut-chart/doughnut-chart.vue'
 import { MutationTypes } from "@/store/mutation-types";
+import Loading from "@/components/loading/loading.vue";
 @Options({
   components: {
     MenuDashBoard,
     Header,
     DoughnutChart,
     LineChart,
-    BarChart
+    BarChart,
+    Loading
   },
 })
 export default class Statistics extends Vue {
+  public isLoading: boolean = false;
   public isChartReady: any = false
   public showModalSort: any = {
     lineChart: false,
@@ -58,12 +61,12 @@ export default class Statistics extends Vue {
   }
 
   public beforeMount(){
-    this.userData = this.$store.state.userData
     this.getData();
-    this.handleFilter('', '');
   }
 
   public async getData(){
+    this.isLoading = true;
+    this.userData = this.$store.state.userData
     this.sortList = {
       lineChart:[
         "Last 7 days",
@@ -82,9 +85,11 @@ export default class Statistics extends Vue {
       ],
     }
     await this.getDataLineChart();
-    // await this.getDataBarChart();
+    await this.getDataBarChart();
     await this.getDataDoughnutChart();
     this.isChartReady = true;
+    this.handleFilter('', '');
+    this.isLoading = false;
   }
 
   public unmounted() {
@@ -156,21 +161,24 @@ export default class Statistics extends Vue {
   }
 
   public async getDataBarChart(){
-    let sort7days = await this.$store.dispatch(MutationTypes.GET_DATA_REVENUE,
+    let sort7days = await this.$store.dispatch(MutationTypes.GET_DATA_SOLD_BOOKS,
     {
       "lastNDays": 7,
+      "byCount": true,
     })
     await this.dataChart.barChart.push(sort7days.data.data)
 
-    let sort30days = await this.$store.dispatch(MutationTypes.GET_DATA_REVENUE,
+    let sort30days = await this.$store.dispatch(MutationTypes.GET_DATA_SOLD_BOOKS,
     {
       "lastNDays": 30,
+      "byCount": true,
     })
     await this.dataChart.barChart.push(sort30days.data.data)
 
-    let sort12months = await this.$store.dispatch(MutationTypes.GET_DATA_REVENUE,
+    let sort12months = await this.$store.dispatch(MutationTypes.GET_DATA_SOLD_BOOKS,
     {
       "lastNMonths": 12,
+      "byCount": true,
     })
     await this.dataChart.barChart.push(sort12months.data.data)
     this.chart.barChart.data7Days = this.processDataForLineCharts(this.dataChart.barChart[0], '7days')

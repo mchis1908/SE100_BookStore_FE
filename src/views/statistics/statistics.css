@@ -6,7 +6,7 @@
 
 .line-chart {
     display: flex;
-    padding: 24px;
+    padding: 12px 24px;
     flex-direction: column;
     align-items: start;
     justify-content: center;
@@ -18,7 +18,7 @@
 
 .doughnut-chart {
     display: flex;
-    padding: 24px;
+    padding: 12px 24px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -29,9 +29,9 @@
 
 .bar-chart {
     display: flex;
-    padding: 24px;
+    padding: 12px 24px;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     background: var(--neutral-09-day, #FFF);
     overflow-x: scroll;
@@ -39,6 +39,16 @@
 }
 
 .line-chart::-webkit-scrollbar{
+    display: block;
+    height: 5px;
+}
+
+.bar-chart::-webkit-scrollbar{
+    display: block;
+    height: 5px;
+}
+
+.doughnut-chart::-webkit-scrollbar{
     display: block;
     height: 5px;
 }

@@ -7,10 +7,11 @@
         <Header/>
         <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
             <MenuDashBoard class="col-2"/>
-            <div class="col-10 d-flex flex-column" style="padding:24px; gap:24px;overflow-y: scroll; overflow-x: hidden; z-index:1" v-motion-slide-left>
+            <Loading v-if="isLoading" />
+            <div v-else class="col-10 d-flex flex-column" style="padding:24px; gap:24px;overflow-y: scroll; overflow-x: hidden; z-index:1" v-motion-slide-left>
                 <div class="line-chart-container">
                     <div class="line-header-container">
-                        <p style="font-weight: 500; font-size: 16px; line-height: 100%">The Number Of Books Sold</p>
+                        <p style="font-weight: 500; font-size: 16px; line-height: 100%">Revenue</p>
                         <div class="filter" @click="showModalSort.lineChart = !showModalSort.lineChart">
                             <img src="@/assets/filter/calendar.svg"/>
                             <p style="font-weight: 500; font-size: 16px; line-height: 100%; width: 100%">{{ sortList.lineChart[selectedSort.lineChart] }}</p>
@@ -33,7 +34,7 @@
                 <div class="d-flex flex-row" style="gap:16px; height:100%">
                     <div class="col-8 line-chart-container">
                         <div class="line-header-container">
-                            <p style="font-weight: 500; font-size: 16px; line-height: 100%">Revenue</p>
+                            <p style="font-weight: 500; font-size: 16px; line-height: 100%">The Number Of Books Sold</p>
                             <div class="filter" @click="showModalSort.barChart = !showModalSort.barChart">
                                 <img src="@/assets/filter/calendar.svg"/>
                                 <p style="font-weight: 500; font-size: 16px; line-height: 100%; width: 100%">{{ sortList.barChart[selectedSort.barChart] }}</p>
@@ -48,6 +49,8 @@
                         <div class="bar-chart" style="height:100%">
                             <div>
                                 <BarChart v-if="isChartReady && selectedSort?.barChart === 0" :data="chart?.barChart?.data7Days" :sortIndex="selectedSort?.barChart"/>
+                                <BarChart v-if="isChartReady && selectedSort?.barChart === 1" :data="chart?.barChart?.data30Days" :sortIndex="selectedSort?.barChart"/>
+                                <BarChart v-if="isChartReady && selectedSort?.barChart === 2" :data="chart?.barChart?.data12Months" :sortIndex="selectedSort?.barChart"/>
                             </div>
                         </div>
                     </div>

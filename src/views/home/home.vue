@@ -14,6 +14,7 @@
                             <div class="event-container">
                                 <img v-if="item?.image" :src="item?.image" style="width:100%; height: 250px; object-fit:contain; border-radius: 16px;">
                                 <img v-else src="@/assets/event/banner.png" style="width:100%; height: 250px; object-fit:contain; border-radius: 16px;">
+                                <p style="font-weight:600; font-size:20px; color:#065471">{{formatDate(item?.startAt)}}-{{formatDate(item?.endAt)}}</p>
                             </div>
                         </SplideSlide>
                     </Splide>

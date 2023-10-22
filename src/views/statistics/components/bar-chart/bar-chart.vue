@@ -1,5 +1,7 @@
 <template>
-    <Bar width="750" ref="bar" id="bar-chart" :options="chartOptions" :data="chartData" />
+    <Bar v-if="sortIndex === 0"  width="750" ref="bar" id="bar-chart" :options="chartOptions" :data="chartData" />
+    <Bar v-if="sortIndex === 1"  width="3000" height="270" ref="bar" id="bar-chart" :options="chartOptions" :data="chartData" />
+    <Bar v-if="sortIndex === 2"  width="750" ref="bar" id="bar-chart" :options="chartOptions" :data="chartData" />
 </template>
 
 <script>
@@ -22,11 +24,11 @@ export default {
   data() {
     return {
       chartData: {
-        labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs', 'EmberJs', 'ReactJs', 'AngularJs', 'EmberJs', 'ReactJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+        labels: this.data.label,
         datasets: [
           {
             backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-            data: [40, 20, 80, 10, 20, 80, 10, 20, 80, 10, 20, 80]
+            data: this.data.data
           }
         ]
       },

@@ -4,16 +4,19 @@ import Header from '@/components/header/header.vue'
 import { MutationTypes } from "@/store/mutation-types";
 import Modal from "@/components/modal/modal.vue";
 import LineChart from './line-chart/line-chart.vue'
+import Loading from "@/components/loading/loading.vue";
 
 @Options({
   components: {
     MenuDashBoard,
     Header, 
     Modal,
-    LineChart
+    LineChart,
+    Loading
   },
 })
 export default class DashBoard extends Vue {
+  public isLoading: boolean = false;
   public list:any={
     customers:null,
     books:null,
@@ -22,6 +25,7 @@ export default class DashBoard extends Vue {
   public isChartReady: any = false
   public userData :any = null
   public chartData :any = []
+  public overViews :any = []
   public selectedSort: any = {
     lineChart: 0,
   };
@@ -35,13 +39,21 @@ export default class DashBoard extends Vue {
   public beforeMount(){
     this.getData();
   }
+    
+  public mounted(){
+
+  }
 
   public async getData(){
+    this.isLoading = true;
     this.userData = this.$store.state.userData
     await this.getDataLineChart();
     await this.getTop10Customer();
     await this.getLast10Invoices();
+    await this.getTop10Books();
+    await this.getDataRevenue();
     this.isChartReady = true;
+    this.isLoading = false;
   }
 
   public async getDataLineChart(){
@@ -98,6 +110,14 @@ export default class DashBoard extends Vue {
     };
   }
 
+  public async getTop10Books(){
+    const res = await this.$store.dispatch(
+      MutationTypes.GET_TOP_10_BOOK);
+    if(res.status ===200){
+      this.list.books= res.data.data
+    }
+  }
+
   public async getTop10Customer(){
     const payload = { 
       page: 1,
@@ -125,7 +145,19 @@ export default class DashBoard extends Vue {
       this.list.invoices= res.data.data
     }
   }
-  
-  public mounted(){
+
+  public async getDataRevenue(){
+    let payload = { 
+      lastNDays: 7,
+    };
+    let res = await this.$store.dispatch(
+      MutationTypes.GET_DATA_REVENUE,
+      payload
+    );
+    if(res.status ===200){
+      this.overViews= res.data.data
+      delete this.overViews.total;
+    }
   }
+
 }

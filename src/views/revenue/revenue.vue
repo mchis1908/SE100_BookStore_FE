@@ -12,32 +12,36 @@
                     <div class="d-flex flex-row justify-content-end align-items-center" style="width:100%; gap:16px">
                         <div class="d-flex flex-row justify-content-start" style="gap:16px; width:220px">
                             <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Filter:</div>
-                            <input class="search-input input" type="month" placeholder="Enter your input" style="width:150px"/>
+                            <input class="search-input input" type="month" placeholder="Enter your input" style="width:150px" v-model="time"/>
                         </div>
                         <div class="button-solid-small d-flex flex-row justify-content-start align-items-center" style="border-radius:8px; gap:8px; height:30px;">
                             <i class="bi-printer-fill"></i>
                             <p>Print Report </p>
                         </div>
                     </div>
-                    <p style="font-size:32px; font-weight:600; color: rgb(6, 84, 113); margin-top:20px">August 2023 Revenue Report</p>
-                    <div class="d-flex flex-column" style="gap:12px; padding: 0 36px; width:90%" v-motion-slide-left>
+                    <p style="font-size:32px; font-weight:600; color: rgb(6, 84, 113); margin-top:20px">{{formatDate(time)}} Revenue Report </p>
+                    <Loading v-if="isLoading" />
+                    <div v-else class="d-flex flex-column" style="gap:12px; padding: 0 36px; width:90%" v-motion-slide-left>
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr class="text-start">
-                                    <th scope="col">&nbsp;</th>
-                                    <th scope="col">Value</th>
-                                    <th scope="col">Status</th>
+                                    <th>&nbsp;</th>
+                                    <th>Value</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
-                                <tr class="book-row text-start" v-for="(item, index) in revenue" :key="index">
-                                    <th scope="row">{{ titleRevenue[index] }}</th>
-                                    <td>{{ item?.currTotalSelling }}</td>
-                                    <td class="d-flex flex-row align-items-center" style="gap:4px">
-                                        <div style="color:#169C8A">{{ (item?.currTotalSelling / (item?.prevTotalSalary ?? 1))  *100  }}%</div>
-                                        <!-- <img v-if="_item?.status" :src="require(`@/assets/chat-insight/positive/${(_item?.status)}Arrow.svg`)"/> -->
-                                        <img :src="require(`@/assets/revenue/upArrow.svg`)"/>
-                                        <p style="color:#BABCC2">Since last month</p>
+                                <tr class="text-start" v-for="(item, index) in revenue" :key="index">
+                                    <th>{{ titleRevenue[index] }}</th>
+                                    <td>{{ item?.current }}</td>
+                                    <td>
+                                        <div class="d-flex flex-row" style="gap:4px">
+                                            <div :style="item?.difference>1 ? 'color:#64C550': 'color:#FF513C'">{{ item?.difference * 100  }}%</div>
+                                            <!-- <img v-if="_item?.status" :src="require(`@/assets/chat-insight/positive/${(_item?.status)}Arrow.svg`)"/> -->
+                                            <img v-if="item?.difference>1" :src="require(`@/assets/revenue/upArrow.svg`)"/>
+                                            <img v-else :src="require(`@/assets/revenue/downArrow.svg`)"/>
+                                            <p style="color:#BABCC2">Since last month</p>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>

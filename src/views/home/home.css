@@ -45,7 +45,10 @@
 }
 
 .event-container{
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   padding:12px;
   border-radius: 16px;
+  gap:12px;
 }

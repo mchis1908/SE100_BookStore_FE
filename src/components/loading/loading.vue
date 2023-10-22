@@ -2,5 +2,7 @@
 <script lang="ts" src="./loading.ts"></script>
 
 <template>
-    <div class="custom-loader"></div>
+    <div class="d-flex justify-content-center align-items-center" style="width:100%">
+        <div class="custom-loader"></div>
+    </div>
 </template>

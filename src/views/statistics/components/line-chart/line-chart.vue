@@ -1,7 +1,7 @@
 <template>
-    <Line v-if="sortIndex === 0" width="1180" height="280" ref="line" id="my-chart-id" :options="chartOptions" :data="chartData" />
-    <Line v-if="sortIndex === 1" width="3000" height="280" ref="line" id="my-chart-id" :options="chartOptions" :data="chartData" />
-    <Line v-if="sortIndex === 2" width="1180" height="280" ref="line" id="my-chart-id" :options="chartOptions" :data="chartData" />
+    <Line v-if="sortIndex === 0" width="1180" height="270" ref="line" id="my-chart-id" :options="chartOptions" :data="chartData" />
+    <Line v-if="sortIndex === 1" width="3000" height="270" ref="line" id="my-chart-id" :options="chartOptions" :data="chartData" />
+    <Line v-if="sortIndex === 2" width="1180" height="270" ref="line" id="my-chart-id" :options="chartOptions" :data="chartData" />
 </template>
 
 <script>

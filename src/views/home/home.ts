@@ -10,7 +10,7 @@ import BookPage from '@/components/book-page/book-page.vue'
   },
 })
 export default class Home extends Vue {
-  public events:any=null;
+  public events:any=[];
   public options:any={
     autoWidth: true,
     gap: "1rem",
@@ -27,10 +27,22 @@ export default class Home extends Vue {
   }
 
   public async getEvents(){
-    const res = await this.$store.dispatch(MutationTypes.GET_UPCOMING_EVENTS, {});
+    let res = await this.$store.dispatch(MutationTypes.GET_UPCOMING_EVENTS);
     if (res?.status===200) {
-      this.events = await res.data.data;
+      this.events = res.data.data;
     }
-    console.log('a',this.events)
+    console.log(this.events)
+    res = await this.$store.dispatch(MutationTypes.GET_CURRENT_EVENTS);
+    if (res?.status===200) {
+      this.events.push(res.data.data);
+    }
+  }
+
+  public formatDate(dateString: string) {
+    const date: any = new Date(dateString);
+    const options: any = { year: 'numeric', month: 'short', day: '2-digit' };
+
+    const formattedDate = date.toLocaleDateString('en-US', options);
+    return formattedDate;
   }
 }

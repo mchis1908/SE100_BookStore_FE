@@ -317,19 +317,19 @@ const actions = {
     }
   },
 
-  // [MutationTypes.GET_TOP_10_BOOK] : async (
-  //   { commit }: { commit: any },
-  //   payload: any
-  // ) => {
-  //   payload = turnOnDevMode(payload);
-  //   const response = await sendGetOnce("/api/manage/customer/top-10", payload);
+  [MutationTypes.GET_TOP_10_BOOK] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce("/api/manage/aggregate/top-10");
 
-  //   if (response) {
-  //     return response
-  //   } else {
-  //     return null
-  //   }
-  // },
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
 
   [MutationTypes.GET_ALL_INVOICES] : async (
     { commit }: { commit: any },
@@ -538,7 +538,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce(`/api/manage/bookstore/event/current`, payload);
+    const response = await sendGetNoToken(`/api/manage/bookstore/event/current`, payload);
     if (response) {
       return response
     } else {
@@ -597,6 +597,7 @@ const actions = {
       return null
     }
   },
+  
 };
 
 export default actions;
