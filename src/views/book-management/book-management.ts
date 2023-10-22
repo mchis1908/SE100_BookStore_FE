@@ -18,12 +18,25 @@ import { MutationTypes } from "@/store/mutation-types";
     searchQuery: {
       handler: function (val: any, oldVal: any) {
           this.fetchBooks()
-      }
+      }, deep: true
     },
     searchQueryCategory: {
       handler: function (val: any, oldVal: any) {
           this.handleSearchCategory()
-      }
+      }, 
+      deep: true
+    },
+    currentPage: {
+      handler: function (val: any, oldVal: any) {
+          this.fetchBooks()
+      },
+      deep: true
+    }, 
+    currentPageCategories: {
+      handler: function (val: any, oldVal: any) {
+          this.handleSearchCategory()
+      },
+      deep: true
     }
   }
 })
@@ -33,6 +46,10 @@ export default class UserManagement extends Vue {
   public bookItem: any = {}
   public searchQuery: string = ''
   public searchQueryCategory: string = ''
+  public totalPages: number = 1
+  public currentPage: number = 1
+  public totalPageCategories: number = 1
+  public currentPageCategories: number = 1
 
   async beforeMount() {
     await this.fetchBooks()
@@ -45,10 +62,12 @@ export default class UserManagement extends Vue {
 
   public async fetchBooks() {
      let res = await this.$store.dispatch(MutationTypes.GET_ALL_BOOKS, {
-      search_q: this.searchQuery
+      search_q: this.searchQuery,
+      page: this.currentPage
     })
 
      this.allBooks = res.data.data
+     this.totalPages = res.data.totalPages
   }
 
   public async fetchCategories() {
@@ -56,6 +75,7 @@ export default class UserManagement extends Vue {
       search_q: this.searchQueryCategory
     })
 
+    this.totalPageCategories = res.data.totalPages
     this.allCategories = res.data.data
   }
 
@@ -64,17 +84,10 @@ export default class UserManagement extends Vue {
     this.bookItem = this.allBooks[index]
   }
 
-  public async handleSearchBook() {
-    let res = await this.$store.dispatch(MutationTypes.GET_ALL_BOOKS, {
-      search_q: this.searchQuery
-    })
-
-    this.allBooks = res.data.data
-  }
-
   public async handleSearchCategory() {
     let res = await this.$store.dispatch(MutationTypes.GET_ALL_CATEGORIES, {
-      search_q: this.searchQueryCategory
+      search_q: this.searchQueryCategory,
+      page: this.currentPageCategories
     })
 
     this.allCategories = res.data.data

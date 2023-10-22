@@ -9,9 +9,9 @@ import Header from '@/components/header/header.vue'
 })
 export default class Invoices extends Vue {
   public revenue:any=[
-    { title: 'Book Sales', cost: 100000},
+    { title: 'Selling Books', cost: 100000},
     { title: 'Employee Salary', cost: 100000},
     { title: 'Money For Problem & Spend', cost: 100000},
-    { title: 'Revenue Total', cost: 100000},
+    { title: 'Total', cost: 100000},
   ]
 }

@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@chenfengyuan/vue-barcode": "^2.0.2",
     "@splidejs/vue-splide": "^0.6.12",
     "@vueuse/motion": "^2.0.0",
     "axios": "^1.5.1",
@@ -15,6 +16,7 @@
     "bootstrap-vue": "^2.23.1",
     "chart.js": "^4.4.0",
     "core-js": "^3.8.3",
+    "jsbarcode": "^3.11.5",
     "read-excel-file": "^5.7.1",
     "vue": "^3.2.13",
     "vue-chartjs": "^5.2.0",

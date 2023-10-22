@@ -10,6 +10,7 @@ import BookPage from '@/components/book-page/book-page.vue'
   },
 })
 export default class Home extends Vue {
+  public events:any=null;
   public options:any={
     autoWidth: true,
     gap: "1rem",
@@ -19,5 +20,17 @@ export default class Home extends Vue {
     perPage : 1,
     arrows: false,
     pagination: false,
+  }
+
+  public async beforeMount() {
+      this.getEvents();
+  }
+
+  public async getEvents(){
+    const res = await this.$store.dispatch(MutationTypes.GET_UPCOMING_EVENTS, {});
+    if (res?.status===200) {
+      this.events = await res.data.data;
+    }
+    console.log('a',this.events)
   }
 }

@@ -25,6 +25,9 @@
     padding: 16px;
     background-color: #fff;
     border-radius: 16px;
+
+    position: relative;
+    overflow:hidden;
 }
   
 .book-item-text{
@@ -33,6 +36,14 @@
     gap: 4px;
     text-align: start;
     width:100%;
+}
+
+.book-item-text-sale{
+    color:red
+}
+
+.book-item-text-line{
+    text-decoration: line-through;
 }
   
 .text-bolder{
@@ -79,4 +90,19 @@
   
 .sort-item:hover {
     color: #065471
+}
+
+.sale-container {
+    width: 40px;
+    height: 100px;
+    background-color: #065471;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top:-30px;
+    right:0;
+    transform: rotate(-45deg);
+    color:#FFF
 }

@@ -88,3 +88,30 @@
 .button-delete:hover {
     color: #DD3B4B;
 }
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.pagination-item {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #065471;
+    transition: all 0.3s ease-in-out;
+}
+
+.pagination-item:hover {
+    background-color: #065471;
+    color: #fff;
+}

@@ -113,9 +113,7 @@ export default {
         scales: {
           y: {
             beginAtZero: true,
-            max:5,
             ticks: {
-              stepSize: 1,
               font: {
                 family: "Poppins",
                 size: 14

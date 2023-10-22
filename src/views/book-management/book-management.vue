@@ -20,7 +20,7 @@
                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Categories</button>
                 </li>
             </ul>
-            <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px; height: 580px;">
+            <div class="tab-content" id="pills-tabContent" style="background:#fff; border-radius: 16px;">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" style="padding: 12px 24px; gap:12px; min-height: 100%;">
                     <div class="w-100 d-flex justify-content-between align-items-center mb-5">
                         <div class="col-5 d-flex flex-row" style="gap:16px">
@@ -46,8 +46,8 @@
                             <tr class="book-row text-start" v-for="(item, index) in allBooks" :key="index" @click="handleClickBookRow(index)">
                                 <th scope="row">{{ index + 1 }}</th>
                                 <td>{{ item["name"] }}</td>
-                                <td v-if="item['categories'].length > 0" :key="index">
-                                    <p v-for="(category, indexCategory) in item['categories']">{{ category.name }}</p>
+                                <td v-if="item['categories'].length > 0">
+                                    <p v-for="(category, indexCategory) in item['categories']" :key="indexCategory">{{ item["categories"][indexCategory].name }}</p>
                                 </td>
                                 <td v-else></td>
                                 <td>{{ item["author"] }}</td>
@@ -57,6 +57,12 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="pagination-container">
+                        <div class="pagination-item" v-for="(item, index) in totalPages" :key="index" @click="currentPage = index + 1" :style="index + 1 === currentPage ? 'background-color: #065471; outline: none; color: #fff' : ''">
+                            {{ index + 1  }}
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" style="padding: 12px 24px;gap:12px">
                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -85,6 +91,13 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <div class="pagination-container">
+                        <div class="pagination-item" v-for="(item, index) in totalPageCategories" :key="index" @click="currentPageCategories = index + 1" :style="index + 1 === currentPage ? 'background-color: #065471; outline: none; color: #fff' : ''">
+                            {{ index + 1  }}
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>

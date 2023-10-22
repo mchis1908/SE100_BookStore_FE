@@ -1,0 +1,11 @@
+.modal-content {
+    border-radius: 16px;
+}
+
+.modal-header {
+    border: none;
+}
+
+input[type="file"] {
+    display: block;
+}

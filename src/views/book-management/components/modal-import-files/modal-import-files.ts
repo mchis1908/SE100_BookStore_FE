@@ -34,8 +34,7 @@ export default class ModalImportFiles extends Vue {
         })
 
         const bookList = {
-            books: arrayOfObjects,
-            supplier: this.$store.state.userData.data._id
+            books: arrayOfObjects.slice(1),
         }
         console.log("fileData", bookList)
 

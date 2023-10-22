@@ -41,37 +41,61 @@ export default class DashBoard extends Vue {
     await this.getDataLineChart();
     await this.getTop10Customer();
     await this.getLast10Invoices();
-    console.log(this.list.customers)
     this.isChartReady = true;
   }
 
   public async getDataLineChart(){
-    // let sort7days = await this.$store.dispatch(MutationTypes.GET_LINE_CHART_POSITIVE,
-    //   {
-    //     "user_id": this.learnerId,
-    //     "day": 7,
-    //   })
-    // await this.lineChartData.push(sort7days.data)
+    let sort7days = await this.$store.dispatch(MutationTypes.GET_DATA_SOLD_BOOKS,
+    {
+      "lastNDays": 7,
+    })
+    await this.chartData.push(sort7days.data.data)
+    this.chart.lineChart.data7Days = this.processDataForLineCharts(this.chartData[0], '7days')
+  }
 
-    // let sort30days = await this.$store.dispatch(MutationTypes.GET_LINE_CHART_POSITIVE,
-    //   {
-    //     "user_id": this.learnerId,
-    //     "day": 30,
-    //   })
-    //   await this.lineChartData.push(sort30days.data)
+  public processDataForLineCharts(rawData: any[], duration: string) {
+    const currentDate = new Date();
+    const monthScores: { [key: string]: number } = {};
 
-    // let sort12months = await this.$store.dispatch(MutationTypes.GET_LINE_CHART_POSITIVE_MONTH,
-    //   {
-    //     "user_id": this.learnerId,
-    //   })
-    // await this.lineChartData.push(sort12months.data)
-    // this.data7Days = this.processDataForCharts(this.lineChartData[0], '7days')
-    // this.data30Days = this.processDataForCharts(this.lineChartData[1], '30days')
-    // this.data12Months = this.processDataForCharts(this.lineChartData[2], '12months')
-    this.chart.lineChart.data7Days = {
-      label: ['1', '2', '3', '4', '5', '6', '7'],
-      data: [1,2,3,4,5,5,3],
+    if (Array.isArray(rawData)) {
+      rawData.forEach((item) => {
+        const date = new Date(item.time);
+  
+        if (duration === '12months') {
+          const yearMonth = date.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit' });
+          monthScores[yearMonth] = (monthScores[yearMonth] || 0) + item.value;
+        } else {
+          const dayMonth = date.toLocaleDateString('en-US', { day: '2-digit', month: 'short' });
+          const label = `${dayMonth}`;
+          monthScores[label] = (monthScores[label] || 0) + item.value;
+        }
+      });
+    } else {
+      console.error('rawData is not an array.');
     }
+
+    const labels: string[] = [];
+    let currentDateCopy = new Date(currentDate);
+
+    if (duration === '12months') {
+      for (let i = 0; i < 12; i++) {
+        const yearMonth = currentDateCopy.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit' });
+        labels.unshift(yearMonth);
+        currentDateCopy.setMonth(currentDateCopy.getMonth() - 1);
+      }
+    } else {
+      for (let i = 0; i < parseInt(duration); i++) {
+        const dayMonth = currentDateCopy.toLocaleDateString('en-US', { day: '2-digit', month: 'short' });
+        labels.unshift(dayMonth);
+        currentDateCopy.setDate(currentDateCopy.getDate() - 1);
+      }
+    }
+
+    const data = labels.map((label) => monthScores[label] || 0);
+    return {
+      label: labels,
+      data: data,
+    };
   }
 
   public async getTop10Customer(){

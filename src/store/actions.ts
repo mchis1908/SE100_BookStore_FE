@@ -46,7 +46,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/api/user", payload);
+    const response = await sendGetOnce("/api/user");
     if (response) {
       return response;
     } else {
@@ -140,7 +140,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/api/book", payload);
+    const response = await sendGetNoToken("/api/book", payload);
 
     if (response) {
       return response
@@ -280,7 +280,7 @@ const actions = {
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
-    const response = await sendGetOnce("/api/manage/book/category", payload);
+    const response = await sendGetNoToken("/api/manage/book/category", payload);
 
     if (response) {
       return response
@@ -422,6 +422,84 @@ const actions = {
     let newPayload = { ...payload };
     delete newPayload.expenses_id;
     const response = await sendPutOnce(`/api/manage/expense/update-status/${expenses_id}`, newPayload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.GET_UPCOMING_EVENTS] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetNoToken(`/api/manage/bookstore/event/upcoming`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.UPLOAD_IMAGE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/image-server/upload`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.CREATE_INVOICE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/api/manage/order/create-order`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.GET_DATA_SOLD_BOOKS] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/manage/aggregate/sold-books`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.GET_DATA_REVENUE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/manage/aggregate/revenue`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.GET_TOP10_SELLING_BOOKS] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/manage/aggregate/top-10`);
     if (response) {
       return response
     } else {
