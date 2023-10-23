@@ -4,11 +4,14 @@ import Barcode from '@/components/barcode/barcode.vue'
 import Header from '@/components/header/header.vue'
 import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
+import ModalDetailInvoice from "@/views/invoices/modal-detail-invoice/modal-detail-invoice.vue";
+import { Modal } from "bootstrap";
 @Options({
   components: {
     MenuDashBoard,
     Header,
-    Barcode
+    Barcode,
+    ModalDetailInvoice
   },
   watch:{
     searchQuery: {
@@ -200,7 +203,10 @@ export default class SellingBooks extends Vue {
     const res = await this.$store.dispatch(MutationTypes.CREATE_INVOICE, payload);
     if (res.status===201) {
       toast.success("Successfully created invoice");
-      window.location.reload();
+      this.$store.commit("setInvoice", res.data.data._id);
+      const myModal = new Modal(this.$refs["modal-detail-invoice"] as any);
+      document.body.appendChild(document.getElementById('modal-detail-invoice') as any);
+      myModal.show();
     }
   }
 }

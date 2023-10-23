@@ -9,6 +9,7 @@ export default createStore({
     manager:null,
     expense:null,
     invoice:null,
+    invoiceToPrint:null,
   },
   getters: {
   },
@@ -30,6 +31,9 @@ export default createStore({
     },
     setInvoice(state, payload) {
       state.invoice = payload;
+    },
+    setInvoiceToPrint(state, payload) {
+      state.invoiceToPrint = payload;
     },
   },
   actions: actions,

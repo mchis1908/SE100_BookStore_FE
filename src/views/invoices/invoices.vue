@@ -3,7 +3,16 @@
 <script lang="ts" src="./invoices.ts"></script>
 
 <template>
-    <ModalDetailInvoice id="detailInvoice"/>
+    <div
+    class="modal fade"
+    id="modal-detail-invoice"
+    ref="modal-detail-invoice"
+    tabindex="-1"
+    aria-labelledby="pricingConfirmModalLabel"
+    aria-hidden="true"
+    >
+        <ModalDetailInvoice/>
+    </div>
     <div class="background-feature d-flex flex-column">
         <Header/>
         <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
@@ -38,7 +47,7 @@
                                 Date
                             </div>
                         </div>
-                        <div class="column-item" v-for="(item, index) in invoices" :key="index" data-bs-toggle="modal" data-bs-target="#detailInvoice" @click="handleDetailInvoice(item)" v-motion-slide-left>
+                        <div class="column-item" v-for="(item, index) in invoices" :key="index" @click="handleDetailInvoice(item)" v-motion-slide-left>
                             <p class="col">
                                 {{ item?._id }}
                             </p>

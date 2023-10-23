@@ -1,6 +1,7 @@
 import { Vue, Options } from "vue-class-component";
 import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
+import { Modal } from 'bootstrap'
 import {
     isValidEmail,
 } from "@/utils/utils";
@@ -42,5 +43,18 @@ export default class ModalDetailInvoice extends Vue {
         if(res.status ===200){
             this.invoiceDetail= res.data.data
         }
-}
+    }
+
+    public async openModal() {
+        const myModal = new Modal(this.$refs["modal-detail-invoice"] as any)
+        myModal.show()
+    }
+
+    public handlePrint(){
+
+    }
+
+    public handleCancel(){
+        window.location.reload()
+    }
 }

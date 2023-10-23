@@ -2,12 +2,12 @@
 <script lang="ts" src="./modal-detail-invoice.ts"></script>
 
 <template>
-    <div class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <!-- <div ref="modal-detail-invoice" class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true"> -->
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="min-width:850px">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title w-100" id="ModalLabel">Add New Customer</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title w-100" id="ModalLabel">Detail Invoice</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="handleCancel"></button>
                 </div>
                 <div class="d-flex flex-column" style="gap:16px; margin:16px; overflow:auto">
                     <div class="d-flex flex-row" style="gap:32px">
@@ -77,7 +77,11 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="button-outline" data-bs-dismiss="modal" @click="handleCancel">Cancel</button>
+                    <button type="button" class="button-solid" @click="handlePrint">Print Invoice</button>
+                </div>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
 </template>

@@ -3,6 +3,16 @@
 <script lang="ts" src="./selling-books.ts"></script>
 
 <template>
+    <div
+    class="modal fade"
+    id="modal-detail-invoice"
+    ref="modal-detail-invoice"
+    tabindex="-1"
+    aria-labelledby="pricingConfirmModalLabel"
+    aria-hidden="true"
+    >
+        <ModalDetailInvoice/>
+    </div>
     <div class="background-feature d-flex flex-column">
         <Header/>
         <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
