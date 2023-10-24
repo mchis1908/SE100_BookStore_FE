@@ -3,10 +3,27 @@
     border: none;
     outline: 1px solid #065471;
     padding: 0px 10px;
-    width: 100px;
+    width: 170px;
 }
 
 .filter-select {
     margin-left: 1rem;
     cursor: pointer;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid #065471;
+}
+
+.required-working-days {
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid #065471;
+    width: 100px;
+}
+
+.worked-days {
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid #065471;
+    width: 100px;
 }

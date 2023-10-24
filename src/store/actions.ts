@@ -597,6 +597,19 @@ const actions = {
       return null
     }
   },
+
+  [MutationTypes.CREATE_SALARY] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/api/manage/salary`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
   
 };
 
