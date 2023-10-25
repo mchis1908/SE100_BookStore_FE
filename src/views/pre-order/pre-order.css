@@ -30,3 +30,10 @@
     background-color: #065471;
     color: white !important; 
 }
+.even-li {
+    background-color: rgb(240, 240, 240); 
+  }
+  
+  .odd-li {
+    background-color: rgb(255, 255, 255); 
+  }

@@ -50,15 +50,21 @@ import { toast } from "vue3-toastify";
     },
   }
 })
-export default class SellingBooks extends Vue {
+export default class Pre_Order extends Vue {
   public customerInput:any=null;
   public selectCustomer:any=null;
   public Expireday:any=null;
   public Note:any=null;
   public suggest: any = [];
   public searchQuery:any=null
+  public search_q:any=""
+  public allCategories: any = []
+  public books: any = []
+  public categoryID: any = ""
 
-  public beforeMount(){
+  async beforeMount(){
+    await this.fetchCategories()
+    await this.fetchBooks()
   }
 
 
@@ -71,10 +77,6 @@ export default class SellingBooks extends Vue {
     if(item?.quantity <= quantity) return false;
     else return true;
   }
-
-
-
-
 
   public async handleSearch() {
     if (this.customerInput === '') return;
@@ -101,5 +103,31 @@ export default class SellingBooks extends Vue {
     this.customerInput = ''
   }
 
+  public async fetchCategories() {
+    let res = await this.$store.dispatch(MutationTypes.GET_ALL_CATEGORIES, {
+    })
+    if (res) {
+      this.allCategories = await res.data.data;
+    }
+  }
+  public async fetchBooks() {
+    let res = await this.$store.dispatch(MutationTypes.GET_ALL_BOOKS, {
+     search_q: this.search_q,
+     category:this.categoryID,
+     limit:1000,
+   })
 
+   if (res) {
+    this.books = await res.data.data;
+    console.log("books", this.books)
+  }
+ }
+
+  // public handleSelectChange(event: Event) {
+  //   // Lấy giá trị của tùy chọn được chọn bằng cách sử dụng event.target.value
+  //   const selectedValue = (event.target as HTMLSelectElement).value;
+    
+  //   // Console log giá trị đã chọn
+  //   console.log("Selected Category ID: ", selectedValue);
+  // }
 }
