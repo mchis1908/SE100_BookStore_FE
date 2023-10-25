@@ -59,7 +59,7 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr class="text-start">
-                                <th scope="col">ID Book</th>
+                                <th scope="col">Barcode</th>
                                 <th scope="col">Name Book</th>
                                 <th scope="col">Author</th>
                                 <th scope="col">Price</th>
@@ -68,7 +68,7 @@
                         </thead>
                         <tbody class="table-group-divider">
                             <tr class="book-row text-start" v-for="(item, index) in invoiceDetail?.invoiceDetails" :key="index">
-                                <td>{{item?.book?._id}}</td>
+                                <td>{{item?.book?.barcode}}</td>
                                 <td>{{item?.book?.name}}</td>
                                 <td>{{item?.book?.author}}</td>
                                 <td>{{item?.book?.salesPrice}}</td>
