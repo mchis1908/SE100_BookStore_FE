@@ -73,29 +73,41 @@
                             </div>
                         </div>
                         <div class="book-input-field"
-                            style="width: 65%; padding: 12px; display: flex; gap: 4vw; position: relative; margin-left: 5vw;">
+                            style="width: 75%; padding: 12px; display: flex; gap: 4vw; position: relative; margin-left: 5vw;">
                             <div class="book-input-pre-title">
                                 <p class="text-start" style="height: 30px; font-weight: 600;">Books:</p>
                             </div>
                             <div class="book-input-pre-content"
-                                style="width: 100%; padding: 12px; display: flex; gap: 16px; position: relative;">
+                                style="width: 100%; height: 300px; padding: 12px; display: flex; gap: 16px; position: relative;">
                                 <!-- Phần bên trái -->
                                 <div class="left-panel" style=" flex: 1; display: flex; flex-direction: column; gap: 5px;">
                                     <!-- Danh sách các đối tượng được chọn từ bên phải -->
                                     <div class="selected-items"
-                                        style="min-height: 30vh;flex: 1; border: 1px solid #ccc; border-radius: 5px;">
-                                        <!-- Ví dụ danh sách các đối tượng -->
-                                        <div class="selected-item">Item 1</div>
-                                        <div class="selected-item">Item 2</div>
-                                        <!-- Thêm các mục khác tùy ý -->
+                                        style="flex: 1; border: 1px solid #ccc; border-radius: 5px; overflow-y: auto;">
+                                        <ul style="list-style: none; padding: 0; margin: 0;">
+                                            <li v-for="(book, index) in selectedBooks" :key="book._id"
+                                                :class="[itemSelectedRemove?._id === book?._id ? `highLight` : ``, `basic`]"
+                                                @click="generateRemoveSelectedBook(book)">
+                                                <p class="book-name"
+                                                :style="itemSelectedRemove?._id !== book?._id ? 'color:#2B2B2B' : 'color:#fff'"
+                                                >
+                                                    {{ book?.name || 'N/A' }}
+                                                </p>
+                                                <p class="book-author"
+                                                :style="itemSelectedRemove?._id !== book?._id ? 'color:#ADADAD' : 'color:#fff'">
+                                                    {{ book?.author || 'N/A' }}
+                                                </p>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <!-- Button Add và Remove nằm giữa hai ô -->
                                 <div class="button-container"
                                     style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;">
                                     <button class="add-button"
-                                        style="border-radius: 5px; width: 6vw; border: 0.5px solid #ccc;">Add</button>
-                                    <button class="remove-button"
+                                        style="border-radius: 5px; width: 6vw; border: 0.5px solid #ccc;"
+                                        @click="addToSelectedBooks()">Add</button>
+                                    <button class="remove-button" @click="removeFromSelectedBooks()"
                                         style="border-radius: 5px; width: 6vw; border: 0.5px solid #ccc;">Remove</button>
                                 </div>
                                 <!-- Phần bên phải -->
@@ -115,17 +127,18 @@
                                     </select>
                                     <!-- Ô chữ nhật để hiển thị giá trị được tìm kiếm -->
                                     <div class="search-result"
-                                        style="flex: 1; border: 1px solid #ccc; border-radius: 5px; overflow-y: auto; max-height: 200px;">
+                                        style="flex: 1; border: 1px solid #ccc; border-radius: 5px; overflow-y: auto;">
                                         <ul style="list-style: none; padding: 0; margin: 0;">
                                             <li v-for="(book, index) in books" :key="book._id"
-                                                :class="index % 2 === 0 ? 'even-li' : 'odd-li'"
-                                                style="padding: 4px; border-bottom: 0.5px solid #ccc;">
-                                                <p
-                                                    style="color: var(--neutral-darkest, #2B2B2B); font-size: 16px; font-weight: 600; line-height: 150%; margin: 0;text-align:left">
+                                                :class="[itemSelectedAdd?._id === book?._id ? `highLight` : ``, `basic`]"
+                                                @click="generateAddSelectedBook(book)">
+                                                <p class="book-name"
+                                                :style="itemSelectedAdd?._id !== book?._id ? 'color:#2B2B2B' : 'color:#fff'"
+                                                >
                                                     {{ book?.name || 'N/A' }}
                                                 </p>
-                                                <p
-                                                    style="color: var(--neutral-darkest, #ADADAD); font-size: 14px; font-weight: 400; line-height: 150%; margin: 0;text-align:left">
+                                                <p class="book-author"
+                                                :style="itemSelectedAdd?._id !== book?._id ? 'color:#ADADAD' : 'color:#fff'">
                                                     {{ book?.author || 'N/A' }}
                                                 </p>
                                             </li>

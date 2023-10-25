@@ -1,39 +1,55 @@
-.nav-link{
+.nav-link {
     color: #065471;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     background-color: rgb(6, 84, 113, 0.7);
-    color: #fff
-} 
-.nav-pills .nav-link.active{
+    color: #fff;
+}
+.nav-pills .nav-link.active {
     background-color: #065471;
 }
 
-.suggest{
+.suggest {
     margin-top: 1vh;
-    gap:8px;
-    position:absolute; 
-    z-index:2; 
-    border-radius: 12px; 
-    background: var(--neutral-white, #FFF); 
+    gap: 8px;
+    position: absolute;
+    z-index: 2;
+    border-radius: 12px;
+    background: var(--neutral-white, #fff);
     box-shadow: 4px 8px 32px 0px rgba(0, 0, 0, 0.08);
-    top:100%;
-    left:136px;
+    top: 100%;
+    left: 136px;
     max-height: 180px;
     overflow: auto;
-    width: calc( 100% - 136px );
+    width: calc(100% - 136px);
 }
 
-.suggest-item:hover{
+.suggest-item:hover {
     border-radius: 5px;
     background-color: #065471;
-    color: white !important; 
+    color: white !important;
 }
-.even-li {
-    background-color: rgb(240, 240, 240); 
-  }
-  
-  .odd-li {
-    background-color: rgb(255, 255, 255); 
-  }
+.highLight {
+    background-color: #065471;
+    color: #fff;
+}
+.basic {
+    padding: 4px;
+    border-bottom: 0.5px solid #ccc;
+    cursor: pointer;
+}
+.book-name {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+    margin: 0;
+    text-align: left;
+}
+.book-author {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    margin: 0;
+    text-align: left;
+}
