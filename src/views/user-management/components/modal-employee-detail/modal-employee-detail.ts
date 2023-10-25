@@ -1,7 +1,11 @@
 import { Vue, Options } from "vue-class-component";
 import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
+import Toggle from "@vueform/toggle";
 @Options({
+    components:{
+        Toggle
+    },
     watch:{
         userInput: {
             handler(val, oldVal) {
@@ -13,6 +17,7 @@ import { toast } from "vue3-toastify";
 })
 
 export default class ModalEmployeeDetail extends Vue {
+    public toggleActive:boolean = true;
     public scaleArr:any=null;
     public userInput:any={
         name: "",
@@ -22,6 +27,7 @@ export default class ModalEmployeeDetail extends Vue {
         birthdate: "",
         salary: "",
         salaryScale: null,
+        toggleActive:false,
     }
     public isChanged:any=false;
     public employee:any=null;
@@ -54,6 +60,7 @@ export default class ModalEmployeeDetail extends Vue {
             birthdate: this.employee?.birthdate?.slice(0,10) ?? null,
             salary: this.employee?.user?.salary,
             salaryScale: this.employee?.user?.salaryScale,
+            toggleActive: !this.employee?.isDeleted
         }
     }
 
@@ -78,7 +85,8 @@ export default class ModalEmployeeDetail extends Vue {
                 this.userInput.phoneNumber!== this.employee?.phoneNumber ||
                 this.userInput.birthdate!== (this.employee?.birthdate?.slice(0,10)?? null) ||
                 this.userInput.salary!== (this.employee?.user?.salary) ||
-                this.userInput.salaryScale!== (this.employee?.user?.salaryScale)
+                this.userInput.salaryScale!== (this.employee?.user?.salaryScale)||
+                this.userInput.toggleActive=== (this.employee?.isDeleted)
             ) &&
             ( this.userInput.name!== '' &&
                 this.userInput.email!== '' &&
@@ -92,7 +100,7 @@ export default class ModalEmployeeDetail extends Vue {
     
     public async handleUpdate() {
         const payload = {
-            employee_id: this.employee.user._id,
+            employee_id: this.employee._id,
             name: this.userInput.name,
             email: this.userInput.email,
             address: this.userInput.address,
@@ -100,6 +108,7 @@ export default class ModalEmployeeDetail extends Vue {
             birthdate: this.userInput.birthdate,
             salary: this.userInput.salary,
             salaryScale: this.userInput.salaryScale._id,
+            isDeleted: !this.userInput.toggleActive
         };
         const res = await this.$store.dispatch(
           MutationTypes.UPDATE_EMPLOYEE,

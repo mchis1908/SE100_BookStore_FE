@@ -37,23 +37,23 @@
                             <div class="d-flex flex-row">
                                 <div class="col title-1">
                                     Name
-                                    <span><i class="bi-sort-down-alt" :class="selectSort['customer']['name'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'name')"></i></span>
+                                    <!-- <span><i class="bi-sort-down-alt" :class="selectSort['customer']['name'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'name')"></i></span> -->
                                 </div>
                                 <div class="col title-1">
                                     Phone Number
-                                    <span><i class="bi-sort-down-alt" :class="selectSort['customer']['phoneNumber'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'phoneNumber')"></i></span>
+                                    <!-- <span><i class="bi-sort-down-alt" :class="selectSort['customer']['phoneNumber'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'phoneNumber')"></i></span> -->
                                 </div>
                                 <div class="col title-1">
                                     Rank
-                                    <span><i class="bi-sort-down-alt" :class="selectSort['customer']['rank'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'rank')"></i></span>
+                                    <!-- <span><i class="bi-sort-down-alt" :class="selectSort['customer']['rank'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'rank')"></i></span> -->
                                 </div>
                                 <div class="col title-1">
                                     Point
-                                    <span><i class="bi-sort-down-alt" :class="selectSort['customer']['point'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'point')"></i></span>
+                                    <!-- <span><i class="bi-sort-down-alt" :class="selectSort['customer']['point'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'point')"></i></span> -->
                                 </div>
                                 <div class="col title-1">
                                     Last Transaction
-                                    <span><i class="bi-sort-down-alt" :class="selectSort['customer']['lastTransaction'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'lastTransaction')"></i></span>
+                                    <!-- <span><i class="bi-sort-down-alt" :class="selectSort['customer']['lastTransaction'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('customer', 'lastTransaction')"></i></span> -->
                                 </div>
                             </div>
                             <div class="person-item" v-for="(item, index) in list?.customer" :key="index" data-bs-toggle="modal" data-bs-target="#detailCustomer" @click="handleDetailCustomer(item)" v-motion-slide-left>
@@ -98,23 +98,23 @@
                             <div class="d-flex flex-row">
                                 <div class="col title-1">
                                     Name
-                                    <span><i class="bi-sort-down-alt" :class="selectSort['employee']['name'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'name')"></i></span>
+                                    <!-- <span><i class="bi-sort-down-alt" :class="selectSort['employee']['name'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'name')"></i></span> -->
                                 </div>
                                 <div class="col title-1">
                                     Phone Number
-                                    <span><i class="bi-sort-down-alt" :class="selectSort['employee']['phoneNumber'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'phoneNumber')"></i></span>
+                                    <!-- <span><i class="bi-sort-down-alt" :class="selectSort['employee']['phoneNumber'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'phoneNumber')"></i></span> -->
                                 </div>
                                 <div class="col title-1">
                                     Email
-                                    <span><i class="bi-sort-down-alt" :class="selectSort['employee']['email'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'email')"></i></span>
+                                    <!-- <span><i class="bi-sort-down-alt" :class="selectSort['employee']['email'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'email')"></i></span> -->
                                 </div>
                                 <div class="col title-1">
                                     Seniority
-                                    <span><i class="bi-sort-down-alt" :class="selectSort['employee']['seniority'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'seniority')"></i></span>
+                                    <!-- <span><i class="bi-sort-down-alt" :class="selectSort['employee']['seniority'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'seniority')"></i></span> -->
                                 </div>
                                 <div class="col title-1">
                                     Start Day
-                                    <span><i class="bi-sort-down-alt" :class="selectSort['employee']['startDay'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'startDay')"></i></span>
+                                    <!-- <span><i class="bi-sort-down-alt" :class="selectSort['employee']['startDay'] ? 'activeSort':''" style="font-size:24px" @click="handleSort('employee', 'startDay')"></i></span> -->
                                 </div>
                             </div>
                             <div class="person-item" v-for="(item, index) in list?.employee" :key="index" data-bs-toggle="modal" data-bs-target="#detailEmployee" @click="handleDetailEmployee(item)"  v-motion-slide-left>

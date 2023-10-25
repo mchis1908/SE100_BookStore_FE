@@ -1,5 +1,6 @@
 <style scope src="./modal-employee-detail.css"></style>
 <script lang="ts" src="./modal-employee-detail.ts"></script>
+<style src="@vueform/toggle/themes/default.css"></style>
 
 <template>
     <div class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -51,6 +52,16 @@
                             <p class="text-start" style="height:30px; font-weight:600">Start Day:</p>
                             <input class="input" style="height:30px" type="date" :value='employee?.user?.startDateOfWork?.slice(0,10)' disabled/>
                         </div>
+                        <div class="input-field">
+                            <p class="text-start" style="height:30px; font-weight:600">Active:</p>
+                            <div class="d-flex justify-content-start">
+                                <Toggle
+                                    v-model="userInput.toggleActive"
+                                    class="toggle-width"
+                                />
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="modal-footer">

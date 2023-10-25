@@ -9,6 +9,7 @@
   "dependencies": {
     "@chenfengyuan/vue-barcode": "^2.0.2",
     "@splidejs/vue-splide": "^0.6.12",
+    "@vueform/toggle": "^2.1.4",
     "@vueuse/motion": "^2.0.0",
     "axios": "^1.5.1",
     "bootstrap": "^5.3.2",

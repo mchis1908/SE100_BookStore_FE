@@ -4,7 +4,7 @@
 <template>
     <!-- <div ref="modal-detail-invoice" class="modal fade" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true"> -->
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="min-width:850px">
-            <div class="modal-content">
+            <div class="modal-content" ref="content-to-print">
                 <div class="modal-header">
                     <h5 class="modal-title w-100" id="ModalLabel">Detail Invoice</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="handleCancel"></button>

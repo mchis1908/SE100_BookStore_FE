@@ -29,6 +29,7 @@ import FormattedModal from '@/components/modal/modal.vue';
 
 export default class ModalDetailsBook extends Vue {
     public bookItem!: any
+    public userData: any=null;
 
     public isCopiedId: any = false
     public copiedBook: any = {}
@@ -37,12 +38,14 @@ export default class ModalDetailsBook extends Vue {
     public seletectedCategory: any = []
 
     async beforeMount() {
+        this.userData = this.$store.state.userData
         await this.fetchCategories()
     }
 
     public async openModal() {
-        const myModal = new Modal(this.$refs["details-book-modal"] as any)
-        myModal.show()
+        const myModal = new Modal(this.$refs["details-book-modal"] as any);
+        document.body.appendChild(document.getElementById('details-book-modal') as any);
+        myModal.show();
     }
 
     public handleCopyId() {

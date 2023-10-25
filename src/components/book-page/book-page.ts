@@ -1,10 +1,12 @@
 import { Options, Vue } from "vue-class-component";
 import { MutationTypes } from "@/store/mutation-types";
 import Modal from "@/components/modal/modal.vue";
+import ModalDetailsBook from "@/views/book-management/components/modal-details-book/modal-details-book.vue";
 
 @Options({
   components: {
-    Modal
+    Modal,
+    ModalDetailsBook
   },
   watch:{
     selectedSort: {
@@ -22,6 +24,7 @@ import Modal from "@/components/modal/modal.vue";
   }
 })
 export default class BookPage extends Vue {
+  public bookItem: any = {}
   public categories: any = []
   public books: any = []
   public selectedSort: any = 0;
@@ -67,5 +70,10 @@ export default class BookPage extends Vue {
     if(res?.status ===200){
       this.books= res.data.data
     }
+  }
+
+  public handleClickBookRow(item: any) {
+    (this.$refs['details-book-component'] as any).openModal()
+    this.bookItem = item
   }
 }

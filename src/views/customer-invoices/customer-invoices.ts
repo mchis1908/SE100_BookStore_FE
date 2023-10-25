@@ -3,6 +3,7 @@ import MenuDashBoard from '@/components/menu-dashboard/menu-dashboard.vue'
 import Header from '@/components/header/header.vue'
 import { MutationTypes } from "@/store/mutation-types";
 import ModalDetailInvoice from "@/views/invoices/modal-detail-invoice/modal-detail-invoice.vue";
+import { Modal } from "bootstrap";
 
 @Options({
   components: {
@@ -65,8 +66,12 @@ export default class Invoices extends Vue {
     this.currentPage= index+1;
     this.getData()
   }
+
   public handleDetailInvoice(item:any){
     this.$store.commit("setInvoice", item?._id);
+    const myModal = new Modal(this.$refs["modal-detail-invoice"] as any);
+    document.body.appendChild(document.getElementById('modal-detail-invoice') as any);
+    myModal.show();
   }
 
 }

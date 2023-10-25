@@ -51,10 +51,11 @@ export default class ModalDetailInvoice extends Vue {
     }
 
     public handlePrint(){
-
+      
     }
 
     public handleCancel(){
-        window.location.reload()
+        if(this.$route.path==='/selling-books')window.location.reload()
     }
+    
 }

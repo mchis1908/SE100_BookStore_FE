@@ -5,7 +5,7 @@
 <template>
     <FormattedModal ref="modal-delete-book-component" title="Delete this book" content="Do you want to delete this book?" actionButtonTitle="Delete" :isDangerAction="true" @handleClickActionButton="handleDeleteBook"/>
 
-    <div class="modal fade" ref="details-book-modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal fade" ref="details-book-modal" id="details-book-modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
@@ -101,7 +101,7 @@
                     </div>
                 </div>
 
-                <div class="modal-footer">
+                <div v-if="userData?.data?.role==='admin' || userData?.data?.role==='employee'" class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal" @click="handleOpenModalDeleteBook">Delete</button>
                     <div class="save-container">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
