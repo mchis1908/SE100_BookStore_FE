@@ -26,7 +26,8 @@ export class MutationTypes {
   public static DELETE_A_BOOK = 'DELETE_A_BOOK';
   public static CREATE_LIST_BOOKS = 'CREATE_LIST_BOOKS';
   public static GET_ALL_INVOICES = 'GET_ALL_INVOICES';
-  public static GET_INVOICES_BY_ID = 'GET_INVOICES_BY_ID';
+  public static GET_INVOICES_BY_ID_CUSTOMER = 'GET_INVOICES_BY_ID_CUSTOMER';
+  public static GET_INVOICE_BY_ID = 'GET_INVOICE_BY_ID';
   public static GET_DETAIL_INVOICE = 'GET_DETAIL_INVOICE';
   public static GET_EXPENSES = 'GET_EXPENSES';
   public static UPLOAD_MULTIPLE_IMAGES = 'UPLOAD_MULTIPLE_IMAGES';
@@ -36,6 +37,7 @@ export class MutationTypes {
   public static GET_CURRENT_EVENTS = 'GET_CURRENT_EVENTS';
   public static UPLOAD_IMAGE = 'UPLOAD_IMAGE';
   public static CREATE_INVOICE = 'CREATE_INVOICE';
+  public static CREATE_REFUND = 'CREATE_REFUND';
   public static GET_DETAILS_EVENT = 'GET_DETAILS_EVENT';
   public static CREATE_EVENT = 'CREATE_EVENT';
   public static UPDATE_EVENT = 'UPDATE_EVENT';

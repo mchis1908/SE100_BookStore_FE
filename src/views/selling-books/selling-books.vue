@@ -18,14 +18,14 @@
         <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
             <MenuDashBoard class="col-2" />
             <div class="col d-flex flex-column"
-                style="padding:24px; gap:24px;overflow-y: scroll; overflow-x: hidden; z-index:1" v-motion-slide-left>
+                style="padding:24px; gap:24px;" v-motion-slide-left>
                 <div class="d-flex flex-row" style="gap:16px">
                     <div class="d-flex justify-content-center align-items-center"
                         style="font-weight:600; font-size:16px; color: #065471">Search:</div>
                     <input class="search-input input" placeholder="Enter barcode or name of book" v-model="searchQuery" />
                 </div>
                 <!-- <Barcode/> -->
-                <div class="book-container">
+                <div class="book-container" style="overflow-y: scroll; overflow-x: hidden; z-index:1">
                     <div class="book-item" v-for="(item, index) in books" :key="index">
                         <img v-if="item?.image" :src="item?.image" style="height:120px; object-fit:contain;z-index:0" />
                         <img v-else src="@/assets/book-page/book-default.png"
