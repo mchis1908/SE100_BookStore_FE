@@ -229,6 +229,19 @@ const actions = {
       return null
     }
   },
+  [MutationTypes.DELETE_PRE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendDeleteOnce(`/api/manage/book/pre-order/${payload.id}`, payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
 
 
   [MutationTypes.GET_ALL_SALARY_SCALE] : async (

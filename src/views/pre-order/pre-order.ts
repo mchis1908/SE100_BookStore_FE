@@ -4,11 +4,14 @@ import Header from "@/components/header/header.vue";
 import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
 import ModalDetailPreOrder from "./modal-detail-preorder/modal-detail-preorder.vue";
+import FormattedModal from '@/components/modal/modal.vue';
+
 @Options({
   components: {
     MenuDashBoard,
     Header,
     ModalDetailPreOrder,
+    FormattedModal,
   },
   watch: {
     search_q: {
@@ -36,6 +39,7 @@ export default class Pre_Order extends Vue {
   public preOrders: any = [];
   public books: any = [];
   public itemSelectedRemove: any = {};
+  public itemSelectedDelete: any = "";
   public itemSelectedAdd: any = {};
   public selectedBooks: any = [];
   public quantity: any = [];
@@ -43,6 +47,7 @@ export default class Pre_Order extends Vue {
   public categoryID: any = "";
   public totalPages: number = 1
   public currentPage: number = 1
+  public isModalOpen: boolean = true
 
 
   async beforeMount() {
@@ -192,4 +197,27 @@ export default class Pre_Order extends Vue {
   public handleDetailPre(item:any){
     this.$store.commit("setPreOrder", item?._id);
   }
+
+  public async generateDelete(id:any) {
+   this.itemSelectedDelete=id
+   this.isModalOpen = true;
+}
+
+  public async handleDeletePre() {
+    let payload = { 
+      id:  this.itemSelectedDelete,
+  };
+  let res = await this.$store.dispatch(
+    MutationTypes.DELETE_PRE,
+    payload
+);
+    if (res.status === 200) {
+        toast.success(res.data.message)
+        window.location.reload()
+    } else {
+        toast.error(res.data.message)
+    }
+    this.isModalOpen = false;
+}
+
 }

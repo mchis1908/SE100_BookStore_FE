@@ -20,7 +20,7 @@
                         <div class="col d-flex flex-column" style="gap:16px">
                             <div class="input-field " style="height:30px">
                                 <p class="text-start d-flex align-items-center" style="height:30px; font-weight:600">Expired Date:</p>
-                                <input class="input" :value="preDetail?.expirationDate?.slice(0,10)" style="height:30px" type="text" disabled/>
+                                <input class="input" :value="preDetail?.expirationDate?.slice(0,10)" style="height:30px" type="date" disabled/>
                             </div>
                         </div>
                     </div>

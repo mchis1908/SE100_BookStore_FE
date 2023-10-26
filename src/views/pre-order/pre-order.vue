@@ -3,7 +3,11 @@
 <script lang="ts" src="./pre-order.ts"></script>
 
 <template>
-    <ModalDetailPreOrder id="detailInvoice"/>
+    <FormattedModal id="modal-delete-preorder-component" title="Delete this pre-order"
+        content="Do you want to delete this pre-order?" actionButtonTitle="Delete" :isDangerAction="true" v-if="isModalOpen"
+        @handleClickActionButton="handleDeletePre" />
+
+    <ModalDetailPreOrder id="detailPreOrder" />
     <div class="background-feature d-flex flex-column">
         <Header />
         <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
@@ -128,10 +132,10 @@
                                             style="flex: 1; border: 1px solid #ccc; border-radius: 5px; overflow-y: auto;">
                                             <ul style="list-style: none; padding: 0; margin: 0;">
                                                 <li v-for="(book, index) in selectedBooks" :key="index"
-                                                    :class="[itemSelectedRemove?._id === book?._id ? `highLight` : `basic`, ``]"
-                                                    >
+                                                    :class="[itemSelectedRemove?._id === book?._id ? `highLight` : `basic`, ``]">
                                                     <div class="li-content-pre">
-                                                        <div class="li-book-info" @click="generateRemoveSelectedBook(book,index)">
+                                                        <div class="li-book-info"
+                                                            @click="generateRemoveSelectedBook(book, index)">
                                                             <p class="book-name"
                                                                 :style="itemSelectedRemove?._id !== book?._id ? 'color:#2B2B2B' : 'color:#fff'">
                                                                 {{ book?.name || 'N/A' }}
@@ -166,41 +170,51 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
-                        style="padding: 24px; gap:12px; min-height: 100%;">
-                        <div class="table-pre" style="height:600px; padding: 20px;">
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr class="text-start">
-                                        <th scope="col">No</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Rank</th>
-                                        <th scope="col">Expired Day</th>
-                                        <th scope="col">Creater</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-group-divider">
-                                    <tr class="book-row text-start" 
-                                    v-for="(item, index) in preOrders" :key="index"
-                                    data-bs-toggle="modal" data-bs-target="#detailInvoice"
-                                    @click="handleDetailPre(item)"
-                                    >
-                                        <th scope="row">{{ index + 1 }}</th>
-                                        <td>{{ item?.customer?.name }}</td>
-                                        <td>{{ item?.customer?.user?.rank }}</td>
-                                        <td>{{ item?.expirationDate?.slice(0,10) }}</td>
-                                        <td>{{ item?.employee?.name }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="pagination-container">
-                            <div class="pagination-item" v-for="(item, index) in totalPages" :key="index" @click="currentPage = index + 1" :style="index + 1 === currentPage ? 'background-color: #065471; outline: none; color: #fff' : ''">
-                                {{ index + 1  }}
+                        style="padding: 24px; gap: 12px; min-height: 100%;">
+                        <div v-if="preOrders.length > 0">
+                            <div class="table-pre" style="height: 600px; padding: 20px;">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr class="text-start">
+                                            <th scope="col">No</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Rank</th>
+                                            <th scope="col">Expired Day</th>
+                                            <th scope="col">Creater</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-group-divider">
+                                        <tr class="book-row text-start" v-for="(item, index) in preOrders" :key="index"
+                                            data-bs-toggle="modal" data-bs-target="#detailPreOrder"
+                                            @click="handleDetailPre(item)">
+                                            <th scope="row">{{ index + 1 }}</th>
+                                            <td>{{ item?.customer?.name }}</td>
+                                            <td>{{ item?.customer?.user?.rank }}</td>
+                                            <td>{{ item?.expirationDate?.slice(0, 10) }}</td>
+                                            <td>{{ item?.employee?.name }}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                    data-bs-target="#modal-delete-preorder-component"
+                                                    @click="generateDelete(item?._id)">Delete</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="pagination-container">
+                                <div class="pagination-item" v-for="(item, index) in totalPages" :key="index"
+                                    @click="currentPage = index + 1"
+                                    :style="index + 1 === currentPage ? 'background-color: #065471; outline: none; color: #fff' : ''">
+                                    {{ index + 1 }}
+                                </div>
                             </div>
                         </div>
+                        <div v-else>
+                            <h6>No pre-order available</h6>
+                        </div>
                     </div>
-                </div>
+
             </div>
         </div>
     </div>
-</template>
+</div></template>
