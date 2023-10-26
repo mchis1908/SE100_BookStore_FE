@@ -1,14 +1,14 @@
 import { Options, Vue } from "vue-class-component";
 import MenuDashBoard from "@/components/menu-dashboard/menu-dashboard.vue";
-import Barcode from "@/components/barcode/barcode.vue";
 import Header from "@/components/header/header.vue";
 import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
+import ModalDetailPreOrder from "./modal-detail-preorder/modal-detail-preorder.vue";
 @Options({
   components: {
     MenuDashBoard,
     Header,
-    Barcode,
+    ModalDetailPreOrder,
   },
   watch: {
     search_q: {
@@ -33,6 +33,7 @@ export default class Pre_Order extends Vue {
   public suggest: any = [];
   public search_q: any = "";
   public allCategories: any = [];
+  public preOrders: any = [];
   public books: any = [];
   public itemSelectedRemove: any = {};
   public itemSelectedAdd: any = {};
@@ -40,10 +41,14 @@ export default class Pre_Order extends Vue {
   public quantity: any = [];
   public quantityIndex: any = null;
   public categoryID: any = "";
+  public totalPages: number = 1
+  public currentPage: number = 1
+
 
   async beforeMount() {
     await this.fetchCategories();
     await this.fetchBooks();
+    await this.fetchPreOrder()
   }
 
   public checkQuantity(item: any, quantity: any) {
@@ -90,6 +95,17 @@ export default class Pre_Order extends Vue {
     }
   }
 
+  public async fetchPreOrder() {
+    let res = await this.$store.dispatch(MutationTypes.GET_ALL_PRE_ORDER, {
+      page: this.currentPage
+    });
+
+    if (res.status === 200) {
+      this.preOrders = await res.data.data;
+      this.totalPages = res.data.totalPages
+    }
+  }
+
   public async createPreOrder() {
     let preOrderBookDetails:any=[];
     this.selectedBooks.forEach((item:any,index:any) => {
@@ -109,6 +125,7 @@ export default class Pre_Order extends Vue {
       this.books = await res.data.data;
     }
     this.handleReset()
+    this.fetchPreOrder()
   }
 
   public addToSelectedBooks() {
@@ -172,5 +189,7 @@ export default class Pre_Order extends Vue {
     await this.fetchBooks();
   }
 
-  //
+  public handleDetailPre(item:any){
+    this.$store.commit("setPreOrder", item?._id);
+  }
 }
