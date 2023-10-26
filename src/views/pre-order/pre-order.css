@@ -1,0 +1,120 @@
+.nav-link {
+    color: #065471;
+}
+
+.nav-link:hover {
+    background-color: rgb(6, 84, 113, 0.7);
+    color: #fff;
+}
+.nav-pills .nav-link.active {
+    background-color: #065471;
+}
+
+.suggest {
+    margin-top: 1vh;
+    gap: 8px;
+    position: absolute;
+    z-index: 2;
+    border-radius: 12px;
+    background: var(--neutral-white, #fff);
+    box-shadow: 4px 8px 32px 0px rgba(0, 0, 0, 0.08);
+    top: 100%;
+    left: 136px;
+    max-height: 180px;
+    overflow: auto;
+    width: calc(100% - 136px);
+}
+
+.suggest-item:hover {
+    border-radius: 5px;
+    background-color: #065471;
+    color: white !important;
+}
+.highLight {
+    background-color: #065471;
+    color: #fff;
+    padding: 4px;
+    border-bottom: 0.5px solid #ccc;
+    cursor: pointer;
+}
+.basic {
+    padding: 4px;
+    border-bottom: 0.5px solid #ccc;
+    cursor: pointer;
+}
+.li-content-pre {
+    display: flex;
+    justify-content: space-between;
+}
+.basic:hover {
+    background-color: #9cdcf3;
+}
+.book-name {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+    margin: 0;
+    text-align: left;
+}
+.book-author {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    margin: 0;
+    text-align: left;
+}
+.add-button {
+    background-color: #fff;
+}
+.remove-button {
+    background-color: #fff;
+}
+.btn-reset {
+    background-color: #43a9f8;
+    color: #fff;
+}
+.btn-reset:hover {
+    background-color: #1842da;
+}
+.btn-create {
+    background-color: #26ff6b;
+    color: #fff;
+}
+.btn-create:hover {
+    background-color: #00ffaa;
+}
+.btnPre:hover {
+    background-color: #065471;
+    color: #fff;
+}
+.quantity-pre {
+    text-align: center;
+    padding: 4px;
+    align-self: center;
+    max-width: 55px;
+    max-height: 30px;
+    border-radius: 8px;
+    outline: 1px solid #065471;
+    border: none;
+}
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.pagination-item {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #065471;
+    transition: all 0.3s ease-in-out;
+}

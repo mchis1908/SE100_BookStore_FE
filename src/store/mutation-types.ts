@@ -8,6 +8,10 @@ export class MutationTypes {
   public static UPDATE_CUSTOMER = 'UPDATE_CUSTOMER';
   public static GET_EMPLOYEE = 'GET_EMPLOYEE';
   public static GET_ALL_BOOKS = 'GET_ALL_BOOKS';
+  public static PRE_ORDER = 'PRE_ORDER';
+  public static GET_ALL_PRE_ORDER = 'GET_ALL_PRE_ORDER';
+  public static GET_PRE_BY_ID = 'GET_PRE_BY_ID';
+  public static DELETE_PRE = 'DELETE_PRE';
   public static GET_ALL_VOUCHERS = 'GET_ALL_VOUCHERS';
   public static UPDATE_A_BOOK = 'UPDATE_A_BOOK';
   public static CREATE_A_BOOK = 'CREATE_A_BOOK';

@@ -190,6 +190,59 @@ const actions = {
       return null
     }
   },
+  [MutationTypes.PRE_ORDER] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/api/manage/book/pre-order`, payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+  [MutationTypes.GET_ALL_PRE_ORDER] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/manage/book/pre-order`, payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+  [MutationTypes.GET_PRE_BY_ID] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/manage/book/pre-order/${payload.id}`);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+  [MutationTypes.DELETE_PRE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendDeleteOnce(`/api/manage/book/pre-order/${payload.id}`, payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
 
   [MutationTypes.GET_ALL_SALARY_SCALE] : async (
     { commit }: { commit: any },
