@@ -9,7 +9,7 @@
                     <h5 class="modal-title w-100" id="ModalLabel">Detail Invoice</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="handleCancel"></button>
                 </div>
-                <div class="d-flex flex-column" style="gap:16px; margin:16px; overflow:auto">
+                <div class="d-flex flex-column" style="gap:16px; margin:16px; overflow:auto" ref="componentRef">
                     <div class="d-flex flex-row" style="gap:32px">
                         <div class="col d-flex flex-column" style="gap:16px">
                             <div class="input-field " style="height:30px">

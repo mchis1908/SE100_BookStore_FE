@@ -44,10 +44,10 @@
                 <i class="bi-bar-chart-fill menu-item-icon"></i>
                 <p class="text-start menu-item-title">Revenue</p>
             </div>
-            <div :class="[ pageName==='/reports' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/reports')">
+            <!-- <div :class="[ pageName==='/reports' ? 'menu-item-active' : '', 'menu-item']" @click="handleChangeTab('/reports')">
                 <i class="bi-clipboard2-data-fill menu-item-icon"></i>
                 <p class="text-start menu-item-title">Reports</p>
-            </div>
+            </div> -->
         </div>
         <div v-else-if="userData?.data?.role==='employee'" class="d-flex flex-column align-items-start" style="gap:4px; margin-top: 8px;">
             <p class="big-title">Finance tools</p>
