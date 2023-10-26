@@ -190,6 +190,19 @@ const actions = {
       return null
     }
   },
+  [MutationTypes.PRE_ORDER] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/api/manage/book/pre-order`, payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
 
   [MutationTypes.GET_ALL_SALARY_SCALE] : async (
     { commit }: { commit: any },

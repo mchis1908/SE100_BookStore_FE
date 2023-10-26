@@ -33,11 +33,21 @@
 .highLight {
     background-color: #065471;
     color: #fff;
+    padding: 4px;
+    border-bottom: 0.5px solid #ccc;
+    cursor: pointer;
 }
 .basic {
     padding: 4px;
     border-bottom: 0.5px solid #ccc;
     cursor: pointer;
+}
+.li-content-pre {
+    display: flex;
+    justify-content: space-between;
+}
+.basic:hover {
+    background-color: #9cdcf3;
 }
 .book-name {
     font-size: 16px;
@@ -52,4 +62,38 @@
     line-height: 150%;
     margin: 0;
     text-align: left;
+}
+.add-button {
+    background-color: #fff;
+}
+.remove-button {
+    background-color: #fff;
+}
+.btn-reset {
+    background-color: #43a9f8;
+    color: #fff;
+}
+.btn-reset:hover {
+    background-color: #1842da;
+}
+.btn-create {
+    background-color: #26ff6b;
+    color: #fff;
+}
+.btn-create:hover {
+    background-color: #00ffaa;
+}
+.btnPre:hover {
+    background-color: #065471;
+    color: #fff;
+}
+.quantity-pre {
+    text-align: center;
+    padding: 4px;
+    align-self: center;
+    max-width: 55px;
+    max-height: 30px;
+    border-radius: 8px;
+    outline: 1px solid #065471;
+    border: none;
 }

@@ -37,6 +37,8 @@ export default class Pre_Order extends Vue {
   public itemSelectedRemove: any = {};
   public itemSelectedAdd: any = {};
   public selectedBooks: any = [];
+  public quantity: any = [];
+  public quantityIndex: any = null;
   public categoryID: any = "";
 
   async beforeMount() {
@@ -72,7 +74,7 @@ export default class Pre_Order extends Vue {
 
   public async fetchCategories() {
     let res = await this.$store.dispatch(MutationTypes.GET_ALL_CATEGORIES, {});
-    if (res) {
+    if (res.status === 200) {
       this.allCategories = await res.data.data;
     }
   }
@@ -83,54 +85,92 @@ export default class Pre_Order extends Vue {
       limit: 1000,
     });
 
-    if (res) {
+    if (res.status === 200) {
       this.books = await res.data.data;
-      console.log("books", this.books);
     }
+  }
+
+  public async createPreOrder() {
+    let preOrderBookDetails:any=[];
+    this.selectedBooks.forEach((item:any,index:any) => {
+      const preDetailValue = {"book": item?._id, "quantity": this.quantity[index]};
+      preOrderBookDetails[index] = preDetailValue;
+    });
+    let res = await this.$store.dispatch(MutationTypes.PRE_ORDER, {
+      customer: this.selectCustomer?._id,
+      expirationDate: this.Expireday,
+      deposit: "",
+      preOrderBookDetails: preOrderBookDetails,
+      note:this.Note,
+    });
+
+    if (res.status === 201) {
+      toast.success("Successfully created pre-order");
+      this.books = await res.data.data;
+    }
+    this.handleReset()
   }
 
   public addToSelectedBooks() {
-    if(this.itemSelectedAdd){
+    console.log(this.itemSelectedAdd)
+    if (this.itemSelectedAdd) {
       this.selectedBooks.push(this.itemSelectedAdd);
-    this.books = this.books.filter(
-      (book: any) => book?._id !== this.itemSelectedAdd._id
-    );
-    this.itemSelectedAdd=null
+      this.quantity.push(1);
+      this.books = this.books.filter(
+        (book: any) => book?._id !== this.itemSelectedAdd._id
+      );
+      this.itemSelectedAdd = null;
     }
-    this.itemSelectedRemove=null
-
+    this.itemSelectedRemove = null;
+    this.quantityIndex = null;
   }
 
   public removeFromSelectedBooks() {
-    if(this.itemSelectedRemove){
+    if (this.itemSelectedRemove) {
       this.selectedBooks = this.selectedBooks.filter(
         (book: any) => book?._id !== this.itemSelectedRemove._id
       );
       this.books.push(this.itemSelectedRemove);
-      this.itemSelectedRemove=null
-    }
-    else
-      this.itemSelectedAdd=null
-    
+      this.quantity.splice(this.quantityIndex, 1);
+      this.itemSelectedRemove = null;
+      this.quantityIndex = null;
+    } else this.itemSelectedAdd = null;
   }
 
-  public generateRemoveSelectedBook(item: any) {
+  public generateRemoveSelectedBook(item: any, index:any) {
+    if (this.itemSelectedAdd) this.itemSelectedAdd = null;
     if (item?._id === this.itemSelectedRemove?._id) {
       this.itemSelectedRemove = null;
-    } else this.itemSelectedRemove = item;
-  }
+      this.quantityIndex = null;
+    } else {
+      this.itemSelectedRemove = item;
+  }   this.quantityIndex=index
+    }
   public generateAddSelectedBook(item: any) {
+    if (this.itemSelectedRemove) {
+      this.itemSelectedRemove = null;
+      this.quantityIndex = null;
+    }
     if (item?._id === this.itemSelectedAdd?._id) {
       this.itemSelectedAdd = null;
     } else this.itemSelectedAdd = item;
   }
 
 
-  // public handleSelectChange(event: Event) {
-  //   // Lấy giá trị của tùy chọn được chọn bằng cách sử dụng event.target.value
-  //   const selectedValue = (event.target as HTMLSelectElement).value;
 
-  //   // Console log giá trị đã chọn
-  //   console.log("Selected Category ID: ", selectedValue);
-  // }
+  public async handleReset() {
+    this.customerInput = null;
+    this.selectCustomer = null;
+    this.Note = null;
+    this.itemSelectedAdd = null;
+    this.itemSelectedRemove = null;
+    this.quantityIndex = null;
+    this.selectedBooks = [];
+    this.quantity = [];
+    this.Expireday=null
+    this.categoryID=''
+    await this.fetchBooks();
+  }
+
+  //
 }
