@@ -34,7 +34,7 @@
                     v-else
                     v-for="(item, index) in vouchers"
                     :key="index"
-                    :voucher="vouchers[0]"
+                    :voucher="vouchers[index]"
                   />
                 </div>
             </div>
