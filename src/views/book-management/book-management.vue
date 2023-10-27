@@ -53,7 +53,7 @@
                                 <td>{{ item["author"] }}</td>
                                 <td>{{ item["publishingYear"] }}</td>
                                 <td>{{ item["quantity"] }}</td>
-                                <td>{{ item["importPrice"] }}</td>
+                                <td>{{ fixedCurrency(item["importPrice"]) }}</td>
                             </tr>
                         </tbody>
                     </table>

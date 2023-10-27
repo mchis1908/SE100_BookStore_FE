@@ -7,6 +7,11 @@ function isValidEmail(email: string) {
   return emailPattern.test(email);
 }
 
+function fixedCurrency(number: number) {
+  return number.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+}
+
 export {
   isValidEmail,
+  fixedCurrency
 }

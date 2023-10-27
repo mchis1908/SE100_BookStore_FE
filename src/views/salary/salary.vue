@@ -13,7 +13,10 @@
                     <label for="require-working-days">Required working days:</label>
                     <input v-model="requiredWorkingDays" id="require-working-days" class="required-working-days mx-2" type="number" />
                 </div>
+
+                <input type="month" v-model="selectedMonth" style="border-radius: 8px; border: none; outline: 1px solid #065471; padding: 0 10px;">
             </div>
+
             <table class="table table-striped table-hover">
                 <thead>
                     <tr class="text-start">
@@ -27,18 +30,18 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                    <tr class="book-row text-start" v-for="(item, index) in employeeList" :key="index">
+                    <tr class="book-row text-start" v-for="(item, index) in salaryList" :key="index">
                         <th scope="row">{{ index + 1 }}</th>
-                        <td>{{ item["name"] }}</td>
-                        <td>{{ item["phoneNumber"] }}</td>
-                        <td>{{ item["user"]["salary"] }}</td>
-                        <td v-if="item['user']['salaryScale']">{{ item["user"]["salaryScale"]["coefficient"] }}</td>
+                        <td>{{ item["employee"]["name"] }}</td>
+                        <td>{{ item["employee"]["phoneNumber"] }}</td>
+                        <td>{{ item["employee"]["user"]["salary"] }}</td>
+                        <td v-if="item['employee']['user']['salaryScale']">{{ item["employee"]["user"]["salaryScale"]["coefficient"] }}</td>
                         <td v-else>1</td>
                         <td>
-                            <input v-model="employeeList[index].workedDays" class="worked-days" type="number" />
+                            <input v-model="item['workingDays']" class="worked-days" type="number" :defaultValue="0"/>
                         </td>
                         <td>
-                            <input disabled class="salary-total" type="number" :value="item.monthSalary"/>
+                            <input disabled class="salary-total" type="number" :value="item['total']"/>
                         </td>
                     </tr>
                 </tbody>

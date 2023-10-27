@@ -5,6 +5,7 @@ import ModalAddBooks from "./components/modal-add-books/modal-add-books.vue";
 import ModalDetailsBook from "./components/modal-details-book/modal-details-book.vue";
 import ModalAddCategory from "./components/modal-add-category/modal-add-category.vue";
 import { MutationTypes } from "@/store/mutation-types";
+import { fixedCurrency } from "@/utils/utils";
 
 @Options({
   components: {
@@ -13,6 +14,9 @@ import { MutationTypes } from "@/store/mutation-types";
     ModalAddBooks,
     ModalDetailsBook,
     ModalAddCategory
+  },
+  methods: {
+    fixedCurrency
   },
   watch: {
     searchQuery: {

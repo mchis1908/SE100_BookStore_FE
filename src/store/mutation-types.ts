@@ -46,4 +46,6 @@ export class MutationTypes {
   public static GET_SALARY = 'GET_SALARY';
   public static GET_REVENUE_EXPENSES = 'GET_REVENUE_EXPENSES';
   public static CREATE_SALARY = 'CREATE_SALARY';
+  public static GET_ALL_SALARY = 'GET_ALL_SALARY';
+  public static CREATE_INIT_SALARY = 'CREATE_INIT_SALARY';
 }
