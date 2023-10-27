@@ -14,9 +14,9 @@
                 </div>
                 <div class="modal-body text-start">
                     <div class="row mb-3">
-                        <label for="inputId" class="col-3 col-form-label">ID</label>
+                        <label for="inputId" class="col-3 col-form-label">Barcode</label>
                         <div class="col-8">
-                            <input type="text" class="form-control" id="inputId" disabled :value="bookItem._id">
+                            <input type="text" class="form-control" id="inputId" :value="bookItem.barcode">
                         </div>
                         <div @click="handleCopyId" class="col-1 btn-copy">
                             <i v-if="!isCopiedId" class="bi bi-clipboard"></i>
@@ -29,22 +29,10 @@
                             <input v-model="copiedBook.name" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
-                    <div v-if="copiedBook.image" class="row mb-3">
-                        <label for="inputImage" class="col-3 col-form-label">Book Image</label>
-                        <div class="col-9">
-                            <img :src="copiedBook.image" alt="book image" class="book-image"/>
-                        </div>
-                    </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-3 col-form-label">Author</label>
                         <div class="col-9">
                             <input v-model="copiedBook.author" type="text" class="form-control" id="inputAuthor"/>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="inputAuthor" class="col-3 col-form-label">Barcode</label>
-                        <div class="col-9">
-                            <input v-model="copiedBook.barcode" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -99,10 +87,21 @@
                             <input v-model="copiedBook.translator" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
+
+                    <div class="input-field mt-3 d-flex flex-column" style="gap: 0">
+                        <p class="report-items-title" >Book Image</p>
+                        <div class="report-items-image" style="margin-top: 8px;">
+                            <img v-if="fileInput1.length > 0" class="imgReport" v-for="(item, index) in fileInput1" :key="index" :src="item"/>
+                            <label class="custom-file-upload card-image" v-if="fileInput1.length < 1">
+                                <input type="file" multiple accept=".png, .jpg, .jpeg" @change="onFileSelected"/>
+                                <i class="bi bi-plus d-flex justify-content-center" style="font-size:24px"></i>
+                            </label>
+                        </div>
+                    </div>
                 </div>
 
                 <div v-if="userData?.data?.role==='admin' || userData?.data?.role==='employee'" class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal" @click="handleOpenModalDeleteBook">Delete</button>
+                    <!-- <button type="button" class="btn btn-danger" data-bs-dismiss="modal" @click="handleOpenModalDeleteBook">Delete</button> -->
                     <div class="save-container">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button @click="handleUpdateBook" type="button" class="btn btn-primary">Save changes</button>

@@ -11,7 +11,11 @@ import FormattedModal from '@/components/modal/modal.vue';
     watch: {
         bookItem: {
             handler: function (val: any, oldVal: any) {
+                this.fileInput1 = []
                 this.copiedBook = JSON.parse(JSON.stringify(val));
+                if (this.copiedBook["image"]) {
+                    this.fileInput1.push(this.copiedBook["image"])
+                }
                 if (this.copiedBook && this.copiedBook.categories && Array.isArray(this.copiedBook.categories)) {
                     this.seletectedCategory = this.copiedBook.categories.map((item: any) => item._id);
                   } else {
@@ -36,6 +40,9 @@ export default class ModalDetailsBook extends Vue {
     public isShowModalCategories: any = false
     public allCategories: any = []
     public seletectedCategory: any = []
+    public fileInput:any = [];
+    public fileInput1:any = [];
+    public imagesNotUpload = new FormData();
 
     async beforeMount() {
         this.userData = this.$store.state.userData
@@ -49,7 +56,7 @@ export default class ModalDetailsBook extends Vue {
     }
 
     public handleCopyId() {
-        navigator.clipboard.writeText(this.bookItem._id).then(() => {
+        navigator.clipboard.writeText(this.bookItem.barcode).then(() => {
             toast.success('Copied to clipboard')
             this.isCopiedId = true
         })
@@ -60,12 +67,17 @@ export default class ModalDetailsBook extends Vue {
     }
 
     public async handleUpdateBook() {
+        let resImage = await this.$store.dispatch(MutationTypes.UPLOAD_MULTIPLE_IMAGES, this.imagesNotUpload)
+        if (resImage.status === 200) {
+            this.copiedBook["image"] = resImage.data.images[0]
+        }
         this.copiedBook["bookId"] = await this.bookItem._id
         this.copiedBook["categories"] = this.seletectedCategory
         let res =  await this.$store.dispatch(MutationTypes.UPDATE_A_BOOK, this.copiedBook)
 
         if (res.status === 200) {
             toast.success(res.data.message)
+            console.log("res", res)
             window.location.reload()
         } else {
             toast.error(res.data.message)
@@ -101,5 +113,27 @@ export default class ModalDetailsBook extends Vue {
 
     public handleCheckCategory(itemId: any) {
         return this.seletectedCategory.some((item: any) => item._id === itemId)
+    }
+
+    public onFileSelected(event: any) {
+        const selectedFiles = (event.target as HTMLInputElement).files;
+    
+        if (selectedFiles) {
+          for (let i = 0; i < selectedFiles.length; i++) {
+            const file = selectedFiles[i];
+    
+            if (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg') {
+              this.fileInput.push(file);
+              const reader = new FileReader();
+              reader.onload = () => {
+                this.fileInput1.push(reader.result);
+              };
+              reader.readAsDataURL(file);
+              this.imagesNotUpload.append('images', this.fileInput[i]);
+            }else {
+                toast.error("Invalid file");
+            }
+          }
+        }
     }
 }

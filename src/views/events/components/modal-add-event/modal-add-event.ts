@@ -28,9 +28,6 @@ export default class ModalAddEvent extends Vue {
     }
 
     public async handleCreateEvent() {
-        console.log("newEvent" ,this.newEvent)
-        console.log("selectedBooks" ,this.selectedBooks.map((book: any) => book._id))
-        console.log("book", this.newEvent)
         this.newEvent.discountBooks = this.selectedBooks.map((book: any) => book._id)
         let imagesURL = await this.$store.dispatch(MutationTypes.UPLOAD_MULTIPLE_IMAGES, this.imagesNotUpload)
 
