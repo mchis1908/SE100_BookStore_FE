@@ -3,38 +3,6 @@ import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
 import { Modal } from 'bootstrap'
 import ModalAddManually from "@/views/book-management/components/modal-add-manually/modal-add-manually";
-import { VueToPrint } from "vue-to-print";
-import { useVueToPrint } from "vue-to-print";
-import { reactive, ref } from "vue";
-
-const componentRef = ref();
-
-const handleAfterPrint = () => {
-    console.log("`onAfterPrint` called"); // tslint:disable-line no-console
-  };
-  
-  const handleBeforePrint = () => {
-    console.log("`onBeforePrint` called"); // tslint:disable-line no-console
-  };
-  
-  const handleOnBeforeGetContent = () => {
-    console.log("`onBeforeGetContent` called"); // tslint:disable-line no-console
-  
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-  
-        resolve();
-      }, 2000);
-    });
-};
-const { handlePrint } = useVueToPrint({
-    content: () => componentRef.value,
-    documentTitle: "AwesomeFileName",
-    onAfterPrint: handleAfterPrint,
-    onBeforeGetContent: handleOnBeforeGetContent,
-    onBeforePrint: handleBeforePrint,
-    removeAfterPrint: false
-});
 
 @Options({
     props: {

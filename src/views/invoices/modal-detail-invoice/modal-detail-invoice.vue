@@ -71,7 +71,7 @@
                                 <td>{{item?.book?.barcode}}</td>
                                 <td>{{item?.book?.name}}</td>
                                 <td>{{item?.book?.author}}</td>
-                                <td>{{item?.book?.salesPrice}}</td>
+                                <td>{{item?.book?.salesPrice * (1-item?.book?.discountValue)}}</td>
                                 <td>{{item?.quantity}}</td>
                             </tr>
                         </tbody>
