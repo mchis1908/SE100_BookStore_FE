@@ -71,7 +71,9 @@ export default class Salary extends Vue {
   }
 
   public async fetchEmployeeList() {
-    let response = await this.$store.dispatch(MutationTypes.GET_EMPLOYEE)
+    let response = await this.$store.dispatch(MutationTypes.GET_EMPLOYEE,  {
+      isDeleted: false
+    })
 
     if (response.status === 200) {
       this.employeeList = await response.data.data
