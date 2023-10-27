@@ -3,6 +3,16 @@
 <script lang="ts" src="./refunds.ts"></script>
 
 <template>
+    <div
+    class="modal fade"
+    id="modal-detail-invoice"
+    ref="modal-detail-invoice"
+    tabindex="-1"
+    aria-labelledby="pricingConfirmModalLabel"
+    aria-hidden="true"
+    >
+        <ModalDetailInvoice/>
+    </div>
     <div class="background-feature d-flex flex-column">
         <Header/>
         <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
@@ -10,7 +20,7 @@
             <div class="col-10 d-flex flex-column" style="padding:24px; gap:12px;overflow-y: scroll; overflow-x: hidden; z-index:1" v-motion-slide-left>
                 <div class="input-field align-items-center" style="gap:16px; padding: 0 0 0 12px;">
                     <div class="d-flex justify-content-start align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>
-                    <input v-if="!isInvoice" class="search-input input" placeholder="Enter barcode or name of book" v-model="searchInvoice"/>
+                    <input v-if="!isInvoice" class="search-input input" placeholder="Enter barcode of invoice" v-model="searchInvoice"/>
                     <div v-else style="
                         display: flex;
                         height: 40px;
@@ -34,7 +44,7 @@
                 <div class="d-flex flex-column" style="gap:12px; position:relative; height: calc( 100% - 64px); background:#fff; padding:24px 12px; border-radius:16px">
                     <div class="input-field align-items-center" style="gap:16px">
                         <div class="d-flex justify-content-start align-items-center" style="font-weight:600; font-size:14px">Customer:</div>
-                        <input class="search-input input" placeholder="Enter customer information" :value="'a'" disabled/>
+                        <input class="search-input input" placeholder="Enter customer information" :value="invoice?.customer?.name" disabled/>
                     </div>
                     <div class="input-field align-items-center" style="gap:16px; width:100%">
                         <div class="d-flex justify-content-start align-items-center" style="font-weight:600; font-size:14px">Book:</div>

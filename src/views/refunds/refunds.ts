@@ -4,10 +4,12 @@ import Header from '@/components/header/header.vue'
 import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
 import { Modal } from "bootstrap";
+import ModalDetailInvoice from "@/views/invoices/modal-detail-invoice/modal-detail-invoice.vue";
 @Options({
   components: {
     MenuDashBoard,
-    Header
+    Header,
+    ModalDetailInvoice
   },
   watch:{
     searchInvoice: {
@@ -70,6 +72,11 @@ export default class Refunds extends Vue {
     //   console.log(typeof(res.data.data[0]))
     // }
     if(res.status ===200 && typeof(res.data.data[0])!=='object'){
+      if(res?.data?.data?.vouchers.length!==0)
+      {
+        toast.error(`This invoice had used a voucher so that it can not be refunded`);
+        return
+      }
       this.invoice= res.data.data
       this.detailInvoice= res.data.data?.invoiceDetails
       this.isInvoice=true
@@ -125,6 +132,7 @@ export default class Refunds extends Vue {
     if (index >= 0 && index < this.bookInCart.length) {
       this.bookInCart.splice(index, 1);
       this.quantity.splice(index, 1);
+      this.cost.splice(index, 1);
     }
   }
 
@@ -134,6 +142,7 @@ export default class Refunds extends Vue {
       this.cost[index] = costValue;
     });
     this.total = this.cost.reduce((acc:any, item:any) => acc + item, 0);
+    console.log('abc', this.cost);
   }
 
   public async handleRefund(){
@@ -150,10 +159,10 @@ export default class Refunds extends Vue {
     const res = await this.$store.dispatch(MutationTypes.CREATE_REFUND, payload);
     if (res.status===200) {
       toast.success("Successfully refunded");
-      // this.$store.commit("setInvoice", res.data.data._id);
-      // const myModal = new Modal(this.$refs["modal-detail-invoice"] as any);
-      // document.body.appendChild(document.getElementById('modal-detail-invoice') as any);
-      // myModal.show();
+      this.$store.commit("setInvoice", this?.invoice?._id);
+      const myModal = new Modal(this.$refs["modal-detail-invoice"] as any);
+      document.body.appendChild(document.getElementById('modal-detail-invoice') as any);
+      myModal.show();
     }
   }
 }
