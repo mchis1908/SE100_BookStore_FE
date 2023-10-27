@@ -3,10 +3,12 @@ import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
 import { Modal } from 'bootstrap'
 import ModalAddManually from "@/views/book-management/components/modal-add-manually/modal-add-manually";
-
+import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas';
+import Barcode from '@/components/barcode/barcode.vue'
 @Options({
-    props: {
-
+    components: {
+        Barcode
     },
 })
 
@@ -48,8 +50,19 @@ export default class ModalDetailInvoice extends Vue {
         myModal.show()
     }
 
-    public handlePrint(){
-      
+    print(): void {
+        const contentToPrint = document.getElementById('content-to-print');
+        if (contentToPrint) {
+            html2canvas(contentToPrint).then((canvas) => {
+                document.body.appendChild(canvas);
+                const imgData = canvas.toDataURL("image/jpeg");
+                const doc = new jsPDF();
+                doc.addImage(imgData, 'JPEG', 10, 10, 180, 0);
+                doc.save('Invoice ID:' + this.invoiceDetail?._id);
+            });
+        } else {
+            console.error('Element with id')
+        }
     }
 
     public handleCancel(){

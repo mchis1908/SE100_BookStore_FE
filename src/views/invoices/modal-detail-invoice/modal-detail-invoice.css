@@ -34,4 +34,13 @@
         font-weight:600;
         text-align: center;
     }
+    
+    .input-field{
+        display: grid;
+        gap:16px;
+        justify-content: start;
+        align-items: start;
+    
+        grid-template-columns: 70px 1fr;
+    }
 }
