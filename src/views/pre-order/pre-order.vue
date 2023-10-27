@@ -176,26 +176,25 @@
                                 <table class="table table-striped table-hover">
                                     <thead>
                                         <tr class="text-start">
-                                            <th scope="col">No</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Rank</th>
-                                            <th scope="col">Expired Day</th>
-                                            <th scope="col">Creater</th>
+                                            <th>No</th>
+                                            <th>Name</th>
+                                            <th>Rank</th>
+                                            <th>Expired Day</th>
+                                            <th>Creater</th>
+                                            <th>&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody class="table-group-divider">
                                         <tr class="book-row text-start" v-for="(item, index) in preOrders" :key="index"
                                             data-bs-toggle="modal" data-bs-target="#detailPreOrder"
                                             @click="handleDetailPre(item)">
-                                            <th scope="row">{{ index + 1 }}</th>
+                                            <th>{{ index + 1 }}</th>
                                             <td>{{ item?.customer?.name }}</td>
                                             <td>{{ item?.customer?.user?.rank }}</td>
                                             <td>{{ item?.expirationDate?.slice(0, 10) }}</td>
                                             <td>{{ item?.employee?.name }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                    data-bs-target="#modal-delete-preorder-component"
-                                                    @click="generateDelete(item?._id)">Delete</button>
+                                                <i class="bi-trash3-fill" style="color:#ADADAD" data-bs-toggle="modal" data-bs-target="#modal-delete-preorder-component" @click="generateDelete(item?._id)"></i>
                                             </td>
                                         </tr>
                                     </tbody>

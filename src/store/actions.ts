@@ -397,12 +397,26 @@ const actions = {
       return null
     }
   },
-  [MutationTypes.GET_INVOICES_BY_ID] : async (
+  [MutationTypes.GET_INVOICES_BY_ID_CUSTOMER] : async (
     { commit }: { commit: any },
     payload: any
   ) => {
     payload = turnOnDevMode(payload);
     const response = await sendGetOnce(`/api/invoice/customer/${payload.id}`,payload);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.GET_INVOICE_BY_ID] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/invoice/${payload.id}`);
 
     if (response) {
       return response
@@ -514,6 +528,19 @@ const actions = {
   ) => {
     payload = turnOnDevMode(payload);
     const response = await sendPostOnce(`/api/manage/order/create-order`, payload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
+  [MutationTypes.CREATE_REFUND] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendPostOnce(`/api/manage/order/refund`, payload);
     if (response) {
       return response
     } else {

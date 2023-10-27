@@ -3,7 +3,7 @@
 
 <template>
     <ModalDetailsBook ref="details-book-component" :bookItem="bookItem" />
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column" style="gap:24px">
         <div class="d-flex flex-row">
             <div class="col d-flex flex-row justify-content-start" style="gap:16px">
                 <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Search:</div>

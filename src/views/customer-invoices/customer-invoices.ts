@@ -53,7 +53,7 @@ export default class Invoices extends Vue {
     };
 
     let res = await this.$store.dispatch(
-      MutationTypes.GET_INVOICES_BY_ID,
+      MutationTypes.GET_INVOICES_BY_ID_CUSTOMER,
       payload
     );
     if(res.status ===200){
