@@ -153,7 +153,7 @@
                 </div>
                 <div class="d-flex flex-row justify-content-between" style="gap:16px">
                     <p style="font-weight:600; font-size:14px">Voucher discount:</p>
-                    <p style="font-weight:600; font-size:14px">{{voucherDiscount}}</p>
+                    <p style="font-weight:600; font-size:14px">{{fixedCurrency(voucherDiscount)}}</p>
                 </div>
                 <div class="d-flex flex-row justify-content-between" style="gap:16px">
                     <p style="font-weight:600; font-size:14px">Total:</p>

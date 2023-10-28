@@ -67,9 +67,9 @@ export default class SellingBooks extends Vue {
   public customerInput:any=null;
   public selectCustomer:any=null;
   public selectVoucher:any=null;
-  public subtotal:any=null;
-  public voucherDiscount:any=null;
-  public total:any=null;
+  public subtotal:any=0;
+  public voucherDiscount:any=0;
+  public total:any=0;
   public suggest: any = [];
   public searchQuery:any=null
 

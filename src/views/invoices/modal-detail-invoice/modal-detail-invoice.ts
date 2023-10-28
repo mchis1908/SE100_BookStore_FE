@@ -6,16 +6,24 @@ import ModalAddManually from "@/views/book-management/components/modal-add-manua
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
 import Barcode from '@/components/barcode/barcode.vue'
+import { fixedCurrency } from "@/utils/utils";
 @Options({
     components: {
         Barcode
     },
+    methods:{
+        fixedCurrency
+    }
 })
 
 export default class ModalDetailInvoice extends Vue {
     public invoiceDetail:any=ModalAddManually;
     public unsubscribe!: any;
-
+    public cost:any=[];
+    public subtotal:any=0;
+    public voucherDiscount:any=0;
+    public total:any=0;
+    public selectVoucher:any=null
     public async mounted() {
         this.handleSubscribe()
     }
@@ -42,6 +50,17 @@ export default class ModalDetailInvoice extends Vue {
         );
         if(res.status ===200){
             this.invoiceDetail= res.data.data
+            this.invoiceDetail.invoiceDetails.forEach((item:any,index:any) => {
+                const costValue = item?.quantity * item?.book?.salesPrice * (1 - item?.book?.discountValue);
+                this.cost[index] = costValue;
+            });
+            this.subtotal = this.cost.reduce((acc:any, item:any) => acc + item, 0);
+            if(this.invoiceDetail?.vouchers.length > 0)
+            {
+                await this.getDetailVoucher(this.invoiceDetail?.vouchers[0])
+            }
+            this.voucherDiscount = (this.selectVoucher?.discountValue ?? 0) * this.subtotal;
+            this.total = this.subtotal- ((this.selectVoucher?.discountValue ?? 0) * this.subtotal);
         }
     }
 
@@ -67,6 +86,19 @@ export default class ModalDetailInvoice extends Vue {
 
     public handleCancel(){
         if(this.$route.path==='/selling-books')window.location.reload()
+    }
+
+    public async getDetailVoucher(id:any){
+        let payload = { 
+            id: id,
+        };
+        let res = await this.$store.dispatch(
+            MutationTypes.GET_DETAIL_VOUCHER,
+            payload
+        );
+        if(res.status ===200){
+            this.selectVoucher= res.data.data
+        }
     }
     
 }

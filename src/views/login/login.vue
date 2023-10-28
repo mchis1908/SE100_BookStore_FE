@@ -18,12 +18,12 @@
                     <img id="logo-img" src="@/assets/login/png/Logo.png" alt="logo">
                 </div>
                 <h2>Login</h2>
-                    <div class="input-field-login">
-                    <input v-model="username" type="text" required>
+                <div class="input-field-login">
+                    <input v-model="username" type="text" autocomplete="off" required>
                     <label>Enter your email or phone number</label>
                 </div>
                 <div class="input-field-login">
-                    <input v-model="password" type="password" required>
+                    <input v-model="password" type="password" autocomplete="off" required>
                     <label>Enter your password</label>
                 </div>
                 <div v-if="invalidAccount" style="width: 100%; text-align: start; font-size: 14px; font-weight: 400">

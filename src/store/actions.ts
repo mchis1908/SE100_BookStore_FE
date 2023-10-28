@@ -163,6 +163,20 @@ const actions = {
     }
   },
 
+  [MutationTypes.GET_DETAIL_VOUCHER] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const response = await sendGetOnce(`/api/manage/voucher/${payload.id}`);
+
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
   [MutationTypes.UPDATE_A_BOOK] : async (
     { commit }: { commit: any },
     payload: any

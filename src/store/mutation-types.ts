@@ -13,6 +13,7 @@ export class MutationTypes {
   public static GET_PRE_BY_ID = 'GET_PRE_BY_ID';
   public static DELETE_PRE = 'DELETE_PRE';
   public static GET_ALL_VOUCHERS = 'GET_ALL_VOUCHERS';
+  public static GET_DETAIL_VOUCHER = 'GET_DETAIL_VOUCHER';
   public static UPDATE_A_BOOK = 'UPDATE_A_BOOK';
   public static CREATE_A_BOOK = 'CREATE_A_BOOK';
   public static GET_ALL_SALARY_SCALE = 'GET_ALL_SALARY_SCALE';
