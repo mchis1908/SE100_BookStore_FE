@@ -33,7 +33,7 @@
                             <tbody class="table-group-divider">
                                 <tr class="text-start" v-for="(item, index) in revenue" :key="index">
                                     <th>{{ titleRevenue[index] }}</th>
-                                    <td>{{ item?.current }}</td>
+                                    <td>{{ fixedCurrency(item?.current) }}</td>
                                     <td>
                                         <div class="d-flex flex-row" style="gap:4px">
                                             <div :style="item?.difference>1 ? 'color:#64C550': 'color:#FF513C'">{{ item?.difference * 100  }}%</div>

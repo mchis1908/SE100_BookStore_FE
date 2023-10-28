@@ -3,11 +3,16 @@ import MenuDashBoard from '@/components/menu-dashboard/menu-dashboard.vue'
 import Header from '@/components/header/header.vue'
 import { MutationTypes } from "@/store/mutation-types";
 import Loading from "@/components/loading/loading.vue";
+import { fixedCurrency } from "@/utils/utils";
+
 @Options({
   components: {
     MenuDashBoard,
     Header,
     Loading
+  },
+  methods: {
+    fixedCurrency
   },
   watch:{
     time: {

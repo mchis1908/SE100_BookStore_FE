@@ -20,7 +20,7 @@
                                     <div style="width:4px; background-color: #065471; border-radius: 8px; height: 100%;"></div>
                                     <div class="d-flex flex-column align-items-start" style="gap:8px">
                                         <p style="text-transform: Capitalize">{{index}}</p>
-                                        <p>{{item?.current}}</p>
+                                        <p>{{fixedCurrency(item?.current)}}</p>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center" style="color:#065471">
@@ -171,7 +171,7 @@
                                     {{item?.customer?.name}}
                                 </p>
                                 <p class="col text-center">
-                                    {{item?.total}}
+                                    {{fixedCurrency(item?.total)}}
                                 </p>
                                 <p class="col text-center">
                                     {{item?.employee?.name}}

@@ -6,12 +6,17 @@ import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
 import ModalDetailInvoice from "@/views/invoices/modal-detail-invoice/modal-detail-invoice.vue";
 import { Modal } from "bootstrap";
+import { fixedCurrency } from "@/utils/utils";
+
 @Options({
   components: {
     MenuDashBoard,
     Header,
     Barcode,
     ModalDetailInvoice
+  },
+  methods: {
+    fixedCurrency
   },
   watch:{
     searchQuery: {

@@ -5,6 +5,7 @@ import { MutationTypes } from "@/store/mutation-types";
 import Modal from "@/components/modal/modal.vue";
 import LineChart from './line-chart/line-chart.vue'
 import Loading from "@/components/loading/loading.vue";
+import { fixedCurrency } from "@/utils/utils";
 
 @Options({
   components: {
@@ -14,6 +15,9 @@ import Loading from "@/components/loading/loading.vue";
     LineChart,
     Loading
   },
+  methods: {
+    fixedCurrency
+  }
 })
 export default class DashBoard extends Vue {
   public isLoading: boolean = false;

@@ -53,7 +53,7 @@
                                 {{ item?.employee?.name }}
                             </p>
                             <p class="col">
-                                {{ item?.total }}
+                                {{ fixedCurrency(item?.total) }}
                             </p>
                             <p class="col">
                                 {{ item?.createdAt?.slice(0,10) }}

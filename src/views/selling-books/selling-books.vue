@@ -43,12 +43,12 @@
                             <div class="d-flex flex-row justify-content-between" style="width:100%">
                                 <div :class="[item?.discountValue > 0 ? 'book-item-text-line' : '', 'book-item-text']">
                                     <p>Price:</p>
-                                    <p>{{ item?.salesPrice }}</p>
+                                    <p>{{ fixedCurrency(item?.salesPrice) }}</p>
                                 </div>
                                 <div v-if="item?.discountValue > 0"
                                     class="book-item-text-sale book-item-text justify-content-end">
                                     <p>Price:</p>
-                                    <p>{{ item?.salesPrice * (1 - item?.discountValue) }}</p>
+                                    <p>{{ fixedCurrency(item?.salesPrice * (1 - item?.discountValue)) }}</p>
                                 </div>
                             </div>
                         </div>
@@ -138,8 +138,8 @@
                             {{ item?.name }}</p>
                         <input class="col text-center add-scale" type="number" style="max-width:80px" :min="1"
                             :max="item?.quantity" v-model="quantity[index]" />
-                        <p class="col-2 text-end">{{ item?.salesPrice * (1 - item?.discountValue) }}</p>
-                        <p class="col-2 text-end">{{ cost[index] }}</p>
+                        <p class="col-2 text-end">{{ fixedCurrency(item?.salesPrice * (1 - item?.discountValue)) }}</p>
+                        <p class="col-2 text-end">{{ fixedCurrency(cost[index]) }}</p>
                         <div style="width:30px">
                             <i class="bi-trash delete-item" style="color:red; font-size:20px"
                                 @click="handleDeleteBook(index)"></i>
@@ -150,7 +150,7 @@
                 <hr style="margin: 0; width:100%; border: 0.5px solid #E5E6E6; opacity: 1;" />
                 <div class="d-flex flex-row justify-content-between" style="gap:16px">
                     <p style="font-weight:600; font-size:14px">Subtotal:</p>
-                    <p style="font-weight:600; font-size:14px">{{subtotal}}</p>
+                    <p style="font-weight:600; font-size:14px">{{ fixedCurrency(subtotal) }}</p>
                 </div>
                 <div class="d-flex flex-row justify-content-between" style="gap:16px">
                     <p style="font-weight:600; font-size:14px">Voucher discount:</p>
@@ -158,7 +158,7 @@
                 </div>
                 <div class="d-flex flex-row justify-content-between" style="gap:16px">
                     <p style="font-weight:600; font-size:14px">Total:</p>
-                    <p style="font-weight:600; font-size:14px">{{total}}</p>
+                    <p style="font-weight:600; font-size:14px">{{ fixedCurrency(total) }}</p>
                 </div>
                 <button class="button-solid" @click="handlePay">Pay</button>
             </div>

@@ -34,7 +34,7 @@
                         <th scope="row">{{ index + 1 }}</th>
                         <td>{{ item["employee"]["name"] }}</td>
                         <td>{{ item["employee"]["phoneNumber"] }}</td>
-                        <td>{{ item["employee"]["user"]["salary"] }}</td>
+                        <td>{{ fixedCurrency(item["employee"]["user"]["salary"]) }}</td>
                         <td v-if="item['employee']['user']['salaryScale']">{{ item["employee"]["user"]["salaryScale"]["coefficient"] }}</td>
                         <td v-else>1</td>
                         <td>

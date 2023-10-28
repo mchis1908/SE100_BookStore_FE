@@ -4,11 +4,15 @@ import Header from '@/components/header/header.vue'
 import { MutationTypes } from "@/store/mutation-types";
 import ModalDetailInvoice from "./modal-detail-invoice/modal-detail-invoice.vue";
 import { Modal } from "bootstrap";
+import { fixedCurrency } from "@/utils/utils";
 @Options({
   components: {
     MenuDashBoard,
     Header,
     ModalDetailInvoice
+  },
+  methods: {
+    fixedCurrency
   },
   watch:{
     searchQuery: {

@@ -4,11 +4,15 @@ import Header from '@/components/header/header.vue'
 import Loading from "@/components/loading/loading.vue";
 import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
+import { fixedCurrency } from "@/utils/utils";
 @Options({
   components: {
     MenuDashBoard,
     Header,
     Loading
+  },
+  methods: {
+    fixedCurrency
   },
   watch: {
     selectedMonth: {
