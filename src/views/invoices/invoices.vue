@@ -60,9 +60,15 @@
                             <p class="col">
                                 {{ fixedCurrency(item?.total) }}
                             </p>
-                            <p class="col">
-                                {{ item?.createdAt?.slice(0,10) }}
-                            </p>
+                            <div class="col d-flex flex-row align-items-center justify-content-center" style="gap:8px">
+                                <p>{{ item?.createdAt?.slice(0,10) }}</p>
+                                <i v-if="item?.createdAt!==item?.updatedAt" class="bi-exclamation-circle-fill" id="warning" 
+                                data-bs-toggle="tooltip" 
+                                data-bs-title="Customers have just returned some books" 
+                                data-bs-placement="bottom" data-bs-offset="0, 10"
+                                style="font-size:16px; color:#EED176"></i>
+                                <p v-else style="height:16px; width:16px">&nbsp;</p>
+                            </div>
                         </div>
                     </div>
                     <div class="count-page">

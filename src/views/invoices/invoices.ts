@@ -3,8 +3,8 @@ import MenuDashBoard from '@/components/menu-dashboard/menu-dashboard.vue'
 import Header from '@/components/header/header.vue'
 import { MutationTypes } from "@/store/mutation-types";
 import ModalDetailInvoice from "./modal-detail-invoice/modal-detail-invoice.vue";
-import { Modal } from "bootstrap";
 import { fixedCurrency } from "@/utils/utils";
+import { Modal, Tooltip } from "bootstrap";
 @Options({
   components: {
     MenuDashBoard,
@@ -37,6 +37,11 @@ export default class Invoices extends Vue {
   public searchQuery:any=null;
   public beforeMount(){
     this.getData();
+    const tooltip = new Tooltip(document.body, {
+      selector: "[data-bs-toggle='tooltip']",
+      trigger: 'hover'
+    })
+    tooltip.show()
   }
 
   public mounted(){
@@ -46,7 +51,7 @@ export default class Invoices extends Vue {
   public async getData(){
     let payload = { 
       page: this.currentPage,
-      limit: 9,
+      limit: 10,
       date: this.date?.slice(0,10),
       search_q: this.searchQuery,
     };
@@ -70,5 +75,9 @@ export default class Invoices extends Vue {
     const myModal = new Modal(this.$refs["modal-detail-invoice"] as any);
     document.body.appendChild(document.getElementById('modal-detail-invoice') as any);
     myModal.show();
+  }
+
+  public hideTooltip(index: any) {
+    Tooltip.getInstance(`#warning`)?.hide()
   }
 }
