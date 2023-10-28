@@ -1,12 +1,24 @@
-<script setup lang="ts">
+<script lang="ts">
+import { Vue, Options } from "vue-class-component";
 import VueBarcode from '@chenfengyuan/vue-barcode';
-const barcodeValue = "567891234";
+@Options({
+    props: {
+      barcodeValue:String
+    },
+    components:{
+      VueBarcode
+    }
+})
+export default class Barcode extends Vue {
+  public barcodeValue!: string;
+}
+
 </script>
 
 <template>
     <vue-barcode class="barcode"
-        :value="barcodeValue"
-        :options="{ displayValue: false }">
+      :value="barcodeValue"
+      :options="{ displayValue: false }">
     </vue-barcode>
 </template>
 
@@ -16,7 +28,7 @@ const barcodeValue = "567891234";
 }
 
 .barcode {
-  width: 180px;
+  width: 220px;
   height: 40px;
 }
 </style>

@@ -24,7 +24,6 @@
                         style="font-weight:600; font-size:16px; color: #065471">Search:</div>
                     <input class="search-input input" placeholder="Enter barcode or name of book" v-model="searchQuery" />
                 </div>
-                <!-- <Barcode/> -->
                 <div class="book-container" style="overflow-y: scroll; overflow-x: hidden; z-index:1">
                     <div class="book-item" v-for="(item, index) in books" :key="index">
                         <img v-if="item?.image" :src="item?.image" style="height:120px; object-fit:contain;z-index:0" />

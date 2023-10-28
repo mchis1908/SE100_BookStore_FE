@@ -3,42 +3,12 @@ import { MutationTypes } from "@/store/mutation-types";
 import { toast } from "vue3-toastify";
 import { Modal } from 'bootstrap'
 import ModalAddManually from "@/views/book-management/components/modal-add-manually/modal-add-manually";
-import { VueToPrint } from "vue-to-print";
-import { useVueToPrint } from "vue-to-print";
-import { reactive, ref } from "vue";
-
-const componentRef = ref();
-
-const handleAfterPrint = () => {
-    console.log("`onAfterPrint` called"); // tslint:disable-line no-console
-  };
-  
-  const handleBeforePrint = () => {
-    console.log("`onBeforePrint` called"); // tslint:disable-line no-console
-  };
-  
-  const handleOnBeforeGetContent = () => {
-    console.log("`onBeforeGetContent` called"); // tslint:disable-line no-console
-  
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-  
-        resolve();
-      }, 2000);
-    });
-};
-const { handlePrint } = useVueToPrint({
-    content: () => componentRef.value,
-    documentTitle: "AwesomeFileName",
-    onAfterPrint: handleAfterPrint,
-    onBeforeGetContent: handleOnBeforeGetContent,
-    onBeforePrint: handleBeforePrint,
-    removeAfterPrint: false
-});
-
+import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas';
+import Barcode from '@/components/barcode/barcode.vue'
 @Options({
-    props: {
-
+    components: {
+        Barcode
     },
 })
 
@@ -80,8 +50,19 @@ export default class ModalDetailInvoice extends Vue {
         myModal.show()
     }
 
-    public handlePrint(){
-      
+    print(): void {
+        const contentToPrint = document.getElementById('content-to-print');
+        if (contentToPrint) {
+            html2canvas(contentToPrint).then((canvas) => {
+                document.body.appendChild(canvas);
+                const imgData = canvas.toDataURL("image/jpeg");
+                const doc = new jsPDF();
+                doc.addImage(imgData, 'JPEG', 10, 10, 180, 0);
+                doc.save('Invoice ID:' + this.invoiceDetail?._id);
+            });
+        } else {
+            console.error('Element with id')
+        }
     }
 
     public handleCancel(){

@@ -9,6 +9,7 @@
   "dependencies": {
     "@chenfengyuan/vue-barcode": "^2.0.2",
     "@splidejs/vue-splide": "^0.6.12",
+    "@types/html2canvas": "^1.0.0",
     "@vueform/toggle": "^2.1.4",
     "@vueuse/motion": "^2.0.0",
     "axios": "^1.5.1",
@@ -18,14 +19,15 @@
     "chart.js": "^4.4.0",
     "core-js": "^3.8.3",
     "jsbarcode": "^3.11.5",
+    "jspdf": "^2.5.1",
     "read-excel-file": "^5.7.1",
     "vue": "^3.2.13",
     "vue-chartjs": "^5.2.0",
     "vue-class-component": "^8.0.0-0",
     "vue-router": "^4.0.3",
-    "vue-to-print": "^1.1.0",
     "vue3-emoji-picker": "^1.1.7",
     "vue3-toastify": "^0.1.13",
+    "vue3-xlsx": "^1.1.2",
     "vuex": "^4.0.0"
   },
   "devDependencies": {

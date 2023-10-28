@@ -14,10 +14,18 @@
                             <div class="d-flex justify-content-center align-items-center" style="font-weight:600; font-size:16px; color: #065471">Filter:</div>
                             <input class="search-input input" type="month" placeholder="Enter your input" style="width:150px" v-model="time"/>
                         </div>
-                        <div class="button-solid-small d-flex flex-row justify-content-start align-items-center" style="border-radius:8px; gap:8px; height:30px;">
-                            <i class="bi-printer-fill"></i>
-                            <p>Print Report </p>
-                        </div>
+                        <xlsx-workbook>
+                            <xlsx-sheet
+                                :collection="sheets?.data"
+                                :sheet-name="formatDate(time)+' Revenue Report'"
+                            />
+                            <xlsx-download :filename="formatDate(time)+ ' Revenue Report.xlsx'">
+                                <div @click="download" class="button-solid-small d-flex flex-row justify-content-start align-items-center" style="border-radius:8px; gap:8px; height:30px;">
+                                    <i class="bi-printer-fill"></i>
+                                    <p>Print Report </p>
+                                </div>
+                            </xlsx-download>
+                        </xlsx-workbook>
                     </div>
                     <p style="font-size:32px; font-weight:600; color: rgb(6, 84, 113); margin-top:20px">{{formatDate(time)}} Revenue Report </p>
                     <Loading v-if="isLoading" />
@@ -36,9 +44,8 @@
                                     <td>{{ fixedCurrency(item?.current) }}</td>
                                     <td>
                                         <div class="d-flex flex-row" style="gap:4px">
-                                            <div :style="item?.difference>1 ? 'color:#64C550': 'color:#FF513C'">{{ item?.difference * 100  }}%</div>
-                                            <!-- <img v-if="_item?.status" :src="require(`@/assets/chat-insight/positive/${(_item?.status)}Arrow.svg`)"/> -->
-                                            <img v-if="item?.difference>1" :src="require(`@/assets/revenue/upArrow.svg`)"/>
+                                            <div :style="item?.difference>1 && item?.current>0 ? 'color:#64C550': 'color:#FF513C'">{{ item?.difference * 100  }}%</div>
+                                            <img v-if="item?.difference>1 && item?.current>0" :src="require(`@/assets/revenue/upArrow.svg`)"/>
                                             <img v-else :src="require(`@/assets/revenue/downArrow.svg`)"/>
                                             <p style="color:#BABCC2">Since last month</p>
                                         </div>
