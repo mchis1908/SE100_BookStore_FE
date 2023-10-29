@@ -78,6 +78,7 @@
                             <tr class="text-start">
                                 <th scope="col">No</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">Floor</th>
                                 <th scope="col">Row</th>
                             </tr>
                         </thead>
@@ -85,6 +86,7 @@
                             <tr class="book-row text-start" v-for="(item, index) in allCategories" :key="index">
                                 <th scope="row">{{ index + 1 }}</th>
                                 <td>{{ item["name"] }}</td>
+                                <td>{{ item["row"]["floor"]["index"] }}</td>
                                 <td>{{ item["row"]["index"] }}</td>
                             </tr>
                         </tbody>

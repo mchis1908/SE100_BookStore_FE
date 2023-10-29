@@ -17,14 +17,14 @@
                     </div>
                     <div class="mb-2">
                         <label for="categoryRowInput" class="form-label">Floor</label>
-                        <select @change="console.log(selectedFloor)" v-model="selectedFloor" class="w-100" style="height: 38px; border-radius: 8px">
+                        <select v-model="selectedFloor" class="w-100" style="height: 38px; border-radius: 8px; border: 1px solid #adadad">
                             <option v-for="(item, indexArray) in floors" :key="indexArray" :value="item.index">{{ item.index }}</option>
                         </select>
                     </div>
 
                     <div v-if="selectedFloor && floors[selectedFloor - 1].rows.length > 0" class="mb-2">
                         <label for="categoryRowInput" class="form-label">Row</label>
-                        <select @change="console.log(selectedRow)" v-model="selectedRow" style="height: 38px; width: 100%; border-radius: 8px">
+                        <select v-model="selectedRow" style="height: 38px; width: 100%; border-radius: 8px; border: 1px solid #adadad">
                             <option v-for="(item, index) in floors[selectedFloor - 1].rows" :key="index"  :value="item._id">{{ item.index }}</option>
                         </select>
                     </div>

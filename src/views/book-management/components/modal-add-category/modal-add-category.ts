@@ -25,8 +25,6 @@ export default class ModalAddCategory extends Vue {
         if (response) {
             this.floors = await response.data.data
         }
-
-        console.log("this.floors", this.floors)
     }
 
     public async getRows() {
@@ -44,6 +42,7 @@ export default class ModalAddCategory extends Vue {
 
         if (response.status === 200) {
             toast.success('Create category successfully');
+            window.location.reload()
         } else  {
             toast.error("There is an error. Please try again!")
         }
