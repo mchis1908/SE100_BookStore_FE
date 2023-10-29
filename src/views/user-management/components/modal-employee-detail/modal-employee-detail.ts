@@ -117,6 +117,6 @@ export default class ModalEmployeeDetail extends Vue {
         if(res.status ===200){
             toast.success('Successfully updated');
             window.location.reload();
-        }
+        }else toast.error(res.data.message)
     }
 }

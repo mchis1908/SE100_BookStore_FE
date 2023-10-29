@@ -47,7 +47,7 @@ export default class ModalAddCustomer extends Vue {
         if(res.status ===200){
             toast.success('Successfully created');
             window.location.reload();
-        }
+        }else toast.error(res.data.message)
     }
 
     public handleValidInput(){

@@ -54,17 +54,17 @@ export default class ModalAddCustomer extends Vue {
     public async handleClickActionButton() {
         if (!this.handleValidInput()) return;
         const payload = { 
+            expenses_id: this.expenses._id,
             subject: this.userInput.subject,
             cost: this.userInput.cost,
             description: this.userInput.description,
-            images: this.userInput.images,
         };
         const res = await this.$store.dispatch(
-          MutationTypes.CREATE_CUSTOMER,
+          MutationTypes.UPDATE_INFO_EXPENSE,
           payload
         );
         if(res.status ===200){
-            toast.success('Successfully created');
+            toast.success('Successfully updated');
             window.location.reload();
         }
     }

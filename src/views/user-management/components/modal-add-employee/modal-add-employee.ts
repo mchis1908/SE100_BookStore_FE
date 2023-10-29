@@ -70,7 +70,7 @@ export default class ModalAddEmployee extends Vue {
         if(res.status ===200){
             toast.success('successfully created');
             window.location.reload();
-        }
+        }else toast.error(res.data.message)
     }
 
     public handleValidInput(){

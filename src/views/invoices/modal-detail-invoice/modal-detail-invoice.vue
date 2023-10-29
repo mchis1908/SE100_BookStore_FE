@@ -46,14 +46,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-row" style="gap:32px">
-                        <div class="col d-flex flex-column" style="gap:16px">
-                            <div class="input-field">
-                                <p class="text-start d-flex align-items-start" style="height:100%; font-weight:600">Note:</p>
-                                <textarea class="input" :value="invoiceDetail?.note" type="text" disabled></textarea>
-                            </div>
-                        </div>
-                    </div>
                     <hr style="margin: 5% 10%; border: 0.5px solid #E5E6E6; opacity: 1;"/>
                     <p class="text-start text-title-1" style="font-weight:600; font-size:16px">List Book</p>
                     <table class="table table-striped table-hover">

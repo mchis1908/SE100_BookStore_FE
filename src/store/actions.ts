@@ -510,6 +510,22 @@ const actions = {
     }
   },
 
+  [MutationTypes.UPDATE_INFO_EXPENSE] : async (
+    { commit }: { commit: any },
+    payload: any
+  ) => {
+    payload = turnOnDevMode(payload);
+    const expenses_id = payload.expenses_id
+    let newPayload = { ...payload };
+    delete newPayload.expenses_id;
+    const response = await sendPutOnce(`/api/manage/expense/${expenses_id}`, newPayload);
+    if (response) {
+      return response
+    } else {
+      return null
+    }
+  },
+
   [MutationTypes.GET_UPCOMING_EVENTS] : async (
     { commit }: { commit: any },
     payload: any

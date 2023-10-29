@@ -37,7 +37,7 @@ export default class ModalAddEvent extends Vue {
             if (res.status === 200) {
                 toast.success(res.data.message);
                 window.location.reload();
-            }
+            }else toast.error(res.data.message)
         }
     }
 
