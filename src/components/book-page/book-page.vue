@@ -35,11 +35,11 @@
                     <div class="d-flex flex-row justify-content-between" style="width:100%">
                         <div :class="[item?.discountValue>0? 'book-item-text-line':'', 'book-item-text']">
                             <p>Price:</p>
-                            <p>{{item?.salesPrice}}</p>
+                            <p>{{fixedCurrency(item?.salesPrice)}}</p>
                         </div>
                         <div v-if="item?.discountValue>0" class="book-item-text-sale book-item-text justify-content-end">
                             <p>Price:</p>
-                            <p>{{item?.salesPrice * (1- item?.discountValue)}}</p>
+                            <p>{{fixedCurrency(item?.salesPrice * (1- item?.discountValue))}}</p>
                         </div>
                     </div>
                     <div v-if="item?.discountValue>0" class="sale-container">

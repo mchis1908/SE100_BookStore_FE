@@ -2,7 +2,7 @@ import { Options, Vue } from "vue-class-component";
 import { MutationTypes } from "@/store/mutation-types";
 import Modal from "@/components/modal/modal.vue";
 import ModalDetailsBook from "@/views/book-management/components/modal-details-book/modal-details-book.vue";
-
+import { fixedCurrency } from "@/utils/utils";
 @Options({
   components: {
     Modal,
@@ -21,6 +21,9 @@ import ModalDetailsBook from "@/views/book-management/components/modal-details-b
       },
       deep: true,
     },
+  },
+  methods:{
+    fixedCurrency
   }
 })
 export default class BookPage extends Vue {
