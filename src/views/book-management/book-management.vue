@@ -78,8 +78,7 @@
                             <tr class="text-start">
                                 <th scope="col">No</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Floor Index</th>
-                                <th scope="col">Floor</th>
+                                <th scope="col">Row</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
@@ -87,7 +86,6 @@
                                 <th scope="row">{{ index + 1 }}</th>
                                 <td>{{ item["name"] }}</td>
                                 <td>{{ item["row"]["index"] }}</td>
-                                <td>{{ item["row"]["floor"] }}</td>
                             </tr>
                         </tbody>
                     </table>
