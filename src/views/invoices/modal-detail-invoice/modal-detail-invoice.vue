@@ -11,20 +11,6 @@
                 </div>
                 <div class="d-flex flex-column" style="gap:16px; margin:16px; overflow:auto" id="content-to-print">
                     <div class="d-flex flex-row" style="gap:32px">
-                        <div class="d-flex flex-column" style="gap:8px">
-                            <div class="input-field " style="height:30px">
-                                <p class="text-start d-flex align-items-center" style="height:30px; font-weight:600">Invoice ID:</p>
-                                <!-- <input class="input" :value="invoiceDetail?._id" style="height:30px" type="text" disabled/> -->
-                                <Barcode :barcodeValue="invoiceDetail?._id"/>
-                            </div>
-                            <div class="input-field ">
-                                <p class="text-start d-flex align-items-center"></p>
-                                <!-- <input class="input" :value="invoiceDetail?._id" style="height:30px" type="text" disabled/> -->
-                                <p>{{invoiceDetail?._id}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex flex-row" style="gap:32px">
                         <div class="col d-flex flex-column" style="gap:16px">
                             <div class="input-field " style="height:30px">
                                 <p class="text-start d-flex align-items-center" style="height:30px; font-weight:600">Create Date:</p>
@@ -103,6 +89,11 @@
                             <p style="font-weight:600; font-size:14px">Total:</p>
                             <p style="font-weight:600; font-size:14px">{{ fixedCurrency(total) }}</p>
                         </div>
+                    </div>
+                    <hr style="border: 0.5px solid #E5E6E6; opacity: 1;"/>
+                    <div class="d-flex flex-column align-items-center" style="gap:8px">
+                        <Barcode :barcodeValue="invoiceDetail?._id"/>
+                        <p>{{invoiceDetail?._id}}</p>
                     </div>
                 </div>
                 <div class="modal-footer">

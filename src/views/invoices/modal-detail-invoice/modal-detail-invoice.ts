@@ -76,7 +76,7 @@ export default class ModalDetailInvoice extends Vue {
                 document.body.appendChild(canvas);
                 const imgData = canvas.toDataURL("image/jpeg");
                 const doc = new jsPDF();
-                doc.addImage(imgData, 'JPEG', 10, 10, 180, 0);
+                doc.addImage(imgData, 'PNG', 10, 10, 190, 0);
                 doc.save('Invoice ID:' + this.invoiceDetail?._id);
             });
         } else {

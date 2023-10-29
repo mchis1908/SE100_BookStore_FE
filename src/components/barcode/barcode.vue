@@ -28,7 +28,7 @@ export default class Barcode extends Vue {
 }
 
 .barcode {
-  width: 220px;
-  height: 40px;
+  width: 350px;
+  height: 50px;
 }
 </style>
