@@ -81,7 +81,10 @@ export default class Events extends Vue {
     (this.$refs['add-new-event-component'] as any).openModal()
   }
 
-  public async handleDetailsEvent(item: any) {
+  public async handleDetailsEvent(item: any, index: any) {
+    if (index === 0) {
+      return 
+    }
     this.selectedEvent = await item;
     (this.$refs['details-event-component'] as any).openModal()
   }

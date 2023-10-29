@@ -86,7 +86,7 @@
         </div>
             <div class="d-flex flex-wrap mt-4" style="gap: 30px;">
               <Loading v-if="isLoading"/>
-              <EventItem @click="handleDetailsEvent(item._id)" v-else v-for="(item, index) in events" :key="index" :eventData="item" :isUpcoming="(index === 0 && currentEvent) ? false : true"/>
+              <EventItem @click="handleDetailsEvent(item._id, index)" v-else v-for="(item, index) in events" :key="index" :eventData="item" :isUpcoming="(index === 0 && currentEvent) ? false : true"/>
             </div>
           </div>
           <div
