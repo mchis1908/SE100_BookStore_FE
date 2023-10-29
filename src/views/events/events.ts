@@ -35,7 +35,7 @@ import { MutationTypes } from "@/store/mutation-types";
 export default class Events extends Vue {
   public vouchers: any = [];
   public events: any = [];
-  public currentEvent: any = [];
+  public currentEvent: any = {};
   public searchLevel: any = ''
   public searchEvent: any = ''
   public isLoading: boolean = false;
@@ -45,7 +45,7 @@ export default class Events extends Vue {
     this.fetchEvents()
 
     const currentEvent = await this.$store.dispatch(MutationTypes.GET_CURRENT_EVENTS);
-    if (currentEvent.data.success) {
+    if (currentEvent.data.data) {
       this.currentEvent = await currentEvent.data.data;
       this.events.unshift(this.currentEvent)
     }
