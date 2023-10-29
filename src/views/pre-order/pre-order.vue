@@ -119,11 +119,10 @@
 
                                     <div class="button-container"
                                         style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;">
-                                        <button class="add-button btnPre"
-                                            style="border-radius: 5px; width: 6vw; border: 0.5px solid #ccc;padding: 2px;"
+                                        <button class="button-solid" style="width: 100%; "
                                             @click="addToSelectedBooks()">Add</button>
-                                        <button class="remove-button btnPre" @click="removeFromSelectedBooks()"
-                                            style="border-radius: 5px; width: 6vw; border: 0.5px solid #ccc; padding: 2px;">Remove</button>
+                                        <button class="button-solid" @click="removeFromSelectedBooks()"
+                                            style="width: 100%; ">Remove</button>
                                     </div>
 
                                     <div class="left-panel"
@@ -162,17 +161,15 @@
                             </div>
 
                         </div>
-                        <div class="btn-pre" style="margin-top: 5vh; display: flex; justify-content: end;">
-                            <button class="btn-reset" @click="handleReset"
-                                style="border-radius: 5px; padding: 6px; margin-right:2vw; border: 0.5px solid #ccc;">Reset</button>
-                            <button class="btn-create " @click="createPreOrder"
-                                style="border-radius: 5px; padding: 6px; margin-right:2vw; border: 0.5px solid #ccc;">Create</button>
+                        <div class="btn-pre" style="margin-top: 5vh; display: flex; justify-content: end; gap: 8px">
+                            <button class="button-outline" @click="handleReset">Reset</button>
+                            <button class="button-solid " @click="createPreOrder">Create</button>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
                         style="padding: 24px; gap: 12px; min-height: 100%;">
                         <div v-if="preOrders.length > 0">
-                            <div class="table-pre" style="height: 600px; padding: 20px;">
+                            <div class="table-pre" style="height: 450px; padding: 20px;">
                                 <table class="table table-striped table-hover">
                                     <thead>
                                         <tr class="text-start">
@@ -188,13 +185,15 @@
                                         <tr class="book-row text-start" v-for="(item, index) in preOrders" :key="index"
                                             data-bs-toggle="modal" data-bs-target="#detailPreOrder"
                                             @click="handleDetailPre(item)">
-                                            <th>{{ index + 1 }}</th>
+                                            <th>{{ (currentPage -1 ) * 9 + index + 1 }}</th>
                                             <td>{{ item?.customer?.name }}</td>
                                             <td>{{ item?.customer?.user?.rank }}</td>
                                             <td>{{ item?.expirationDate?.slice(0, 10) }}</td>
                                             <td>{{ item?.employee?.name }}</td>
                                             <td>
-                                                <i class="bi-trash3-fill" style="color:#ADADAD" data-bs-toggle="modal" data-bs-target="#modal-delete-preorder-component" @click="generateDelete(item?._id)"></i>
+                                                <i class="bi-trash3-fill" style="color:#ADADAD" data-bs-toggle="modal"
+                                                    data-bs-target="#modal-delete-preorder-component"
+                                                    @click="generateDelete(item?._id)"></i>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -213,7 +212,8 @@
                         </div>
                     </div>
 
+                </div>
             </div>
         </div>
     </div>
-</div></template>
+</template>

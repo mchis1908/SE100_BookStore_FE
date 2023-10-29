@@ -102,7 +102,8 @@ export default class Pre_Order extends Vue {
 
   public async fetchPreOrder() {
     let res = await this.$store.dispatch(MutationTypes.GET_ALL_PRE_ORDER, {
-      page: this.currentPage
+      page: this.currentPage,
+      limit: 9,
     });
 
     if (res.status === 200) {
