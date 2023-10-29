@@ -51,4 +51,7 @@ export class MutationTypes {
   public static CREATE_SALARY = 'CREATE_SALARY';
   public static GET_ALL_SALARY = 'GET_ALL_SALARY';
   public static CREATE_INIT_SALARY = 'CREATE_INIT_SALARY';
+  public static GET_ALL_FLOORS = 'GET_ALL_FLOORS';
+  public static GET_ALL_ROWS = 'GET_ALL_ROWS';
+  public static CREATE_CATEGORY = 'CREATE_CATEGORY';
 }
