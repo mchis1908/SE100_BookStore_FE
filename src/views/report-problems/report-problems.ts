@@ -77,12 +77,19 @@ export default class ReportProblems extends Vue {
     return this.validInput
   }
 
+  public selectedFilesFull:any=[];
   public async onFileSelected(event: Event){
-    const selectedFiles = (event.target as HTMLInputElement).files;
+    const selectedFiles: any = (event.target as HTMLInputElement).files;
 
-    if (selectedFiles) {
-      for (let i = 0; i < selectedFiles.length; i++) {
-        const file = selectedFiles[i];
+    for (let i = 0; i < selectedFiles.length; i++) {
+      this.selectedFilesFull.push(selectedFiles[i]);
+    }
+    this.imagesNotUpload=new FormData();
+    this.fileInput=[];
+    this.fileInput1=[];
+    if (this.selectedFilesFull) {
+      for (let i = 0; i < this.selectedFilesFull.length; i++) {
+        const file = this.selectedFilesFull[i];
 
         if (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg') {
           const fileURL = URL.createObjectURL(file);

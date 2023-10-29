@@ -72,24 +72,31 @@ export default class ModalAddCustomer extends Vue {
         return this.validInput
     }
 
+    public selectedFilesFull:any=[];
     public async onFileSelected(event: Event){
-        const selectedFiles = (event.target as HTMLInputElement).files;
-    
-        if (selectedFiles) {
-          for (let i = 0; i < selectedFiles.length; i++) {
-            const file = selectedFiles[i];
-    
+        const selectedFiles: any = (event.target as HTMLInputElement).files;
+
+        for (let i = 0; i < selectedFiles.length; i++) {
+        this.selectedFilesFull.push(selectedFiles[i]);
+        }
+        this.imagesNotUpload=new FormData();
+        this.fileInput=[];
+        this.fileInput1=[];
+        if (this.selectedFilesFull) {
+        for (let i = 0; i < this.selectedFilesFull.length; i++) {
+            const file = this.selectedFilesFull[i];
+
             if (file.type === 'image/png' || file.type === 'image/jpeg' || file.type === 'image/jpg') {
-              const fileURL = URL.createObjectURL(file);
-              this.fileInput.push(file);
-              const reader = new FileReader();
-              reader.onload = () => {
+            const fileURL = URL.createObjectURL(file);
+            this.fileInput.push(file);
+            const reader = new FileReader();
+            reader.onload = () => {
                 this.fileInput1.push(reader.result);
-              };
-              reader.readAsDataURL(file);
-              this.imagesNotUpload.append('images', this.fileInput[i]);
+            };
+            reader.readAsDataURL(file);
+            this.imagesNotUpload.append('images', this.fileInput[i]);
             }else toast.error("Invalid file");
-          }
+        }
         }
     }
 }
