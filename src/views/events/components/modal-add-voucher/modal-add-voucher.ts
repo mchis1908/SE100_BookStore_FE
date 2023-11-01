@@ -4,7 +4,9 @@ import { Vue } from "vue-class-component";
 import { toast } from "vue3-toastify";
 
 export default class ModalAddVoucher extends Vue {
-    public voucher: any = {}
+    public voucher: any = {
+        level: 4
+    }
 
     public async openModal() {
         const myModal = new Modal(this.$refs["add-new-voucher-modal"] as any)

@@ -44,7 +44,7 @@
                         </thead>
                         <tbody class="table-group-divider">
                             <tr class="book-row text-start" v-for="(item, index) in allBooks" :key="index" @click="handleClickBookRow(index)">
-                                <th scope="row">{{ index + 1 }}</th>
+                                <th scope="row">{{ index + 1 + (currentPage - 1) * 9 }}</th>
                                 <td>{{ item["name"] }}</td>
                                 <td v-if="item['categories'].length > 0">
                                     <p v-for="(category, indexCategory) in item['categories']" :key="indexCategory">{{ item["categories"][indexCategory].name }}</p>
@@ -84,7 +84,7 @@
                         </thead>
                         <tbody class="table-group-divider">
                             <tr class="book-row text-start" v-for="(item, index) in allCategories" :key="index">
-                                <th scope="row">{{ index + 1 }}</th>
+                                <th scope="row">{{ index + 1 + (currentPageCategories - 1) * 9 }}</th>
                                 <td>{{ item["name"] }}</td>
                                 <td>{{ item["row"]["floor"]["index"] }}</td>
                                 <td>{{ item["row"]["index"] }}</td>
@@ -93,7 +93,7 @@
                     </table>
 
                     <div class="pagination-container">
-                        <div class="pagination-item" v-for="(item, index) in totalPageCategories" :key="index" @click="currentPageCategories = index + 1" :style="index + 1 === currentPage ? 'background-color: #065471; outline: none; color: #fff' : ''">
+                        <div class="pagination-item" v-for="(item, index) in totalPageCategories" :key="index" @click="currentPageCategories = index + 1" :style="index + 1 === currentPageCategories ? 'background-color: #065471; outline: none; color: #fff' : ''">
                             {{ index + 1  }}
                         </div>
                     </div>

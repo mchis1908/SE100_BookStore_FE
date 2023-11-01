@@ -16,15 +16,20 @@
                     </div>
                     <div class="mb-2">
                         <label for="bookDiscountInput" class="form-label">Discount</label>
-                        <input v-model="voucher.discountValue" type="text" class="form-control" id="bookDiscountInput">
+                        <input v-model="voucher.discountValue" :step="0.1" :min="0" :max="1" type="number" class="form-control" id="bookDiscountInput">
                     </div>
                     <div class="mb-2">
                         <label for="bookRankInput" class="form-label">Rank</label>
-                        <input v-model="voucher.level" type="text" class="form-control" id="bookRankInput">
+                        <select v-model="voucher.level" type="text" class="form-control" id="bookRankInput">
+                            <option :value="4">Diamond</option>
+                            <option :value="3">Gold</option>
+                            <option :value="2">Silver</option>
+                            <option :value="1">Bronze</option>
+                        </select>
                     </div>
                     <div class="mb-2">
                         <label for="bookExpirationDateInput" class="form-label">Expiration Date</label>
-                        <input v-model="voucher.expirationDate" type="text" class="form-control" id="bookExpirationDateInput">
+                        <input v-model="voucher.expirationDate" type="date" class="form-control" id="bookExpirationDateInput">
                     </div>
                 </div>
                 <div class="modal-footer">

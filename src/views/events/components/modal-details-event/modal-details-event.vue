@@ -6,7 +6,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title w-100" id="ModalLabel">Add new voucher</h5>
+                    <h5 class="modal-title w-100" id="ModalLabel">Add new event</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div v-if="isLoading" class="modal-body">
@@ -43,7 +43,7 @@
 
                     <div class="input-group mb-3">
                         <span class="input-group-text col-4" id="inputGroup-sizing-default">Discount Value</span>
-                        <input v-model="detailsEvent.eventDiscountValue" type="text" class="form-control col-8" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <input v-model="detailsEvent.eventDiscountValue" type="number" :step="0.1" :min="0" :max="1" class="form-control col-8" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     </div>
 
                     <div class="input-group mb-3">
