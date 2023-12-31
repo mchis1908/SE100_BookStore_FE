@@ -43,10 +43,14 @@ export default class ModalDetailsBook extends Vue {
     public fileInput:any = [];
     public fileInput1:any = [];
     public imagesNotUpload = new FormData();
+    public disabledInput:any= false;
 
     async beforeMount() {
         this.userData = this.$store.state.userData
         await this.fetchCategories()
+        if(this.$route.path = '/') {
+            this.disabledInput = true;
+        }
     }
 
     public async openModal() {

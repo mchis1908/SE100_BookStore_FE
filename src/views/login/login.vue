@@ -29,9 +29,6 @@
                 <div v-if="invalidAccount" style="width: 100%; text-align: start; font-size: 14px; font-weight: 400">
                     <p style="color: #FF513C;">{{ invalidAccount }}</p>
                   </div>
-                <div class="forget">
-                    <router-link style="font-size:14px" to="/">Forgot password?</router-link>
-                </div>
                 <button v-if="!isLoading" @click="handleLogin">
                     Login
                 </button>

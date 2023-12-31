@@ -16,7 +16,7 @@
                     <div class="row mb-3">
                         <label for="inputId" class="col-3 col-form-label">Barcode</label>
                         <div class="col-8">
-                            <input type="text" class="form-control" id="inputId" :value="bookItem.barcode">
+                            <input :disabled="disabledInput" type="text" class="form-control" id="inputId" :value="bookItem.barcode">
                         </div>
                         <div @click="handleCopyId" class="col-1 btn-copy">
                             <i v-if="!isCopiedId" class="bi bi-clipboard"></i>
@@ -26,13 +26,13 @@
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-3 col-form-label">Name</label>
                         <div class="col-9">
-                            <input v-model="copiedBook.name" type="text" class="form-control" id="inputAuthor"/>
+                            <input :disabled="disabledInput" v-model="copiedBook.name" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-3 col-form-label">Author</label>
                         <div class="col-9">
-                            <input v-model="copiedBook.author" type="text" class="form-control" id="inputAuthor"/>
+                            <input :disabled="disabledInput" v-model="copiedBook.author" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -46,7 +46,7 @@
                             <div v-if="isShowModalCategories" class="category-modal" v-motion-slide-top @click.stop>
                                 <div v-for="(item, index) in allCategories" :key="index" class="category-item-container">
                                     <label :for="`category-${index}`">{{item.name}}</label>
-                                    <input v-model="seletectedCategory" :checked="handleCheckCategory(item._id)" type="checkbox" :id="`category-${index}`" :value="item._id"/>
+                                    <input :disabled="disabledInput" v-model="seletectedCategory" :checked="handleCheckCategory(item._id)" type="checkbox" :id="`category-${index}`" :value="item._id"/>
                                 </div>
                             </div>
                         </div>
@@ -54,37 +54,37 @@
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-3 col-form-label">Import Price</label>
                         <div class="col-9">
-                            <input v-model="copiedBook.importPrice" type="text" class="form-control" id="inputAuthor"/>
+                            <input :disabled="disabledInput" v-model="copiedBook.importPrice" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-3 col-form-label">Publisher</label>
                         <div class="col-9">
-                            <input v-model="copiedBook.publisher" type="text" class="form-control" id="inputAuthor"/>
+                            <input :disabled="disabledInput" v-model="copiedBook.publisher" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-3 col-form-label">Publishing Year</label>
                         <div class="col-9">
-                            <input v-model="copiedBook.publishingYear" type="text" class="form-control" id="inputAuthor"/>
+                            <input :disabled="disabledInput" v-model="copiedBook.publishingYear" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-3 col-form-label">Quantity</label>
                         <div class="col-9">
-                            <input v-model="copiedBook.quantity" type="text" class="form-control" id="inputAuthor"/>
+                            <input :disabled="disabledInput" v-model="copiedBook.quantity" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-3 col-form-label">Sales Price</label>
                         <div class="col-9">
-                            <input v-model="copiedBook.salesPrice" type="text" class="form-control" id="inputAuthor"/>
+                            <input :disabled="disabledInput" v-model="copiedBook.salesPrice" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="inputAuthor" class="col-3 col-form-label">Translator</label>
                         <div class="col-9">
-                            <input v-model="copiedBook.translator" type="text" class="form-control" id="inputAuthor"/>
+                            <input :disabled="disabledInput" v-model="copiedBook.translator" type="text" class="form-control" id="inputAuthor"/>
                         </div>
                     </div>
 
@@ -93,7 +93,7 @@
                         <div class="report-items-image" style="margin-top: 8px;">
                             <img v-if="fileInput1.length > 0" class="imgReport" v-for="(item, index) in fileInput1" :key="index" :src="item"/>
                             <label class="custom-file-upload card-image" v-if="fileInput1.length < 1">
-                                <input type="file" multiple accept=".png, .jpg, .jpeg" @change="onFileSelected"/>
+                                <input :disabled="disabledInput" type="file" multiple accept=".png, .jpg, .jpeg" @change="onFileSelected"/>
                                 <i class="bi bi-plus d-flex justify-content-center" style="font-size:24px"></i>
                             </label>
                         </div>
