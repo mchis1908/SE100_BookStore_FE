@@ -83,7 +83,7 @@
                                 <p class="col-1 text-center">
                                     {{ index + 1 }}
                                 </p>
-                                <p class="col text-center">
+                                <p class="col text-center book-name">
                                     {{item?.name}}
                                 </p>
                                 <p class="col-2 text-center">

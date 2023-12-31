@@ -218,3 +218,13 @@
   transform: translateY(-20px);
   opacity: 0;
 }
+
+.book-name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    align-self: stretch;
+}
