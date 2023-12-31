@@ -157,7 +157,6 @@ export default class Statistics extends Vue {
     this.chart.doughnutChart.data7Days = this.processDataForDoughnutCharts(this.dataChart.doughnutChart[0], '7days')
     this.chart.doughnutChart.data30Days = this.processDataForDoughnutCharts(this.dataChart.doughnutChart[1], '30days')
     this.chart.doughnutChart.data12Months = this.processDataForDoughnutCharts(this.dataChart.doughnutChart[2], '12months')
-    console.log('a',this.chart.doughnutChart)
   }
 
   public async getDataBarChart(){
@@ -212,9 +211,9 @@ export default class Statistics extends Vue {
 
     if (duration === '12months') {
       for (let i = 0; i < 12; i++) {
+        currentDateCopy.setUTCMonth(currentDateCopy.getUTCMonth() - 1);
         const yearMonth = currentDateCopy.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit' });
         labels.unshift(yearMonth);
-        currentDateCopy.setMonth(currentDateCopy.getMonth() - 1);
       }
     } else {
       for (let i = 0; i < parseInt(duration); i++) {
