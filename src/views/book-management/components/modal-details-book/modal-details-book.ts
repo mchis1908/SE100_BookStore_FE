@@ -48,7 +48,8 @@ export default class ModalDetailsBook extends Vue {
     async beforeMount() {
         this.userData = this.$store.state.userData
         await this.fetchCategories()
-        if(this.$route.path = '/') {
+        console.log(this.$route.path);
+        if(this.$route.path === '/') {
             this.disabledInput = true;
         }
     }

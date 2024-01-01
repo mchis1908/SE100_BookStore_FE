@@ -64,7 +64,7 @@
                 style="border-left: solid 1px #E5E6E6; padding:12px; gap:12px; position:relative">
                 <div class="d-flex flex-row justify-content-between align-items-center">
                     <p class="text-start text-title-1" style="font-size:16px; color:#065471">Detail Invoice</p>
-                    <p class="text-end" style="color:#ADADAD">2023-10-15</p>
+                    <p class="text-end" style="color:#ADADAD">{{ today }}</p>
                 </div>
                 <hr style="margin: 0; width:100%; border: 0.5px solid #E5E6E6; opacity: 1;" />
                 <div class="input-field align-items-center" style="gap:16px">

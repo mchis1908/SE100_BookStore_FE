@@ -7,7 +7,7 @@
         <Header/>
         <div class="d-flex flex-row" style="height: calc( 100vh - 66px)">
             <div class="home-container" style="overflow-y: scroll; overflow-x: hidden; z-index:1" v-motion-slide-left>
-                <div class="d-flex flex-column align-items-start" style="gap:8px">
+                <div class="d-flex flex-column align-items-start" style="gap:8px; width:100%">
                     <p class="areaContent-title">New Events</p>
                     <Splide class="splideSkill" :options="options">
                         <SplideSlide data-splide-interval="1500" class="col-12" v-for="(item,index) in events" :key="index">

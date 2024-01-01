@@ -71,10 +71,17 @@ export default class SellingBooks extends Vue {
   public voucherDiscount:any=0;
   public total:any=0;
   public suggest: any = [];
-  public searchQuery:any=null
+  public searchQuery:any=null;
+  public today:any=null;
 
   public beforeMount(){
     this.getBooks();
+    this.today = this.getToday()
+  }
+
+  public getToday(){
+    const date = new Date();
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
   }
 
   public async getBooks(){
